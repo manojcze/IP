@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IP novinky 7. 11. 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: úzký sloupec jako právní zpravodaj, karta = jedna zpráva, barevný pruh vlevo = oblast IP */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #16233b;
+  --muted: #5a6780;
+  --line: #dde3ee;
+  --navy: #14284b;
+  --tm: #1f5fbf;
+  --tm-soft: #e3edfb;
+  --ip: #6a4fa3;
+  --ip-soft: #ece7f6;
+  --comp: #c4560a;
+  --comp-soft: #fde9d9;
+  --old-soft: #eceff4;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1626;
+    --surface: #16213a;
+    --ink: #e6ebf5;
+    --muted: #9aa8c2;
+    --line: #28365a;
+    --navy: #0a1220;
+    --tm: #6fa3f2;
+    --tm-soft: #1b2e52;
+    --ip: #b39ae6;
+    --ip-soft: #2c2447;
+    --comp: #f19a5b;
+    --comp-soft: #4a2a12;
+    --old-soft: #222d47;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1626;
+  --surface: #16213a;
+  --ink: #e6ebf5;
+  --muted: #9aa8c2;
+  --line: #28365a;
+  --navy: #0a1220;
+  --tm: #6fa3f2;
+  --tm-soft: #1b2e52;
+  --ip: #b39ae6;
+  --ip-soft: #2c2447;
+  --comp: #f19a5b;
+  --comp-soft: #4a2a12;
+  --old-soft: #222d47;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 16px 56px; }
+
+header.top {
+  background: var(--navy);
+  color: #f2f5fb;
+  padding: 28px 16px 26px;
+}
+header.top .inner { max-width: 780px; margin: 0 auto; }
+.brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #9fb4da; font-weight: 600; }
+header.top h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 6vw, 38px);
+  line-height: 1.15;
+  margin: 6px 0 10px;
+  text-wrap: balance;
+}
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
+.meta-row strong { color: #fff; font-weight: 600; }
+
+.trial {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--muted);
+}
+.trial strong { color: var(--ink); }
+
+.summary {
+  margin: 18px 0 0;
+  padding: 18px 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.summary h2, .section-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.summary ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.summary li::marker { color: var(--tm); }
+.summary a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.summary a:hover, .summary a:focus-visible { color: var(--tm); border-bottom-color: var(--tm); outline: none; }
+.card { scroll-margin-top: 16px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+.legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 4px; }
+
+.pill {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pill.tm { background: var(--tm-soft); color: var(--tm); }
+.pill.ip { background: var(--ip-soft); color: var(--ip); }
+.pill.comp-yes { background: var(--comp-soft); color: var(--comp); box-shadow: inset 0 0 0 1.5px var(--comp); }
+.pill.juris { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--muted); font-weight: 500; }
+.pill.old { background: var(--old-soft); color: var(--muted); }
+
+.cards { display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--tm);
+  border-radius: 10px;
+  padding: 20px 22px 18px;
+}
+.card.ip { border-left-color: var(--ip); }
+.card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 1.3;
+  margin: 0 0 6px;
+  text-wrap: balance;
+}
+.card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card p { margin: 0 0 10px; max-width: 68ch; }
+.card .why {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: var(--bg);
+  border-radius: 6px;
+  font-size: 14.5px;
+}
+.card .why b { font-weight: 600; }
+.card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.card .src {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--tm);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}
+.card.ip .src { color: var(--ip); }
+.card .src:hover, .card .src:focus-visible { background: var(--tm-soft); outline: none; }
+.card.ip .src:hover, .card.ip .src:focus-visible { background: var(--ip-soft); }
+
+.radar { margin-top: 32px; }
+.radar ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.radar li {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+}
+.radar li .l1 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
+.radar li a { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.radar li .note { color: var(--muted); font-size: 13.5px; }
+
+footer.foot {
+  margin-top: 34px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+footer.foot h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px; color: var(--ink); font-family: var(--font-body); font-weight: 600; }
+footer.foot ul { margin: 0 0 12px; padding-left: 18px; }
+footer.foot p { margin: 0 0 8px; }
+
+@media (max-width: 480px) {
+  .card { padding: 16px 16px 14px; }
+  .card h3 { font-size: 19px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card .src { transition: background .15s ease; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="brand">Přehled dvakrát týdně · duševní vlastnictví</div>
+    <h1>IP novinky</h1>
+    <div class="meta-row">
+      <span><strong>Sobota 7. listopadu 2026</strong></span>
+      <span>4 zprávy + 3 na radar</span>
+      <span>Zkušební vydání</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <p class="trial"><strong>Zkušební vydání.</strong> Protože je sobota a v posledních dnech nevyšlo v prověřených zdrojích mnoho významného, pokrývá výběr delší období (od 13. 10. do 7. 11. 2026). Zprávy starší než týden jsou označeny. Běžná vydání vycházejí v úterý a v pátek ráno a pokrývají vždy období od předchozího vydání (první vydání v úterý 10. 11. 2026).</p>
+
+  <section class="summary" aria-labelledby="sum-h">
+    <h2 id="sum-h">Hlavní témata</h2>
+    <ul>
+      <li><a href="#zprava-1">Tribunál: znovupodání téměř totožné známky krátce po lhůtě pro prokázání užívání může být zlou vírou (Waterdrop).</a></li>
+      <li><a href="#zprava-2">Hamburský vrchní zemský soud označil platformu Wish za přímého porušovatele ochranné známky.</a></li>
+      <li><a href="#zprava-3">BGH: u červeného kruhu jako barevné známky rozhoduje zobrazení v rejstříku, ne v přihlášce.</a></li>
+      <li><a href="#zprava-4">Generální advokát Szpunar navrhuje u AI chatbotu řešit jen zobrazování odpovědí, otázky k tréninku modelu považuje za hypotetické.</a></li>
+    </ul>
+  </section>
+
+  <div class="legend" aria-label="Vysvětlivky štítků">
+    <span class="pill tm">Ochranné známky</span>
+    <span class="pill ip">Jiná oblast IP (autorské právo, patenty…)</span>
+    <span class="pill juris">Jurisdikce (EU, ČR, Německo…)</span>
+    <span class="pill comp-yes">Souběh se soutěžním právem / s nekalou soutěží</span>
+    <span class="pill old">Starší zpráva</span>
+  </div>
+
+  <div class="cards">
+
+    <!-- 1 -->
+    <article class="card tm" id="zprava-1">
+      <div class="tags">
+        <span class="pill tm">Ochranné známky</span>
+        <span class="pill juris">EU</span>
+      </div>
+      <h3>Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru</h3>
+      <p class="facts"><span>Tribunál EU</span><span>věc T-541/25, Qingdao Ecopure Filter v EUIPO (Waterdrop)</span><span>zveřejněno 5. 11. 2026</span></p>
+      <p>Společnost Qingdao Ecopure Filter (QEF) si v roce 2021 zapsala jako ochrannou známku EU slovní označení „Waterdrop“ pro širokou škálu zboží třídy 11, včetně zařízení na filtraci vody. Konkurent Waterdrop Microdrink (WMG) v roce 2023 navrhl prohlášení této známky za neplatnou pro zlou víru. Zrušovací oddělení EUIPO návrh zamítlo, Odvolací senát však rozhodnutí částečně změnil a známku zneplatnil pro vodní filtry, protože šlo o nové přihlášení téhož označení, jímž se majitel vyhnul povinnosti prokazovat skutečné užívání starší známky.</p>
+      <p>Tribunál žalobu QEF zamítl. Vyšel z ustáleného testu, podle něhož je zlou vírou podání přihlášky s cílem poškodit třetí osobu nebo získat výlučné právo k jiným účelům, než ke kterým ochranná známka slouží. Rozhodla kombinace okolností: přihláška byla podána asi čtyři měsíce po skončení pětileté lhůty, po níž lze po majiteli starší známky požadovat důkaz užívání; QEF a její předchůdce podali během tří let několik obdobných přihlášek; zboží bylo totožné se širším seznamem zboží starší známky; a QEF nedoložila žádný obchodní důvod, ani tvrzené zjednodušení správy portfolia.</p>
+      <p>Samotné opakované podání zlou víru nezakládá, Tribunál odlišil věc MONOPOLY. Rozhodný je úmysl obejít požadavek skutečného užívání, který se projevil i tím, že se QEF ve čtyřech z pěti námitkových řízení proti WMG o starší právo neopřela. Argument, že slovní známka je flexibilnější, Tribunál odmítl jako nepřípustný i jako nepodložený.</p>
+      <p class="why"><b>Praktický dopad (podle komentáře):</b> strategie opakovaného podání bude těžší obhájit. U téměř totožné pozdější známky pro totéž zboží lze bez konkrétního obchodního důvodu očekávat spíše domněnku zlé víry, zejména pokud k podání dojde krátce po skončení lhůty pro užívání. Pro klienty to znamená dokumentovat důvod každého nového podání.</p>
+      <p class="basis">Vychází z komentáře IPKat (Marcel Pemsel). Samotný rozsudek jsem nečetl; datum rozsudku komentář neuvádí. Použité ustanovení nařízení (EU) 2017/1001 komentář neuvádí, jde o zlou víru jako důvod neplatnosti.</p>
+      <a class="src" href="https://ipkitten.blogspot.com/2026/11/general-court-confirms-strict-rules-on.html">Originální zdroj: IPKat →</a>
+    </article>
+
+    <!-- 2 -->
+    <article class="card tm" id="zprava-2">
+      <div class="tags">
+        <span class="pill tm">Ochranné známky</span>
+        <span class="pill juris">Německo</span>
+        <span class="pill comp-yes">Souběh s nekalou soutěží</span>
+        <span class="pill old">Starší zpráva</span>
+      </div>
+      <h3>Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky</h3>
+      <p class="facts"><span>Vrchní zemský soud v Hamburku (OLG)</span><span>sp. zn. 5 U 58/25, Jemella v ContextLogic</span><span>komentář z 21. 10. 2026</span></p>
+      <p>Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.</p>
+      <p>Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.</p>
+      <p>Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci.</p>
+      <p class="why"><b>Praktický dopad (podle komentáře):</b> rozšíření Louboutinova testu. Čím více služeb platforma spojuje, tím snáze jde o její vlastní užívání označení. Protipadělkové nástroje je nutné používat důsledně, jinak slouží jako důkaz vědomosti.</p>
+      <p class="basis">Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU.</p>
+      <a class="src" href="https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html">Originální zdroj: IPKat →</a>
+    </article>
+
+    <!-- 3 -->
+    <article class="card tm" id="zprava-3">
+      <div class="tags">
+        <span class="pill tm">Ochranné známky</span>
+        <span class="pill juris">Německo</span>
+        <span class="pill old">Starší zpráva</span>
+      </div>
+      <h3>Červený kruh jako známka: BGH k grafickému znázornění a roli rejstříku</h3>
+      <p class="facts"><span>Spolkový soudní dvůr (BGH), Německo</span><span>sp. zn. I ZB 104/25 „Roter Kreis“</span><span>komentář z 13. 10. 2026</span></p>
+      <p>Spor se týkal obrazové známky tvořené červeným kruhem, zapsané v Německu v roce 1996 na základě získané rozlišovací způsobilosti pro vakuové termosky, džbány a nádoby na potraviny. Přihláška byla podána v papírové podobě. Třetí osoba požadovala prohlášení neplatnosti, protože podle ní označení nebylo dostatečně graficky znázorněno. Německý úřad i Spolkový patentový soud návrh zamítly a BGH nyní zamítl i opravný prostředek, takže zápis zůstává v platnosti.</p>
+      <p>Otázkou bylo, zda pro barevný obrazec platí stejné nároky na znázornění jako pro abstraktní barvu bez obrysů. BGH použil německý zákon z roku 1996 provádějící první směrnici o ochranných známkách a test z věci Sieckmann: znázornění musí být jasné, přesné, samostatné, srozumitelné, objektivní a trvanlivé. Za rozhodující označil zobrazení v rejstříku, nikoli v přihlášce, protože se třetí osoby musí o předmětu ochrany dozvědět z rejstříku. Že majitel kdysi předložil několik odstínů červené, proto nevadí.</p>
+      <p>Trvanlivost soud shledal splněnou, protože barva uložená v elektronickém rejstříku nevybledne, na rozdíl od fyzického vzorku z věci Libertel. Kód barvy (RAL, Pantone) nevyžadoval, protože kruh určitého odstínu červené dává spolehlivý základ pro posouzení užívání a kolizí. Komentátor kritizuje, že BGH nepoložil předběžnou otázku SDEU, zpochybňuje přednost rejstříku před přihláškou i to, že kód barvy není potřeba, a ptá se, proč by pro barevný obrazec a abstraktní barvu měla platit odlišná měřítka.</p>
+      <p class="why"><b>Praktický dopad (podle komentáře):</b> význam má hlavně u starších barevných známek podaných před elektronickými rejstříky, kde se rozchází to, co bylo podáno, s tím, co je zapsáno.</p>
+      <p class="basis">Vychází z komentáře IPKat (Marcel Pemsel, 13. 10. 2026). Datum rozhodnutí BGH komentář neuvádí; samotné rozhodnutí jsem nečetl.</p>
+      <a class="src" href="https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html">Originální zdroj: IPKat →</a>
+    </article>
+
+    <!-- 4 -->
+    <article class="card ip" id="zprava-4">
+      <div class="tags">
+        <span class="pill ip">Autorské právo</span>
+        <span class="pill ip">Umělá inteligence</span>
+        <span class="pill juris">EU</span>
+      </div>
+      <h3>Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company</h3>
+      <p class="facts"><span>Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
+      <p>Věc se týká práva nakladatelů tisku podle čl. 15 směrnice o autorském právu na jednotném digitálním trhu (DSM) a využití jejich obsahu při trénování jazykového modelu Gemini a při zobrazování odpovědí chatbota. Generální advokát Szpunar navrhuje, aby Soudní dvůr otázky k samotnému trénování odmítl jako hypotetické a odpověděl jen na to, zda zobrazování odpovědí chatbota může zasahovat do práv nakladatelů. K trénování se přesto vyjádřil, výslovně jako předběžně.</p>
+      <p>Trénink podle něj zasahuje do práva na rozmnožování, přičemž rozhoduje technický, nikoli funkční pohled: nezáleží na tom, zda se chráněný obsah použije jako dílo, nebo jen jako data. Obtížná je územní otázka, když trénink probíhá mimo EU. Názor Googlu, že rozhoduje právo místa hlavní infrastruktury, by nositele práv v EU nechal bez ochrany, a GA proto volá po legislativním vyjasnění. Výjimka pro text a data mining (čl. 4 DSM) se na trénování v zásadě vztahuje, vyžaduje zákonný přístup a absenci výhrady práv, a GA naznačuje, že by se mohla změnit na výjimku s odměnou.</p>
+      <p>Odpovědi chatbota jsou online užitím ve smyslu čl. 15 DSM. Vyloučení pouhých skutečností a velmi krátkých úryvků se nemusí uplatnit, nakladatel samotným zveřejněním online implicitně nesouhlasí a čl. 4 TDM zobrazení odpovědí nekryje. Zobrazení může být rozmnožováním i zpřístupněním veřejnosti, pokud je forma vyjádření „systematicky rozpoznatelná“, což komentátor zpochybňuje.</p>
+      <p class="why"><b>Praktický dopad:</b> stanovisko není závazné a rozsudek se teprve očekává. Komentář upozorňuje, že další dvě AI předložení k autorskému právu (C-806/26 a C-829/26) jsou u Soudního dvora rozpracována.</p>
+      <p class="basis">Vychází z komentáře IPKat (Eleonora Rosati, 3. 11. 2026). Samotné stanovisko jsem nečetl; komentář neuvádí předkládající soud.</p>
+      <a class="src" href="https://ipkitten.blogspot.com/2026/11/ag-szpunars-opinion-in-like-company-is.html">Originální zdroj: IPKat →</a>
+    </article>
+
+  </div>
+
+  <section class="radar" aria-labelledby="radar-h">
+    <h2 class="section-title" id="radar-h">Na radar</h2>
+    <ul>
+      <li>
+        <div class="l1"><span class="pill tm">Ochranné známky</span><span class="pill juris">EU</span></div>
+        <a href="https://ipkitten.blogspot.com/2026/10/an-eye-for-eye-constitutes-bad-faith.html">Tribunál, T-650/25 Vacu Activ v EUIPO (říjen 2026)</a>: potvrzeno zrušení známky „VACUACTIVUS“ pro zlou víru, přihlašovatel nechtěl označení užívat a šlo mu o to, aby bývalý distributor nevstoupil na trh EU.
+        <div class="note">Údaje z přehledu IPKat; celý příspěvek se nepodařilo načíst.</div>
+      </li>
+      <li>
+        <div class="l1"><span class="pill tm">Ochranné známky</span><span class="pill juris">EU</span></div>
+        <a href="https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel">WTR, 29. 10. 2026: neplatnost známky TESLA před EUIPO</a>: rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.
+        <div class="note">Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny.</div>
+      </li>
+      <li>
+        <div class="l1"><span class="pill ip">Podpora malých a středních podniků</span><span class="pill juris">ČR</span></div>
+        <a href="https://upv.gov.cz/aktuality/informace/oznameni-o-otevreni-sme-fund-pro-vouchery-1-a-2">ÚPV, 6. 11. 2026: otevření SME Fund pro vouchery 1 a 2</a>: administrativní oznámení, prakticky užitečné pro malé a střední podniky.
+        <div class="note">Podrobnosti programu stránka v náhledu neuvádí.</div>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <h2>Zkontrolované zdroje</h2>
+    <ul>
+      <li>IPKat: načteno, zpracovány příspěvky z 13. 10. až 5. 11. 2026.</li>
+      <li>Soudní dvůr EU, tiskové zprávy: načteno (poslední č. 153/2026 z 22. 10.); v období žádná zpráva k ochranným známkám ani jinému IP.</li>
+      <li>ÚPV, aktuality: načteno; v období pouze administrativní oznámení a semináře.</li>
+      <li>EUIPO, Observatoř: stránka s publikacemi se nenačetla s obsahem; doplněno vyhledáváním (WTR, Managing IP).</li>
+      <li>Další: WebSearch (UPC, Evropská komise, české soudy). Nová rozhodnutí českých soudů ani ÚOHS k ochranným známkám v tomto období nalezena nebyla.</li>
+    </ul>
+    <h2>Zvolený výklad zadání</h2>
+    <p>Štítek souběhu se zobrazuje jen tam, kde souběh existuje: „Souběh se soutěžním právem“ (články 101 a 102 SFEU, ÚOHS, FRAND) nebo „Souběh s nekalou soutěží“. Zaměření je primárně na ČR a EU; jiné jurisdikce jsou zařazeny jen podpůrně u velmi významných věcí (ve zkoušce německá rozhodnutí Wish a Roter Kreis). Na zkušební vydání jsem období rozšířil na 13. 10. až 7. 11. 2026, protože v sobotu nic nového nevyšlo. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí.</p>
+    <h2>Upozornění</h2>
+    <p>Informativní přehled, nejde o právní službu ani právní radu. Vznikl automatizovaně z veřejně dostupných zdrojů, u části zpráv z komentářů, nikoli z plných textů rozhodnutí, a může obsahovat chyby. Před jakýmkoli použitím ověřte údaje v originálním zdroji.</p>
+    <p><a href="./">Archiv starších vydání</a></p>
+  </footer>
+
+</main>
+</body>
+</html>

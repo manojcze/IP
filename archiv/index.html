@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archiv IP novinek</title>
+<style>
+:root { --bg:#f4f6fa; --surface:#fff; --ink:#16233b; --muted:#5a6780; --line:#dde3ee; --navy:#14284b; --tm:#1f5fbf; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0e1626; --surface:#16213a; --ink:#e6ebf5; --muted:#9aa8c2; --line:#28365a; --navy:#0a1220; --tm:#6fa3f2; color-scheme: dark; } }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif; line-height:1.6; }
+header { background:var(--navy); color:#f2f5fb; padding:26px 16px; }
+header div, main { max-width:780px; margin:0 auto; }
+header h1 { font-family: "Source Serif 4", Georgia, serif; font-size:30px; margin:0; font-weight:600; }
+main { padding:20px 16px 48px; }
+ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+li a { display:block; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:12px 14px; color:var(--tm); font-weight:600; text-decoration:none; }
+li a:hover, li a:focus-visible { border-color:var(--tm); outline:none; }
+p { color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+<header><div><h1>Archiv IP novinek</h1></div></header>
+<main>
+<ul>
+<!-- ARCHIV-ZACATEK: nejnovější vydání nahoře, každé jako <li><a href="RRRR-MM-DD.html">Datum</a></li> -->
+<li><a href="2026-11-07.html">7. 11. 2026 (zkušební vydání)</a></li>
+<!-- ARCHIV-KONEC -->
+</ul>
+<p><a href="../" style="color:inherit">← Aktuální vydání</a></p>
+</main>
+</body>
+</html>
