@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -380,9 +382,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-14"><a href="../archiv/2026-11-14.html">Sobota 14. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-11-14-zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou</h3>
-      <p class="facts"><span>Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></div>
+      <h3>UPC Mannheim: ZTE a Samsung stáhly vzájemné žaloby o SEP, spor o FRAND patrně skončil dohodou</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/zte-and-samsung-withdraw-upc-infringement-actions-in-apparent-settlement/">Zdroj: JUVE Patent →</a></p>
       <p>Výrobci mobilních telefonů ZTE a Samsung spolu vedli rozsáhlý spor o patenty nezbytné pro standardy 4G a 5G (SEP). Jejich licence vypršela koncem roku 2024 a nebyla obnovena. Samsung podal v prosinci 2024 žalobu u High Court v Londýně a žádal stanovení sazby FRAND pro globální portfolio ZTE, a také žalobu o uzavření smlouvy ve Frankfurtu. ZTE žalovala v Číně, v Německu a u UPC; Samsung odpověděl na začátku roku 2025 dvěma žalobami u UPC v Mannheimu. Paralelně běžela řízení u zemského soudu v Mnichově, v Brazílii a v USA.</p>
       <p>Místní oddělení v Mannheimu nyní podle JUVE Patent povolilo vzájemné stažení obou žalob a řízení uzavřelo (soudce zpravodaj Tobias Sender). Rozhodnutí samo dohodu nepotvrzuje, ale stažení tohoto rozsahu bez návrhů na náhradu nákladů obvykle znamená urovnání. Podle výzkumu JUVE byly staženy i mnichovské věci, soud to však dosud nepotvrdil. Dílčí výsledky předtím: v dubnu 2026 Mannheim zrušil patent EP 3 905 730 pro rozšíření předmětu a žalobu ZTE zamítl; patent EP 4 096 288 zrušilo námitkové oddělení EPÚ, a řízení z něj bylo proto přerušeno; v dubnu 2026 získala ZTE v Mnichově zákaz na základě EP 2 654 356.</p>
@@ -394,7 +396,7 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-11-14-radar-4">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html">IPKat, 3. 11. 2026: hostující příspěvek Rafała Sikorského o německých místních divizích UPC</a>: autor tvrdí, že německé divize rozhodují přes 75 % sporů prvního stupně, a staví se proti zřizování dalších senátů nad rámec čl. 7 odst. 4 Dohody o UPC. Jde o názorový příspěvek, nikoli rozhodnutí.
         <div class="note">Zdroj čísel autor neuvádí; k prověření.</div><div class="note"><a href="../archiv/2026-11-14.html#radar-4">Z vydání 14. 11. 2026</a></div>
       </li>
@@ -405,13 +407,13 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-07"><a href="../archiv/2026-11-07.html">Sobota 7. listopadu 2026</a></h2>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-11-07-radar-1">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/upckat-proportionality-defence-against.html">IPKat, 1. 11. 2026: námitka nepřiměřenosti zákazu u UPC v oblasti léčiv</a>: Rozbor ukazuje, že UPC zákaz při porušení zpravidla vydá; výjimkou mohou být zájmy pacientů, pokud je výrobek jedinou dostupnou léčbou nebo výrazně zlepšuje péči (Meril v Edwards, Hologic v Siemens).
         <div class="note"><a href="../archiv/2026-11-07.html#radar-1">Z vydání 7. 11. 2026</a></div>
       </li>
       <li id="v2026-11-07-radar-2">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/kanada.html">Kanada</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html">IPKat, 5. 11. 2026: Nejvyšší soud Kanady k patentům na dávkovací režimy</a>: Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv.
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/kanada.html">Kanada</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html">NS Kanady: K zákazu patentovat léčebné metody a patentům na dávkovací režimy (IPKat, 5. 11. 2026)</a>: Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv.
         <div class="note"><a href="../archiv/2026-11-07.html#radar-2">Z vydání 7. 11. 2026</a></div>
       </li>
     </ul></div>
@@ -421,9 +423,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-31"><a href="../archiv/2026-10-31.html">Sobota 31. října 2026</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-10-31-zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Agfa proti Gucci: dřívější veřejné užití výrobku zveřejňuje i způsob jeho výroby</h3>
-      <p class="facts"><span>Jednotný patentový soud, odvolací soud</span><span>UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)</span><span>zpráva JUVE Patent z 27. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
+      <h3>UPC: Odvolací soud zrušil většinu patentu Agfa, Gucci ho anticipovala vlastními dřívějšími výrobky</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, odvolací soud</span><span>UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)</span><span>zpráva JUVE Patent z 27. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/agfa-loses-most-of-leather-decoration-patent-on-appeal-against-gucci/">Zdroj: JUVE Patent →</a></p>
       <p>Agfa žalovala Gucci pro porušení patentu EP 3 388 490 na způsob zdobení kůže potiskem UV vytvrzovanými inkousty. Místní oddělení v Hamburku v dubnu 2025 zamítlo žalobu i protižalobu Gucci na zrušení patentu; odvolaly se obě strany.</p>
       <p>Odvolací soud pod vedením předsedy UPC Klause Grabinského zrušil velkou část patentu pro Belgii, Francii, Německo, Itálii a Švédsko pro nedostatek novosti. Novost vylučovala vlastní kolekce Gucci „Flora“ (mimo jiné peněženka vyrobená a prodávaná před podáním přihlášky v dubnu 2017). Soud vyjasnil, že způsob výroby veřejně užitého výrobku je zpřístupněn veřejnosti (čl. 54 odst. 2 EPC), pokud ho odborník může bez nepřiměřené zátěže zjistit rozborem výrobku; zvláštní důvod k rozboru se nevyžaduje. Gucci to doložila analýzami (mikroskopie, spektroskopie, chromatografie).</p>
@@ -434,9 +436,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-10-31-zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Semaglutid: UPC si přisvojilo pravomoc bránit „hře s dělenými přihláškami“</h3>
-      <p class="facts"><span>Jednotný patentový soud, ústřední oddělení Milán</span><span>UPC_CFI_2221/2026, Sandoz v Novo Nordisk</span><span>zpráva JUVE Patent z 26. 10. 2026; datum usnesení článek neuvádí</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
+      <h3>UPC Milán: Soud si přisvojil pravomoc bránit Novo Nordisk v úniku před rozhodnutím o platnosti</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, ústřední oddělení Milán</span><span>UPC_CFI_2221/2026, Sandoz v Novo Nordisk</span><span>zpráva JUVE Patent z 26. 10. 2026; datum usnesení článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/upc-claims-power-to-stop-patentees-escaping-validity-decisions-via-withdrawal/">Zdroj: JUVE Patent →</a></p>
       <p>Sandoz podal žalobu na zrušení patentu Novo Nordisk týkajícího se semaglutidu (účinná látka léků Ozempic a Wegovy) a přidal tři neobvyklé návrhy proti tzv. hře s dělenými přihláškami: majitel stáhne souhlas se zněním patentu těsně před nepříznivým rozhodnutím a stejný předmět ochrany udržuje v dělené přihlášce (zde EP 4 406 593). Novo Nordisk vznesl předběžnou námitku nedostatku pravomoci.</p>
       <p>Ústřední oddělení námitku z velké části zamítlo. Dovodilo, že UPC má podle čl. 32 Dohody o UPC i „vlastní“ pravomoc nezbytnou k účinnému výkonu svěřených pravomocí, a opřelo se o čl. 47 Listiny základních práv EU a čl. 42 odst. 2 Dohody (řízení nesmí narušovat hospodářskou soutěž). Strategické podávání dělených přihlášek k udržení nejistoty a oddálení vstupu generik může být zneužitím práva.</p>
@@ -452,9 +454,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-24"><a href="../archiv/2026-10-24.html">Sobota 24. října 2026</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-10-24-zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>UPC Paříž: Align uspěl proti Angelalign v 17 státech, nárok za Spojené království neunesl</h3>
-      <p class="facts"><span>Jednotný patentový soud, místní oddělení Paříž</span><span>UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)</span><span>zpráva JUVE Patent z 19. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
+      <h3>UPC Paříž: Angelalign nesmí v 17 státech prodávat rovnátka, nárok za Spojené království neprošel</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, místní oddělení Paříž</span><span>UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)</span><span>zpráva JUVE Patent z 19. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/paris-local-division-upholds-align-patent-in-dispute-with-angelalign/">Zdroj: JUVE Patent →</a></p>
       <p>Americká společnost Align Technology (výrobce systému Invisalign) žalovala v srpnu 2025 čínského výrobce Angelalign a čtyři jeho evropské dceřiné společnosti pro porušení patentu EP 2 237 738 na ortodontické aparáty s výstupkem pro řízený pohyb kořene zubu. Angelalign podal protižalobu na zrušení patentu (nepřípustné rozšíření, nedostatečné zveřejnění, nedostatek vynálezecké činnosti).</p>
       <p>Místní oddělení v Paříži všechny námitky neplatnosti zamítlo a shledalo doslovné porušení. Rozhodující byl výklad pojmu „bukální strana“: soud ho vyložil šířeji jako vnější stranu u předních i zadních zubů, a výrobky Angelalign s prvkem Torque Ridge na předních zubech tak do patentu spadají. Nařídil zákaz v 17 státech UPC, stažení a zničení výrobků, penále až 10 000 EUR za výrobek nebo 20 000 EUR za den a náhradu škody od udělení patentu 12. 7. 2023.</p>
@@ -466,8 +468,8 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-24-radar-3">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html">IPKat, 19. 10. 2026: pozdější klinická data patent nezachrání (T 0251/25, empagliflozin)</a>: Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným.
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html">EPO: Pozdější klinická data nezachránila patent na kardioprotektivní užití empagliflozinu (IPKat, 19. 10. 2026)</a>: Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným.
         <div class="note"><a href="../archiv/2026-10-24.html#radar-3">Z vydání 24. 10. 2026</a></div>
       </li>
     </ul></div>
@@ -477,8 +479,8 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-17"><a href="../archiv/2026-10-17.html">Sobota 17. října 2026</a></h2>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-17-radar-2">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/reformatio-in-peius-survives-procedural.html">IPKat, 16. 10. 2026: reformatio in peius po porušení práva být slyšen (T 1168/24)</a>: Odvolací senát EPO zrušil patent Arbutus na lipidové nanočástice (spor s Modernou) pro nepřípustné rozšíření; zákaz změny k horšímu vázal majitele, i když vzal své odvolání zpět.
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/reformatio-in-peius-survives-procedural.html">EPO: Zákaz změny k horšímu vázal majitele patentu i po zpětvzetí jeho odvolání (IPKat, 16. 10. 2026)</a>: Odvolací senát EPO zrušil patent Arbutus na lipidové nanočástice (spor s Modernou) pro nepřípustné rozšíření; zákaz změny k horšímu vázal majitele, i když vzal své odvolání zpět.
         <div class="note"><a href="../archiv/2026-10-17.html#radar-2">Z vydání 17. 10. 2026</a></div>
       </li>
     </ul></div>
@@ -512,8 +514,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

@@ -3,16 +3,13 @@
   "zkusebni": false,
   "hlavni_temata": [
     {
-      "zprava": 1,
-      "nadpis": "Vacu Activ: přihláška podaná jen k zablokování jiného je zlá víra"
+      "zprava": 1
     },
     {
-      "zprava": 2,
-      "nadpis": "Agfa proti Gucci: dřívější užití výrobku zničilo většinu patentu"
+      "zprava": 2
     },
     {
-      "zprava": 3,
-      "nadpis": "Semaglutid: UPC může bránit úniku před rozhodnutím o platnosti"
+      "zprava": 3
     }
   ],
   "zpravy": [
@@ -28,10 +25,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "„Oko za oko“ je zlá víra: známka podaná jen k zablokování cizí přihlášky je neplatná",
+      "nadpis": "Tribunál: Přihláška podaná jen k zablokování cizí známky je ve zlé víře, i když má být „obranou“",
       "fakta": [
         "Tribunál EU, pátý senát",
         "věc T-650/25, Vacu Activ Marcin Leśniak v EUIPO – Lakhomoff a AR Group (VACUACTIVUS), ECLI:EU:T:2026:636",
@@ -67,10 +63,9 @@
         "jurisdikce": [
           "EU (UPC)"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "Agfa proti Gucci: dřívější veřejné užití výrobku zveřejňuje i způsob jeho výroby",
+      "nadpis": "UPC: Odvolací soud zrušil většinu patentu Agfa, Gucci ho anticipovala vlastními dřívějšími výrobky",
       "fakta": [
         "Jednotný patentový soud, odvolací soud",
         "UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)",
@@ -106,10 +101,9 @@
         "jurisdikce": [
           "EU (UPC)"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "Semaglutid: UPC si přisvojilo pravomoc bránit „hře s dělenými přihláškami“",
+      "nadpis": "UPC Milán: Soud si přisvojil pravomoc bránit Novo Nordisk v úniku před rozhodnutím o platnosti",
       "fakta": [
         "Jednotný patentový soud, ústřední oddělení Milán",
         "UPC_CFI_2221/2026, Sandoz v Novo Nordisk",
@@ -145,12 +139,11 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel",
-        "text": "WTR, 29. 10. 2026: neplatnost známky TESLA před EUIPO"
+        "text": "EUIPO: Neplatnost známky TESLA pro zlou víru na základě nepřímých důkazů (WTR, 29. 10. 2026)"
       },
       "text": "rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.",
       "poznamka": "Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny."
@@ -167,8 +160,7 @@
         "jurisdikce": [
           "USA"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/claude-cant-help-falling-in-love-with.html",

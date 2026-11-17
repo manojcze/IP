@@ -3,16 +3,13 @@
   "zkusebni": false,
   "hlavni_temata": [
     {
-      "zprava": 1,
-      "nadpis": "Truth Social: zlá víra u známky přihlášené den po oznámení služby"
+      "zprava": 1
     },
     {
-      "zprava": 2,
-      "nadpis": "Meta musí jednat s francouzskými vydavateli tisku o odměně"
+      "zprava": 2
     },
     {
-      "zprava": 3,
-      "nadpis": "ZTE a Samsung stáhly žaloby u UPC, spor o FRAND patrně skončil"
+      "zprava": 3
     }
   ],
   "zpravy": [
@@ -28,10 +25,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "„Truth Social“: odvolací senát EUIPO potvrdil zlou víru u EU známky zapsané den po oznámení spuštění služby",
+      "nadpis": "EUIPO: Odvolací senát potvrdil zlou víru u známky Truth Social přihlášené cizí osobou den po oznámení služby",
       "fakta": [
         "EUIPO, odvolací senát",
         "R 2260/2025-4",
@@ -70,10 +66,9 @@
         ],
         "soubeh": [
           "Souběh se soutěžním právem"
-        ],
-        "zdroj": "Článek"
+        ]
       },
-      "nadpis": "Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření",
+      "nadpis": "Pařížský soud: Meta musí jednat s francouzskými vydavateli tisku o odměně, předběžná opatření platí",
       "fakta": [
         "Pařížský odvolací soud (Cour d’appel de Paris)",
         "RG 26/12580 (APIG) a RG 26/12581 (DVP)",
@@ -112,10 +107,9 @@
         ],
         "soubeh": [
           "Souběh se soutěžním právem"
-        ],
-        "zdroj": "Článek"
+        ]
       },
-      "nadpis": "ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou",
+      "nadpis": "UPC Mannheim: ZTE a Samsung stáhly vzájemné žaloby o SEP, spor o FRAND patrně skončil dohodou",
       "fakta": [
         "Jednotný patentový soud, místní oddělení Mannheim",
         "spisové značky zdroj neuvádí",
@@ -155,12 +149,11 @@
         ],
         "soubeh": [
           "Souběh s nekalou soutěží"
-        ],
-        "zdroj": "Článek"
+        ]
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
-        "text": "AVIATOR: anglický soud připustil zahraniční nároky z nekalé soutěže pro devět států a spor urychlil"
+        "text": "High Court: Ve sporu AVIATOR připustil zahraniční nároky z nekalé soutěže pro devět států"
       },
       "text": "Anglický High Court připustil v hlavním sporu o značku AVIATOR zahraniční nároky z nekalé soutěže pro část států a urychlil hlavní líčení.",
       "detail": {
@@ -204,8 +197,7 @@
         ],
         "soubeh": [
           "Souběh s nekalou soutěží"
-        ],
-        "zdroj": "Článek"
+        ]
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/the-law-or-lore-of-infamous-generative.html",
@@ -226,12 +218,11 @@
         "jurisdikce": [
           "Kazachstán"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://legalblogs.wolterskluwer.com/trademark-blog/the-geography-of-dumplings-gi-vs-trademark-in-kazakhstan/",
-        "text": "Kluwer Trademark Blog, 9. 11. 2026: „Uralskiye Pelmeni“ v Kazachstánu"
+        "text": "Soudy Kazachstánu: Známka „Uralskiye Pelmeni“ neklame o původu zboží (Kluwer, 9. 11. 2026)"
       },
       "text": "soudy (naposledy krajský soud v Turkestánu 19. 10. 2026) odmítly tvrzení, že známka s označením „Uralskiye“ klame o původu zboží, protože chyběly důkazy o klamání spotřebitele.",
       "poznamka": "Jurisdikce mimo hlavní zaměření přehledu; vychází z komentáře, ne z rozhodnutí."
@@ -247,8 +238,7 @@
         "jurisdikce": [
           "EU (UPC)"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html",
@@ -268,8 +258,7 @@
         "jurisdikce": [
           "ČR"
         ],
-        "soubeh": [],
-        "zdroj": "Tisková zpráva"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://upv.gov.cz/aktuality/akce/seminare/26-11-online-seminar-ochranne-znamky",

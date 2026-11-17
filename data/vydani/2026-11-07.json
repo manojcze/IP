@@ -3,16 +3,13 @@
   "zkusebni": false,
   "hlavni_temata": [
     {
-      "zprava": 1,
-      "nadpis": "Like Company: GA Szpunar k AI chatbotům a právům vydavatelů tisku"
+      "zprava": 1
     },
     {
-      "zprava": 2,
-      "nadpis": "BMV proti BMW: dobré jméno chrání známku i u monitorů baterií"
+      "zprava": 2
     },
     {
-      "zprava": 3,
-      "nadpis": "Waterdrop: znovupodání známky po lhůtě k užívání je zlá víra"
+      "zprava": 3
     }
   ],
   "zpravy": [
@@ -29,10 +26,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company",
+      "nadpis": "GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit",
       "fakta": [
         "Soudní dvůr EU, stanovisko generálního advokáta",
         "věc C-250/25, Like Company v Google",
@@ -67,10 +63,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Rozhodnutí"
+        "soubeh": []
       },
-      "nadpis": "BMV proti BMW: známka s dobrým jménem pro auta brání zápisu i pro monitory baterií",
+      "nadpis": "Tribunál: Dobré jméno známky BMW pro auta brání zápisu BMV i pro monitory baterií",
       "fakta": [
         "Tribunál EU, druhý senát",
         "věc T-468/25, Victron Energy v EUIPO – BMW (BMV), ECLI:EU:T:2026:714",
@@ -106,10 +101,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru",
+      "nadpis": "Tribunál: Znovupodání téměř totožné známky krátce po lhůtě k prokázání užívání je zlou vírou",
       "fakta": [
         "Tribunál EU, pátý senát",
         "věc T-541/25, Qingdao Ecopure Filter v EUIPO – Waterdrop Microdrink (Waterdrop), ECLI:EU:T:2026:687",
@@ -146,8 +140,7 @@
         "jurisdikce": [
           "EU (UPC)"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/upckat-proportionality-defence-against.html",
@@ -166,12 +159,11 @@
         "jurisdikce": [
           "Kanada"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html",
-        "text": "IPKat, 5. 11. 2026: Nejvyšší soud Kanady k patentům na dávkovací režimy"
+        "text": "NS Kanady: K zákazu patentovat léčebné metody a patentům na dávkovací režimy (IPKat, 5. 11. 2026)"
       },
       "text": "Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv."
     }

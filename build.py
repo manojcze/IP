@@ -60,18 +60,14 @@ KONTAKT = "legal(zavináč)onajman.cz"
 NAZEV = "Týden v IP"
 PODTITUL = "Nové vydání vždy v sobotu ráno"
 
-# Typ zdroje, ze kterého zpráva vychází (štítek stitky.zdroj):
-#   Rozhodnutí: plný text rozhodnutí nebo stanoviska soudu či úřadu
-#   Tisková zpráva: tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce
-#   Článek: komentář, blog, odborný nebo zpravodajský článek
-TYPY_ZDROJE = ["Rozhodnutí", "Článek", "Tisková zpráva"]
 
 # Každé vydání má alespoň tolik hlavních zpráv.
 MIN_HLAVNICH = 3
 # Klíčová rozhodnutí v pravém sloupci: nejvýš tolik položek, jen z vydání za poslední měsíc.
 MAX_KLICOVYCH = 10
-# Zkrácený titulek v rámečku Hlavní zprávy: nejvýš tolik znaků, aby se na počítači vešel na jeden řádek.
-MAX_TITULEK = 66
+# Nadpis hlavní zprávy: nejvýš tolik znaků, aby se v rámečku Hlavní zprávy na počítači vešel na jeden řádek
+# (písmo se tam zmenšuje automaticky, nejvýš na 11 px).
+MAX_NADPIS = 110
 KLICOVA_DNU = 31
 
 # Témata, která se do přehledu nezařazují (podpora malých a středních podniků).
@@ -146,8 +142,8 @@ def check_stitky(st, kde, chyby):
         chyby.append(f"{kde}: chybí štítek oblasti")
     if not st.get("jurisdikce"):
         chyby.append(f"{kde}: chybí štítek jurisdikce")
-    if st.get("zdroj") not in TYPY_ZDROJE:
-        chyby.append(f"{kde}: chybí nebo je neplatný typ zdroje stitky.zdroj (povolené: {', '.join(TYPY_ZDROJE)})")
+    if "zdroj" in st:
+        chyby.append(f"{kde}: štítek typu zdroje (stitky.zdroj) se už nepoužívá, odstraňte ho")
     for t in st.get("oblasti", []) + st.get("jurisdikce", []) + st.get("soubeh", []):
         if t.strip().upper() == "NE" or "bez souběhu" in t.lower():
             chyby.append(f"{kde}: nepřípustný štítek „{t}“")
@@ -175,6 +171,12 @@ def check_dopad(dopad, kde, chyby, povinny):
         chyby.append(f"{kde}: praktický dopad může mít nejvýš 5 odrážek")
     if "text" in (dopad or {}):
         chyby.append(f"{kde}: dopad.text se už nepoužívá, body patří do dopad.body")
+
+
+def fakta_html(fakta):
+    """Řádek faktů pod nadpisem; první položka je orgán, který rozhodoval (tučně)."""
+    org = ' class="org"'
+    return "".join(f"<span{org if i == 0 else ''}>{f}</span>" for i, f in enumerate(fakta))
 
 
 def dopad_html(dopad):
@@ -211,6 +213,9 @@ def load_issue(path):
         for pole in ("nadpis", "podklad"):
             if not z.get(pole):
                 chyby.append(f"{kde}: chybí {pole}")
+        if len(strip_tags(z.get("nadpis") or "")) > MAX_NADPIS:
+            chyby.append(f"{kde}: nadpis má {len(strip_tags(z['nadpis']))} znaků, nejvýš {MAX_NADPIS} "
+                         "(musí se vejít na jeden řádek v rámečku Hlavní zprávy)")
         if not z.get("fakta"):
             chyby.append(f"{kde}: chybí fakta (instituce, spisová značka, datum)")
         if not z.get("odstavce"):
@@ -233,12 +238,7 @@ def load_issue(path):
     for t in ht:
         if t.get("zprava") not in ids:
             chyby.append(f"{name}: hlavní téma odkazuje na neexistující zprávu {t.get('zprava')}")
-        titulek = strip_tags(t.get("nadpis") or "")
-        if not titulek:
-            chyby.append(f"{name}: hlavní téma {t.get('zprava')} nemá zkrácený titulek (pole nadpis)")
-        elif len(titulek) > MAX_TITULEK:
-            chyby.append(f"{name}: zkrácený titulek hlavního tématu {t.get('zprava')} má {len(titulek)} znaků, "
-                         f"nejvýš {MAX_TITULEK} (musí se vejít na jeden řádek)")
+
     radar = v.get("na_radar", [])
     if len(radar) > 10:
         chyby.append(f"{name}: položek Ve zkratce (na_radar) může být nejvýš 10")
@@ -323,17 +323,11 @@ def check_klicova(vydani):
 
 # ---------------------------------------------------------------- dílčí části stránky
 
-def typ_cls(typ):
-    return "typ"
-
-
 def stitky_seznam(st):
     """Štítky zprávy jako dvojice (text, třída) v pořadí, v jakém se zobrazují."""
     out = [(o, "tm") for o in st.get("oblasti", [])]
     out += [(j, "juris") for j in st.get("jurisdikce", [])]
     out += [(s, "comp-yes") for s in st.get("soubeh", [])]
-    if st.get("zdroj"):
-        out.append((st["zdroj"], typ_cls(st["zdroj"])))
     return out
 
 
@@ -380,7 +374,6 @@ def pouzite_stitky(vydani):
     return [
         ("Oblast", [(o, "tm") for o in poradi(obl, ("Ochranné známky",))]),
         ("Souběh", [(s, "comp-yes") for s in poradi(sou)]),
-        ("Zdroj", [(t, typ_cls(t)) for t in TYPY_ZDROJE]),
         ("Jurisdikce", None),
     ]
 
@@ -392,7 +385,7 @@ def card(z, v, root, kontext, also_in=None):
         cid = f'zprava-{z["id"]}'
     else:
         cid = f'v{v["datum"]}-zprava-{z["id"]}'
-    fakta = "".join(f"<span>{f}</span>" for f in z["fakta"])
+    fakta = fakta_html(z["fakta"])
     odst = "\n      ".join(f"<p>{p}</p>" for p in z["odstavce"])
     dopad = z["dopad"]
     zdroj = f'<a class="src" href="{url_attr(z["zdroj"]["url"])}">Zdroj: {z["zdroj"]["nazev"]} →</a>'
@@ -427,7 +420,7 @@ def radar_item(r, root, rid, v=None, also_in=None):
     detail = ""
     det = r.get("detail")
     if det:
-        fakta = "".join(f"<span>{f}</span>" for f in det["fakta"])
+        fakta = fakta_html(det["fakta"])
         zdroj = det.get("zdroj") or {}
         src = (f'<p class="src-line"><a class="src" href="{url_attr(zdroj["url"])}">Zdroj: {zdroj["nazev"]} →</a></p>'
                if zdroj.get("url") and zdroj.get("nazev") else "")
@@ -592,15 +585,17 @@ def issue_page(v, vydani, root, nav_current):
         lead = "<strong>Zkušební vydání.</strong> " if v.get("zkusebni") else ""
         parts.append(f'  <p class="trial">{lead}{v["uvod"]}</p>')
     if v["hlavni_temata"]:
-        # V rámečku Hlavní zprávy se zobrazují zkrácené titulky zpráv (styl jako nadpisy článků, na počítači na jeden řádek).
-        items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{t["nadpis"]}</a></li>'
+        # V rámečku Hlavní zprávy jsou nadpisy článků; na počítači je skript TITULKY_JS zmenší na jeden řádek.
+        nadpisy = {z["id"]: z["nadpis"] for z in v["zpravy"]}
+        items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{nadpisy[t["zprava"]]}</a></li>'
                           for t in v["hlavni_temata"])
         parts.append(f"""  <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
 {items}
     </ul>
-  </section>""")
+  </section>
+{TITULKY_JS}""")
     if not v["zpravy"]:
         parts.append('  <p class="empty">V tomto období se nepodařilo najít žádnou významnou novinku. '
                      'Seznam zkontrolovaných zdrojů je v patičce.</p>')
@@ -635,7 +630,8 @@ def issue_page(v, vydani, root, nav_current):
     foot.append(f"    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>")
     foot.append(f'    <p><a href="{root}archiv/">Předchozí vydání</a></p>')
     parts.append('  <footer class="foot">\n' + "\n".join(foot) + "\n  </footer>")
-    hlavni = "; ".join(strip_tags(t["nadpis"]) for t in v["hlavni_temata"][:2])
+    nadpisy = {z["id"]: z["nadpis"] for z in v["zpravy"]}
+    hlavni = "; ".join(strip_tags(nadpisy[t["zprava"]]) for t in v["hlavni_temata"][:2])
     return page(title=f"{NAZEV} {d_short(d)}", root=root,
                 nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
@@ -656,7 +652,7 @@ def tag_page(t, vydani):
 
 def vsechny_stitky(vydani):
     """Všechny štítky, které nemají vlastní sekci: {slug: text}."""
-    texty = set(TYPY_ZDROJE)
+    texty = set()
     for v in vydani:
         for x in v["zpravy"] + v["na_radar"]:
             texty |= texty_stitku(x["stitky"])
@@ -1046,7 +1042,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -1077,7 +1074,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -1227,6 +1224,48 @@ THEME_HEAD = """<script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>"""
 
+# Nadpisy v rámečku Hlavní zprávy: na počítači (od 980 px) se všem nastaví stejná velikost písma (11–18 px),
+# při které se nejdelší nadpis vejde na jeden řádek. Přepočítá se po načtení písma, po zadání hesla i při změně okna.
+TITULKY_JS = """<script>
+(function () {
+  var MAX = 18, MIN = 11, mq = window.matchMedia("(min-width: 980px)");
+  function set(as, v) { for (var i = 0; i < as.length; i++) as[i].style.fontSize = v; }
+  function vejde(as) {
+    for (var i = 0; i < as.length; i++) {
+      var r = document.createRange();
+      r.selectNodeContents(as[i]);
+      if (r.getBoundingClientRect().width > as[i].clientWidth) return false;
+    }
+    return true;
+  }
+  function fit() {
+    var as = document.querySelectorAll(".summary a");
+    if (!as.length) return;
+    if (!mq.matches) { set(as, ""); return; }
+    if (!as[0].clientWidth) return;
+    // Písmo má optickou velikost (šířka písmen se s velikostí mění nelineárně), proto půlení intervalu.
+    set(as, MAX + "px");
+    if (vejde(as)) return;
+    var lo = MIN, hi = MAX;
+    for (var k = 0; k < 8; k++) {
+      var mid = (lo + hi) / 2;
+      set(as, mid + "px");
+      if (vejde(as)) lo = mid; else hi = mid;
+    }
+    set(as, Math.floor(lo * 10) / 10 + "px");
+  }
+  window.prizpusobTitulky = fit;
+  fit();
+  if (document.fonts) {
+    document.fonts.ready.then(fit);
+    if (document.fonts.load) document.fonts.load('600 18px "Source Serif 4"', "Aa ěščřžýáíéůú „“").then(fit, fit);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fit);
+  }
+  var t;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
+})();
+</script>"""
+
 THEME_BODY = """<script>
 (function () {
   var b = document.getElementById("theme-toggle");
@@ -1286,6 +1325,7 @@ GATE_BODY = """<div class="gate">
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });

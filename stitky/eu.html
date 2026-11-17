@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -380,9 +382,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-14"><a href="../archiv/2026-11-14.html">Sobota 14. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="v2026-11-14-zprava-1">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>„Truth Social“: odvolací senát EUIPO potvrdil zlou víru u EU známky zapsané den po oznámení spuštění služby</h3>
-      <p class="facts"><span>EUIPO, odvolací senát</span><span>R 2260/2025-4</span><span>datum rozhodnutí komentář neuvádí; komentář IPKat z 10. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>EUIPO: Odvolací senát potvrdil zlou víru u známky Truth Social přihlášené cizí osobou den po oznámení služby</h3>
+      <p class="facts"><span class="org">EUIPO, odvolací senát</span><span>R 2260/2025-4</span><span>datum rozhodnutí komentář neuvádí; komentář IPKat z 10. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/truth-social-trade-mark-invalidated.html">Zdroj: IPKat →</a></p>
       <p>Společnost T Media Tech LLC (TMT), provozovatel platformy Truth Social, napadla EU známku „Truth Social“, kterou si jako přihlašovatel zapsala soukromá osoba. Přihláška byla podána 21. 10. 2021, tedy den po tiskové zprávě z 20. 10. 2021 oznamující spuštění služby, a zápis proběhl v roce 2022. Známka pokrývá mimo jiné služby ve třídách 35, 42 a 45, včetně online sociálních sítí. Zrušovací oddělení EUIPO návrhu na prohlášení neplatnosti pro zlou víru vyhovělo a odvolací senát odvolání majitele zamítl.</p>
       <p>Podle komentáře senát vyšel z toho, že TMT a její sesterská společnost označení před podáním přihlášky užívaly a že sesterská společnost podala v červenci 2021 americkou přihlášku. Označení byla totožná a služby sociálních sítí totožné se službami TMT. Tvrzení majitele, že o plánech nevěděl, senát označil za nevěrohodné, protože od podnikatele lze očekávat sledování vývoje, který se týká jeho zájmů, a majitel nevysvětlil, jak k výběru označení pro sociální sítě došel. Přihlášku pro další služby posoudil podle věci Stylo &amp; Koton (C-104/18 P) tak, že zlá víra u části přihlášky může ovlivnit i zbytek a že je na majiteli, aby prokázal obchodní logiku pro ostatní služby, což se nestalo.</p>
@@ -398,9 +400,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-07"><a href="../archiv/2026-11-07.html">Sobota 7. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="v2026-11-07-zprava-1">
-      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company</h3>
-      <p class="facts"><span>Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit</h3>
+      <p class="facts"><span class="org">Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/ag-szpunars-opinion-in-like-company-is.html">Zdroj: IPKat →</a></p>
       <p>Věc se týká práva nakladatelů tisku podle čl. 15 směrnice o autorském právu na jednotném digitálním trhu (DSM) a využití jejich obsahu při trénování jazykového modelu Gemini a při zobrazování odpovědí chatbota. Generální advokát Szpunar navrhuje, aby Soudní dvůr otázky k samotnému trénování odmítl jako hypotetické a odpověděl jen na to, zda zobrazování odpovědí chatbota může zasahovat do práv nakladatelů. K trénování se přesto vyjádřil, výslovně jako předběžně.</p>
       <p>Trénink podle něj zasahuje do práva na rozmnožování, přičemž rozhoduje technický, nikoli funkční pohled: nezáleží na tom, zda se chráněný obsah použije jako dílo, nebo jen jako data. Obtížná je územní otázka, když trénink probíhá mimo EU. Názor Googlu, že rozhoduje právo místa hlavní infrastruktury, by nositele práv v EU nechal bez ochrany, a GA proto volá po legislativním vyjasnění. Výjimka pro text a data mining (čl. 4 DSM) se na trénování v zásadě vztahuje, vyžaduje zákonný přístup a absenci výhrady práv, a GA naznačuje, že by se mohla změnit na výjimku s odměnou.</p>
@@ -411,9 +413,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="v2026-11-07-zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>BMV proti BMW: známka s dobrým jménem pro auta brání zápisu i pro monitory baterií</h3>
-      <p class="facts"><span>Tribunál EU, druhý senát</span><span>věc T-468/25, Victron Energy v EUIPO – BMW (BMV), ECLI:EU:T:2026:714</span><span>rozsudek ze 4. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Dobré jméno známky BMW pro auta brání zápisu BMV i pro monitory baterií</h3>
+      <p class="facts"><span class="org">Tribunál EU, druhý senát</span><span>věc T-468/25, Victron Energy v EUIPO – BMW (BMV), ECLI:EU:T:2026:714</span><span>rozsudek ze 4. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0468">Zdroj: EUR-Lex →</a></p>
       <p>Nizozemská společnost Victron Energy přihlásila slovní známku EU BMV pro monitory baterií (třída 9); pod označeními BMV-700 či BMV-712 tyto výrobky prodává. BMW podalo námitky na základě starší slovní známky EU BMW. Námitkové oddělení i odvolací senát jim vyhověly podle čl. 8 odst. 5 nařízení (EU) 2017/1001 (ochrana známky s dobrým jménem).</p>
       <p>Tribunál žalobu zamítl. Monitory baterií nejsou určeny jen technicky zdatným odborníkům, kupují je i majitelé lodí či obytných vozů. BMW má značné dobré jméno pro automobily přinejmenším v Německu. Victron neprokázal, že veřejnost chápe „BM“ jako běžnou zkratku pro „battery monitor“: v předložených dokladech se objevovala jen jako součást typových označení výrobků Victronu. BMV ani BMW proto nemají pro veřejnost samostatný význam a jsou si podobné v průměrné míře.</p>
@@ -424,9 +426,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="v2026-11-07-zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru</h3>
-      <p class="facts"><span>Tribunál EU, pátý senát</span><span>věc T-541/25, Qingdao Ecopure Filter v EUIPO – Waterdrop Microdrink (Waterdrop), ECLI:EU:T:2026:687</span><span>rozsudek z 21. 10. 2026, komentář IPKat z 5. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Znovupodání téměř totožné známky krátce po lhůtě k prokázání užívání je zlou vírou</h3>
+      <p class="facts"><span class="org">Tribunál EU, pátý senát</span><span>věc T-541/25, Qingdao Ecopure Filter v EUIPO – Waterdrop Microdrink (Waterdrop), ECLI:EU:T:2026:687</span><span>rozsudek z 21. 10. 2026, komentář IPKat z 5. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/general-court-confirms-strict-rules-on.html">Zdroj: IPKat →</a></p>
       <p>Společnost Qingdao Ecopure Filter (QEF) si v roce 2021 zapsala jako ochrannou známku EU slovní označení „Waterdrop“ pro širokou škálu zboží třídy 11, včetně zařízení na filtraci vody. Konkurent Waterdrop Microdrink (WMG) v roce 2023 navrhl prohlášení této známky za neplatnou pro zlou víru. Zrušovací oddělení EUIPO návrh zamítlo, Odvolací senát však rozhodnutí částečně změnil a známku zneplatnil pro vodní filtry, protože šlo o nové přihlášení téhož označení, jímž se majitel vyhnul povinnosti prokazovat skutečné užívání starší známky.</p>
       <p>Tribunál žalobu QEF zamítl. Vyšel z ustáleného testu, podle něhož je zlou vírou podání přihlášky s cílem poškodit třetí osobu nebo získat výlučné právo k jiným účelům, než ke kterým ochranná známka slouží. Rozhodla kombinace okolností: přihláška byla podána asi čtyři měsíce po skončení pětileté lhůty, po níž lze po majiteli starší známky požadovat důkaz užívání; QEF a její předchůdce podali během tří let několik obdobných přihlášek; zboží bylo totožné se širším seznamem zboží starší známky; a QEF nedoložila žádný obchodní důvod, ani tvrzené zjednodušení správy portfolia.</p>
@@ -442,9 +444,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-31"><a href="../archiv/2026-10-31.html">Sobota 31. října 2026</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="v2026-10-31-zprava-1">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>„Oko za oko“ je zlá víra: známka podaná jen k zablokování cizí přihlášky je neplatná</h3>
-      <p class="facts"><span>Tribunál EU, pátý senát</span><span>věc T-650/25, Vacu Activ Marcin Leśniak v EUIPO – Lakhomoff a AR Group (VACUACTIVUS), ECLI:EU:T:2026:636</span><span>usnesení z 6. 10. 2026, komentář IPKat z 29. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Přihláška podaná jen k zablokování cizí známky je ve zlé víře, i když má být „obranou“</h3>
+      <p class="facts"><span class="org">Tribunál EU, pátý senát</span><span>věc T-650/25, Vacu Activ Marcin Leśniak v EUIPO – Lakhomoff a AR Group (VACUACTIVUS), ECLI:EU:T:2026:636</span><span>usnesení z 6. 10. 2026, komentář IPKat z 29. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/10/an-eye-for-eye-constitutes-bad-faith.html">Zdroj: IPKat →</a></p>
       <p>Polská společnost Vacu Activ vlastní národní i unijní známky „Vacu Activ“ pro fitness stroje. V roce 2013 jmenovala společnost pana Lakhomoffa výhradním distributorem v USA, Kanadě a Mexiku. Lakhomoff si v roce 2019 zapsal v USA obrazovou známku VACUACTIVUS a rozšířil ji přes madridský systém na EU. Vacu Activ poté v roce 2022 sama přihlásila obrazovou známku EU VACUACTIVUS. Lakhomoff navrhl její prohlášení za neplatnou pro zlou víru (čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001); EUIPO i odvolací senát mu vyhověly.</p>
       <p>Tribunál žalobu odmítl usnesením jako zjevně neopodstatněnou. Vacu Activ před EUIPO sama uvedla, že známku přihlásila, aby zabránila porušování svých starších známek, věděla o Lakhomoffově užívání a jeho úmyslu získat ochranu v EU. Přihláška tak měla jediný cíl, poškodit jeho zájmy, bez obchodní logiky a bez úmyslu známku užívat. Nerozhodovalo, kdo označení vymyslel, ani případné porušení distribuční smlouvy, která se týkala vývozu strojů, nikoli označení VACUACTIVUS.</p>
@@ -456,8 +458,8 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-31-radar-1">
-        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel">WTR, 29. 10. 2026: neplatnost známky TESLA před EUIPO</a>: rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.
+        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+        <a class="rl" href="https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel">EUIPO: Neplatnost známky TESLA pro zlou víru na základě nepřímých důkazů (WTR, 29. 10. 2026)</a>: rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.
         <div class="note">Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny.</div><div class="note"><a href="../archiv/2026-10-31.html#radar-1">Z vydání 31. 10. 2026</a></div>
       </li>
     </ul></div>
@@ -467,9 +469,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-24"><a href="../archiv/2026-10-24.html">Sobota 24. října 2026</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="v2026-10-24-zprava-1">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>MATRIX-A, -C, -M a -V: rozhoduje seznam zboží v přihlášce, ne to, jak je značka skutečně užívána</h3>
-      <p class="facts"><span>Tribunál EU, devátý senát</span><span>věci T-126/25 až T-129/25, Novavax v EUIPO – Brill International (MATRIX-A, MATRIX-C, MATRIX-M, MATRIX-V)</span><span>rozsudky z 21. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Pro záměnu rozhoduje seznam zboží v přihlášce, ne skutečné užívání (MATRIX)</h3>
+      <p class="facts"><span class="org">Tribunál EU, devátý senát</span><span>věci T-126/25 až T-129/25, Novavax v EUIPO – Brill International (MATRIX-A, MATRIX-C, MATRIX-M, MATRIX-V)</span><span>rozsudky z 21. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0126">Zdroj: EUR-Lex →</a></p>
       <p>Švédská společnost Novavax přihlásila slovní známky EU MATRIX-A, MATRIX-C, MATRIX-M a MATRIX-V pro „adjuvans“ ve třídě 5. Proti přihláškám podala námitky společnost Brill International na základě starší obrazové známky EU MATRIX OCULAR zapsané pro oftalmologické přípravky. Námitkové oddělení i odvolací senát dospěly k pravděpodobnosti záměny; odvolací senát přitom odmítl Novavaxem navržené omezení seznamu zboží na adjuvans k vakcínám určená výhradně odborníkům.</p>
       <p>Tribunál všechny čtyři žaloby zamítl (vychází z rozsudku ve věci T-126/25, ECLI:EU:T:2026:690; souběžné věci mají ECLI 691 až 693). Novavax argumentoval tím, že své značky skutečně užívá jen pro vysoce specializované složky vakcín. Rozhodující je však zboží, pro které je zápis požadován, tedy adjuvans obecně, včetně látek zesilujících účinek jiných léčiv. Relevantní veřejnost proto tvoří lékaři, lékárníci i pacienti.</p>
@@ -480,9 +482,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="v2026-10-24-zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>VOLARE: publikace nejsou vždy jen reklamním doplňkem, s věrnostními kartami mohou být doplňkové</h3>
-      <p class="facts"><span>Tribunál EU, devátý senát</span><span>věc T-513/25, Volotea v EUIPO – ITA Airways (VOLARE), ECLI:EU:T:2026:694</span><span>rozsudek z 21. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Publikace mohou být doplňkové k věrnostním kartám, EUIPO musí VOLARE posoudit znovu</h3>
+      <p class="facts"><span class="org">Tribunál EU, devátý senát</span><span>věc T-513/25, Volotea v EUIPO – ITA Airways (VOLARE), ECLI:EU:T:2026:694</span><span>rozsudek z 21. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0513">Zdroj: EUR-Lex →</a></p>
       <p>Italská letecká společnost ITA Airways přihlásila obrazovou známku EU VOLARE, mimo jiné pro kódované věrnostní karty, software a aplikace pro věrnostní programy (třída 9) a vydávání poukázek pro věrnostní programy (třída 36). Španělský dopravce Volotea podal námitky na základě starších obrazových známek EU VOLARE a VOLARE MAGAZINE zapsaných mimo jiné pro tištěné a elektronické publikace. Námitkové oddělení i odvolací senát dospěly k tomu, že zboží a služby jsou odlišné, protože publikace jsou jen doplňkovým propagačním materiálem.</p>
       <p>Tribunál rozhodnutí částečně zrušil. Uznal, že zboží a služby určené na podporu nebo propagaci jiného zboží s ním zpravidla nejsou doplňkové. To však neznamená, že publikace jsou pomocné ke všemu, o čem píší. Věrnostní karta i publikace (zpravodaj, magazín) slouží k udržení zákazníků a publikace informují členy programu, jak výhody využít. Jsou tedy doplňkové a mají stejnou veřejnost, účel, původ i distribuční cesty.</p>
@@ -494,7 +496,7 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-24-radar-4">
-        <div class="l1"><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/guest-post-from-photos-to-3d-replicas.html">IPKat, 18. 10. 2026: mohou 3D kopie vytvořené umělou inteligencí porušovat průmyslový vzor EU?</a>: Hostující příspěvek rozebírá, zda digitální 3D model vytvořený AI z fotografie výrobku zasahuje do práv z průmyslového vzoru EU.
         <div class="note"><a href="../archiv/2026-10-24.html#radar-4">Z vydání 24. 10. 2026</a></div>
       </li>
@@ -505,9 +507,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-17"><a href="../archiv/2026-10-17.html">Sobota 17. října 2026</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="v2026-10-17-zprava-1">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>FIND MY CAR: převod známky během řízení neotevírá lhůty, které už uplynuly</h3>
-      <p class="facts"><span>Tribunál EU, sedmý senát</span><span>věc T-451/25, Mega Pop v EUIPO – Apple (FIND MY CAR), ECLI:EU:T:2026:669</span><span>rozsudek z 14. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Převod známky během řízení neotevírá lhůtu k odůvodnění odvolání, která už uplynula</h3>
+      <p class="facts"><span class="org">Tribunál EU, sedmý senát</span><span>věc T-451/25, Mega Pop v EUIPO – Apple (FIND MY CAR), ECLI:EU:T:2026:669</span><span>rozsudek z 14. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0451">Zdroj: EUR-Lex →</a></p>
       <p>Slovinská společnost Mega Pop vlastnila mezinárodní zápis slovní známky FIND MY CAR s vyznačením EU. Na návrh společnosti Apple zrušovací oddělení EUIPO známku v roce 2024 zrušilo pro neužívání, protože rozsah užívání nebyl prokázán; dodatečné důkazy úřad odmítl kvůli jejich formě a opožděnosti. Mega Pop podala odvolání, ale ve čtyřměsíční lhůtě podle čl. 68 odst. 1 nařízení (EU) 2017/1001 ho neodůvodnila. Po uplynutí lhůty oznámila, že známku převedla na ukrajinskou společnost SOLAR MARKET, a dovolávala se rozhodnutí výkonného ředitele EUIPO EX-24-5, které účastníkům se sídlem na Ukrajině prodloužilo lhůty do 16. 9. 2024. Podpůrně žádala o navrácení do původního stavu. Odvolací senát odvolání odmítl jako nepřípustné.</p>
       <p>Tribunál žalobu zamítl. Podle čl. 20 nařízení může nový majitel uplatňovat práva ze známky až od zápisu převodu do rejstříku a zápis nemá zpětné účinky. SOLAR MARKET se tak stala účastníkem řízení až v okamžiku, kdy lhůta k odůvodnění odvolání již uplynula, a do řízení vstoupila ve stavu, v jakém bylo. Prodloužení podle EX-24-5 je výjimkou z obecných lhůt, kterou je nutné vykládat restriktivně; změna majitele nemůže znovu otevřít uplynulé lhůty.</p>
@@ -518,9 +520,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="v2026-10-17-zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>MAGORA a GRUPO AGORA: vysoká pozornost veřejnosti pravděpodobnost záměny předem nevylučuje</h3>
-      <p class="facts"><span>Tribunál EU, šestý senát</span><span>věc T-814/25, Holding Tourisme v EUIPO – Agora (MAGORA), ECLI:EU:T:2026:668</span><span>rozsudek z 14. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: MAGORA je zaměnitelná s GRUPO AGORA, vyšší pozornost odborníků záměnu nevylučuje</h3>
+      <p class="facts"><span class="org">Tribunál EU, šestý senát</span><span>věc T-814/25, Holding Tourisme v EUIPO – Agora (MAGORA), ECLI:EU:T:2026:668</span><span>rozsudek z 14. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0814">Zdroj: EUR-Lex →</a></p>
       <p>Francouzská společnost Holding Tourisme přihlásila slovní známku EU MAGORA pro realitní a finanční služby (třída 36) a ubytovací a restaurační služby (třída 43). Španělská společnost Agora podala námitky na základě starší obrazové známky EU GRUPO AGORA. Námitkové oddělení jim z velké části vyhovělo a odvolací senát dospěl k pravděpodobnosti záměny podle čl. 8 odst. 1 písm. b) nařízení (EU) 2017/1001.</p>
       <p>Tribunál žalobu zamítl. Přílohy předložené poprvé až u Tribunálu (výpisy z webů a seznamy známek a firem se slovem „agora“) odmítl jako nepřípustné. Zdůraznil, že ani vyšší úroveň pozornosti odborné veřejnosti nevylučuje pravděpodobnost záměny předem, vždy jde o celkové posouzení. Potvrdil, že alespoň nezanedbatelná část španělské veřejnosti vnímá slovo „agora“ jako výraz bez významu, a tedy jako rozlišující a dominantní prvek starší známky, zatímco slovo „grupo“ je menší, druhotné a nerozlišující a při vyslovení se spíše vypustí. Označení jsou tak vizuálně podobná nadprůměrně a foneticky vysoce.</p>
@@ -531,9 +533,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ostatni" id="v2026-10-17-zprava-3">
-      <div class="tags"><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>Odrůda jablka Roat: nový rozlišovací znak je nutné podložit technickými údaji</h3>
-      <p class="facts"><span>Tribunál EU, osmý senát</span><span>věc T-770/25, Adema v CPVO (Roat)</span><span>rozsudek z 14. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Nový znak odrůdy musí šlechtitel doložit technickými údaji, jinak ho CPVO zkoumat nemusí</h3>
+      <p class="facts"><span class="org">Tribunál EU, osmý senát</span><span>věc T-770/25, Adema v CPVO (Roat)</span><span>rozsudek z 14. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0770">Zdroj: EUR-Lex →</a></p>
       <p>Italská společnost Adema požádala v roce 2011 Odrůdový úřad Společenství (CPVO) o odrůdové právo pro odrůdu jablka Roat. Už v technickém dotazníku žádala, aby se zkoumal nový znak „časný vývoj krycí barvy“ plodů. Technické zkoušky provedl francouzský zkušební úřad GEVES: první skončila v roce 2016 zamítnutím pro nedostatek odlišnosti od odrůdy Jeromine, druhá (po zrušení prvního rozhodnutí kvůli odlišným podnožím) skončila v roce 2023 stejně. Odvolací senát CPVO odvolání zamítl.</p>
       <p>Tribunál žalobu zamítl. Podle nařízení (ES) č. 2100/94 se odlišnost, jednotnost a stálost zkoumají v technické zkoušce podle zkušebních pokynů (zde protokol CPVO TP/14/2 pro jabloně). Žádost v přihlášce, aby se zkoumal určitý znak, CPVO nezavazuje k jeho zařazení do zkoušky ani nepředurčuje výsledek. Zkouška porovnala odrůdy i podle znaku 23 protokolu (rozsah antokyanové krycí barvy mladého plodu) a rozdíl nezjistila.</p>
@@ -573,8 +575,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

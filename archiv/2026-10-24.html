@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Týden v IP</title>
-<meta name="description" content="MATRIX: rozhoduje seznam zboží v přihlášce, ne skutečné užívání; VOLARE: publikace mohou být doplňkové k věrnostním programům">
+<meta name="description" content="Tribunál: Pro záměnu rozhoduje seznam zboží v přihlášce, ne skutečné užívání (MATRIX); Tribunál: Publikace mohou být doplňkové k věrnostním kartám, EUIPO musí VOLARE posoudit znovu">
 <meta name="robots" content="noindex, nofollow">
 <script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -377,20 +379,59 @@ html.ok .gate { display: none; }
   <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
-      <li><a href="#zprava-1">MATRIX: rozhoduje seznam zboží v přihlášce, ne skutečné užívání</a></li>
-      <li><a href="#zprava-2">VOLARE: publikace mohou být doplňkové k věrnostním programům</a></li>
-      <li><a href="#zprava-3">UPC Paříž: zákaz pro Angelalign v 17 státech, nárok za UK neprošel</a></li>
+      <li><a href="#zprava-1">Tribunál: Pro záměnu rozhoduje seznam zboží v přihlášce, ne skutečné užívání (MATRIX)</a></li>
+      <li><a href="#zprava-2">Tribunál: Publikace mohou být doplňkové k věrnostním kartám, EUIPO musí VOLARE posoudit znovu</a></li>
+      <li><a href="#zprava-3">UPC Paříž: Angelalign nesmí v 17 státech prodávat rovnátka, nárok za Spojené království neprošel</a></li>
     </ul>
   </section>
+<script>
+(function () {
+  var MAX = 18, MIN = 11, mq = window.matchMedia("(min-width: 980px)");
+  function set(as, v) { for (var i = 0; i < as.length; i++) as[i].style.fontSize = v; }
+  function vejde(as) {
+    for (var i = 0; i < as.length; i++) {
+      var r = document.createRange();
+      r.selectNodeContents(as[i]);
+      if (r.getBoundingClientRect().width > as[i].clientWidth) return false;
+    }
+    return true;
+  }
+  function fit() {
+    var as = document.querySelectorAll(".summary a");
+    if (!as.length) return;
+    if (!mq.matches) { set(as, ""); return; }
+    if (!as[0].clientWidth) return;
+    // Písmo má optickou velikost (šířka písmen se s velikostí mění nelineárně), proto půlení intervalu.
+    set(as, MAX + "px");
+    if (vejde(as)) return;
+    var lo = MIN, hi = MAX;
+    for (var k = 0; k < 8; k++) {
+      var mid = (lo + hi) / 2;
+      set(as, mid + "px");
+      if (vejde(as)) lo = mid; else hi = mid;
+    }
+    set(as, Math.floor(lo * 10) / 10 + "px");
+  }
+  window.prizpusobTitulky = fit;
+  fit();
+  if (document.fonts) {
+    document.fonts.ready.then(fit);
+    if (document.fonts.load) document.fonts.load('600 18px "Source Serif 4"', "Aa ěščřžýáíéůú „“").then(fit, fit);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fit);
+  }
+  var t;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
+})();
+</script>
 
   <section class="sec s-ochranne-znamky" id="sekce-ochranne-znamky" aria-labelledby="h-ochranne-znamky">
     <h2 class="sec-h" id="h-ochranne-znamky">Ochranné známky<span class="n">2</span>
       <a class="all" href="../sekce/ochranne-znamky.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="zprava-1">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>MATRIX-A, -C, -M a -V: rozhoduje seznam zboží v přihlášce, ne to, jak je značka skutečně užívána</h3>
-      <p class="facts"><span>Tribunál EU, devátý senát</span><span>věci T-126/25 až T-129/25, Novavax v EUIPO – Brill International (MATRIX-A, MATRIX-C, MATRIX-M, MATRIX-V)</span><span>rozsudky z 21. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Pro záměnu rozhoduje seznam zboží v přihlášce, ne skutečné užívání (MATRIX)</h3>
+      <p class="facts"><span class="org">Tribunál EU, devátý senát</span><span>věci T-126/25 až T-129/25, Novavax v EUIPO – Brill International (MATRIX-A, MATRIX-C, MATRIX-M, MATRIX-V)</span><span>rozsudky z 21. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0126">Zdroj: EUR-Lex →</a></p>
       <p>Švédská společnost Novavax přihlásila slovní známky EU MATRIX-A, MATRIX-C, MATRIX-M a MATRIX-V pro „adjuvans“ ve třídě 5. Proti přihláškám podala námitky společnost Brill International na základě starší obrazové známky EU MATRIX OCULAR zapsané pro oftalmologické přípravky. Námitkové oddělení i odvolací senát dospěly k pravděpodobnosti záměny; odvolací senát přitom odmítl Novavaxem navržené omezení seznamu zboží na adjuvans k vakcínám určená výhradně odborníkům.</p>
       <p>Tribunál všechny čtyři žaloby zamítl (vychází z rozsudku ve věci T-126/25, ECLI:EU:T:2026:690; souběžné věci mají ECLI 691 až 693). Novavax argumentoval tím, že své značky skutečně užívá jen pro vysoce specializované složky vakcín. Rozhodující je však zboží, pro které je zápis požadován, tedy adjuvans obecně, včetně látek zesilujících účinek jiných léčiv. Relevantní veřejnost proto tvoří lékaři, lékárníci i pacienti.</p>
@@ -400,9 +441,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>VOLARE: publikace nejsou vždy jen reklamním doplňkem, s věrnostními kartami mohou být doplňkové</h3>
-      <p class="facts"><span>Tribunál EU, devátý senát</span><span>věc T-513/25, Volotea v EUIPO – ITA Airways (VOLARE), ECLI:EU:T:2026:694</span><span>rozsudek z 21. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Publikace mohou být doplňkové k věrnostním kartám, EUIPO musí VOLARE posoudit znovu</h3>
+      <p class="facts"><span class="org">Tribunál EU, devátý senát</span><span>věc T-513/25, Volotea v EUIPO – ITA Airways (VOLARE), ECLI:EU:T:2026:694</span><span>rozsudek z 21. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0513">Zdroj: EUR-Lex →</a></p>
       <p>Italská letecká společnost ITA Airways přihlásila obrazovou známku EU VOLARE, mimo jiné pro kódované věrnostní karty, software a aplikace pro věrnostní programy (třída 9) a vydávání poukázek pro věrnostní programy (třída 36). Španělský dopravce Volotea podal námitky na základě starších obrazových známek EU VOLARE a VOLARE MAGAZINE zapsaných mimo jiné pro tištěné a elektronické publikace. Námitkové oddělení i odvolací senát dospěly k tomu, že zboží a služby jsou odlišné, protože publikace jsou jen doplňkovým propagačním materiálem.</p>
       <p>Tribunál rozhodnutí částečně zrušil. Uznal, že zboží a služby určené na podporu nebo propagaci jiného zboží s ním zpravidla nejsou doplňkové. To však neznamená, že publikace jsou pomocné ke všemu, o čem píší. Věrnostní karta i publikace (zpravodaj, magazín) slouží k udržení zákazníků a publikace informují členy programu, jak výhody využít. Jsou tedy doplňkové a mají stejnou veřejnost, účel, původ i distribuční cesty.</p>
@@ -418,9 +459,9 @@ html.ok .gate { display: none; }
       <a class="all" href="../sekce/patenty-a-uzitne-vzory.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>UPC Paříž: Align uspěl proti Angelalign v 17 státech, nárok za Spojené království neunesl</h3>
-      <p class="facts"><span>Jednotný patentový soud, místní oddělení Paříž</span><span>UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)</span><span>zpráva JUVE Patent z 19. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
+      <h3>UPC Paříž: Angelalign nesmí v 17 státech prodávat rovnátka, nárok za Spojené království neprošel</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, místní oddělení Paříž</span><span>UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)</span><span>zpráva JUVE Patent z 19. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/paris-local-division-upholds-align-patent-in-dispute-with-angelalign/">Zdroj: JUVE Patent →</a></p>
       <p>Americká společnost Align Technology (výrobce systému Invisalign) žalovala v srpnu 2025 čínského výrobce Angelalign a čtyři jeho evropské dceřiné společnosti pro porušení patentu EP 2 237 738 na ortodontické aparáty s výstupkem pro řízený pohyb kořene zubu. Angelalign podal protižalobu na zrušení patentu (nepřípustné rozšíření, nedostatečné zveřejnění, nedostatek vynálezecké činnosti).</p>
       <p>Místní oddělení v Paříži všechny námitky neplatnosti zamítlo a shledalo doslovné porušení. Rozhodující byl výklad pojmu „bukální strana“: soud ho vyložil šířeji jako vnější stranu u předních i zadních zubů, a výrobky Angelalign s prvkem Torque Ridge na předních zubech tak do patentu spadají. Nařídil zákaz v 17 státech UPC, stažení a zničení výrobků, penále až 10 000 EUR za výrobek nebo 20 000 EUR za den a náhradu škody od udělení patentu 12. 7. 2023.</p>
@@ -435,23 +476,23 @@ html.ok .gate { display: none; }
     <h2 class="section-title" id="radar-h">Ve zkratce</h2>
     <ul>
       <li id="radar-1">
-        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/nemecko.html">Německo</a><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html">Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky</a>: Vrchní zemský soud v Hamburku označil platformu Wish za přímého porušovatele ochranné známky EU „GHD“ podle testu SDEU z věci Louboutin.
+        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/nemecko.html">Německo</a><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html">OLG Hamburg: Platforma Wish odpovídá za padělky jako přímý porušovatel ochranné známky</a>: Vrchní zemský soud v Hamburku označil platformu Wish za přímého porušovatele ochranné známky EU „GHD“ podle testu SDEU z věci Louboutin.
         
-        <details class="more"><summary>Celé shrnutí</summary><div class="more-body"><p class="facts"><span>Vrchní zemský soud v Hamburku (OLG)</span><span>sp. zn. 5 U 58/25, Jemella v ContextLogic</span><span>komentář z 21. 10. 2026</span></p><p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html">Zdroj: IPKat →</a></p><p>Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.</p><p>Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.</p><p>Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci.</p><div class="why"><b>Praktický dopad:</b><ul><li>rozšíření Louboutinova testu</li><li>čím více služeb platforma spojuje, tím spíše jde o její vlastní užívání označení</li><li>protipadělkové nástroje používat důsledně, jinak slouží jako důkaz vědomosti</li></ul></div><p class="basis">Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU.</p></div></details>
+        <details class="more"><summary>Celé shrnutí</summary><div class="more-body"><p class="facts"><span class="org">Vrchní zemský soud v Hamburku (OLG)</span><span>sp. zn. 5 U 58/25, Jemella v ContextLogic</span><span>komentář z 21. 10. 2026</span></p><p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html">Zdroj: IPKat →</a></p><p>Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.</p><p>Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.</p><p>Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci.</p><div class="why"><b>Praktický dopad:</b><ul><li>rozšíření Louboutinova testu</li><li>čím více služeb platforma spojuje, tím spíše jde o její vlastní užívání označení</li><li>protipadělkové nástroje používat důsledně, jinak slouží jako důkaz vědomosti</li></ul></div><p class="basis">Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU.</p></div></details>
       </li>
       <li id="radar-2">
-        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/francie.html">Francie</a><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/guest-post-french-court-sides-with.html">IPKat, 20. 10. 2026: pařížský soud dal za pravdu Louis Vuitton ve sporu o „upcycling“</a>: Značka Kamad Reworked vyráběla oblečení a doplňky z částí výrobků Louis Vuitton; žaloba se opírala o porušení ochranné známky, nekalou soutěž a parazitování (rozsudek ze 17. 9. 2026).
+        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/francie.html">Francie</a><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/guest-post-french-court-sides-with.html">Pařížský soud: „Upcycling“ nevylučuje porušení známky, Louis Vuitton uspěl (IPKat, 20. 10. 2026)</a>: Značka Kamad Reworked vyráběla oblečení a doplňky z částí výrobků Louis Vuitton; žaloba se opírala o porušení ochranné známky, nekalou soutěž a parazitování (rozsudek ze 17. 9. 2026).
         
       </li>
       <li id="radar-3">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html">IPKat, 19. 10. 2026: pozdější klinická data patent nezachrání (T 0251/25, empagliflozin)</a>: Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným.
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html">EPO: Pozdější klinická data nezachránila patent na kardioprotektivní užití empagliflozinu (IPKat, 19. 10. 2026)</a>: Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným.
         
       </li>
       <li id="radar-4">
-        <div class="l1"><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/guest-post-from-photos-to-3d-replicas.html">IPKat, 18. 10. 2026: mohou 3D kopie vytvořené umělou inteligencí porušovat průmyslový vzor EU?</a>: Hostující příspěvek rozebírá, zda digitální 3D model vytvořený AI z fotografie výrobku zasahuje do práv z průmyslového vzoru EU.
         
       </li>
@@ -506,8 +547,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

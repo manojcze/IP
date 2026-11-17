@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -500,8 +502,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

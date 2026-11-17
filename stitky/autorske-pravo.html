@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -380,9 +382,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-14"><a href="../archiv/2026-11-14.html">Sobota 14. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="v2026-11-14-zprava-2">
-      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill juris" href="../stitky/francie.html">Francie</a><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření</h3>
-      <p class="facts"><span>Pařížský odvolací soud (Cour d’appel de Paris)</span><span>RG 26/12580 (APIG) a RG 26/12581 (DVP)</span><span>rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill juris" href="../stitky/francie.html">Francie</a><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></div>
+      <h3>Pařížský soud: Meta musí jednat s francouzskými vydavateli tisku o odměně, předběžná opatření platí</h3>
+      <p class="facts"><span class="org">Pařížský odvolací soud (Cour d’appel de Paris)</span><span>RG 26/12580 (APIG) a RG 26/12581 (DVP)</span><span>rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html">Zdroj: IPKat →</a></p>
       <p>Spor se týká práva nakladatelů tisku podle čl. 15 odst. 1 směrnice o autorském právu na jednotném digitálním trhu (2019/790), které Francie provedla zákonem z 24. 7. 2019. Meta uzavřela v roce 2021 s federací vydavatelů APIG a kolektivním správcem DVP tříleté rámcové dohody o odměně. Po jejich vypršení nedospěla k nové dohodě a podle komentáře od počátku roku 2025 nic neplatí. DVP (v červenci 2025) a APIG (v září 2025) proto podaly stížnost k francouzskému soutěžnímu úřadu (Autorité de la concurrence), který rozhodnutími 26-MC-01 a 26-MC-02 z 8. 7. 2026 nařídil předběžná opatření.</p>
       <p>Souběh spočívá v tom, že se právo vydavatelů uplatňuje prostřednictvím zneužití dominantního postavení (čl. 102 SFEU), konkrétně čl. 102 písm. a) o nepřiměřených obchodních podmínkách. Odvolací soud odvolání Mety zamítl a rozhodnutí úřadu potvrdil v plném rozsahu. Uvedl, že soutěžní úřad může při posuzování chování dominantního podniku ověřovat dodržování jiných pravidel, a že formální soulad s nimi není obranou, pokud je podnik fakticky obchází. Odmítl argument Mety, že relevantním trhem je šíření informačního obsahu, a podle soudu mají Facebook a Instagram přes 60 % francouzského trhu a 65 až 75 % v EHP.</p>
@@ -395,7 +397,7 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-11-14-radar-2">
-        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/usa.html">USA</a><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/usa.html">USA</a><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/the-law-or-lore-of-infamous-generative.html">IPKat, 8. 11. 2026: spor o AI postavy „Italian Brainrot“ u federálního soudu v Severní Kalifornii</a>: žalobci (Spyder Games, Simulator Games) žádají určení, že francouzská agentura Memetum Lab nemá k postavám v Robloxu platná práva; agentura se opírá o autorská práva, francouzskou známku a nekalou soutěž. Soud dosud nerozhodl, komentář popisuje pouze podání.
         <div class="note">Spisová značka v komentáři není, rozhodnutí neexistuje.</div><div class="note"><a href="../archiv/2026-11-14.html#radar-2">Z vydání 14. 11. 2026</a></div>
       </li>
@@ -406,9 +408,9 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-07"><a href="../archiv/2026-11-07.html">Sobota 7. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="v2026-11-07-zprava-1">
-      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company</h3>
-      <p class="facts"><span>Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit</h3>
+      <p class="facts"><span class="org">Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/ag-szpunars-opinion-in-like-company-is.html">Zdroj: IPKat →</a></p>
       <p>Věc se týká práva nakladatelů tisku podle čl. 15 směrnice o autorském právu na jednotném digitálním trhu (DSM) a využití jejich obsahu při trénování jazykového modelu Gemini a při zobrazování odpovědí chatbota. Generální advokát Szpunar navrhuje, aby Soudní dvůr otázky k samotnému trénování odmítl jako hypotetické a odpověděl jen na to, zda zobrazování odpovědí chatbota může zasahovat do práv nakladatelů. K trénování se přesto vyjádřil, výslovně jako předběžně.</p>
       <p>Trénink podle něj zasahuje do práva na rozmnožování, přičemž rozhoduje technický, nikoli funkční pohled: nezáleží na tom, zda se chráněný obsah použije jako dílo, nebo jen jako data. Obtížná je územní otázka, když trénink probíhá mimo EU. Názor Googlu, že rozhoduje právo místa hlavní infrastruktury, by nositele práv v EU nechal bez ochrany, a GA proto volá po legislativním vyjasnění. Výjimka pro text a data mining (čl. 4 DSM) se na trénování v zásadě vztahuje, vyžaduje zákonný přístup a absenci výhrady práv, a GA naznačuje, že by se mohla změnit na výjimku s odměnou.</p>
@@ -424,7 +426,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-31"><a href="../archiv/2026-10-31.html">Sobota 31. října 2026</a></h2>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-31-radar-2">
-        <div class="l1"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/usa.html">USA</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/usa.html">USA</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/claude-cant-help-falling-in-love-with.html">IPKat, 30. 10. 2026: nositelé práv k písním Elvise Presleyho žalují Anthropic</a>: Žaloba tvrdí, že texty písní byly bez svolení použity k tréninku modelů Claude a že modely generují porušující výstupy.
         <div class="note"><a href="../archiv/2026-10-31.html#radar-2">Z vydání 31. 10. 2026</a></div>
       </li>
@@ -459,8 +461,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

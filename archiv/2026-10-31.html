@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Týden v IP</title>
-<meta name="description" content="Vacu Activ: přihláška podaná jen k zablokování jiného je zlá víra; Agfa proti Gucci: dřívější užití výrobku zničilo většinu patentu">
+<meta name="description" content="Tribunál: Přihláška podaná jen k zablokování cizí známky je ve zlé víře, i když má být „obranou“; UPC: Odvolací soud zrušil většinu patentu Agfa, Gucci ho anticipovala vlastními dřívějšími výrobky">
 <meta name="robots" content="noindex, nofollow">
 <script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -377,20 +379,59 @@ html.ok .gate { display: none; }
   <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
-      <li><a href="#zprava-1">Vacu Activ: přihláška podaná jen k zablokování jiného je zlá víra</a></li>
-      <li><a href="#zprava-2">Agfa proti Gucci: dřívější užití výrobku zničilo většinu patentu</a></li>
-      <li><a href="#zprava-3">Semaglutid: UPC může bránit úniku před rozhodnutím o platnosti</a></li>
+      <li><a href="#zprava-1">Tribunál: Přihláška podaná jen k zablokování cizí známky je ve zlé víře, i když má být „obranou“</a></li>
+      <li><a href="#zprava-2">UPC: Odvolací soud zrušil většinu patentu Agfa, Gucci ho anticipovala vlastními dřívějšími výrobky</a></li>
+      <li><a href="#zprava-3">UPC Milán: Soud si přisvojil pravomoc bránit Novo Nordisk v úniku před rozhodnutím o platnosti</a></li>
     </ul>
   </section>
+<script>
+(function () {
+  var MAX = 18, MIN = 11, mq = window.matchMedia("(min-width: 980px)");
+  function set(as, v) { for (var i = 0; i < as.length; i++) as[i].style.fontSize = v; }
+  function vejde(as) {
+    for (var i = 0; i < as.length; i++) {
+      var r = document.createRange();
+      r.selectNodeContents(as[i]);
+      if (r.getBoundingClientRect().width > as[i].clientWidth) return false;
+    }
+    return true;
+  }
+  function fit() {
+    var as = document.querySelectorAll(".summary a");
+    if (!as.length) return;
+    if (!mq.matches) { set(as, ""); return; }
+    if (!as[0].clientWidth) return;
+    // Písmo má optickou velikost (šířka písmen se s velikostí mění nelineárně), proto půlení intervalu.
+    set(as, MAX + "px");
+    if (vejde(as)) return;
+    var lo = MIN, hi = MAX;
+    for (var k = 0; k < 8; k++) {
+      var mid = (lo + hi) / 2;
+      set(as, mid + "px");
+      if (vejde(as)) lo = mid; else hi = mid;
+    }
+    set(as, Math.floor(lo * 10) / 10 + "px");
+  }
+  window.prizpusobTitulky = fit;
+  fit();
+  if (document.fonts) {
+    document.fonts.ready.then(fit);
+    if (document.fonts.load) document.fonts.load('600 18px "Source Serif 4"', "Aa ěščřžýáíéůú „“").then(fit, fit);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fit);
+  }
+  var t;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
+})();
+</script>
 
   <section class="sec s-ochranne-znamky" id="sekce-ochranne-znamky" aria-labelledby="h-ochranne-znamky">
     <h2 class="sec-h" id="h-ochranne-znamky">Ochranné známky<span class="n">1</span>
       <a class="all" href="../sekce/ochranne-znamky.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="zprava-1">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>„Oko za oko“ je zlá víra: známka podaná jen k zablokování cizí přihlášky je neplatná</h3>
-      <p class="facts"><span>Tribunál EU, pátý senát</span><span>věc T-650/25, Vacu Activ Marcin Leśniak v EUIPO – Lakhomoff a AR Group (VACUACTIVUS), ECLI:EU:T:2026:636</span><span>usnesení z 6. 10. 2026, komentář IPKat z 29. 10. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Přihláška podaná jen k zablokování cizí známky je ve zlé víře, i když má být „obranou“</h3>
+      <p class="facts"><span class="org">Tribunál EU, pátý senát</span><span>věc T-650/25, Vacu Activ Marcin Leśniak v EUIPO – Lakhomoff a AR Group (VACUACTIVUS), ECLI:EU:T:2026:636</span><span>usnesení z 6. 10. 2026, komentář IPKat z 29. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/10/an-eye-for-eye-constitutes-bad-faith.html">Zdroj: IPKat →</a></p>
       <p>Polská společnost Vacu Activ vlastní národní i unijní známky „Vacu Activ“ pro fitness stroje. V roce 2013 jmenovala společnost pana Lakhomoffa výhradním distributorem v USA, Kanadě a Mexiku. Lakhomoff si v roce 2019 zapsal v USA obrazovou známku VACUACTIVUS a rozšířil ji přes madridský systém na EU. Vacu Activ poté v roce 2022 sama přihlásila obrazovou známku EU VACUACTIVUS. Lakhomoff navrhl její prohlášení za neplatnou pro zlou víru (čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001); EUIPO i odvolací senát mu vyhověly.</p>
       <p>Tribunál žalobu odmítl usnesením jako zjevně neopodstatněnou. Vacu Activ před EUIPO sama uvedla, že známku přihlásila, aby zabránila porušování svých starších známek, věděla o Lakhomoffově užívání a jeho úmyslu získat ochranu v EU. Přihláška tak měla jediný cíl, poškodit jeho zájmy, bez obchodní logiky a bez úmyslu známku užívat. Nerozhodovalo, kdo označení vymyslel, ani případné porušení distribuční smlouvy, která se týkala vývozu strojů, nikoli označení VACUACTIVUS.</p>
@@ -406,9 +447,9 @@ html.ok .gate { display: none; }
       <a class="all" href="../sekce/patenty-a-uzitne-vzory.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Agfa proti Gucci: dřívější veřejné užití výrobku zveřejňuje i způsob jeho výroby</h3>
-      <p class="facts"><span>Jednotný patentový soud, odvolací soud</span><span>UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)</span><span>zpráva JUVE Patent z 27. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
+      <h3>UPC: Odvolací soud zrušil většinu patentu Agfa, Gucci ho anticipovala vlastními dřívějšími výrobky</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, odvolací soud</span><span>UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)</span><span>zpráva JUVE Patent z 27. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/agfa-loses-most-of-leather-decoration-patent-on-appeal-against-gucci/">Zdroj: JUVE Patent →</a></p>
       <p>Agfa žalovala Gucci pro porušení patentu EP 3 388 490 na způsob zdobení kůže potiskem UV vytvrzovanými inkousty. Místní oddělení v Hamburku v dubnu 2025 zamítlo žalobu i protižalobu Gucci na zrušení patentu; odvolaly se obě strany.</p>
       <p>Odvolací soud pod vedením předsedy UPC Klause Grabinského zrušil velkou část patentu pro Belgii, Francii, Německo, Itálii a Švédsko pro nedostatek novosti. Novost vylučovala vlastní kolekce Gucci „Flora“ (mimo jiné peněženka vyrobená a prodávaná před podáním přihlášky v dubnu 2017). Soud vyjasnil, že způsob výroby veřejně užitého výrobku je zpřístupněn veřejnosti (čl. 54 odst. 2 EPC), pokud ho odborník může bez nepřiměřené zátěže zjistit rozborem výrobku; zvláštní důvod k rozboru se nevyžaduje. Gucci to doložila analýzami (mikroskopie, spektroskopie, chromatografie).</p>
@@ -418,9 +459,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-patenty-a-uzitne-vzory" id="zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Semaglutid: UPC si přisvojilo pravomoc bránit „hře s dělenými přihláškami“</h3>
-      <p class="facts"><span>Jednotný patentový soud, ústřední oddělení Milán</span><span>UPC_CFI_2221/2026, Sandoz v Novo Nordisk</span><span>zpráva JUVE Patent z 26. 10. 2026; datum usnesení článek neuvádí</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
+      <h3>UPC Milán: Soud si přisvojil pravomoc bránit Novo Nordisk v úniku před rozhodnutím o platnosti</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, ústřední oddělení Milán</span><span>UPC_CFI_2221/2026, Sandoz v Novo Nordisk</span><span>zpráva JUVE Patent z 26. 10. 2026; datum usnesení článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/upc-claims-power-to-stop-patentees-escaping-validity-decisions-via-withdrawal/">Zdroj: JUVE Patent →</a></p>
       <p>Sandoz podal žalobu na zrušení patentu Novo Nordisk týkajícího se semaglutidu (účinná látka léků Ozempic a Wegovy) a přidal tři neobvyklé návrhy proti tzv. hře s dělenými přihláškami: majitel stáhne souhlas se zněním patentu těsně před nepříznivým rozhodnutím a stejný předmět ochrany udržuje v dělené přihlášce (zde EP 4 406 593). Novo Nordisk vznesl předběžnou námitku nedostatku pravomoci.</p>
       <p>Ústřední oddělení námitku z velké části zamítlo. Dovodilo, že UPC má podle čl. 32 Dohody o UPC i „vlastní“ pravomoc nezbytnou k účinnému výkonu svěřených pravomocí, a opřelo se o čl. 47 Listiny základních práv EU a čl. 42 odst. 2 Dohody (řízení nesmí narušovat hospodářskou soutěž). Strategické podávání dělených přihlášek k udržení nejistoty a oddálení vstupu generik může být zneužitím práva.</p>
@@ -435,12 +476,12 @@ html.ok .gate { display: none; }
     <h2 class="section-title" id="radar-h">Ve zkratce</h2>
     <ul>
       <li id="radar-1">
-        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel">WTR, 29. 10. 2026: neplatnost známky TESLA před EUIPO</a>: rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.
+        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+        <a class="rl" href="https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel">EUIPO: Neplatnost známky TESLA pro zlou víru na základě nepřímých důkazů (WTR, 29. 10. 2026)</a>: rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.
         <div class="note">Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny.</div>
       </li>
       <li id="radar-2">
-        <div class="l1"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/usa.html">USA</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/usa.html">USA</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/claude-cant-help-falling-in-love-with.html">IPKat, 30. 10. 2026: nositelé práv k písním Elvise Presleyho žalují Anthropic</a>: Žaloba tvrdí, že texty písní byly bez svolení použity k tréninku modelů Claude a že modely generují porušující výstupy.
         
       </li>
@@ -495,8 +536,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

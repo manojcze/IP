@@ -3,16 +3,13 @@
   "zkusebni": false,
   "hlavni_temata": [
     {
-      "zprava": 1,
-      "nadpis": "MATRIX: rozhoduje seznam zboží v přihlášce, ne skutečné užívání"
+      "zprava": 1
     },
     {
-      "zprava": 2,
-      "nadpis": "VOLARE: publikace mohou být doplňkové k věrnostním programům"
+      "zprava": 2
     },
     {
-      "zprava": 3,
-      "nadpis": "UPC Paříž: zákaz pro Angelalign v 17 státech, nárok za UK neprošel"
+      "zprava": 3
     }
   ],
   "zpravy": [
@@ -28,10 +25,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Rozhodnutí"
+        "soubeh": []
       },
-      "nadpis": "MATRIX-A, -C, -M a -V: rozhoduje seznam zboží v přihlášce, ne to, jak je značka skutečně užívána",
+      "nadpis": "Tribunál: Pro záměnu rozhoduje seznam zboží v přihlášce, ne skutečné užívání (MATRIX)",
       "fakta": [
         "Tribunál EU, devátý senát",
         "věci T-126/25 až T-129/25, Novavax v EUIPO – Brill International (MATRIX-A, MATRIX-C, MATRIX-M, MATRIX-V)",
@@ -67,10 +63,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Rozhodnutí"
+        "soubeh": []
       },
-      "nadpis": "VOLARE: publikace nejsou vždy jen reklamním doplňkem, s věrnostními kartami mohou být doplňkové",
+      "nadpis": "Tribunál: Publikace mohou být doplňkové k věrnostním kartám, EUIPO musí VOLARE posoudit znovu",
       "fakta": [
         "Tribunál EU, devátý senát",
         "věc T-513/25, Volotea v EUIPO – ITA Airways (VOLARE), ECLI:EU:T:2026:694",
@@ -105,10 +100,9 @@
         "jurisdikce": [
           "EU (UPC)"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
-      "nadpis": "UPC Paříž: Align uspěl proti Angelalign v 17 státech, nárok za Spojené království neunesl",
+      "nadpis": "UPC Paříž: Angelalign nesmí v 17 státech prodávat rovnátka, nárok za Spojené království neprošel",
       "fakta": [
         "Jednotný patentový soud, místní oddělení Paříž",
         "UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)",
@@ -147,12 +141,11 @@
         ],
         "soubeh": [
           "Souběh s nekalou soutěží"
-        ],
-        "zdroj": "Článek"
+        ]
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
-        "text": "Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky"
+        "text": "OLG Hamburg: Platforma Wish odpovídá za padělky jako přímý porušovatel ochranné známky"
       },
       "text": "Vrchní zemský soud v Hamburku označil platformu Wish za přímého porušovatele ochranné známky EU „GHD“ podle testu SDEU z věci Louboutin.",
       "detail": {
@@ -194,12 +187,11 @@
         ],
         "soubeh": [
           "Souběh s nekalou soutěží"
-        ],
-        "zdroj": "Článek"
+        ]
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/guest-post-french-court-sides-with.html",
-        "text": "IPKat, 20. 10. 2026: pařížský soud dal za pravdu Louis Vuitton ve sporu o „upcycling“"
+        "text": "Pařížský soud: „Upcycling“ nevylučuje porušení známky, Louis Vuitton uspěl (IPKat, 20. 10. 2026)"
       },
       "text": "Značka Kamad Reworked vyráběla oblečení a doplňky z částí výrobků Louis Vuitton; žaloba se opírala o porušení ochranné známky, nekalou soutěž a parazitování (rozsudek ze 17. 9. 2026)."
     },
@@ -214,12 +206,11 @@
         "jurisdikce": [
           "EPO"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html",
-        "text": "IPKat, 19. 10. 2026: pozdější klinická data patent nezachrání (T 0251/25, empagliflozin)"
+        "text": "EPO: Pozdější klinická data nezachránila patent na kardioprotektivní užití empagliflozinu (IPKat, 19. 10. 2026)"
       },
       "text": "Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným."
     },
@@ -235,8 +226,7 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/guest-post-from-photos-to-3d-replicas.html",

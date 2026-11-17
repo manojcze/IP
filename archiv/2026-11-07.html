@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Týden v IP</title>
-<meta name="description" content="Like Company: GA Szpunar k AI chatbotům a právům vydavatelů tisku; BMV proti BMW: dobré jméno chrání známku i u monitorů baterií">
+<meta name="description" content="GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit; Tribunál: Dobré jméno známky BMW pro auta brání zápisu BMV i pro monitory baterií">
 <meta name="robots" content="noindex, nofollow">
 <script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -377,20 +379,59 @@ html.ok .gate { display: none; }
   <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
-      <li><a href="#zprava-1">Like Company: GA Szpunar k AI chatbotům a právům vydavatelů tisku</a></li>
-      <li><a href="#zprava-2">BMV proti BMW: dobré jméno chrání známku i u monitorů baterií</a></li>
-      <li><a href="#zprava-3">Waterdrop: znovupodání známky po lhůtě k užívání je zlá víra</a></li>
+      <li><a href="#zprava-1">GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit</a></li>
+      <li><a href="#zprava-2">Tribunál: Dobré jméno známky BMW pro auta brání zápisu BMV i pro monitory baterií</a></li>
+      <li><a href="#zprava-3">Tribunál: Znovupodání téměř totožné známky krátce po lhůtě k prokázání užívání je zlou vírou</a></li>
     </ul>
   </section>
+<script>
+(function () {
+  var MAX = 18, MIN = 11, mq = window.matchMedia("(min-width: 980px)");
+  function set(as, v) { for (var i = 0; i < as.length; i++) as[i].style.fontSize = v; }
+  function vejde(as) {
+    for (var i = 0; i < as.length; i++) {
+      var r = document.createRange();
+      r.selectNodeContents(as[i]);
+      if (r.getBoundingClientRect().width > as[i].clientWidth) return false;
+    }
+    return true;
+  }
+  function fit() {
+    var as = document.querySelectorAll(".summary a");
+    if (!as.length) return;
+    if (!mq.matches) { set(as, ""); return; }
+    if (!as[0].clientWidth) return;
+    // Písmo má optickou velikost (šířka písmen se s velikostí mění nelineárně), proto půlení intervalu.
+    set(as, MAX + "px");
+    if (vejde(as)) return;
+    var lo = MIN, hi = MAX;
+    for (var k = 0; k < 8; k++) {
+      var mid = (lo + hi) / 2;
+      set(as, mid + "px");
+      if (vejde(as)) lo = mid; else hi = mid;
+    }
+    set(as, Math.floor(lo * 10) / 10 + "px");
+  }
+  window.prizpusobTitulky = fit;
+  fit();
+  if (document.fonts) {
+    document.fonts.ready.then(fit);
+    if (document.fonts.load) document.fonts.load('600 18px "Source Serif 4"', "Aa ěščřžýáíéůú „“").then(fit, fit);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fit);
+  }
+  var t;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
+})();
+</script>
 
   <section class="sec s-ochranne-znamky" id="sekce-ochranne-znamky" aria-labelledby="h-ochranne-znamky">
     <h2 class="sec-h" id="h-ochranne-znamky">Ochranné známky<span class="n">2</span>
       <a class="all" href="../sekce/ochranne-znamky.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="zprava-2">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
-      <h3>BMV proti BMW: známka s dobrým jménem pro auta brání zápisu i pro monitory baterií</h3>
-      <p class="facts"><span>Tribunál EU, druhý senát</span><span>věc T-468/25, Victron Energy v EUIPO – BMW (BMV), ECLI:EU:T:2026:714</span><span>rozsudek ze 4. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Dobré jméno známky BMW pro auta brání zápisu BMV i pro monitory baterií</h3>
+      <p class="facts"><span class="org">Tribunál EU, druhý senát</span><span>věc T-468/25, Victron Energy v EUIPO – BMW (BMV), ECLI:EU:T:2026:714</span><span>rozsudek ze 4. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0468">Zdroj: EUR-Lex →</a></p>
       <p>Nizozemská společnost Victron Energy přihlásila slovní známku EU BMV pro monitory baterií (třída 9); pod označeními BMV-700 či BMV-712 tyto výrobky prodává. BMW podalo námitky na základě starší slovní známky EU BMW. Námitkové oddělení i odvolací senát jim vyhověly podle čl. 8 odst. 5 nařízení (EU) 2017/1001 (ochrana známky s dobrým jménem).</p>
       <p>Tribunál žalobu zamítl. Monitory baterií nejsou určeny jen technicky zdatným odborníkům, kupují je i majitelé lodí či obytných vozů. BMW má značné dobré jméno pro automobily přinejmenším v Německu. Victron neprokázal, že veřejnost chápe „BM“ jako běžnou zkratku pro „battery monitor“: v předložených dokladech se objevovala jen jako součást typových označení výrobků Victronu. BMV ani BMW proto nemají pro veřejnost samostatný význam a jsou si podobné v průměrné míře.</p>
@@ -400,9 +441,9 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="zprava-3">
-      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru</h3>
-      <p class="facts"><span>Tribunál EU, pátý senát</span><span>věc T-541/25, Qingdao Ecopure Filter v EUIPO – Waterdrop Microdrink (Waterdrop), ECLI:EU:T:2026:687</span><span>rozsudek z 21. 10. 2026, komentář IPKat z 5. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>Tribunál: Znovupodání téměř totožné známky krátce po lhůtě k prokázání užívání je zlou vírou</h3>
+      <p class="facts"><span class="org">Tribunál EU, pátý senát</span><span>věc T-541/25, Qingdao Ecopure Filter v EUIPO – Waterdrop Microdrink (Waterdrop), ECLI:EU:T:2026:687</span><span>rozsudek z 21. 10. 2026, komentář IPKat z 5. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/general-court-confirms-strict-rules-on.html">Zdroj: IPKat →</a></p>
       <p>Společnost Qingdao Ecopure Filter (QEF) si v roce 2021 zapsala jako ochrannou známku EU slovní označení „Waterdrop“ pro širokou škálu zboží třídy 11, včetně zařízení na filtraci vody. Konkurent Waterdrop Microdrink (WMG) v roce 2023 navrhl prohlášení této známky za neplatnou pro zlou víru. Zrušovací oddělení EUIPO návrh zamítlo, Odvolací senát však rozhodnutí částečně změnil a známku zneplatnil pro vodní filtry, protože šlo o nové přihlášení téhož označení, jímž se majitel vyhnul povinnosti prokazovat skutečné užívání starší známky.</p>
       <p>Tribunál žalobu QEF zamítl. Vyšel z ustáleného testu, podle něhož je zlou vírou podání přihlášky s cílem poškodit třetí osobu nebo získat výlučné právo k jiným účelům, než ke kterým ochranná známka slouží. Rozhodla kombinace okolností: přihláška byla podána asi čtyři měsíce po skončení pětileté lhůty, po níž lze po majiteli starší známky požadovat důkaz užívání; QEF a její předchůdce podali během tří let několik obdobných přihlášek; zboží bylo totožné se širším seznamem zboží starší známky; a QEF nedoložila žádný obchodní důvod, ani tvrzené zjednodušení správy portfolia.</p>
@@ -418,9 +459,9 @@ html.ok .gate { display: none; }
       <a class="all" href="../sekce/ostatni.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="zprava-1">
-      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-      <h3>Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company</h3>
-      <p class="facts"><span>Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="../stitky/eu.html">EU</a></div>
+      <h3>GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit</h3>
+      <p class="facts"><span class="org">Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/ag-szpunars-opinion-in-like-company-is.html">Zdroj: IPKat →</a></p>
       <p>Věc se týká práva nakladatelů tisku podle čl. 15 směrnice o autorském právu na jednotném digitálním trhu (DSM) a využití jejich obsahu při trénování jazykového modelu Gemini a při zobrazování odpovědí chatbota. Generální advokát Szpunar navrhuje, aby Soudní dvůr otázky k samotnému trénování odmítl jako hypotetické a odpověděl jen na to, zda zobrazování odpovědí chatbota může zasahovat do práv nakladatelů. K trénování se přesto vyjádřil, výslovně jako předběžně.</p>
       <p>Trénink podle něj zasahuje do práva na rozmnožování, přičemž rozhoduje technický, nikoli funkční pohled: nezáleží na tom, zda se chráněný obsah použije jako dílo, nebo jen jako data. Obtížná je územní otázka, když trénink probíhá mimo EU. Názor Googlu, že rozhoduje právo místa hlavní infrastruktury, by nositele práv v EU nechal bez ochrany, a GA proto volá po legislativním vyjasnění. Výjimka pro text a data mining (čl. 4 DSM) se na trénování v zásadě vztahuje, vyžaduje zákonný přístup a absenci výhrady práv, a GA naznačuje, že by se mohla změnit na výjimku s odměnou.</p>
@@ -435,13 +476,13 @@ html.ok .gate { display: none; }
     <h2 class="section-title" id="radar-h">Ve zkratce</h2>
     <ul>
       <li id="radar-1">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/upckat-proportionality-defence-against.html">IPKat, 1. 11. 2026: námitka nepřiměřenosti zákazu u UPC v oblasti léčiv</a>: Rozbor ukazuje, že UPC zákaz při porušení zpravidla vydá; výjimkou mohou být zájmy pacientů, pokud je výrobek jedinou dostupnou léčbou nebo výrazně zlepšuje péči (Meril v Edwards, Hologic v Siemens).
         
       </li>
       <li id="radar-2">
-        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/kanada.html">Kanada</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html">IPKat, 5. 11. 2026: Nejvyšší soud Kanady k patentům na dávkovací režimy</a>: Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv.
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/kanada.html">Kanada</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html">NS Kanady: K zákazu patentovat léčebné metody a patentům na dávkovací režimy (IPKat, 5. 11. 2026)</a>: Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv.
         
       </li>
     </ul>
@@ -493,8 +534,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>

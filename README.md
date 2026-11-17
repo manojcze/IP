@@ -94,7 +94,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
   "zkusebni": false,
   "uvod": "Nepovinné. Krátká poznámka nad hlavními tématy (např. u zkušebního vydání).",
   "hlavni_temata": [
-    {"zprava": 1, "nadpis": "Zkrácený titulek zprávy 1 (nejvýš 66 znaků)"}
+    {"zprava": 1}
   ],
   "zpravy": [
     {
@@ -104,10 +104,9 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
       "stitky": {
         "oblasti": ["Ochranné známky"],
         "jurisdikce": ["EU"],
-        "soubeh": ["Souběh s nekalou soutěží"],
-        "zdroj": "Rozhodnutí"
+        "soubeh": ["Souběh s nekalou soutěží"]
       },
-      "nadpis": "Nadpis zprávy",
+      "nadpis": "Tribunál: Hlavní sdělení rozhodnutí jednou větou",
       "fakta": ["Instituce", "spisová značka", "datum rozhodnutí / zveřejnění"],
       "odstavce": ["První odstavec textu.", "Druhý odstavec textu."],
       "dopad": {"body": ["Heslovitý bod o významu pro praxi v ČR/EU.", "Další bod."]},
@@ -118,7 +117,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
   "na_radar": [
     {
       "sekce": ["ochranne-znamky"],
-      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["ČR"], "zdroj": "Tisková zpráva"},
+      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["ČR"]},
       "odkaz": {"url": "https://…", "text": "ÚPV, 26. 11. 2026: online seminář"},
       "text": "Jedna věta, proč je položka zajímavá.",
       "poznamka": "Nepovinné: co se nepodařilo ověřit."
@@ -126,8 +125,8 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
     {
       "sekce": ["ochranne-znamky"],
       "klic": "nepovinné",
-      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["Německo"], "zdroj": "Článek"},
-      "odkaz": {"url": "https://…", "text": "Nadpis zprávy"},
+      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["Německo"]},
+      "odkaz": {"url": "https://…", "text": "BGH: Hlavní sdělení rozhodnutí"},
       "text": "Jedna věta shrnující podstatu zprávy.",
       "detail": {
         "fakta": ["Instituce", "spisová značka", "datum"],
@@ -169,17 +168,18 @@ Pravidla, která `build.py` kontroluje:
   jednořádková (odkaz, věta, poznámka), nebo plně zpracovaná zpráva mimo ČR/EU
   s polem `detail`, které se na webu zobrazí jako rozbalitelné „Celé shrnutí“.
 - Štítek souběhu se uvádí jen tam, kde souběh existuje (nikdy „NE“ ani „bez souběhu“).
-- Každá zpráva i položka „Ve zkratce“ má typ zdroje `stitky.zdroj`, ze kterého shrnutí vychází:
-  „Rozhodnutí“ (plný text rozhodnutí nebo stanoviska soudu či úřadu), „Tisková zpráva“
-  (tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce, např. aktuality ÚPV)
-  nebo „Článek“ (komentář, blog, odborný nebo zpravodajský článek).
-- Všechny štítky oblasti se zobrazují stejně (šedě), všechny typy zdroje také stejně (obrysově).
+- Štítky typu zdroje (dříve `stitky.zdroj`: Rozhodnutí, Článek, Tisková zpráva) se nepoužívají; `build.py` je odmítne.
+- **Nadpis zprávy** začíná zkratkou soudu nebo orgánu, o jehož závěry jde (nejvýš dvě slova, např. „Tribunál:“,
+  „SDEU:“, „GA SDEU:“, „EUIPO:“, „UPC Paříž:“, „NS:“, „ÚPV:“, „OLG Hamburg:“), za dvojtečkou následuje velkým
+  písmenem hlavní sdělení. Nadpis hlavní zprávy má nejvýš 110 znaků. Jednořádkové položky Ve zkratce o rozhodnutí
+  mají tvar „Orgán: sdělení (Zdroj, datum)“, ostatní „Zdroj, datum: sdělení“.
+- Všechny štítky oblasti se zobrazují stejně (šedě).
   Štítky jsou odkazy: štítek shodný se sekcí (např. „Ochranné známky“, „Patenty“) vede na stránku sekce,
   ostatní na stránku `stitky/<stitek>.html` se všemi zprávami s tímto štítkem.
   Barevně (oranžově) je odlišený jen štítek souběhu.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`. Rámeček „Hlavní zprávy“ nahoře zobrazuje
-  zkrácené titulky z pole `nadpis` (v daném pořadí). Titulek je povinný, ve stylu nadpisů článků a nejvýš
-  66 znaků, aby se na počítači vešel na jeden řádek (na šířce 1024 px a víc).
+  nadpisy těchto zpráv (v daném pořadí); na počítači se jim velikost písma automaticky zmenší (18 až 11 px),
+  aby se každý vešel na jeden řádek.
 - `klicova_rozhodnuti` (nepovinné, vyplňuje se v každém novém vydání): nejvýš 10 nejdůležitějších rozhodnutí
   (soudních i správních, z ČR a EU, výjimečně i cizích) z vydání za posledních 31 dní, seřazených podle
   důležitosti. Přednost mají ochranné známky a další označení, nekalá soutěž a souběh se soutěžním právem;

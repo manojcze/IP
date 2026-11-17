@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -378,27 +380,27 @@ html.ok .gate { display: none; }
     <li>
       <h2><a href="2026-11-14.html">Sobota 14. listopadu 2026</a></h2>
       <p class="m">3 hlavní zprávy · 5 ve zkratce</p>
-      <ul><li><a href="2026-11-14.html#zprava-1">„Truth Social“: odvolací senát EUIPO potvrdil zlou víru u EU známky zapsané den po oznámení spuštění služby</a></li><li><a href="2026-11-14.html#zprava-2">Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření</a></li><li><a href="2026-11-14.html#zprava-3">ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou</a></li></ul>
+      <ul><li><a href="2026-11-14.html#zprava-1">EUIPO: Odvolací senát potvrdil zlou víru u známky Truth Social přihlášené cizí osobou den po oznámení služby</a></li><li><a href="2026-11-14.html#zprava-2">Pařížský soud: Meta musí jednat s francouzskými vydavateli tisku o odměně, předběžná opatření platí</a></li><li><a href="2026-11-14.html#zprava-3">UPC Mannheim: ZTE a Samsung stáhly vzájemné žaloby o SEP, spor o FRAND patrně skončil dohodou</a></li></ul>
     </li>
     <li>
       <h2><a href="2026-11-07.html">Sobota 7. listopadu 2026</a></h2>
       <p class="m">3 hlavní zprávy · 2 ve zkratce</p>
-      <ul><li><a href="2026-11-07.html#zprava-1">Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company</a></li><li><a href="2026-11-07.html#zprava-2">BMV proti BMW: známka s dobrým jménem pro auta brání zápisu i pro monitory baterií</a></li><li><a href="2026-11-07.html#zprava-3">Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru</a></li></ul>
+      <ul><li><a href="2026-11-07.html#zprava-1">GA SDEU: Chatbot přebírající tiskové články může zasáhnout práva vydavatelů, trénink AI navrhl neřešit</a></li><li><a href="2026-11-07.html#zprava-2">Tribunál: Dobré jméno známky BMW pro auta brání zápisu BMV i pro monitory baterií</a></li><li><a href="2026-11-07.html#zprava-3">Tribunál: Znovupodání téměř totožné známky krátce po lhůtě k prokázání užívání je zlou vírou</a></li></ul>
     </li>
     <li>
       <h2><a href="2026-10-31.html">Sobota 31. října 2026</a></h2>
       <p class="m">3 hlavní zprávy · 2 ve zkratce</p>
-      <ul><li><a href="2026-10-31.html#zprava-1">„Oko za oko“ je zlá víra: známka podaná jen k zablokování cizí přihlášky je neplatná</a></li><li><a href="2026-10-31.html#zprava-2">Agfa proti Gucci: dřívější veřejné užití výrobku zveřejňuje i způsob jeho výroby</a></li><li><a href="2026-10-31.html#zprava-3">Semaglutid: UPC si přisvojilo pravomoc bránit „hře s dělenými přihláškami“</a></li></ul>
+      <ul><li><a href="2026-10-31.html#zprava-1">Tribunál: Přihláška podaná jen k zablokování cizí známky je ve zlé víře, i když má být „obranou“</a></li><li><a href="2026-10-31.html#zprava-2">UPC: Odvolací soud zrušil většinu patentu Agfa, Gucci ho anticipovala vlastními dřívějšími výrobky</a></li><li><a href="2026-10-31.html#zprava-3">UPC Milán: Soud si přisvojil pravomoc bránit Novo Nordisk v úniku před rozhodnutím o platnosti</a></li></ul>
     </li>
     <li>
       <h2><a href="2026-10-24.html">Sobota 24. října 2026</a></h2>
       <p class="m">3 hlavní zprávy · 4 ve zkratce</p>
-      <ul><li><a href="2026-10-24.html#zprava-1">MATRIX-A, -C, -M a -V: rozhoduje seznam zboží v přihlášce, ne to, jak je značka skutečně užívána</a></li><li><a href="2026-10-24.html#zprava-2">VOLARE: publikace nejsou vždy jen reklamním doplňkem, s věrnostními kartami mohou být doplňkové</a></li><li><a href="2026-10-24.html#zprava-3">UPC Paříž: Align uspěl proti Angelalign v 17 státech, nárok za Spojené království neunesl</a></li></ul>
+      <ul><li><a href="2026-10-24.html#zprava-1">Tribunál: Pro záměnu rozhoduje seznam zboží v přihlášce, ne skutečné užívání (MATRIX)</a></li><li><a href="2026-10-24.html#zprava-2">Tribunál: Publikace mohou být doplňkové k věrnostním kartám, EUIPO musí VOLARE posoudit znovu</a></li><li><a href="2026-10-24.html#zprava-3">UPC Paříž: Angelalign nesmí v 17 státech prodávat rovnátka, nárok za Spojené království neprošel</a></li></ul>
     </li>
     <li>
       <h2><a href="2026-10-17.html">Sobota 17. října 2026</a></h2>
       <p class="m">3 hlavní zprávy · 2 ve zkratce</p>
-      <ul><li><a href="2026-10-17.html#zprava-1">FIND MY CAR: převod známky během řízení neotevírá lhůty, které už uplynuly</a></li><li><a href="2026-10-17.html#zprava-2">MAGORA a GRUPO AGORA: vysoká pozornost veřejnosti pravděpodobnost záměny předem nevylučuje</a></li><li><a href="2026-10-17.html#zprava-3">Odrůda jablka Roat: nový rozlišovací znak je nutné podložit technickými údaji</a></li></ul>
+      <ul><li><a href="2026-10-17.html#zprava-1">Tribunál: Převod známky během řízení neotevírá lhůtu k odůvodnění odvolání, která už uplynula</a></li><li><a href="2026-10-17.html#zprava-2">Tribunál: MAGORA je zaměnitelná s GRUPO AGORA, vyšší pozornost odborníků záměnu nevylučuje</a></li><li><a href="2026-10-17.html#zprava-3">Tribunál: Nový znak odrůdy musí šlechtitel doložit technickými údaji, jinak ho CPVO zkoumat nemusí</a></li></ul>
     </li>
   </ol>
 

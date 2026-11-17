@@ -3,16 +3,13 @@
   "zkusebni": false,
   "hlavni_temata": [
     {
-      "zprava": 1,
-      "nadpis": "FIND MY CAR: převod známky neotevírá lhůty, které už uplynuly"
+      "zprava": 1
     },
     {
-      "zprava": 2,
-      "nadpis": "MAGORA a GRUPO AGORA: vysoká pozornost záměnu nevylučuje"
+      "zprava": 2
     },
     {
-      "zprava": 3,
-      "nadpis": "Jablko Roat: nový znak odrůdy je nutné doložit technickými údaji"
+      "zprava": 3
     }
   ],
   "zpravy": [
@@ -28,10 +25,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Rozhodnutí"
+        "soubeh": []
       },
-      "nadpis": "FIND MY CAR: převod známky během řízení neotevírá lhůty, které už uplynuly",
+      "nadpis": "Tribunál: Převod známky během řízení neotevírá lhůtu k odůvodnění odvolání, která už uplynula",
       "fakta": [
         "Tribunál EU, sedmý senát",
         "věc T-451/25, Mega Pop v EUIPO – Apple (FIND MY CAR), ECLI:EU:T:2026:669",
@@ -68,10 +64,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Rozhodnutí"
+        "soubeh": []
       },
-      "nadpis": "MAGORA a GRUPO AGORA: vysoká pozornost veřejnosti pravděpodobnost záměny předem nevylučuje",
+      "nadpis": "Tribunál: MAGORA je zaměnitelná s GRUPO AGORA, vyšší pozornost odborníků záměnu nevylučuje",
       "fakta": [
         "Tribunál EU, šestý senát",
         "věc T-814/25, Holding Tourisme v EUIPO – Agora (MAGORA), ECLI:EU:T:2026:668",
@@ -107,10 +102,9 @@
         "jurisdikce": [
           "EU"
         ],
-        "soubeh": [],
-        "zdroj": "Rozhodnutí"
+        "soubeh": []
       },
-      "nadpis": "Odrůda jablka Roat: nový rozlišovací znak je nutné podložit technickými údaji",
+      "nadpis": "Tribunál: Nový znak odrůdy musí šlechtitel doložit technickými údaji, jinak ho CPVO zkoumat nemusí",
       "fakta": [
         "Tribunál EU, osmý senát",
         "věc T-770/25, Adema v CPVO (Roat)",
@@ -147,12 +141,11 @@
         "jurisdikce": [
           "Německo"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html",
-        "text": "Červený kruh jako známka: BGH k grafickému znázornění a roli rejstříku"
+        "text": "BGH: U barevné známky „červený kruh“ rozhoduje zobrazení v rejstříku, ne v přihlášce"
       },
       "text": "BGH: u červeného kruhu jako barevné známky rozhoduje zobrazení v rejstříku, ne v přihlášce.",
       "detail": {
@@ -190,12 +183,11 @@
         "jurisdikce": [
           "EPO"
         ],
-        "soubeh": [],
-        "zdroj": "Článek"
+        "soubeh": []
       },
       "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/10/reformatio-in-peius-survives-procedural.html",
-        "text": "IPKat, 16. 10. 2026: reformatio in peius po porušení práva být slyšen (T 1168/24)"
+        "text": "EPO: Zákaz změny k horšímu vázal majitele patentu i po zpětvzetí jeho odvolání (IPKat, 16. 10. 2026)"
       },
       "text": "Odvolací senát EPO zrušil patent Arbutus na lipidové nanočástice (spor s Modernou) pro nepřípustné rozšíření; zákaz změny k horšímu vázal majitele, i když vzal své odvolání zpět."
     }

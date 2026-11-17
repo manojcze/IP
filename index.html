@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Týden v IP</title>
-<meta name="description" content="Truth Social: zlá víra u známky přihlášené den po oznámení služby; Meta musí jednat s francouzskými vydavateli tisku o odměně">
+<meta name="description" content="EUIPO: Odvolací senát potvrdil zlou víru u známky Truth Social přihlášené cizí osobou den po oznámení služby; Pařížský soud: Meta musí jednat s francouzskými vydavateli tisku o odměně, předběžná opatření platí">
 <meta name="robots" content="noindex, nofollow">
 <script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
@@ -210,7 +210,8 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
-.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
+.facts .org { font-weight: 600; color: var(--ink); }
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
@@ -241,7 +242,7 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .more-body p { margin: 0 0 10px; max-width: 78ch; }
 .more-body .facts { font-size: 13.5px; color: var(--muted); }
-.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; font-weight: 400; }
 .more-body .src-line { margin: -4px 0 12px; }
 .more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .more-body .why b { font-weight: 600; }
@@ -325,6 +326,7 @@ html.ok .gate { display: none; }
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
     try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
     document.documentElement.classList.add("ok");
+    if (window.prizpusobTitulky) window.prizpusobTitulky();
     var a = location.hash && document.getElementById(location.hash.slice(1));
     if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
   });
@@ -377,20 +379,59 @@ html.ok .gate { display: none; }
   <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
-      <li><a href="#zprava-1">Truth Social: zlá víra u známky přihlášené den po oznámení služby</a></li>
-      <li><a href="#zprava-2">Meta musí jednat s francouzskými vydavateli tisku o odměně</a></li>
-      <li><a href="#zprava-3">ZTE a Samsung stáhly žaloby u UPC, spor o FRAND patrně skončil</a></li>
+      <li><a href="#zprava-1">EUIPO: Odvolací senát potvrdil zlou víru u známky Truth Social přihlášené cizí osobou den po oznámení služby</a></li>
+      <li><a href="#zprava-2">Pařížský soud: Meta musí jednat s francouzskými vydavateli tisku o odměně, předběžná opatření platí</a></li>
+      <li><a href="#zprava-3">UPC Mannheim: ZTE a Samsung stáhly vzájemné žaloby o SEP, spor o FRAND patrně skončil dohodou</a></li>
     </ul>
   </section>
+<script>
+(function () {
+  var MAX = 18, MIN = 11, mq = window.matchMedia("(min-width: 980px)");
+  function set(as, v) { for (var i = 0; i < as.length; i++) as[i].style.fontSize = v; }
+  function vejde(as) {
+    for (var i = 0; i < as.length; i++) {
+      var r = document.createRange();
+      r.selectNodeContents(as[i]);
+      if (r.getBoundingClientRect().width > as[i].clientWidth) return false;
+    }
+    return true;
+  }
+  function fit() {
+    var as = document.querySelectorAll(".summary a");
+    if (!as.length) return;
+    if (!mq.matches) { set(as, ""); return; }
+    if (!as[0].clientWidth) return;
+    // Písmo má optickou velikost (šířka písmen se s velikostí mění nelineárně), proto půlení intervalu.
+    set(as, MAX + "px");
+    if (vejde(as)) return;
+    var lo = MIN, hi = MAX;
+    for (var k = 0; k < 8; k++) {
+      var mid = (lo + hi) / 2;
+      set(as, mid + "px");
+      if (vejde(as)) lo = mid; else hi = mid;
+    }
+    set(as, Math.floor(lo * 10) / 10 + "px");
+  }
+  window.prizpusobTitulky = fit;
+  fit();
+  if (document.fonts) {
+    document.fonts.ready.then(fit);
+    if (document.fonts.load) document.fonts.load('600 18px "Source Serif 4"', "Aa ěščřžýáíéůú „“").then(fit, fit);
+    if (document.fonts.addEventListener) document.fonts.addEventListener("loadingdone", fit);
+  }
+  var t;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(fit, 80); });
+})();
+</script>
 
   <section class="sec s-ochranne-znamky" id="sekce-ochranne-znamky" aria-labelledby="h-ochranne-znamky">
     <h2 class="sec-h" id="h-ochranne-znamky">Ochranné známky<span class="n">1</span>
       <a class="all" href="sekce/ochranne-znamky.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="zprava-1">
-      <div class="tags"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="stitky/eu.html">EU</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
-      <h3>„Truth Social“: odvolací senát EUIPO potvrdil zlou víru u EU známky zapsané den po oznámení spuštění služby</h3>
-      <p class="facts"><span>EUIPO, odvolací senát</span><span>R 2260/2025-4</span><span>datum rozhodnutí komentář neuvádí; komentář IPKat z 10. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="stitky/eu.html">EU</a></div>
+      <h3>EUIPO: Odvolací senát potvrdil zlou víru u známky Truth Social přihlášené cizí osobou den po oznámení služby</h3>
+      <p class="facts"><span class="org">EUIPO, odvolací senát</span><span>R 2260/2025-4</span><span>datum rozhodnutí komentář neuvádí; komentář IPKat z 10. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/truth-social-trade-mark-invalidated.html">Zdroj: IPKat →</a></p>
       <p>Společnost T Media Tech LLC (TMT), provozovatel platformy Truth Social, napadla EU známku „Truth Social“, kterou si jako přihlašovatel zapsala soukromá osoba. Přihláška byla podána 21. 10. 2021, tedy den po tiskové zprávě z 20. 10. 2021 oznamující spuštění služby, a zápis proběhl v roce 2022. Známka pokrývá mimo jiné služby ve třídách 35, 42 a 45, včetně online sociálních sítí. Zrušovací oddělení EUIPO návrhu na prohlášení neplatnosti pro zlou víru vyhovělo a odvolací senát odvolání majitele zamítl.</p>
       <p>Podle komentáře senát vyšel z toho, že TMT a její sesterská společnost označení před podáním přihlášky užívaly a že sesterská společnost podala v červenci 2021 americkou přihlášku. Označení byla totožná a služby sociálních sítí totožné se službami TMT. Tvrzení majitele, že o plánech nevěděl, senát označil za nevěrohodné, protože od podnikatele lze očekávat sledování vývoje, který se týká jeho zájmů, a majitel nevysvětlil, jak k výběru označení pro sociální sítě došel. Přihlášku pro další služby posoudil podle věci Stylo &amp; Koton (C-104/18 P) tak, že zlá víra u části přihlášky může ovlivnit i zbytek a že je na majiteli, aby prokázal obchodní logiku pro ostatní služby, což se nestalo.</p>
@@ -406,9 +447,9 @@ html.ok .gate { display: none; }
       <a class="all" href="sekce/patenty-a-uzitne-vzory.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="zprava-3">
-      <div class="tags"><a class="pill tm" href="sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="stitky/eu-upc.html">EU (UPC)</a><a class="pill comp-yes" href="stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
-      <h3>ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou</h3>
-      <p class="facts"><span>Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="stitky/eu-upc.html">EU (UPC)</a><a class="pill comp-yes" href="stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></div>
+      <h3>UPC Mannheim: ZTE a Samsung stáhly vzájemné žaloby o SEP, spor o FRAND patrně skončil dohodou</h3>
+      <p class="facts"><span class="org">Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/zte-and-samsung-withdraw-upc-infringement-actions-in-apparent-settlement/">Zdroj: JUVE Patent →</a></p>
       <p>Výrobci mobilních telefonů ZTE a Samsung spolu vedli rozsáhlý spor o patenty nezbytné pro standardy 4G a 5G (SEP). Jejich licence vypršela koncem roku 2024 a nebyla obnovena. Samsung podal v prosinci 2024 žalobu u High Court v Londýně a žádal stanovení sazby FRAND pro globální portfolio ZTE, a také žalobu o uzavření smlouvy ve Frankfurtu. ZTE žalovala v Číně, v Německu a u UPC; Samsung odpověděl na začátku roku 2025 dvěma žalobami u UPC v Mannheimu. Paralelně běžela řízení u zemského soudu v Mnichově, v Brazílii a v USA.</p>
       <p>Místní oddělení v Mannheimu nyní podle JUVE Patent povolilo vzájemné stažení obou žalob a řízení uzavřelo (soudce zpravodaj Tobias Sender). Rozhodnutí samo dohodu nepotvrzuje, ale stažení tohoto rozsahu bez návrhů na náhradu nákladů obvykle znamená urovnání. Podle výzkumu JUVE byly staženy i mnichovské věci, soud to však dosud nepotvrdil. Dílčí výsledky předtím: v dubnu 2026 Mannheim zrušil patent EP 3 905 730 pro rozšíření předmětu a žalobu ZTE zamítl; patent EP 4 096 288 zrušilo námitkové oddělení EPÚ, a řízení z něj bylo proto přerušeno; v dubnu 2026 získala ZTE v Mnichově zákaz na základě EP 2 654 356.</p>
@@ -424,9 +465,9 @@ html.ok .gate { display: none; }
       <a class="all" href="sekce/ostatni.html">Celá sekce →</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="zprava-2">
-      <div class="tags"><a class="pill tm" href="stitky/autorske-pravo.html">Autorské právo</a><a class="pill juris" href="stitky/francie.html">Francie</a><a class="pill comp-yes" href="stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
-      <h3>Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření</h3>
-      <p class="facts"><span>Pařížský odvolací soud (Cour d’appel de Paris)</span><span>RG 26/12580 (APIG) a RG 26/12581 (DVP)</span><span>rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026</span></p>
+      <div class="tags"><a class="pill tm" href="stitky/autorske-pravo.html">Autorské právo</a><a class="pill juris" href="stitky/francie.html">Francie</a><a class="pill comp-yes" href="stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></div>
+      <h3>Pařížský soud: Meta musí jednat s francouzskými vydavateli tisku o odměně, předběžná opatření platí</h3>
+      <p class="facts"><span class="org">Pařížský odvolací soud (Cour d’appel de Paris)</span><span>RG 26/12580 (APIG) a RG 26/12581 (DVP)</span><span>rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html">Zdroj: IPKat →</a></p>
       <p>Spor se týká práva nakladatelů tisku podle čl. 15 odst. 1 směrnice o autorském právu na jednotném digitálním trhu (2019/790), které Francie provedla zákonem z 24. 7. 2019. Meta uzavřela v roce 2021 s federací vydavatelů APIG a kolektivním správcem DVP tříleté rámcové dohody o odměně. Po jejich vypršení nedospěla k nové dohodě a podle komentáře od počátku roku 2025 nic neplatí. DVP (v červenci 2025) a APIG (v září 2025) proto podaly stížnost k francouzskému soutěžnímu úřadu (Autorité de la concurrence), který rozhodnutími 26-MC-01 a 26-MC-02 z 8. 7. 2026 nařídil předběžná opatření.</p>
       <p>Souběh spočívá v tom, že se právo vydavatelů uplatňuje prostřednictvím zneužití dominantního postavení (čl. 102 SFEU), konkrétně čl. 102 písm. a) o nepřiměřených obchodních podmínkách. Odvolací soud odvolání Mety zamítl a rozhodnutí úřadu potvrdil v plném rozsahu. Uvedl, že soutěžní úřad může při posuzování chování dominantního podniku ověřovat dodržování jiných pravidel, a že formální soulad s nimi není obranou, pokud je podnik fakticky obchází. Odmítl argument Mety, že relevantním trhem je šíření informačního obsahu, a podle soudu mají Facebook a Instagram přes 60 % francouzského trhu a 65 až 75 % v EHP.</p>
@@ -442,28 +483,28 @@ html.ok .gate { display: none; }
     <h2 class="section-title" id="radar-h">Ve zkratce</h2>
     <ul>
       <li id="radar-1">
-        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="stitky/spojene-kralovstvi.html">Spojené království</a><a class="pill comp-yes" href="stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html">AVIATOR: anglický soud připustil zahraniční nároky z nekalé soutěže pro devět států a spor urychlil</a>: Anglický High Court připustil v hlavním sporu o značku AVIATOR zahraniční nároky z nekalé soutěže pro část států a urychlil hlavní líčení.
+        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="stitky/spojene-kralovstvi.html">Spojené království</a><a class="pill comp-yes" href="stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html">High Court: Ve sporu AVIATOR připustil zahraniční nároky z nekalé soutěže pro devět států</a>: Anglický High Court připustil v hlavním sporu o značku AVIATOR zahraniční nároky z nekalé soutěže pro část států a urychlil hlavní líčení.
         
-        <details class="more"><summary>Celé shrnutí</summary><div class="more-body"><p class="facts"><span>High Court of England and Wales (soudce Tappin)</span><span>Aviator LLC v Spribe OÜ, dle IPKat [2026] EWHC 2840 (BP)</span><span>rozhodnutí z pátku před 8. 11. 2026 (přesné datum komentář neuvádí)</span></p><p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html">Zdroj: IPKat →</a></p><p>Spor se týká hry typu „crash game“ s logem „Aviator“, která byla spuštěna v lednu 2019 v Gruzii prostřednictvím společnosti spojené s Aviator LLC, přičemž software dodala společnost Spribe. V prosinci 2019 Spribe uvedla vlastní hru pod jinými logy, v únoru 2020 ve Spojeném království. Aviator LLC uspěla v Gruzii s napadením gruzínské známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 rozhodl ([2026] EWCA Civ 1224), že účinky gruzínského rozsudku (včetně issue estoppel) se řídí anglickým právem jako právem fóra.</p><p>Souběh s nekalou soutěží spočívá v tom, že Spribe v Anglii uplatňuje nároky z nekalé soutěže (passing off) podle práva řady cizích států. Soud (podle IPKat) vyšel z toho, že anglická úprava passing off je „minimalistickým“ provedením čl. 10bis Pařížské úmluvy, a lze proto předpokládat podstatnou podobnost s úpravou v zahraničí (odkaz i na čl. 2 odst. 1 TRIPS). Dodatečné nároky pro devět států (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jižní Afrika) připustil, protože je jasně vhodnější projednat je v Anglii než ve více zemích. Nároky pro dalších 28 států zamítl, jelikož nebyly dostatečně specifikovány a nevykazovaly reálnou naději na úspěch.</p><p>Hlavní líčení urychlil na říjen 2027 a předběžné líčení o issue estoppel stanovil na duben 2027. Předběžné opatření podle IPKat zakazuje straně Aviator uvádět na trh či nabízet crash game pod označením AVIATOR nebo podobným, a to ve vztahu ke Kolumbii, Rumunsku a Srbsku, s výjimkou platforem, které hru nabízely už k 3. 7. 2026. Itálie byla vyloučena kvůli celounijnímu soudnímu příkazu maltských soudů. Platnost známek soud ponechal příslušným národním úřadům a soudům.</p><div class="why"><b>Praktický dopad:</b><ul><li>anglický soud může po brexitu soustředit nároky z neregistrovaných označení z více států, pokud jsou řádně vymezeny</li><li>využívá podobnosti národních úprav nekalé soutěže</li><li>pro ČR inspirace při koordinaci víceúzemních sporů, přímý dopad na české právo nemá (ČR mezi státy není)</li></ul></div><p class="basis">Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026); samotný rozsudek jsem nečetl. Komentář neuvádí spisovou značku řízení ani přesné datum rozsudku. Otázky nezákonnosti a společné odpovědnosti byly ponechány k dalšímu upřesnění tvrzení. Označení „Ochranné známky“ je zvoleno proto, že spor se týká označení AVIATOR a nároků z passing off.</p></div></details>
+        <details class="more"><summary>Celé shrnutí</summary><div class="more-body"><p class="facts"><span class="org">High Court of England and Wales (soudce Tappin)</span><span>Aviator LLC v Spribe OÜ, dle IPKat [2026] EWHC 2840 (BP)</span><span>rozhodnutí z pátku před 8. 11. 2026 (přesné datum komentář neuvádí)</span></p><p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html">Zdroj: IPKat →</a></p><p>Spor se týká hry typu „crash game“ s logem „Aviator“, která byla spuštěna v lednu 2019 v Gruzii prostřednictvím společnosti spojené s Aviator LLC, přičemž software dodala společnost Spribe. V prosinci 2019 Spribe uvedla vlastní hru pod jinými logy, v únoru 2020 ve Spojeném království. Aviator LLC uspěla v Gruzii s napadením gruzínské známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 rozhodl ([2026] EWCA Civ 1224), že účinky gruzínského rozsudku (včetně issue estoppel) se řídí anglickým právem jako právem fóra.</p><p>Souběh s nekalou soutěží spočívá v tom, že Spribe v Anglii uplatňuje nároky z nekalé soutěže (passing off) podle práva řady cizích států. Soud (podle IPKat) vyšel z toho, že anglická úprava passing off je „minimalistickým“ provedením čl. 10bis Pařížské úmluvy, a lze proto předpokládat podstatnou podobnost s úpravou v zahraničí (odkaz i na čl. 2 odst. 1 TRIPS). Dodatečné nároky pro devět států (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jižní Afrika) připustil, protože je jasně vhodnější projednat je v Anglii než ve více zemích. Nároky pro dalších 28 států zamítl, jelikož nebyly dostatečně specifikovány a nevykazovaly reálnou naději na úspěch.</p><p>Hlavní líčení urychlil na říjen 2027 a předběžné líčení o issue estoppel stanovil na duben 2027. Předběžné opatření podle IPKat zakazuje straně Aviator uvádět na trh či nabízet crash game pod označením AVIATOR nebo podobným, a to ve vztahu ke Kolumbii, Rumunsku a Srbsku, s výjimkou platforem, které hru nabízely už k 3. 7. 2026. Itálie byla vyloučena kvůli celounijnímu soudnímu příkazu maltských soudů. Platnost známek soud ponechal příslušným národním úřadům a soudům.</p><div class="why"><b>Praktický dopad:</b><ul><li>anglický soud může po brexitu soustředit nároky z neregistrovaných označení z více států, pokud jsou řádně vymezeny</li><li>využívá podobnosti národních úprav nekalé soutěže</li><li>pro ČR inspirace při koordinaci víceúzemních sporů, přímý dopad na české právo nemá (ČR mezi státy není)</li></ul></div><p class="basis">Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026); samotný rozsudek jsem nečetl. Komentář neuvádí spisovou značku řízení ani přesné datum rozsudku. Otázky nezákonnosti a společné odpovědnosti byly ponechány k dalšímu upřesnění tvrzení. Označení „Ochranné známky“ je zvoleno proto, že spor se týká označení AVIATOR a nároků z passing off.</p></div></details>
       </li>
       <li id="radar-2">
-        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill tm" href="stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="stitky/usa.html">USA</a><a class="pill comp-yes" href="stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill tm" href="stitky/autorske-pravo.html">Autorské právo</a><a class="pill tm" href="stitky/umela-inteligence.html">Umělá inteligence</a><a class="pill juris" href="stitky/usa.html">USA</a><a class="pill comp-yes" href="stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/the-law-or-lore-of-infamous-generative.html">IPKat, 8. 11. 2026: spor o AI postavy „Italian Brainrot“ u federálního soudu v Severní Kalifornii</a>: žalobci (Spyder Games, Simulator Games) žádají určení, že francouzská agentura Memetum Lab nemá k postavám v Robloxu platná práva; agentura se opírá o autorská práva, francouzskou známku a nekalou soutěž. Soud dosud nerozhodl, komentář popisuje pouze podání.
         <div class="note">Spisová značka v komentáři není, rozhodnutí neexistuje.</div>
       </li>
       <li id="radar-3">
-        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill tm" href="stitky/geograficka-oznaceni.html">Geografická označení</a><a class="pill juris" href="stitky/kazachstan.html">Kazachstán</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
-        <a class="rl" href="https://legalblogs.wolterskluwer.com/trademark-blog/the-geography-of-dumplings-gi-vs-trademark-in-kazakhstan/">Kluwer Trademark Blog, 9. 11. 2026: „Uralskiye Pelmeni“ v Kazachstánu</a>: soudy (naposledy krajský soud v Turkestánu 19. 10. 2026) odmítly tvrzení, že známka s označením „Uralskiye“ klame o původu zboží, protože chyběly důkazy o klamání spotřebitele.
+        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill tm" href="stitky/geograficka-oznaceni.html">Geografická označení</a><a class="pill juris" href="stitky/kazachstan.html">Kazachstán</a></div>
+        <a class="rl" href="https://legalblogs.wolterskluwer.com/trademark-blog/the-geography-of-dumplings-gi-vs-trademark-in-kazakhstan/">Soudy Kazachstánu: Známka „Uralskiye Pelmeni“ neklame o původu zboží (Kluwer, 9. 11. 2026)</a>: soudy (naposledy krajský soud v Turkestánu 19. 10. 2026) odmítly tvrzení, že známka s označením „Uralskiye“ klame o původu zboží, protože chyběly důkazy o klamání spotřebitele.
         <div class="note">Jurisdikce mimo hlavní zaměření přehledu; vychází z komentáře, ne z rozhodnutí.</div>
       </li>
       <li id="radar-4">
-        <div class="l1"><a class="pill tm" href="sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="stitky/clanek.html">Článek</a></div>
+        <div class="l1"><a class="pill tm" href="sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="stitky/eu-upc.html">EU (UPC)</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html">IPKat, 3. 11. 2026: hostující příspěvek Rafała Sikorského o německých místních divizích UPC</a>: autor tvrdí, že německé divize rozhodují přes 75 % sporů prvního stupně, a staví se proti zřizování dalších senátů nad rámec čl. 7 odst. 4 Dohody o UPC. Jde o názorový příspěvek, nikoli rozhodnutí.
         <div class="note">Zdroj čísel autor neuvádí; k prověření.</div>
       </li>
       <li id="radar-5">
-        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="stitky/cr.html">ČR</a><a class="pill typ" href="stitky/tiskova-zprava.html">Tisková zpráva</a></div>
+        <div class="l1"><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="stitky/cr.html">ČR</a></div>
         <a class="rl" href="https://upv.gov.cz/aktuality/akce/seminare/26-11-online-seminar-ochranne-znamky">ÚPV, 26. 11. 2026: online seminář Ochranné známky</a>: praktický seminář úřadu, vhodný pro klienty zakládající nebo spravující portfolio známek.
         <div class="note">Program semináře jsem nečetl, v přehledu aktualit je uveden jen název a datum.</div>
       </li>
@@ -520,8 +561,6 @@ html.ok .gate { display: none; }
       <ul class="lg-list"><li><a class="pill tm" href="sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><a class="pill comp-yes" href="stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
-      <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><a class="pill typ" href="stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
       <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>
