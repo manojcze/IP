@@ -59,7 +59,7 @@ PODTITUL = "Nové vydání vždy v sobotu ráno"
 #   Rozhodnutí: plný text rozhodnutí nebo stanoviska soudu či úřadu
 #   Tisková zpráva: tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce
 #   Článek: komentář, blog, odborný nebo zpravodajský článek
-TYPY_ZDROJE = ["Rozhodnutí", "Tisková zpráva", "Článek"]
+TYPY_ZDROJE = ["Rozhodnutí", "Článek", "Tisková zpráva"]
 
 # Každé vydání má alespoň tolik hlavních zpráv.
 MIN_HLAVNICH = 3
@@ -245,12 +245,12 @@ def load_all():
 # ---------------------------------------------------------------- dílčí části stránky
 
 def typ_cls(typ):
-    return "typ typ-rozhodnuti" if typ == "Rozhodnutí" else "typ"
+    return "typ"
 
 
 def stitky_seznam(st):
     """Štítky zprávy jako dvojice (text, třída) v pořadí, v jakém se zobrazují."""
-    out = [(o, "tm" if o == "Ochranné známky" else "ip") for o in st.get("oblasti", [])]
+    out = [(o, "tm") for o in st.get("oblasti", [])]
     out += [(j, "juris") for j in st.get("jurisdikce", [])]
     out += [(s, "comp-yes") for s in st.get("soubeh", [])]
     if st.get("zdroj"):
@@ -279,7 +279,7 @@ def pouzite_stitky(vydani):
         return sorted(c, key=lambda k: (k not in prvni, -c[k], k))
 
     return [
-        ("Oblast", [(o, "tm" if o == "Ochranné známky" else "ip") for o in poradi(obl, ("Ochranné známky",))]),
+        ("Oblast", [(o, "tm") for o in poradi(obl, ("Ochranné známky",))]),
         ("Jurisdikce", None),
         ("Souběh", [(s, "comp-yes") for s in poradi(sou)]),
         ("Zdroj", [(t, typ_cls(t)) for t in TYPY_ZDROJE]),
@@ -874,8 +874,6 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .pill.old { background: var(--old-soft); color: var(--muted); }
 .pill.typ { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
 .pill.typ::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 1px; background: currentColor; opacity: .55; vertical-align: 1px; }
-.pill.typ-rozhodnuti { background: var(--pat-soft); color: var(--pat); box-shadow: inset 0 0 0 1px var(--pat); font-weight: 600; }
-.pill.typ-rozhodnuti::before { opacity: 1; }
 
 .sec { margin-top: 30px; }
 .sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
