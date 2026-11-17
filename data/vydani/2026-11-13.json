@@ -1,0 +1,212 @@
+{
+  "datum": "2026-11-13",
+  "zkusebni": false,
+  "hlavni_temata": [
+    {
+      "zprava": 1,
+      "text": "EUIPO: odvolací senát potvrdil zneplatnění EU známky „Truth Social“ pro zlou víru, kdy někdo zapsal označení těsně před oficiálním spuštěním služby."
+    },
+    {
+      "zprava": 2,
+      "text": "Pařížský odvolací soud potvrdil předběžná opatření, jimiž má Meta jednat s francouzskými vydavateli tisku o odměně a poskytnout jim potřebná data."
+    },
+    {
+      "zprava": 3,
+      "text": "Anglický High Court připustil v hlavním sporu o značku AVIATOR zahraniční nároky z nekalé soutěže pro část států a urychlil hlavní líčení."
+    }
+  ],
+  "zpravy": [
+    {
+      "id": 1,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "starsi": false
+      },
+      "nadpis": "„Truth Social“: odvolací senát EUIPO potvrdil zlou víru u EU známky zapsané den po oznámení spuštění služby",
+      "fakta": [
+        "EUIPO, odvolací senát",
+        "R 2260/2025-4",
+        "datum rozhodnutí komentář neuvádí; komentář IPKat z 10. 11. 2026"
+      ],
+      "odstavce": [
+        "Společnost T Media Tech LLC (TMT), provozovatel platformy Truth Social, napadla EU známku „Truth Social“, kterou si jako přihlašovatel zapsala soukromá osoba. Přihláška byla podána 21. 10. 2021, tedy den po tiskové zprávě z 20. 10. 2021 oznamující spuštění služby, a zápis proběhl v roce 2022. Známka pokrývá mimo jiné služby ve třídách 35, 42 a 45, včetně online sociálních sítí. Zrušovací oddělení EUIPO návrhu na prohlášení neplatnosti pro zlou víru vyhovělo a odvolací senát odvolání majitele zamítl.",
+        "Podle komentáře senát vyšel z toho, že TMT a její sesterská společnost označení před podáním přihlášky užívaly a že sesterská společnost podala v červenci 2021 americkou přihlášku. Označení byla totožná a služby sociálních sítí totožné se službami TMT. Tvrzení majitele, že o plánech nevěděl, senát označil za nevěrohodné, protože od podnikatele lze očekávat sledování vývoje, který se týká jeho zájmů, a majitel nevysvětlil, jak k výběru označení pro sociální sítě došel. Přihlášku pro další služby posoudil podle věci Stylo &amp; Koton (C-104/18 P) tak, že zlá víra u části přihlášky může ovlivnit i zbytek a že je na majiteli, aby prokázal obchodní logiku pro ostatní služby, což se nestalo.",
+        "Senát přihlédl i k tomu, že majitel zaslal TMT a její sesterské společnosti upozorňující dopisy a nabídl převod známky za „adekvátní odškodnění“ s odkazem na náklady veřejných řízení a blížící se americké volby, což vyhodnotil jako snahu vyvinout na ně tlak. Známka po zápisu nebyla užívána; neužívání v pětileté lhůtě je samo o sobě legitimní, majitel však nedoložil žádné věrohodné plány na užívání. Podle komentáře se zneplatnění vztahuje i na služby odlišné od služeb TMT, výslovně to však komentář neformuluje."
+      ],
+      "dopad": {
+        "oznaceni": "Praktický dopad (podle komentáře):",
+        "text": "model sledování oznámení o nových produktech a zápisu totožných označení „napřed“ není obhajitelný. Majitelé práv by měli zvážit prioritu z mimounijní přihlášky (v zahraničí podanou přihlášku lze v EU uplatnit do šesti měsíců podle Pařížské úmluvy) a u zlé víry zvolit návrh na neplatnost vedle námitek nebo návrhu opřeného o starší práva, zejména je-li napadená známka zapsána i pro odlišné zboží a služby."
+      },
+      "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 10. 11. 2026); samotné rozhodnutí jsem nečetl. Datum rozhodnutí odvolacího senátu komentář nesděluje a komentář neuvádí ani konkrétní ustanovení nařízení (EU) 2017/1001. Podle zpravodajského článku The Currency z 31. 10. 2025 EUIPO známku zrušilo již 24. 10. 2025 (orgán článek neuvádí), z čehož vyplývá, že šlo o rozhodnutí prvního stupně.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/11/truth-social-trade-mark-invalidated.html",
+        "nazev": "IPKat"
+      }
+    },
+    {
+      "id": 2,
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Autorské právo"
+        ],
+        "jurisdikce": [
+          "Francie"
+        ],
+        "soubeh": [
+          "Souběh se soutěžním právem"
+        ],
+        "starsi": true
+      },
+      "nadpis": "Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření",
+      "fakta": [
+        "Pařížský odvolací soud (Cour d’appel de Paris)",
+        "RG 26/12580 (APIG) a RG 26/12581 (DVP)",
+        "rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026"
+      ],
+      "odstavce": [
+        "Spor se týká práva nakladatelů tisku podle čl. 15 odst. 1 směrnice o autorském právu na jednotném digitálním trhu (2019/790), které Francie provedla zákonem z 24. 7. 2019. Meta uzavřela v roce 2021 s federací vydavatelů APIG a kolektivním správcem DVP tříleté rámcové dohody o odměně. Po jejich vypršení nedospěla k nové dohodě a podle komentáře od počátku roku 2025 nic neplatí. DVP (v červenci 2025) a APIG (v září 2025) proto podaly stížnost k francouzskému soutěžnímu úřadu (Autorité de la concurrence), který rozhodnutími 26-MC-01 a 26-MC-02 z 8. 7. 2026 nařídil předběžná opatření.",
+        "Souběh spočívá v tom, že se právo vydavatelů uplatňuje prostřednictvím zneužití dominantního postavení (čl. 102 SFEU), konkrétně čl. 102 písm. a) o nepřiměřených obchodních podmínkách. Odvolací soud odvolání Mety zamítl a rozhodnutí úřadu potvrdil v plném rozsahu. Uvedl, že soutěžní úřad může při posuzování chování dominantního podniku ověřovat dodržování jiných pravidel, a že formální soulad s nimi není obranou, pokud je podnik fakticky obchází. Odmítl argument Mety, že relevantním trhem je šíření informačního obsahu, a podle soudu mají Facebook a Instagram přes 60 % francouzského trhu a 65 až 75 % v EHP.",
+        "Odměna je podle soudu spravedlivá, jen pokud odráží povahu a rozsah užití a ekonomickou hodnotu, a platforma to musí zdůvodnit. Neprůhledné podmínky a zvolený základ výpočtu mohou vést k odměně „výrazně odtržené“ od skutečného užití. Meta musí jednat v dobré víře podle průhledných, objektivních a nediskriminačních kritérií, do patnácti dnů poskytnout data potřebná k posouzení odměny a po dobu jednání nesnižovat zobrazení obsahu tisku. Opatření nezakládají přímý nárok na náhradu a nenutí Metu uzavřít licenci."
+      ],
+      "dopad": {
+        "oznaceni": "Praktický dopad:",
+        "text": "rozhodnutí je zajímavé pro uplatňování čl. 15 směrnice DSM v praxi (informační asymetrie, kdy data o užití drží jen platforma; soud odkázal na věc C-797/23). Autor komentáře naznačuje, že stejná asymetrie může platit u poskytovatelů AI, to je však jeho názor, nikoli výrok soudu. Ve věci samé soutěžní úřad dosud nerozhodl."
+      },
+      "podklad": "Vychází z komentáře IPKat (Margaux Chielle, 11. 11. 2026); samotné rozhodnutí jsem nečetl. Komentář neuvádí složení soudu, výši odměny ani to, zda je možný další opravný prostředek. Zpráva je označena jako starší, protože rozhodnutí je z 29. 10. 2026 a komentář vyšel až nyní.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html",
+        "nazev": "IPKat"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
+        "nekala-soutez",
+        "ochranne-znamky"
+      ],
+      "klic": "aviator-v-spribe",
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "Spojené království"
+        ],
+        "soubeh": [
+          "Souběh s nekalou soutěží"
+        ],
+        "starsi": false
+      },
+      "nadpis": "AVIATOR: anglický soud připustil zahraniční nároky z nekalé soutěže pro devět států a spor urychlil",
+      "fakta": [
+        "High Court of England and Wales (soudce Tappin)",
+        "Aviator LLC v Spribe OÜ, dle IPKat [2026] EWHC 2840 (BP)",
+        "rozhodnutí z pátku před 8. 11. 2026 (přesné datum komentář neuvádí)"
+      ],
+      "odstavce": [
+        "Spor se týká hry typu „crash game“ s logem „Aviator“, která byla spuštěna v lednu 2019 v Gruzii prostřednictvím společnosti spojené s Aviator LLC, přičemž software dodala společnost Spribe. V prosinci 2019 Spribe uvedla vlastní hru pod jinými logy, v únoru 2020 ve Spojeném království. Aviator LLC uspěla v Gruzii s napadením gruzínské známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 rozhodl ([2026] EWCA Civ 1224), že účinky gruzínského rozsudku (včetně issue estoppel) se řídí anglickým právem jako právem fóra.",
+        "Souběh s nekalou soutěží spočívá v tom, že Spribe v Anglii uplatňuje nároky z nekalé soutěže (passing off) podle práva řady cizích států. Soud (podle IPKat) vyšel z toho, že anglická úprava passing off je „minimalistickým“ provedením čl. 10bis Pařížské úmluvy, a lze proto předpokládat podstatnou podobnost s úpravou v zahraničí (odkaz i na čl. 2 odst. 1 TRIPS). Dodatečné nároky pro devět států (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jižní Afrika) připustil, protože je jasně vhodnější projednat je v Anglii než ve více zemích. Nároky pro dalších 28 států zamítl, jelikož nebyly dostatečně specifikovány a nevykazovaly reálnou naději na úspěch.",
+        "Hlavní líčení urychlil na říjen 2027 a předběžné líčení o issue estoppel stanovil na duben 2027. Předběžné opatření podle IPKat zakazuje straně Aviator uvádět na trh či nabízet crash game pod označením AVIATOR nebo podobným, a to ve vztahu ke Kolumbii, Rumunsku a Srbsku, s výjimkou platforem, které hru nabízely už k 3. 7. 2026. Itálie byla vyloučena kvůli celounijnímu soudnímu příkazu maltských soudů. Platnost známek soud ponechal příslušným národním úřadům a soudům."
+      ],
+      "dopad": {
+        "oznaceni": "Praktický dopad:",
+        "text": "rozhodnutí ukazuje, že anglický soud může po Brexitu soustředit u sebe nároky z neregistrovaných označení z více států, pokud jsou řádně vymezeny, a přitom využít podobnosti národních úprav nekalé soutěže. Pro čtenáře v ČR jde o inspiraci při koordinaci víceúzemních sporů, přímý dopad na české právo nemá (Česko mezi státy není)."
+      },
+      "podklad": "Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026); samotný rozsudek jsem nečetl. Komentář neuvádí spisovou značku řízení ani přesné datum rozsudku. Otázky nezákonnosti a společné odpovědnosti byly ponechány k dalšímu upřesnění tvrzení. Označení „Ochranné známky“ je zvoleno proto, že spor se týká označení AVIATOR a nároků z passing off.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
+        "nazev": "IPKat"
+      }
+    }
+  ],
+  "na_radar": [
+    {
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "ČR"
+        ],
+        "soubeh": [],
+        "starsi": false
+      },
+      "odkaz": {
+        "url": "https://upv.gov.cz/aktuality/akce/seminare/26-11-online-seminar-ochranne-znamky",
+        "text": "ÚPV, 26. 11. 2026: online seminář Ochranné známky"
+      },
+      "text": "praktický seminář úřadu, vhodný pro klienty zakládající nebo spravující portfolio známek.",
+      "poznamka": "Program semináře jsem nečetl, v přehledu aktualit je uveden jen název a datum."
+    },
+    {
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Podpora malých a středních podniků"
+        ],
+        "jurisdikce": [
+          "ČR"
+        ],
+        "soubeh": [],
+        "starsi": false
+      },
+      "odkaz": {
+        "url": "https://upv.gov.cz/aktuality/akce/seminare/3-12-online-seminar-sme-fund-2026",
+        "text": "ÚPV, 3. 12. 2026: online seminář SME Fund 2026"
+      },
+      "text": "navazuje na oznámení ÚPV z 6. 11. 2026 o otevření SME Fund pro vouchery 1 a 2 (uvedené v předchozím vydání).",
+      "poznamka": "Program semináře jsem nečetl, v přehledu aktualit je uveden jen název a datum."
+    },
+    {
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EU (UPC)"
+        ],
+        "soubeh": [],
+        "starsi": false
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html",
+        "text": "IPKat, 3. 11. 2026: hostující příspěvek Rafała Sikorského o německých místních divizích UPC"
+      },
+      "text": "autor tvrdí, že německé divize rozhodují přes 75 % sporů prvního stupně, a staví se proti zřizování dalších senátů nad rámec čl. 7 odst. 4 Dohody o UPC. Jde o názorový příspěvek, nikoli rozhodnutí.",
+      "poznamka": "Zdroj čísel autor neuvádí; k prověření."
+    }
+  ],
+  "paticka": {
+    "zkontrolovane": [
+      "IPKat: načten přehled i celé příspěvky z 3. až 11. 11. 2026 (Truth Social, Meta/Paříž, Aviator v Spribe, UPC, Brainrot, Monday Miscellany); ostatní příspěvky z období (australské patentové věci, certifikační známka basmati, kanadský Nejvyšší soud) jsem pro geografické zaměření nezařadil.",
+      "ÚPV, aktuality: načteno; v období od 6. 11. 2026 jen administrativní oznámení a oznámení seminářů (viz Na radar).",
+      "Soudní dvůr EU, tiskové zprávy: stránka se načetla bez dat a odkazů, takže se nepodařilo spolehlivě určit zprávy z období; v tomto vydání proto žádná zpráva SDEU ani Tribunálu zařazena není.",
+      "EUIPO, Observatoř: stránka novinek se nenačetla s obsahem. Nová rozhodnutí EUIPO a odvolacích senátů jsem dohledával přes IPKat a WebSearch.",
+      "WebSearch (Tribunál, SDEU, UPC, Evropská komise/SEP a FRAND, české soudy a ÚOHS, WTR, Kluwer Trademark Blog, ePravo): v tomto období se nepodařilo dohledat nové rozhodnutí s ověřitelným datem."
+    ],
+    "nedostupne": [],
+    "vyklad": [
+      "V archivu je pouze zkušební vydání ze 7. 11. 2026; vydání z úterý 10. 11. 2026 nevyšlo. Páteční vydání proto pokrývá celé období od 6. 11. do 13. 11. 2026, aby na zkušební vydání navazovalo bez mezery. Zprávy z jiných jurisdikcí (Francie, Spojené království) jsem zařadil, protože souvisejí s právem EU (čl. 15 směrnice DSM, čl. 102 SFEU) nebo s víceúzemními spory o označení. Jde jen o tři zprávy, protože jsem nechtěl doplňovat méně významné položky pro počet. Štítek souběhu je uveden jen tam, kde souběh existuje. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí."
+    ]
+  }
+}
