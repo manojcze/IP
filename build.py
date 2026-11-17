@@ -51,6 +51,10 @@ HESLO_HASH = "9f3fbf13"
 # Kontaktní adresa v patičce každé stránky a na přihlašovací stránce.
 KONTAKT = "legal(zavináč)onajman.cz"
 
+# Nenápadné upozornění nahoře na každé stránce.
+AI_UPOZORNENI = ("AI generovaný výstup pro vlastní osobní potřebu. "
+                 "Zákaz šíření a užívání pro jiné než edukativní účely.")
+
 
 def heslo_hash(heslo):
     """FNV-1a (32 bitů) ze solené hodnoty; stejný výpočet dělá skript na stránce."""
@@ -233,7 +237,8 @@ def card(z, v, root, kontext, also_in=None):
     odst = "\n      ".join(f"<p>{p}</p>" for p in z["odstavce"])
     dopad = z["dopad"]
     oznaceni = dopad.get("oznaceni") or "Praktický dopad:"
-    paticka = [f'<a class="src" href="{url_attr(z["zdroj"]["url"])}">Originální zdroj: {z["zdroj"]["nazev"]} →</a>']
+    zdroj = f'<a class="src" href="{url_attr(z["zdroj"]["url"])}">Originální zdroj: {z["zdroj"]["nazev"]} →</a>'
+    paticka = []
     if kontext == "vydani" and len(z["sekce"]) > 1:
         dalsi = ", ".join(f'<a href="{root}sekce/{s}.html">{SEKCE_NAZEV[s]}</a>' for s in z["sekce"][1:])
         paticka.append(f'<span class="also">Zařazeno také do sekce {dalsi}</span>')
@@ -243,14 +248,15 @@ def card(z, v, root, kontext, also_in=None):
     if also_in:
         paticka.append('<span class="also">Zpráva byla také ve vydání '
                        + ", ".join(d_short(x["_d"]) for x in also_in) + "</span>")
+    foot = f'\n      <div class="card-foot">{"".join(paticka)}</div>' if paticka else ""
     return f"""    <article class="card s-{hlavni}" id="{cid}">
       <div class="tags">{pills(z["stitky"])}</div>
       <h3>{z["nadpis"]}</h3>
       <p class="facts">{fakta}</p>
+      <p class="src-line">{zdroj}</p>
       {odst}
       <p class="why"><b>{oznaceni}</b> {dopad["text"]}</p>
-      <p class="basis">{z["podklad"]}</p>
-      <div class="card-foot">{"".join(paticka)}</div>
+      <p class="basis">{z["podklad"]}</p>{foot}
     </article>"""
 
 
@@ -334,11 +340,14 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
 </head>
 <body>
 {body_gate}
+<div class="ai-note" role="note">
+  <div class="inner">{AI_UPOZORNENI}</div>
+</div>
+
 <header class="top">
   <div class="inner">
     <div class="brand"><a href="{root}./">{brand}</a></div>
-    <h1>{h1}</h1>
-    <div class="meta-row">{meta}</div>
+    <h1>{h1}</h1>{f'{chr(10)}    <div class="meta-row">{meta}</div>' if meta else ""}
   </div>
 </header>
 
@@ -369,10 +378,13 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
 
 def issue_page(v, vydani, root, nav_current):
     d = v["_d"]
-    meta = [f"<span><strong>{d_long(d)}</strong></span>", f"<span>{issue_meta(v)}</span>"]
+    meta = [f"<span>{issue_meta(v)}</span>"]
     if v.get("zkusebni"):
         meta.append("<span>Zkušební vydání</span>")
-    parts = []
+    parts = [f"""  <div class="issue-head">
+    <h2 class="issue-date">{d_long(d)}</h2>
+    <p class="issue-meta">{"".join(meta)}</p>
+  </div>"""]
     if v.get("uvod"):
         lead = "<strong>Zkušební vydání.</strong> " if v.get("zkusebni") else ""
         parts.append(f'  <p class="trial">{lead}{v["uvod"]}</p>')
@@ -421,7 +433,7 @@ def issue_page(v, vydani, root, nav_current):
     hlavni = "; ".join(strip_tags(t["text"]) for t in v["hlavni_temata"][:2])
     return page(title=f"IP novinky {d_short(d)}", root=root,
                 brand="Přehled dvakrát týdně · duševní vlastnictví", h1="IP novinky",
-                meta="".join(meta), nav_current=nav_current, content="\n\n".join(parts),
+                meta="", nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
 
 
@@ -603,6 +615,13 @@ header.top { background: var(--navy); color: #f2f5fb; padding: 26px 0 22px; }
 header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 6vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
 .meta-row strong { color: #fff; font-weight: 600; }
+.ai-note { background: var(--navy); color: #8fa3c7; font-size: 12px; line-height: 1.4; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.ai-note .inner { padding-top: 6px; padding-bottom: 6px; }
+
+.issue-head { margin: 0 0 16px; }
+.issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.issue-meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
 nav.sections { background: var(--surface); border-bottom: 1px solid var(--line); }
 nav.sections ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
@@ -670,6 +689,7 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
 .card .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
 .card .src:hover, .card .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }

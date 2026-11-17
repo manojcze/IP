@@ -73,6 +73,13 @@ header.top { background: var(--navy); color: #f2f5fb; padding: 26px 0 22px; }
 header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 6vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
 .meta-row strong { color: #fff; font-weight: 600; }
+.ai-note { background: var(--navy); color: #8fa3c7; font-size: 12px; line-height: 1.4; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.ai-note .inner { padding-top: 6px; padding-bottom: 6px; }
+
+.issue-head { margin: 0 0 16px; }
+.issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.issue-meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
 nav.sections { background: var(--surface); border-bottom: 1px solid var(--line); }
 nav.sections ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
@@ -140,6 +147,7 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
 .card .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
 .card .src:hover, .card .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
@@ -239,6 +247,10 @@ html.ok .gate { display: none; }
   });
 })();
 </script>
+
+<div class="ai-note" role="note">
+  <div class="inner">AI generovaný výstup pro vlastní osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely.</div>
+</div>
 
 <header class="top">
   <div class="inner">

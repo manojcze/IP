@@ -73,6 +73,13 @@ header.top { background: var(--navy); color: #f2f5fb; padding: 26px 0 22px; }
 header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 6vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
 .meta-row strong { color: #fff; font-weight: 600; }
+.ai-note { background: var(--navy); color: #8fa3c7; font-size: 12px; line-height: 1.4; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.ai-note .inner { padding-top: 6px; padding-bottom: 6px; }
+
+.issue-head { margin: 0 0 16px; }
+.issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.issue-meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
 nav.sections { background: var(--surface); border-bottom: 1px solid var(--line); }
 nav.sections ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
@@ -140,6 +147,7 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
 .card .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
 .card .src:hover, .card .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
@@ -240,11 +248,14 @@ html.ok .gate { display: none; }
 })();
 </script>
 
+<div class="ai-note" role="note">
+  <div class="inner">AI generovaný výstup pro vlastní osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely.</div>
+</div>
+
 <header class="top">
   <div class="inner">
     <div class="brand"><a href=".././">Přehled dvakrát týdně · duševní vlastnictví</a></div>
     <h1>IP novinky</h1>
-    <div class="meta-row"><span><strong>Úterý 10. listopadu 2026</strong></span><span>2 zprávy + 3 na radar</span></div>
   </div>
 </header>
 
@@ -264,6 +275,11 @@ html.ok .gate { display: none; }
 
 <div class="layout has-side">
 <main class="content">
+  <div class="issue-head">
+    <h2 class="issue-date">Úterý 10. listopadu 2026</h2>
+    <p class="issue-meta"><span>2 zprávy + 3 na radar</span></p>
+  </div>
+
   <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní témata</h2>
     <ul>
@@ -280,12 +296,13 @@ html.ok .gate { display: none; }
       <div class="tags"><span class="pill tm">Ochranné známky</span><span class="pill ip">Autorské právo</span><span class="pill juris">Spojené království</span><span class="pill comp-yes">Souběh s nekalou soutěží</span></div>
       <h3>Anglický soud projedná nároky z nekalé soutěže a parazitování na pověsti podle práva devíti cizích států</h3>
       <p class="facts"><span>High Court of England and Wales (soudce Tappin)</span><span>Aviator LLC v Spribe OÜ [2026] EWHC 2840 (BP)</span><span>rozhodnuto „v pátek“ před 8. 11. 2026 (přesné datum komentář neuvádí), zveřejněno 8. 11. 2026</span></p>
+      <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html">Originální zdroj: IPKat →</a></p>
       <p>Spor se týká hazardní hry typu „crash“ (násobitel roste, hráč musí vybrat před „pádem“) označované jako Aviator. Společnost Aviator LLC uvedla hru v Gruzii v lednu 2019 s logem „Aviator“, software vytvořila Spribe. Spribe ve druhé polovině roku 2019 začala distribuovat vlastní hru pod označením „Spribe Aviator“ a s obrazovým prvkem letadla, ve Spojeném království od února 2020. Aviator uspěl v Gruzii s napadením gruzínské ochranné známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 ([2026] EWCA Civ 1224) rozhodl, že o tom, zda zahraniční rozsudek zakládá překážku věci rozsouzené (issue estoppel), rozhoduje anglické právo.</p>
       <p>Aktuální rozhodnutí řešilo procesní návrhy Spribe: změnu podání o nároky z parazitování na pověsti (passing off) a nekalé soutěže a o porušení autorských práv v devíti „spojených“ státech (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jihoafrická republika) a dalších 28 státech, dále urychlení řízení, samostatné projednání předběžných otázek a předběžná opatření. Soud vycházel z toho, že Spribe musí prokázat, že Anglie je pro tyto nároky zřetelně vhodným fórem; u devíti států uznal, že je zjevně výhodnější je projednat jednou v Anglii než v deseti jurisdikcích. Zahraniční právo považoval za podstatně podobné anglickému, protože dotčené státy jsou vázány čl. 10<i>bis</i> Pařížské úmluvy a/nebo dohodou TRIPS; strany připustily, že anglický passing off je „minimalistickou“ implementací čl. 10<i>bis</i>.</p>
       <p>Změnu podání soud povolil u devíti států, u dalších 28 ji zamítl, protože nároky nebyly dostatečně konkretizovány a nevykazovaly reálnou šanci na úspěch. Hlavní jednání nařídil urychleně na říjen 2027, samostatné projednání překážky věci rozsouzené na duben 2027. Předběžné opatření vydal jen v omezené podobě: zakazuje společnosti Aviator (v komentáři označené jako žalobce) nabízet nebo spouštět hru „crash“ pod názvem AVIATOR či podobným prvkem zaměřenou na Kolumbii, Rumunsko a Srbsko; nabídky třetích osob existující k 3. 7. 2026 mohou pokračovat. K Itálii se podle komentáře uplatnil celounijní zákaz maltských soudů. Souběh: jde o nároky z nekalé soutěže a parazitování na pověsti vedle práv k označení a autorských práv.</p>
       <p class="why"><b>Praktický dopad (podle komentáře):</b> komentář označuje rozhodnutí za první případ, kdy anglický soud přijal jurisdikci pro nároky z passing off či nekalé soutěže týkající se řady cizích států. Zajímavé je odvolání na Pařížskou úmluvu a TRIPS jako společný základ. Pro evropskou praxi je to spíše podnět k úvaze o strategii vícestátních sporů; nejde o rozhodnutí soudu členského státu EU a platnost zápisů ochranných známek se tu neřeší.</p>
       <p class="basis">Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026). Samotný rozsudek jsem nečetl. Přesné datum rozhodnutí a procesní role stran jsou převzaty z komentáře, který je vyjadřuje stručně.</p>
-      <div class="card-foot"><a class="src" href="https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html">Originální zdroj: IPKat →</a><span class="also">Zařazeno také do sekce <a href="../sekce/ochranne-znamky.html">Ochranné známky</a></span></div>
+      <div class="card-foot"><span class="also">Zařazeno také do sekce <a href="../sekce/ochranne-znamky.html">Ochranné známky</a></span></div>
     </article>
     </div>
   </section>
@@ -298,12 +315,12 @@ html.ok .gate { display: none; }
       <div class="tags"><span class="pill ip">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill comp-yes">Souběh se soutěžním právem</span></div>
       <h3>ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou</h3>
       <p class="facts"><span>Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
+      <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/zte-and-samsung-withdraw-upc-infringement-actions-in-apparent-settlement/">Originální zdroj: JUVE Patent →</a></p>
       <p>Výrobci mobilních telefonů ZTE a Samsung spolu vedli rozsáhlý spor o patenty nezbytné pro standardy 4G a 5G (SEP). Jejich licence vypršela koncem roku 2024 a nebyla obnovena. Samsung podal v prosinci 2024 žalobu u High Court v Londýně a žádal stanovení sazby FRAND pro globální portfolio ZTE, a také žalobu o uzavření smlouvy ve Frankfurtu. ZTE žalovala v Číně, v Německu a u UPC; Samsung odpověděl na začátku roku 2025 dvěma žalobami u UPC v Mannheimu. Paralelně běžela řízení u zemského soudu v Mnichově, v Brazílii a v USA.</p>
       <p>Místní oddělení v Mannheimu nyní podle JUVE Patent povolilo vzájemné stažení obou žalob a řízení uzavřelo (soudce zpravodaj Tobias Sender). Rozhodnutí samo dohodu nepotvrzuje, ale stažení tohoto rozsahu bez návrhů na náhradu nákladů obvykle znamená urovnání. Podle výzkumu JUVE byly staženy i mnichovské věci, soud to však dosud nepotvrdil. Dílčí výsledky předtím: v dubnu 2026 Mannheim zrušil patent EP 3 905 730 pro rozšíření předmětu a žalobu ZTE zamítl; patent EP 4 096 288 zrušilo námitkové oddělení EPÚ, a řízení z něj bylo proto přerušeno; v dubnu 2026 získala ZTE v Mnichově zákaz na základě EP 2 654 356.</p>
       <p>Souběh se soutěžním právem spočívá v tom, že se spor vedl o podmínky licencování SEP za podmínek FRAND a součástí byla i antitrustová žaloba. Soud v Londýně (soudce Meade) stanovil paušální částku 392 mil. USD za užívání portfolia ZTE, mezi pozicemi stran, a kritizoval „dysfunkční systém“ způsobený tím, že pravidla ETSI neobsahují mechanismus rozhodování sporů. Čínský soud v Čchung-čchingu shledal nabídku ZTE v souladu s FRAND. Frankfurtský soud zamítl Samsungovu antitrustovou žalobu proti ZTE; Mannheim odmítl pravomoc k Samsungovu FRAND protinávrhu ve prospěch dříve zahájeného řízení ve Frankfurtu.</p>
       <p class="why"><b>Praktický dopad:</b> nevznikl nový precedens, rozhodnutí jen ukončuje řízení. Případ však dobře ilustruje, jak se spory o SEP vedou souběžně u soudů několika zemí a že taktickou roli hraje volba fóra (UPC, německé soudy, Londýn, Čína). Zpráva nepotvrzuje, že Evropská komise byla v této věci zapojena.</p>
       <p class="basis">Vychází z článku JUVE Patent (Christina Schulze, 6. 11. 2026); šlo o zpravodajský text, nikoli o rozhodnutí UPC. Datum stažení žalob a spisové značky článek neuvádí, a údaje o dřívějších rozhodnutích proto nelze ověřit z primárních zdrojů.</p>
-      <div class="card-foot"><a class="src" href="https://www.juve-patent.com/cases/zte-and-samsung-withdraw-upc-infringement-actions-in-apparent-settlement/">Originální zdroj: JUVE Patent →</a></div>
     </article>
     </div>
   </section>
