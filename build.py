@@ -68,7 +68,7 @@ MIN_HLAVNICH = 3
 VYLOUCENO = re.compile(r"malých a středních podnik|\bMSP\b|SME Fund", re.IGNORECASE)
 
 # Nenápadné upozornění nahoře na každé stránce.
-AI_UPOZORNENI = ("AI generovaný výstup pro osobní potřebu. "
+AI_UPOZORNENI = ("AI automatizovaný výstup pro osobní potřebu. "
                  "Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓")
 
 
