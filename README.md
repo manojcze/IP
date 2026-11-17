@@ -117,7 +117,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
   "na_radar": [
     {
       "sekce": ["ochranne-znamky"],
-      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["ČR"], "zdroj": "Oznámení"},
+      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["ČR"], "zdroj": "Tisková zpráva"},
       "odkaz": {"url": "https://…", "text": "ÚPV, 26. 11. 2026: online seminář"},
       "text": "Jedna věta, proč je položka zajímavá.",
       "poznamka": "Nepovinné: co se nepodařilo ověřit."
@@ -164,8 +164,8 @@ Pravidla, která `build.py` kontroluje:
 - Štítek souběhu se uvádí jen tam, kde souběh existuje (nikdy „NE“ ani „bez souběhu“).
 - Každá zpráva i položka „Ve zkratce“ má typ zdroje `stitky.zdroj`, ze kterého shrnutí vychází:
   „Rozhodnutí“ (plný text rozhodnutí nebo stanoviska soudu či úřadu), „Tisková zpráva“
-  (tisková zpráva soudu, úřadu nebo instituce), „Článek“ (komentář, blog, odborný nebo
-  zpravodajský článek) nebo „Oznámení“ (oznámení úřadu, akce, seminář).
+  (tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce, např. aktuality ÚPV)
+  nebo „Článek“ (komentář, blog, odborný nebo zpravodajský článek).
 - Oblast „Ochranné známky“ se zobrazí modře, ostatní oblasti fialově.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
 

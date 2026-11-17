@@ -57,10 +57,9 @@ PODTITUL = "Nové vydání vždy v sobotu ráno"
 
 # Typ zdroje, ze kterého zpráva vychází (štítek stitky.zdroj):
 #   Rozhodnutí: plný text rozhodnutí nebo stanoviska soudu či úřadu
-#   Tisková zpráva: tisková zpráva soudu, úřadu nebo instituce
+#   Tisková zpráva: tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce
 #   Článek: komentář, blog, odborný nebo zpravodajský článek
-#   Oznámení: oznámení úřadu, akce, seminář
-TYPY_ZDROJE = ["Rozhodnutí", "Tisková zpráva", "Článek", "Oznámení"]
+TYPY_ZDROJE = ["Rozhodnutí", "Tisková zpráva", "Článek"]
 
 # Každé vydání má alespoň tolik hlavních zpráv.
 MIN_HLAVNICH = 3
@@ -281,7 +280,7 @@ def pouzite_stitky(vydani):
 
     return [
         ("Oblast", [(o, "tm" if o == "Ochranné známky" else "ip") for o in poradi(obl, ("Ochranné známky",))]),
-        (None, [("Jurisdikce", "juris")]),
+        ("Jurisdikce", None),
         ("Souběh", [(s, "comp-yes") for s in poradi(sou)]),
         ("Zdroj", [(t, typ_cls(t)) for t in TYPY_ZDROJE]),
     ]
@@ -374,9 +373,10 @@ def sidebar(vydani, root, aktualni=None):
     rows.append("</ol>")
     legenda = []
     for skupina, polozky in pouzite_stitky(vydani):
-        if polozky:
-            nadpis = f'<h3 class="lg-h">{skupina}</h3>\n      ' if skupina else ""
-            legenda.append(f'      {nadpis}<ul class="lg-list{"" if skupina else " lg-solo"}">'
+        if polozky is None:
+            legenda.append(f'      <h3 class="lg-h">{skupina}</h3>')
+        elif polozky:
+            legenda.append(f'      <h3 class="lg-h">{skupina}</h3>\n      <ul class="lg-list">'
                            + "".join(f'<li><span class="pill {cls}">{t}</span></li>' for t, cls in polozky)
                            + "</ul>")
     return f"""<aside class="side" aria-label="Seznam vydání">
@@ -876,7 +876,6 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .pill.typ::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 1px; background: currentColor; opacity: .55; vertical-align: 1px; }
 .pill.typ-rozhodnuti { background: var(--pat-soft); color: var(--pat); box-shadow: inset 0 0 0 1px var(--pat); font-weight: 600; }
 .pill.typ-rozhodnuti::before { opacity: 1; }
-.legend .lg-solo { margin-top: 12px; }
 
 .sec { margin-top: 30px; }
 .sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
