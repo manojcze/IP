@@ -4,57 +4,12 @@
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "Anglický soud připustil v jednom řízení nároky z parazitování na pověsti a nekalé soutěže podle práva řady cizích států (Aviator v Spribe)."
-    },
-    {
-      "zprava": 2,
       "text": "ZTE a Samsung stáhly vzájemné žaloby pro porušení SEP u UPC v Mannheimu, patrně po urovnání dlouhého sporu o FRAND."
     }
   ],
   "zpravy": [
     {
       "id": 1,
-      "sekce": [
-        "nekala-soutez",
-        "ochranne-znamky"
-      ],
-      "klic": "aviator-v-spribe",
-      "stitky": {
-        "oblasti": [
-          "Ochranné známky",
-          "Autorské právo"
-        ],
-        "jurisdikce": [
-          "Spojené království"
-        ],
-        "soubeh": [
-          "Souběh s nekalou soutěží"
-        ],
-        "starsi": false
-      },
-      "nadpis": "Anglický soud projedná nároky z nekalé soutěže a parazitování na pověsti podle práva devíti cizích států",
-      "fakta": [
-        "High Court of England and Wales (soudce Tappin)",
-        "Aviator LLC v Spribe OÜ [2026] EWHC 2840 (BP)",
-        "rozhodnuto „v pátek“ před 8. 11. 2026 (přesné datum komentář neuvádí), zveřejněno 8. 11. 2026"
-      ],
-      "odstavce": [
-        "Spor se týká hazardní hry typu „crash“ (násobitel roste, hráč musí vybrat před „pádem“) označované jako Aviator. Společnost Aviator LLC uvedla hru v Gruzii v lednu 2019 s logem „Aviator“, software vytvořila Spribe. Spribe ve druhé polovině roku 2019 začala distribuovat vlastní hru pod označením „Spribe Aviator“ a s obrazovým prvkem letadla, ve Spojeném království od února 2020. Aviator uspěl v Gruzii s napadením gruzínské ochranné známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 ([2026] EWCA Civ 1224) rozhodl, že o tom, zda zahraniční rozsudek zakládá překážku věci rozsouzené (issue estoppel), rozhoduje anglické právo.",
-        "Aktuální rozhodnutí řešilo procesní návrhy Spribe: změnu podání o nároky z parazitování na pověsti (passing off) a nekalé soutěže a o porušení autorských práv v devíti „spojených“ státech (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jihoafrická republika) a dalších 28 státech, dále urychlení řízení, samostatné projednání předběžných otázek a předběžná opatření. Soud vycházel z toho, že Spribe musí prokázat, že Anglie je pro tyto nároky zřetelně vhodným fórem; u devíti států uznal, že je zjevně výhodnější je projednat jednou v Anglii než v deseti jurisdikcích. Zahraniční právo považoval za podstatně podobné anglickému, protože dotčené státy jsou vázány čl. 10<i>bis</i> Pařížské úmluvy a/nebo dohodou TRIPS; strany připustily, že anglický passing off je „minimalistickou“ implementací čl. 10<i>bis</i>.",
-        "Změnu podání soud povolil u devíti států, u dalších 28 ji zamítl, protože nároky nebyly dostatečně konkretizovány a nevykazovaly reálnou šanci na úspěch. Hlavní jednání nařídil urychleně na říjen 2027, samostatné projednání překážky věci rozsouzené na duben 2027. Předběžné opatření vydal jen v omezené podobě: zakazuje společnosti Aviator (v komentáři označené jako žalobce) nabízet nebo spouštět hru „crash“ pod názvem AVIATOR či podobným prvkem zaměřenou na Kolumbii, Rumunsko a Srbsko; nabídky třetích osob existující k 3. 7. 2026 mohou pokračovat. K Itálii se podle komentáře uplatnil celounijní zákaz maltských soudů. Souběh: jde o nároky z nekalé soutěže a parazitování na pověsti vedle práv k označení a autorských práv."
-      ],
-      "dopad": {
-        "oznaceni": "Praktický dopad (podle komentáře):",
-        "text": "komentář označuje rozhodnutí za první případ, kdy anglický soud přijal jurisdikci pro nároky z passing off či nekalé soutěže týkající se řady cizích států. Zajímavé je odvolání na Pařížskou úmluvu a TRIPS jako společný základ. Pro evropskou praxi je to spíše podnět k úvaze o strategii vícestátních sporů; nejde o rozhodnutí soudu členského státu EU a platnost zápisů ochranných známek se tu neřeší."
-      },
-      "podklad": "Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026). Samotný rozsudek jsem nečetl. Přesné datum rozhodnutí a procesní role stran jsou převzaty z komentáře, který je vyjadřuje stručně.",
-      "zdroj": {
-        "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
-        "nazev": "IPKat"
-      }
-    },
-    {
-      "id": 2,
       "sekce": [
         "patenty-a-uzitne-vzory"
       ],
@@ -93,6 +48,52 @@
     }
   ],
   "na_radar": [
+    {
+      "sekce": [
+        "nekala-soutez",
+        "ochranne-znamky"
+      ],
+      "klic": "aviator-v-spribe",
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky",
+          "Autorské právo"
+        ],
+        "jurisdikce": [
+          "Spojené království"
+        ],
+        "soubeh": [
+          "Souběh s nekalou soutěží"
+        ],
+        "starsi": false
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
+        "text": "Anglický soud projedná nároky z nekalé soutěže a parazitování na pověsti podle práva devíti cizích států"
+      },
+      "text": "Anglický soud připustil v jednom řízení nároky z parazitování na pověsti a nekalé soutěže podle práva řady cizích států (Aviator v Spribe).",
+      "detail": {
+        "fakta": [
+          "High Court of England and Wales (soudce Tappin)",
+          "Aviator LLC v Spribe OÜ [2026] EWHC 2840 (BP)",
+          "rozhodnuto „v pátek“ před 8. 11. 2026 (přesné datum komentář neuvádí), zveřejněno 8. 11. 2026"
+        ],
+        "zdroj": {
+          "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
+          "nazev": "IPKat"
+        },
+        "odstavce": [
+          "Spor se týká hazardní hry typu „crash“ (násobitel roste, hráč musí vybrat před „pádem“) označované jako Aviator. Společnost Aviator LLC uvedla hru v Gruzii v lednu 2019 s logem „Aviator“, software vytvořila Spribe. Spribe ve druhé polovině roku 2019 začala distribuovat vlastní hru pod označením „Spribe Aviator“ a s obrazovým prvkem letadla, ve Spojeném království od února 2020. Aviator uspěl v Gruzii s napadením gruzínské ochranné známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 ([2026] EWCA Civ 1224) rozhodl, že o tom, zda zahraniční rozsudek zakládá překážku věci rozsouzené (issue estoppel), rozhoduje anglické právo.",
+          "Aktuální rozhodnutí řešilo procesní návrhy Spribe: změnu podání o nároky z parazitování na pověsti (passing off) a nekalé soutěže a o porušení autorských práv v devíti „spojených“ státech (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jihoafrická republika) a dalších 28 státech, dále urychlení řízení, samostatné projednání předběžných otázek a předběžná opatření. Soud vycházel z toho, že Spribe musí prokázat, že Anglie je pro tyto nároky zřetelně vhodným fórem; u devíti států uznal, že je zjevně výhodnější je projednat jednou v Anglii než v deseti jurisdikcích. Zahraniční právo považoval za podstatně podobné anglickému, protože dotčené státy jsou vázány čl. 10<i>bis</i> Pařížské úmluvy a/nebo dohodou TRIPS; strany připustily, že anglický passing off je „minimalistickou“ implementací čl. 10<i>bis</i>.",
+          "Změnu podání soud povolil u devíti států, u dalších 28 ji zamítl, protože nároky nebyly dostatečně konkretizovány a nevykazovaly reálnou šanci na úspěch. Hlavní jednání nařídil urychleně na říjen 2027, samostatné projednání překážky věci rozsouzené na duben 2027. Předběžné opatření vydal jen v omezené podobě: zakazuje společnosti Aviator (v komentáři označené jako žalobce) nabízet nebo spouštět hru „crash“ pod názvem AVIATOR či podobným prvkem zaměřenou na Kolumbii, Rumunsko a Srbsko; nabídky třetích osob existující k 3. 7. 2026 mohou pokračovat. K Itálii se podle komentáře uplatnil celounijní zákaz maltských soudů. Souběh: jde o nároky z nekalé soutěže a parazitování na pověsti vedle práv k označení a autorských práv."
+        ],
+        "dopad": {
+          "oznaceni": "Praktický dopad (podle komentáře):",
+          "text": "komentář označuje rozhodnutí za první případ, kdy anglický soud přijal jurisdikci pro nároky z passing off či nekalé soutěže týkající se řady cizích států. Zajímavé je odvolání na Pařížskou úmluvu a TRIPS jako společný základ. Pro evropskou praxi je to spíše podnět k úvaze o strategii vícestátních sporů; nejde o rozhodnutí soudu členského státu EU a platnost zápisů ochranných známek se tu neřeší."
+        },
+        "podklad": "Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026). Samotný rozsudek jsem nečetl. Přesné datum rozhodnutí a procesní role stran jsou převzaty z komentáře, který je vyjadřuje stručně."
+      }
+    },
     {
       "sekce": [
         "ostatni",
@@ -176,7 +177,8 @@
       "IPKat (kanál RSS) a EU Law Live: přístup blokují jejich pravidla pro roboty."
     ],
     "vyklad": [
-      "Období jsem vymezil od 6. 11. 2026 do rána 10. 11. 2026. Počet zpráv je záměrně nízký, protože v dostupných zdrojích nebylo víc ověřitelných novinek s dostatečným významem; nevýznamné zprávy jsem nedoplňoval. Zprávy, které byly ve zkušebním vydání (Waterdrop T-541/25, Wish, Roter Kreis, Like Company C-250/25), jsem neopakoval. Souběh označuji jen tam, kde existuje; u ZTE/Samsung jde o souběh v rámci FRAND, u Aviator v Spribe o nekalou soutěž a passing off. Zahraniční věc (Spojené království) je zařazena, protože se týká praktické otázky nekalé soutěže napříč státy. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí."
+      "Období jsem vymezil od 6. 11. 2026 do rána 10. 11. 2026. Počet zpráv je záměrně nízký, protože v dostupných zdrojích nebylo víc ověřitelných novinek s dostatečným významem; nevýznamné zprávy jsem nedoplňoval. Zprávy, které byly ve zkušebním vydání (Waterdrop T-541/25, Wish, Roter Kreis, Like Company C-250/25), jsem neopakoval. Souběh označuji jen tam, kde existuje; u ZTE/Samsung jde o souběh v rámci FRAND, u Aviator v Spribe o nekalou soutěž a passing off. Zahraniční věc (Spojené království) je zařazena, protože se týká praktické otázky nekalé soutěže napříč státy. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí.",
+      "Dodatečně upraveno 17. 11. 2026: zprávy, které se netýkají ČR ani celé EU, byly přesunuty z hlavních zpráv mezi položky Na radar; jejich celé shrnutí je u nich k rozbalení."
     ]
   }
 }

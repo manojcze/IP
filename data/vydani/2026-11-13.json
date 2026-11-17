@@ -5,14 +5,6 @@
     {
       "zprava": 1,
       "text": "EUIPO: odvolací senát potvrdil zneplatnění EU známky „Truth Social“ pro zlou víru, kdy někdo zapsal označení těsně před oficiálním spuštěním služby."
-    },
-    {
-      "zprava": 2,
-      "text": "Pařížský odvolací soud potvrdil předběžná opatření, jimiž má Meta jednat s francouzskými vydavateli tisku o odměně a poskytnout jim potřebná data."
-    },
-    {
-      "zprava": 3,
-      "text": "Anglický High Court připustil v hlavním sporu o značku AVIATOR zahraniční nároky z nekalé soutěže pro část států a urychlil hlavní líčení."
     }
   ],
   "zpravy": [
@@ -51,9 +43,10 @@
         "url": "https://ipkitten.blogspot.com/2026/11/truth-social-trade-mark-invalidated.html",
         "nazev": "IPKat"
       }
-    },
+    }
+  ],
+  "na_radar": [
     {
-      "id": 2,
       "sekce": [
         "ostatni"
       ],
@@ -69,29 +62,34 @@
         ],
         "starsi": true
       },
-      "nadpis": "Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření",
-      "fakta": [
-        "Pařížský odvolací soud (Cour d’appel de Paris)",
-        "RG 26/12580 (APIG) a RG 26/12581 (DVP)",
-        "rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026"
-      ],
-      "odstavce": [
-        "Spor se týká práva nakladatelů tisku podle čl. 15 odst. 1 směrnice o autorském právu na jednotném digitálním trhu (2019/790), které Francie provedla zákonem z 24. 7. 2019. Meta uzavřela v roce 2021 s federací vydavatelů APIG a kolektivním správcem DVP tříleté rámcové dohody o odměně. Po jejich vypršení nedospěla k nové dohodě a podle komentáře od počátku roku 2025 nic neplatí. DVP (v červenci 2025) a APIG (v září 2025) proto podaly stížnost k francouzskému soutěžnímu úřadu (Autorité de la concurrence), který rozhodnutími 26-MC-01 a 26-MC-02 z 8. 7. 2026 nařídil předběžná opatření.",
-        "Souběh spočívá v tom, že se právo vydavatelů uplatňuje prostřednictvím zneužití dominantního postavení (čl. 102 SFEU), konkrétně čl. 102 písm. a) o nepřiměřených obchodních podmínkách. Odvolací soud odvolání Mety zamítl a rozhodnutí úřadu potvrdil v plném rozsahu. Uvedl, že soutěžní úřad může při posuzování chování dominantního podniku ověřovat dodržování jiných pravidel, a že formální soulad s nimi není obranou, pokud je podnik fakticky obchází. Odmítl argument Mety, že relevantním trhem je šíření informačního obsahu, a podle soudu mají Facebook a Instagram přes 60 % francouzského trhu a 65 až 75 % v EHP.",
-        "Odměna je podle soudu spravedlivá, jen pokud odráží povahu a rozsah užití a ekonomickou hodnotu, a platforma to musí zdůvodnit. Neprůhledné podmínky a zvolený základ výpočtu mohou vést k odměně „výrazně odtržené“ od skutečného užití. Meta musí jednat v dobré víře podle průhledných, objektivních a nediskriminačních kritérií, do patnácti dnů poskytnout data potřebná k posouzení odměny a po dobu jednání nesnižovat zobrazení obsahu tisku. Opatření nezakládají přímý nárok na náhradu a nenutí Metu uzavřít licenci."
-      ],
-      "dopad": {
-        "oznaceni": "Praktický dopad:",
-        "text": "rozhodnutí je zajímavé pro uplatňování čl. 15 směrnice DSM v praxi (informační asymetrie, kdy data o užití drží jen platforma; soud odkázal na věc C-797/23). Autor komentáře naznačuje, že stejná asymetrie může platit u poskytovatelů AI, to je však jeho názor, nikoli výrok soudu. Ve věci samé soutěžní úřad dosud nerozhodl."
-      },
-      "podklad": "Vychází z komentáře IPKat (Margaux Chielle, 11. 11. 2026); samotné rozhodnutí jsem nečetl. Komentář neuvádí složení soudu, výši odměny ani to, zda je možný další opravný prostředek. Zpráva je označena jako starší, protože rozhodnutí je z 29. 10. 2026 a komentář vyšel až nyní.",
-      "zdroj": {
+      "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html",
-        "nazev": "IPKat"
+        "text": "Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření"
+      },
+      "text": "Pařížský odvolací soud potvrdil předběžná opatření, jimiž má Meta jednat s francouzskými vydavateli tisku o odměně a poskytnout jim potřebná data.",
+      "detail": {
+        "fakta": [
+          "Pařížský odvolací soud (Cour d’appel de Paris)",
+          "RG 26/12580 (APIG) a RG 26/12581 (DVP)",
+          "rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026"
+        ],
+        "zdroj": {
+          "url": "https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html",
+          "nazev": "IPKat"
+        },
+        "odstavce": [
+          "Spor se týká práva nakladatelů tisku podle čl. 15 odst. 1 směrnice o autorském právu na jednotném digitálním trhu (2019/790), které Francie provedla zákonem z 24. 7. 2019. Meta uzavřela v roce 2021 s federací vydavatelů APIG a kolektivním správcem DVP tříleté rámcové dohody o odměně. Po jejich vypršení nedospěla k nové dohodě a podle komentáře od počátku roku 2025 nic neplatí. DVP (v červenci 2025) a APIG (v září 2025) proto podaly stížnost k francouzskému soutěžnímu úřadu (Autorité de la concurrence), který rozhodnutími 26-MC-01 a 26-MC-02 z 8. 7. 2026 nařídil předběžná opatření.",
+          "Souběh spočívá v tom, že se právo vydavatelů uplatňuje prostřednictvím zneužití dominantního postavení (čl. 102 SFEU), konkrétně čl. 102 písm. a) o nepřiměřených obchodních podmínkách. Odvolací soud odvolání Mety zamítl a rozhodnutí úřadu potvrdil v plném rozsahu. Uvedl, že soutěžní úřad může při posuzování chování dominantního podniku ověřovat dodržování jiných pravidel, a že formální soulad s nimi není obranou, pokud je podnik fakticky obchází. Odmítl argument Mety, že relevantním trhem je šíření informačního obsahu, a podle soudu mají Facebook a Instagram přes 60 % francouzského trhu a 65 až 75 % v EHP.",
+          "Odměna je podle soudu spravedlivá, jen pokud odráží povahu a rozsah užití a ekonomickou hodnotu, a platforma to musí zdůvodnit. Neprůhledné podmínky a zvolený základ výpočtu mohou vést k odměně „výrazně odtržené“ od skutečného užití. Meta musí jednat v dobré víře podle průhledných, objektivních a nediskriminačních kritérií, do patnácti dnů poskytnout data potřebná k posouzení odměny a po dobu jednání nesnižovat zobrazení obsahu tisku. Opatření nezakládají přímý nárok na náhradu a nenutí Metu uzavřít licenci."
+        ],
+        "dopad": {
+          "oznaceni": "Praktický dopad:",
+          "text": "rozhodnutí je zajímavé pro uplatňování čl. 15 směrnice DSM v praxi (informační asymetrie, kdy data o užití drží jen platforma; soud odkázal na věc C-797/23). Autor komentáře naznačuje, že stejná asymetrie může platit u poskytovatelů AI, to je však jeho názor, nikoli výrok soudu. Ve věci samé soutěžní úřad dosud nerozhodl."
+        },
+        "podklad": "Vychází z komentáře IPKat (Margaux Chielle, 11. 11. 2026); samotné rozhodnutí jsem nečetl. Komentář neuvádí složení soudu, výši odměny ani to, zda je možný další opravný prostředek. Zpráva je označena jako starší, protože rozhodnutí je z 29. 10. 2026 a komentář vyšel až nyní."
       }
     },
     {
-      "id": 3,
       "sekce": [
         "nekala-soutez",
         "ochranne-znamky"
@@ -109,29 +107,33 @@
         ],
         "starsi": false
       },
-      "nadpis": "AVIATOR: anglický soud připustil zahraniční nároky z nekalé soutěže pro devět států a spor urychlil",
-      "fakta": [
-        "High Court of England and Wales (soudce Tappin)",
-        "Aviator LLC v Spribe OÜ, dle IPKat [2026] EWHC 2840 (BP)",
-        "rozhodnutí z pátku před 8. 11. 2026 (přesné datum komentář neuvádí)"
-      ],
-      "odstavce": [
-        "Spor se týká hry typu „crash game“ s logem „Aviator“, která byla spuštěna v lednu 2019 v Gruzii prostřednictvím společnosti spojené s Aviator LLC, přičemž software dodala společnost Spribe. V prosinci 2019 Spribe uvedla vlastní hru pod jinými logy, v únoru 2020 ve Spojeném království. Aviator LLC uspěla v Gruzii s napadením gruzínské známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 rozhodl ([2026] EWCA Civ 1224), že účinky gruzínského rozsudku (včetně issue estoppel) se řídí anglickým právem jako právem fóra.",
-        "Souběh s nekalou soutěží spočívá v tom, že Spribe v Anglii uplatňuje nároky z nekalé soutěže (passing off) podle práva řady cizích států. Soud (podle IPKat) vyšel z toho, že anglická úprava passing off je „minimalistickým“ provedením čl. 10bis Pařížské úmluvy, a lze proto předpokládat podstatnou podobnost s úpravou v zahraničí (odkaz i na čl. 2 odst. 1 TRIPS). Dodatečné nároky pro devět států (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jižní Afrika) připustil, protože je jasně vhodnější projednat je v Anglii než ve více zemích. Nároky pro dalších 28 států zamítl, jelikož nebyly dostatečně specifikovány a nevykazovaly reálnou naději na úspěch.",
-        "Hlavní líčení urychlil na říjen 2027 a předběžné líčení o issue estoppel stanovil na duben 2027. Předběžné opatření podle IPKat zakazuje straně Aviator uvádět na trh či nabízet crash game pod označením AVIATOR nebo podobným, a to ve vztahu ke Kolumbii, Rumunsku a Srbsku, s výjimkou platforem, které hru nabízely už k 3. 7. 2026. Itálie byla vyloučena kvůli celounijnímu soudnímu příkazu maltských soudů. Platnost známek soud ponechal příslušným národním úřadům a soudům."
-      ],
-      "dopad": {
-        "oznaceni": "Praktický dopad:",
-        "text": "rozhodnutí ukazuje, že anglický soud může po Brexitu soustředit u sebe nároky z neregistrovaných označení z více států, pokud jsou řádně vymezeny, a přitom využít podobnosti národních úprav nekalé soutěže. Pro čtenáře v ČR jde o inspiraci při koordinaci víceúzemních sporů, přímý dopad na české právo nemá (Česko mezi státy není)."
-      },
-      "podklad": "Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026); samotný rozsudek jsem nečetl. Komentář neuvádí spisovou značku řízení ani přesné datum rozsudku. Otázky nezákonnosti a společné odpovědnosti byly ponechány k dalšímu upřesnění tvrzení. Označení „Ochranné známky“ je zvoleno proto, že spor se týká označení AVIATOR a nároků z passing off.",
-      "zdroj": {
+      "odkaz": {
         "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
-        "nazev": "IPKat"
+        "text": "AVIATOR: anglický soud připustil zahraniční nároky z nekalé soutěže pro devět států a spor urychlil"
+      },
+      "text": "Anglický High Court připustil v hlavním sporu o značku AVIATOR zahraniční nároky z nekalé soutěže pro část států a urychlil hlavní líčení.",
+      "detail": {
+        "fakta": [
+          "High Court of England and Wales (soudce Tappin)",
+          "Aviator LLC v Spribe OÜ, dle IPKat [2026] EWHC 2840 (BP)",
+          "rozhodnutí z pátku před 8. 11. 2026 (přesné datum komentář neuvádí)"
+        ],
+        "zdroj": {
+          "url": "https://ipkitten.blogspot.com/2026/11/aviator-v-spribe-foreign-unfair.html",
+          "nazev": "IPKat"
+        },
+        "odstavce": [
+          "Spor se týká hry typu „crash game“ s logem „Aviator“, která byla spuštěna v lednu 2019 v Gruzii prostřednictvím společnosti spojené s Aviator LLC, přičemž software dodala společnost Spribe. V prosinci 2019 Spribe uvedla vlastní hru pod jinými logy, v únoru 2020 ve Spojeném království. Aviator LLC uspěla v Gruzii s napadením gruzínské známky Spribe z důvodu autorských práv a Nejvyšší soud Gruzie to v roce 2025 potvrdil. Odvolací soud Anglie a Walesu v říjnu 2026 rozhodl ([2026] EWCA Civ 1224), že účinky gruzínského rozsudku (včetně issue estoppel) se řídí anglickým právem jako právem fóra.",
+          "Souběh s nekalou soutěží spočívá v tom, že Spribe v Anglii uplatňuje nároky z nekalé soutěže (passing off) podle práva řady cizích států. Soud (podle IPKat) vyšel z toho, že anglická úprava passing off je „minimalistickým“ provedením čl. 10bis Pařížské úmluvy, a lze proto předpokládat podstatnou podobnost s úpravou v zahraničí (odkaz i na čl. 2 odst. 1 TRIPS). Dodatečné nároky pro devět států (Kanada, Kolumbie, Ghana, Itálie, Keňa, Mexiko, Rumunsko, Srbsko, Jižní Afrika) připustil, protože je jasně vhodnější projednat je v Anglii než ve více zemích. Nároky pro dalších 28 států zamítl, jelikož nebyly dostatečně specifikovány a nevykazovaly reálnou naději na úspěch.",
+          "Hlavní líčení urychlil na říjen 2027 a předběžné líčení o issue estoppel stanovil na duben 2027. Předběžné opatření podle IPKat zakazuje straně Aviator uvádět na trh či nabízet crash game pod označením AVIATOR nebo podobným, a to ve vztahu ke Kolumbii, Rumunsku a Srbsku, s výjimkou platforem, které hru nabízely už k 3. 7. 2026. Itálie byla vyloučena kvůli celounijnímu soudnímu příkazu maltských soudů. Platnost známek soud ponechal příslušným národním úřadům a soudům."
+        ],
+        "dopad": {
+          "oznaceni": "Praktický dopad:",
+          "text": "rozhodnutí ukazuje, že anglický soud může po Brexitu soustředit u sebe nároky z neregistrovaných označení z více států, pokud jsou řádně vymezeny, a přitom využít podobnosti národních úprav nekalé soutěže. Pro čtenáře v ČR jde o inspiraci při koordinaci víceúzemních sporů, přímý dopad na české právo nemá (Česko mezi státy není)."
+        },
+        "podklad": "Vychází z komentáře IPKat (Jocelyn Bosse, 8. 11. 2026); samotný rozsudek jsem nečetl. Komentář neuvádí spisovou značku řízení ani přesné datum rozsudku. Otázky nezákonnosti a společné odpovědnosti byly ponechány k dalšímu upřesnění tvrzení. Označení „Ochranné známky“ je zvoleno proto, že spor se týká označení AVIATOR a nároků z passing off."
       }
-    }
-  ],
-  "na_radar": [
+    },
     {
       "sekce": [
         "ochranne-znamky"
@@ -206,7 +208,8 @@
     ],
     "nedostupne": [],
     "vyklad": [
-      "V archivu je pouze zkušební vydání ze 7. 11. 2026; vydání z úterý 10. 11. 2026 nevyšlo. Páteční vydání proto pokrývá celé období od 6. 11. do 13. 11. 2026, aby na zkušební vydání navazovalo bez mezery. Zprávy z jiných jurisdikcí (Francie, Spojené království) jsem zařadil, protože souvisejí s právem EU (čl. 15 směrnice DSM, čl. 102 SFEU) nebo s víceúzemními spory o označení. Jde jen o tři zprávy, protože jsem nechtěl doplňovat méně významné položky pro počet. Štítek souběhu je uveden jen tam, kde souběh existuje. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí."
+      "V archivu je pouze zkušební vydání ze 7. 11. 2026; vydání z úterý 10. 11. 2026 nevyšlo. Páteční vydání proto pokrývá celé období od 6. 11. do 13. 11. 2026, aby na zkušební vydání navazovalo bez mezery. Zprávy z jiných jurisdikcí (Francie, Spojené království) jsem zařadil, protože souvisejí s právem EU (čl. 15 směrnice DSM, čl. 102 SFEU) nebo s víceúzemními spory o označení. Jde jen o tři zprávy, protože jsem nechtěl doplňovat méně významné položky pro počet. Štítek souběhu je uveden jen tam, kde souběh existuje. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí.",
+      "Dodatečně upraveno 17. 11. 2026: zprávy, které se netýkají ČR ani celé EU, byly přesunuty z hlavních zpráv mezi položky Na radar; jejich celé shrnutí je u nich k rozbalení."
     ]
   }
 }

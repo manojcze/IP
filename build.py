@@ -51,6 +51,9 @@ HESLO_HASH = "9f3fbf13"
 # Kontaktní adresa v patičce každé stránky a na přihlašovací stránce.
 KONTAKT = "legal(zavináč)onajman.cz"
 
+# Název webu v hlavičce a v titulcích stránek.
+NAZEV = "Monitoring IP zpráv"
+
 # Nenápadné upozornění nahoře na každé stránce.
 AI_UPOZORNENI = ("AI generovaný výstup pro vlastní osobní potřebu. "
                  "Zákaz šíření a užívání pro jiné než edukativní účely.")
@@ -84,7 +87,12 @@ def plural(n, one, few, many):
 
 
 def pocet_zprav(n):
-    return f"{n} {plural(n, 'zpráva', 'zprávy', 'zpráv')}"
+    return f"{n} {plural(n, 'Hlavní zpráva', 'Hlavní zprávy', 'Hlavních zpráv')}"
+
+
+def je_cr_eu(stitky):
+    """Zpráva se týká ČR nebo celé EU (jurisdikce „ČR“ nebo začínající „EU“, např. „EU (UPC)“)."""
+    return any(j == "ČR" or j.startswith("EU") for j in stitky.get("jurisdikce", []))
 
 
 def d_long(d):
@@ -165,6 +173,9 @@ def load_issue(path):
         zdroj = z.get("zdroj") or {}
         if not str(zdroj.get("url", "")).startswith("http") or not zdroj.get("nazev"):
             chyby.append(f"{kde}: chybí odkaz na originální zdroj (url a nazev)")
+        if isinstance(z.get("stitky"), dict) and not je_cr_eu(z["stitky"]) and not z.get("vyjimka"):
+            chyby.append(f"{kde}: netýká se ČR ani celé EU, patří do Na radar "
+                         "(nebo uveďte důvod výjimky v poli vyjimka)")
     ht = v.get("hlavni_temata", [])
     if len(ht) > 5:
         chyby.append(f"{name}: hlavních témat může být nejvýš 5")
@@ -172,8 +183,8 @@ def load_issue(path):
         if t.get("zprava") not in ids:
             chyby.append(f"{name}: hlavní téma odkazuje na neexistující zprávu {t.get('zprava')}")
     radar = v.get("na_radar", [])
-    if len(radar) > 3:
-        chyby.append(f"{name}: položek Na radar může být nejvýš 3")
+    if len(radar) > 10:
+        chyby.append(f"{name}: položek Na radar může být nejvýš 10")
     for i, r in enumerate(radar):
         kde = f"{name}, Na radar {i + 1}"
         check_sekce(r.get("sekce"), kde, chyby)
@@ -181,6 +192,9 @@ def load_issue(path):
         odkaz = r.get("odkaz") or {}
         if not str(odkaz.get("url", "")).startswith("http") or not odkaz.get("text"):
             chyby.append(f"{kde}: chybí odkaz (url a text)")
+        det = r.get("detail")
+        if det is not None and (not isinstance(det, dict) or not det.get("odstavce") or not det.get("fakta")):
+            chyby.append(f"{kde}: detail musí obsahovat fakta a odstavce")
     if chyby:
         raise Chyba("\n".join(chyby))
     v.setdefault("na_radar", [])
@@ -219,11 +233,30 @@ def pills(st):
 
 
 def issue_meta(v):
-    n, r = len(v["zpravy"]), len(v["na_radar"])
-    s = pocet_zprav(n)
-    if r:
-        s += f" + {r} na radar"
-    return s
+    return f'{pocet_zprav(len(v["zpravy"]))} · {len(v["na_radar"])} na radar'
+
+
+def pouzite_stitky(vydani):
+    """Všechny štítky použité ve vydáních, seřazené podle četnosti."""
+    from collections import Counter
+    obl, jur, sou, starsi = Counter(), Counter(), Counter(), False
+    for v in vydani:
+        for x in v["zpravy"] + v["na_radar"]:
+            st = x["stitky"]
+            obl.update(st.get("oblasti", []))
+            jur.update(st.get("jurisdikce", []))
+            sou.update(st.get("soubeh", []))
+            starsi = starsi or bool(st.get("starsi"))
+
+    def poradi(c, prvni=()):
+        return sorted(c, key=lambda k: (k not in prvni, prvni.index(k) if k in prvni else 0, -c[k], k))
+
+    return {
+        "Oblast": [(o, "tm" if o == "Ochranné známky" else "ip") for o in poradi(obl, ("Ochranné známky",))],
+        "Jurisdikce": [(j, "juris") for j in poradi(jur, ("ČR", "EU"))],
+        "Souběh": [(s, "comp-yes") for s in poradi(sou)],
+        "Další": [("Starší zpráva", "old")] if starsi else [],
+    }
 
 
 def card(z, v, root, kontext, also_in=None):
@@ -260,16 +293,37 @@ def card(z, v, root, kontext, also_in=None):
     </article>"""
 
 
-def radar_item(r, root, v=None):
+def radar_item(r, root, rid, v=None, also_in=None):
+    """Položka Na radar. rid = pořadí ve vydání (od 1); v = vydání, pokud jde o stránku sekce."""
     poznamka = f'<div class="note">{r["poznamka"]}</div>' if r.get("poznamka") else ""
     text = f': {r["text"]}' if r.get("text") else ""
+    detail = ""
+    det = r.get("detail")
+    if det:
+        fakta = "".join(f"<span>{f}</span>" for f in det["fakta"])
+        zdroj = det.get("zdroj") or {}
+        src = (f'<p class="src-line"><a class="src" href="{url_attr(zdroj["url"])}">Originální zdroj: {zdroj["nazev"]} →</a></p>'
+               if zdroj.get("url") and zdroj.get("nazev") else "")
+        odst = "".join(f"<p>{p}</p>" for p in det["odstavce"])
+        dopad = det.get("dopad") or {}
+        why = (f'<p class="why"><b>{dopad.get("oznaceni") or "Praktický dopad:"}</b> {dopad["text"]}</p>'
+               if dopad.get("text") else "")
+        basis = f'<p class="basis">{det["podklad"]}</p>' if det.get("podklad") else ""
+        detail = (f'\n        <details class="more"><summary>Celé shrnutí</summary>'
+                  f'<div class="more-body"><p class="facts">{fakta}</p>{src}{odst}{why}{basis}</div></details>')
     odkud = ""
     if v is not None:
-        odkud = f'<div class="note"><a href="{root}archiv/{v["datum"]}.html#na-radar">Z vydání {d_short(v["_d"])}</a></div>'
-    return f"""      <li>
+        odkud = f'<div class="note"><a href="{root}archiv/{v["datum"]}.html#radar-{rid}">Z vydání {d_short(v["_d"])}</a></div>'
+        lid = f'v{v["datum"]}-radar-{rid}'
+    else:
+        lid = f"radar-{rid}"
+    if also_in:
+        odkud += ('<div class="note">Zpráva byla také ve vydání '
+                  + ", ".join(d_short(x["_d"]) for x in also_in) + "</div>")
+    return f"""      <li id="{lid}">
         <div class="l1">{pills(r["stitky"])}</div>
-        <a href="{url_attr(r["odkaz"]["url"])}">{r["odkaz"]["text"]}</a>{text}
-        {poznamka}{odkud}
+        <a class="rl" href="{url_attr(r["odkaz"]["url"])}">{r["odkaz"]["text"]}</a>{text}
+        {poznamka}{odkud}{detail}
       </li>"""
 
 
@@ -286,13 +340,14 @@ def sidebar(vydani, root, aktualni=None):
         tag = " · zkušební" if v.get("zkusebni") else ""
         rows.append(f'<li><a href="{root}archiv/{v["datum"]}.html"{cur}>'
                     f'<span class="d">{DNY[d.weekday()].capitalize()} {d.day}. {d.month}.</span>'
-                    f'<span class="m">{pocet_zprav(len(v["zpravy"]))}{tag}</span></a></li>')
+                    f'<span class="m">{issue_meta(v)}{tag}</span></a></li>')
     rows.append("</ol>")
-    legenda = ('<span class="pill tm">Ochranné známky</span>'
-               '<span class="pill ip">Jiná oblast IP</span>'
-               '<span class="pill juris">Jurisdikce</span>'
-               '<span class="pill comp-yes">Souběh se soutěžním právem / s nekalou soutěží</span>'
-               '<span class="pill old">Starší zpráva</span>')
+    legenda = []
+    for skupina, polozky in pouzite_stitky(vydani).items():
+        if polozky:
+            legenda.append(f'      <h3 class="lg-h">{skupina}</h3>\n      <ul class="lg-list">'
+                           + "".join(f'<li><span class="pill {cls}">{t}</span></li>' for t, cls in polozky)
+                           + "</ul>")
     return f"""<aside class="side" aria-label="Seznam vydání">
   <div class="side-inner">
     <section class="panel issues">
@@ -302,7 +357,7 @@ def sidebar(vydani, root, aktualni=None):
     </section>
     <section class="panel legend">
       <h2>Štítky</h2>
-      <div class="pills">{legenda}</div>
+{chr(10).join(legenda)}
     </section>
   </div>
 </aside>"""
@@ -311,10 +366,12 @@ def sidebar(vydani, root, aktualni=None):
 def page(*, title, root, brand, h1, meta, nav_current, content, side=None, description=""):
     nav = [("index", f"{root}./" if root else "./", "Aktuální vydání", "")]
     nav += [(slug, f"{root}sekce/{slug}.html", nazev, f" s-{slug}") for slug, nazev in SEKCE]
-    nav.append(("archiv", f"{root}archiv/", "Všechna vydání", ""))
+    nav.append(("archiv", f"{root}archiv/", "Všechna vydání", " nl-arch"))
     cur = ' aria-current="page"'
+    li_arch = ' class="li-arch"'
     nav_html = "\n".join(
-        f'      <li><a class="nl{cls}" href="{href}"{cur if key == nav_current else ""}>{label}</a></li>'
+        f'      <li{li_arch if key == "archiv" else ""}><a class="nl{cls}" href="{href}"'
+        f'{cur if key == nav_current else ""}>{label}</a></li>'
         for key, href, label, cls in nav)
     layout_cls = "layout has-side" if side else "layout"
     desc = f'\n<meta name="description" content="{esc(description)}">' if description else ""
@@ -330,7 +387,8 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{esc(title)}</title>{desc}{head_gate}
+<title>{esc(title)}</title>{desc}
+{THEME_HEAD}{head_gate}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -346,8 +404,14 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
 
 <header class="top">
   <div class="inner">
-    <div class="brand"><a href="{root}./">{brand}</a></div>
-    <h1>{h1}</h1>{f'{chr(10)}    <div class="meta-row">{meta}</div>' if meta else ""}
+    <div class="head-main">
+      <div class="brand"><a href="{root}./">{brand}</a></div>
+      <h1>{h1}</h1>{f'{chr(10)}      <div class="meta-row">{meta}</div>' if meta else ""}
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false">
+      <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+      <span class="tt-label">Tmavý režim</span>
+    </button>
   </div>
 </header>
 
@@ -369,6 +433,7 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
 <footer class="site-foot">
   <div class="inner">{KONTAKT}</div>
 </footer>
+{THEME_BODY}
 </body>
 </html>
 """
@@ -412,7 +477,7 @@ def issue_page(v, vydani, root, nav_current):
     </div>
   </section>""")
     if v["na_radar"]:
-        items = "\n".join(radar_item(r, root) for r in v["na_radar"])
+        items = "\n".join(radar_item(r, root, i + 1) for i, r in enumerate(v["na_radar"]))
         parts.append(f"""  <section class="radar" id="na-radar" aria-labelledby="radar-h">
     <h2 class="section-title" id="radar-h">Na radar</h2>
     <ul>
@@ -431,8 +496,8 @@ def issue_page(v, vydani, root, nav_current):
     foot.append(f'    <p><a href="{root}archiv/">Všechna vydání</a></p>')
     parts.append('  <footer class="foot">\n' + "\n".join(foot) + "\n  </footer>")
     hlavni = "; ".join(strip_tags(t["text"]) for t in v["hlavni_temata"][:2])
-    return page(title=f"IP novinky {d_short(d)}", root=root,
-                brand="Přehled dvakrát týdně · duševní vlastnictví", h1="IP novinky",
+    return page(title=f"{NAZEV} {d_short(d)}", root=root,
+                brand="Nový přehled vždy v úterý a pátek ráno", h1=NAZEV,
                 meta="", nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
 
@@ -443,23 +508,33 @@ def section_page(slug, nazev, vydani):
     groups, n_z, n_r, n_v = [], 0, 0, 0
     # Starší výskyty stejné věci (pole klic) se nezobrazí, jen se uvedou u nejnovější verze.
     for v in vydani:
-        for z in v["zpravy"]:
+        for z in v["zpravy"] + v["na_radar"]:
             if z.get("klic"):
                 seen.setdefault(z["klic"], []).append(v)
     shown = set()
+
+    def poprve(x, v):
+        """Vrátí (zobrazit?, seznam dalších vydání se stejnou věcí)."""
+        k = x.get("klic")
+        if not k:
+            return True, None
+        if k in shown:
+            return False, None
+        shown.add(k)
+        return True, [y for y in seen[k] if y is not v]
+
     for v in vydani:
-        zz = []
+        zz, rr = [], []
         for z in v["zpravy"]:
-            if slug not in z["sekce"]:
-                continue
-            k = z.get("klic")
-            if k and k in shown:
-                continue
-            if k:
-                shown.add(k)
-            also = [x for x in seen.get(k, []) if x is not v] if k else None
-            zz.append(card(z, v, root, "sekce", also_in=also))
-        rr = [radar_item(r, root) for r in v["na_radar"] if slug in r["sekce"]]
+            if slug in z["sekce"]:
+                ok, also = poprve(z, v)
+                if ok:
+                    zz.append(card(z, v, root, "sekce", also_in=also))
+        for i, r in enumerate(v["na_radar"]):
+            if slug in r["sekce"]:
+                ok, also = poprve(r, v)
+                if ok:
+                    rr.append(radar_item(r, root, i + 1, v=v, also_in=also))
         if not zz and not rr:
             continue
         n_z += len(zz)
@@ -488,9 +563,9 @@ def section_page(slug, nazev, vydani):
         meta += f"<span>z {n_v} {plural(n_v, 'vydání', 'vydání', 'vydání')}</span>"
     else:
         meta = "<span>Zatím bez zpráv</span>"
-    return page(title=f"{nazev} – IP novinky", root=root, brand="IP novinky · sekce", h1=nazev,
+    return page(title=f"{nazev} – {NAZEV}", root=root, brand=f"{NAZEV} · sekce", h1=nazev,
                 meta=meta, nav_current=slug, content=content, side=sidebar(vydani, root),
-                description=f"Přehled novinek z oblasti {nazev.lower()} ze všech vydání IP novinek.")
+                description=f"Přehled novinek z oblasti {nazev.lower()} ze všech vydání.")
 
 
 def archive_page(vydani):
@@ -507,9 +582,9 @@ def archive_page(vydani):
     content = ('  <ol class="arch">\n' + "\n".join(items) + "\n  </ol>\n\n"
                f'  <footer class="foot">\n    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>\n  </footer>')
     n = len(vydani)
-    return page(title="Všechna vydání – IP novinky", root=root, brand="IP novinky",
+    return page(title=f"Všechna vydání – {NAZEV}", root=root, brand=NAZEV,
                 h1="Všechna vydání", meta=f"<span>{n} {plural(n, 'vydání', 'vydání', 'vydání')}</span>",
-                nav_current="archiv", content=content, description="Archiv všech vydání IP novinek.")
+                nav_current="archiv", content=content, description="Archiv všech vydání.")
 
 
 # ---------------------------------------------------------------- zápis
@@ -609,6 +684,16 @@ a:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; border-radi
 .inner { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
 
 header.top { background: var(--navy); color: #f2f5fb; padding: 26px 0 22px; }
+header.top .inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px 20px; }
+.head-main { min-width: 0; }
+.theme-toggle { flex: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; padding: 6px 4px; background: none; border: 0; color: #c3d0ea; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.theme-toggle:hover { color: #fff; }
+.theme-toggle:focus-visible { outline: 2px solid #9fb4da; outline-offset: 2px; border-radius: 4px; }
+.tt-track { position: relative; width: 36px; height: 20px; border-radius: 999px; background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); transition: background .15s ease; }
+.tt-thumb { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .15s ease; }
+.theme-toggle[aria-checked="true"] .tt-track { background: #6fa3f2; }
+.theme-toggle[aria-checked="true"] .tt-thumb { transform: translateX(16px); }
+@media (max-width: 480px) { .tt-label { display: none; } }
 .brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #9fb4da; font-weight: 600; }
 .brand a { color: inherit; text-decoration: none; }
 .brand a:hover { color: #fff; }
@@ -630,6 +715,10 @@ nav.sections li:first-child a { padding-left: 0; }
 nav.sections a { display: block; padding: 13px 12px 10px; font-weight: 600; font-size: 15px; color: var(--muted); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
 nav.sections a:hover { color: var(--ink); }
 nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--sc, var(--ink)); }
+nav.sections li.li-arch { margin-left: auto; padding-left: 8px; }
+nav.sections a.nl-arch { margin: 7px 0; padding: 6px 14px; border: 0; border-radius: 999px; background: var(--tm-soft); color: var(--tm); }
+nav.sections a.nl-arch:hover { color: var(--tm); box-shadow: inset 0 0 0 1.5px var(--tm); }
+nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(--surface); }
 
 .layout { max-width: 1180px; margin: 0 auto; padding: 22px 16px 56px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
 .content { min-width: 0; max-width: 760px; }
@@ -644,14 +733,16 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .issues .month { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
 .issues h2 + .month { margin-top: 4px; }
 .issues ol { list-style: none; margin: 0; padding: 0; }
-.issues ol a { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 7px 10px; margin: 0 -10px; border-radius: 6px; text-decoration: none; color: var(--ink); }
+.issues ol a { display: block; padding: 7px 10px; margin: 0 -10px; border-radius: 6px; text-decoration: none; color: var(--ink); }
 .issues ol a:hover { background: var(--bg); }
 .issues ol a[aria-current="page"] { background: var(--tm-soft); color: var(--tm); }
-.issues .d { font-weight: 600; font-variant-numeric: tabular-nums; }
-.issues .m { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.issues .d { display: block; font-weight: 600; font-variant-numeric: tabular-nums; }
+.issues .m { display: block; font-size: 13px; color: var(--muted); }
 .issues .arch-link { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; }
 .issues .arch-link a { color: var(--tm); font-weight: 600; text-decoration: none; }
-.legend .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.legend .lg-h { font-size: 13px; font-weight: 600; color: var(--muted); margin: 12px 0 6px; }
+.legend h2 + .lg-h { margin-top: 4px; }
+.legend .lg-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .legend .pill { white-space: normal; line-height: 1.3; padding: 4px 10px; }
 
 .trial { margin: 0 0 18px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; background: var(--surface); font-size: 14px; color: var(--muted); }
@@ -691,8 +782,8 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
 .card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
-.card .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
-.card .src:hover, .card .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
+.card .src, .more .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
+.card .src:hover, .card .src:focus-visible, .more .src:hover, .more .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
 .card .also { font-size: 13.5px; color: var(--muted); }
 .card a.also, .card .also a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 .card a.also:hover, .card .also a:hover { color: var(--ink); }
@@ -701,10 +792,22 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .radar ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .radar li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 15px; }
 .radar li .l1 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
-.radar li > a { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.radar li > a.rl { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
 .radar li .note { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
 .radar li .note a { color: inherit; }
 .radar.compact { margin-top: 18px; }
+.more { margin-top: 8px; }
+.more summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); width: fit-content; }
+.more summary:hover { color: var(--ink); }
+.more summary:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; border-radius: 2px; }
+.more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.more-body p { margin: 0 0 10px; max-width: 78ch; }
+.more-body .facts { font-size: 13.5px; color: var(--muted); }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .src-line { margin: -4px 0 12px; }
+.more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
+.more-body .why b { font-weight: 600; }
+.more-body .basis { font-size: 13px; color: var(--muted); margin-bottom: 0; }
 .radar.compact .section-title { font-size: 17px; }
 
 .grp + .grp { margin-top: 34px; }
@@ -740,6 +843,30 @@ footer.foot a { color: var(--ink); }
   .card .src { transition: background .15s ease; }
 }"""
 
+
+# Přepínač světlého a tmavého režimu. Bez volby se řídí nastavením systému,
+# zvolený režim si prohlížeč zapamatuje.
+THEME_HEAD = """<script>
+try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>"""
+
+THEME_BODY = """<script>
+(function () {
+  var b = document.getElementById("theme-toggle");
+  if (!b) return;
+  var root = document.documentElement, mq = window.matchMedia("(prefers-color-scheme: dark)");
+  function rezim() { return root.getAttribute("data-theme") || (mq.matches ? "dark" : "light"); }
+  function sync() { b.setAttribute("aria-checked", rezim() === "dark" ? "true" : "false"); }
+  b.addEventListener("click", function () {
+    var n = rezim() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", n);
+    try { localStorage.setItem("ipnovinky-rezim", n); } catch (e) {}
+    sync();
+  });
+  if (mq.addEventListener) mq.addEventListener("change", sync);
+  sync();
+})();
+</script>"""
 
 # Vstup heslem: dokud návštěvník nezadá heslo, vidí jen formulář. Správné heslo si
 # prohlížeč zapamatuje (localStorage), takže se na dalších stránkách už neptá.

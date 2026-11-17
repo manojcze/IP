@@ -3,9 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Patenty a užitné vzory – IP novinky</title>
-<meta name="description" content="Přehled novinek z oblasti patenty a užitné vzory ze všech vydání IP novinek.">
+<title>Patenty a užitné vzory – Monitoring IP zpráv</title>
+<meta name="description" content="Přehled novinek z oblasti patenty a užitné vzory ze všech vydání.">
 <meta name="robots" content="noindex, nofollow">
+<script>
+try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
 <script>
 (function () {
   var k = "ipnovinky-pristup", t = "9f3fbf13";
@@ -67,6 +70,16 @@ a:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; border-radi
 .inner { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
 
 header.top { background: var(--navy); color: #f2f5fb; padding: 26px 0 22px; }
+header.top .inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px 20px; }
+.head-main { min-width: 0; }
+.theme-toggle { flex: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; padding: 6px 4px; background: none; border: 0; color: #c3d0ea; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.theme-toggle:hover { color: #fff; }
+.theme-toggle:focus-visible { outline: 2px solid #9fb4da; outline-offset: 2px; border-radius: 4px; }
+.tt-track { position: relative; width: 36px; height: 20px; border-radius: 999px; background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); transition: background .15s ease; }
+.tt-thumb { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .15s ease; }
+.theme-toggle[aria-checked="true"] .tt-track { background: #6fa3f2; }
+.theme-toggle[aria-checked="true"] .tt-thumb { transform: translateX(16px); }
+@media (max-width: 480px) { .tt-label { display: none; } }
 .brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #9fb4da; font-weight: 600; }
 .brand a { color: inherit; text-decoration: none; }
 .brand a:hover { color: #fff; }
@@ -88,6 +101,10 @@ nav.sections li:first-child a { padding-left: 0; }
 nav.sections a { display: block; padding: 13px 12px 10px; font-weight: 600; font-size: 15px; color: var(--muted); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
 nav.sections a:hover { color: var(--ink); }
 nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--sc, var(--ink)); }
+nav.sections li.li-arch { margin-left: auto; padding-left: 8px; }
+nav.sections a.nl-arch { margin: 7px 0; padding: 6px 14px; border: 0; border-radius: 999px; background: var(--tm-soft); color: var(--tm); }
+nav.sections a.nl-arch:hover { color: var(--tm); box-shadow: inset 0 0 0 1.5px var(--tm); }
+nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(--surface); }
 
 .layout { max-width: 1180px; margin: 0 auto; padding: 22px 16px 56px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
 .content { min-width: 0; max-width: 760px; }
@@ -102,14 +119,16 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .issues .month { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
 .issues h2 + .month { margin-top: 4px; }
 .issues ol { list-style: none; margin: 0; padding: 0; }
-.issues ol a { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 7px 10px; margin: 0 -10px; border-radius: 6px; text-decoration: none; color: var(--ink); }
+.issues ol a { display: block; padding: 7px 10px; margin: 0 -10px; border-radius: 6px; text-decoration: none; color: var(--ink); }
 .issues ol a:hover { background: var(--bg); }
 .issues ol a[aria-current="page"] { background: var(--tm-soft); color: var(--tm); }
-.issues .d { font-weight: 600; font-variant-numeric: tabular-nums; }
-.issues .m { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.issues .d { display: block; font-weight: 600; font-variant-numeric: tabular-nums; }
+.issues .m { display: block; font-size: 13px; color: var(--muted); }
 .issues .arch-link { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; }
 .issues .arch-link a { color: var(--tm); font-weight: 600; text-decoration: none; }
-.legend .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.legend .lg-h { font-size: 13px; font-weight: 600; color: var(--muted); margin: 12px 0 6px; }
+.legend h2 + .lg-h { margin-top: 4px; }
+.legend .lg-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
 .legend .pill { white-space: normal; line-height: 1.3; padding: 4px 10px; }
 
 .trial { margin: 0 0 18px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; background: var(--surface); font-size: 14px; color: var(--muted); }
@@ -149,8 +168,8 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
 .card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
-.card .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
-.card .src:hover, .card .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
+.card .src, .more .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
+.card .src:hover, .card .src:focus-visible, .more .src:hover, .more .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
 .card .also { font-size: 13.5px; color: var(--muted); }
 .card a.also, .card .also a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
 .card a.also:hover, .card .also a:hover { color: var(--ink); }
@@ -159,10 +178,22 @@ nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: va
 .radar ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .radar li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 15px; }
 .radar li .l1 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
-.radar li > a { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.radar li > a.rl { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
 .radar li .note { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
 .radar li .note a { color: inherit; }
 .radar.compact { margin-top: 18px; }
+.more { margin-top: 8px; }
+.more summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); width: fit-content; }
+.more summary:hover { color: var(--ink); }
+.more summary:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; border-radius: 2px; }
+.more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.more-body p { margin: 0 0 10px; max-width: 78ch; }
+.more-body .facts { font-size: 13.5px; color: var(--muted); }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .src-line { margin: -4px 0 12px; }
+.more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
+.more-body .why b { font-weight: 600; }
+.more-body .basis { font-size: 13px; color: var(--muted); margin-bottom: 0; }
 .radar.compact .section-title { font-size: 17px; }
 
 .grp + .grp { margin-top: 34px; }
@@ -254,9 +285,15 @@ html.ok .gate { display: none; }
 
 <header class="top">
   <div class="inner">
-    <div class="brand"><a href=".././">IP novinky · sekce</a></div>
-    <h1>Patenty a užitné vzory</h1>
-    <div class="meta-row"><span><strong>1 zpráva</strong></span><span>1 na radar</span><span>z 2 vydání</span></div>
+    <div class="head-main">
+      <div class="brand"><a href=".././">Monitoring IP zpráv · sekce</a></div>
+      <h1>Patenty a užitné vzory</h1>
+      <div class="meta-row"><span><strong>1 Hlavní zpráva</strong></span><span>1 na radar</span><span>z 2 vydání</span></div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false">
+      <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+      <span class="tt-label">Tmavý režim</span>
+    </button>
   </div>
 </header>
 
@@ -269,7 +306,7 @@ html.ok .gate { display: none; }
       <li><a class="nl s-prumyslove-vzory" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li>
       <li><a class="nl s-patenty-a-uzitne-vzory" href="../sekce/patenty-a-uzitne-vzory.html" aria-current="page">Patenty a užitné vzory</a></li>
       <li><a class="nl s-ostatni" href="../sekce/ostatni.html">Ostatní</a></li>
-      <li><a class="nl" href="../archiv/">Všechna vydání</a></li>
+      <li class="li-arch"><a class="nl nl-arch" href="../archiv/">Všechna vydání</a></li>
     </ul>
   </div>
 </nav>
@@ -281,10 +318,10 @@ html.ok .gate { display: none; }
   <section class="grp" aria-labelledby="g-2026-11-13">
     <h2 class="grp-h" id="g-2026-11-13"><a href="../archiv/2026-11-13.html">Pátek 13. listopadu 2026</a></h2>
     <div class="radar compact"><h3 class="section-title">Na radar</h3><ul>
-      <li>
+      <li id="v2026-11-13-radar-5">
         <div class="l1"><span class="pill ip">Patenty</span><span class="pill juris">EU (UPC)</span></div>
-        <a href="https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html">IPKat, 3. 11. 2026: hostující příspěvek Rafała Sikorského o německých místních divizích UPC</a>: autor tvrdí, že německé divize rozhodují přes 75 % sporů prvního stupně, a staví se proti zřizování dalších senátů nad rámec čl. 7 odst. 4 Dohody o UPC. Jde o názorový příspěvek, nikoli rozhodnutí.
-        <div class="note">Zdroj čísel autor neuvádí; k prověření.</div>
+        <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html">IPKat, 3. 11. 2026: hostující příspěvek Rafała Sikorského o německých místních divizích UPC</a>: autor tvrdí, že německé divize rozhodují přes 75 % sporů prvního stupně, a staví se proti zřizování dalších senátů nad rámec čl. 7 odst. 4 Dohody o UPC. Jde o názorový příspěvek, nikoli rozhodnutí.
+        <div class="note">Zdroj čísel autor neuvádí; k prověření.</div><div class="note"><a href="../archiv/2026-11-13.html#radar-5">Z vydání 13. 11. 2026</a></div>
       </li>
     </ul></div>
   </section>
@@ -292,7 +329,7 @@ html.ok .gate { display: none; }
   <section class="grp" aria-labelledby="g-2026-11-10">
     <h2 class="grp-h" id="g-2026-11-10"><a href="../archiv/2026-11-10.html">Úterý 10. listopadu 2026</a></h2>
     <div class="cards">
-    <article class="card s-patenty-a-uzitne-vzory" id="v2026-11-10-zprava-2">
+    <article class="card s-patenty-a-uzitne-vzory" id="v2026-11-10-zprava-1">
       <div class="tags"><span class="pill ip">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill comp-yes">Souběh se soutěžním právem</span></div>
       <h3>ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou</h3>
       <p class="facts"><span>Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
@@ -302,7 +339,7 @@ html.ok .gate { display: none; }
       <p>Souběh se soutěžním právem spočívá v tom, že se spor vedl o podmínky licencování SEP za podmínek FRAND a součástí byla i antitrustová žaloba. Soud v Londýně (soudce Meade) stanovil paušální částku 392 mil. USD za užívání portfolia ZTE, mezi pozicemi stran, a kritizoval „dysfunkční systém“ způsobený tím, že pravidla ETSI neobsahují mechanismus rozhodování sporů. Čínský soud v Čchung-čchingu shledal nabídku ZTE v souladu s FRAND. Frankfurtský soud zamítl Samsungovu antitrustovou žalobu proti ZTE; Mannheim odmítl pravomoc k Samsungovu FRAND protinávrhu ve prospěch dříve zahájeného řízení ve Frankfurtu.</p>
       <p class="why"><b>Praktický dopad:</b> nevznikl nový precedens, rozhodnutí jen ukončuje řízení. Případ však dobře ilustruje, jak se spory o SEP vedou souběžně u soudů několika zemí a že taktickou roli hraje volba fóra (UPC, německé soudy, Londýn, Čína). Zpráva nepotvrzuje, že Evropská komise byla v této věci zapojena.</p>
       <p class="basis">Vychází z článku JUVE Patent (Christina Schulze, 6. 11. 2026); šlo o zpravodajský text, nikoli o rozhodnutí UPC. Datum stažení žalob a spisové značky článek neuvádí, a údaje o dřívějších rozhodnutích proto nelze ověřit z primárních zdrojů.</p>
-      <div class="card-foot"><a class="also" href="../archiv/2026-11-10.html#zprava-2">Celé vydání 10. 11. 2026</a></div>
+      <div class="card-foot"><a class="also" href="../archiv/2026-11-10.html#zprava-1">Celé vydání 10. 11. 2026</a></div>
     </article>
     </div>
   </section>
@@ -318,15 +355,22 @@ html.ok .gate { display: none; }
       <h2>Všechna vydání</h2>
       <h3 class="month">Listopad 2026</h3>
 <ol>
-<li><a href="../archiv/2026-11-13.html"><span class="d">Pátek 13. 11.</span><span class="m">3 zprávy</span></a></li>
-<li><a href="../archiv/2026-11-10.html"><span class="d">Úterý 10. 11.</span><span class="m">2 zprávy</span></a></li>
-<li><a href="../archiv/2026-11-07.html"><span class="d">Sobota 7. 11.</span><span class="m">4 zprávy · zkušební</span></a></li>
+<li><a href="../archiv/2026-11-13.html"><span class="d">Pátek 13. 11.</span><span class="m">1 Hlavní zpráva · 5 na radar</span></a></li>
+<li><a href="../archiv/2026-11-10.html"><span class="d">Úterý 10. 11.</span><span class="m">1 Hlavní zpráva · 4 na radar</span></a></li>
+<li><a href="../archiv/2026-11-07.html"><span class="d">Sobota 7. 11.</span><span class="m">2 Hlavní zprávy · 5 na radar · zkušební</span></a></li>
 </ol>
       <p class="arch-link"><a href="../archiv/">Přehled vydání s obsahem →</a></p>
     </section>
     <section class="panel legend">
       <h2>Štítky</h2>
-      <div class="pills"><span class="pill tm">Ochranné známky</span><span class="pill ip">Jiná oblast IP</span><span class="pill juris">Jurisdikce</span><span class="pill comp-yes">Souběh se soutěžním právem / s nekalou soutěží</span><span class="pill old">Starší zpráva</span></div>
+      <h3 class="lg-h">Oblast</h3>
+      <ul class="lg-list"><li><span class="pill tm">Ochranné známky</span></li><li><span class="pill ip">Autorské právo</span></li><li><span class="pill ip">Patenty</span></li><li><span class="pill ip">Podpora malých a středních podniků</span></li><li><span class="pill ip">Umělá inteligence</span></li><li><span class="pill ip">Geografická označení</span></li></ul>
+      <h3 class="lg-h">Jurisdikce</h3>
+      <ul class="lg-list"><li><span class="pill juris">ČR</span></li><li><span class="pill juris">EU</span></li><li><span class="pill juris">EU (UPC)</span></li><li><span class="pill juris">Německo</span></li><li><span class="pill juris">Spojené království</span></li><li><span class="pill juris">Francie</span></li><li><span class="pill juris">Kazachstán</span></li><li><span class="pill juris">USA</span></li></ul>
+      <h3 class="lg-h">Souběh</h3>
+      <ul class="lg-list"><li><span class="pill comp-yes">Souběh s nekalou soutěží</span></li><li><span class="pill comp-yes">Souběh se soutěžním právem</span></li></ul>
+      <h3 class="lg-h">Další</h3>
+      <ul class="lg-list"><li><span class="pill old">Starší zpráva</span></li></ul>
     </section>
   </div>
 </aside>
@@ -335,5 +379,22 @@ html.ok .gate { display: none; }
 <footer class="site-foot">
   <div class="inner">legal(zavináč)onajman.cz</div>
 </footer>
+<script>
+(function () {
+  var b = document.getElementById("theme-toggle");
+  if (!b) return;
+  var root = document.documentElement, mq = window.matchMedia("(prefers-color-scheme: dark)");
+  function rezim() { return root.getAttribute("data-theme") || (mq.matches ? "dark" : "light"); }
+  function sync() { b.setAttribute("aria-checked", rezim() === "dark" ? "true" : "false"); }
+  b.addEventListener("click", function () {
+    var n = rezim() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", n);
+    try { localStorage.setItem("ipnovinky-rezim", n); } catch (e) {}
+    sync();
+  });
+  if (mq.addEventListener) mq.addEventListener("change", sync);
+  sync();
+})();
+</script>
 </body>
 </html>

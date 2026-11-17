@@ -1,6 +1,7 @@
-# IP novinky
+# Monitoring IP zpráv
 
-Přehled novinek z práva duševního vlastnictví, vychází dvakrát týdně (úterý a pátek).
+Přehled novinek z práva duševního vlastnictví, vychází dvakrát týdně (úterý a pátek ráno,
+naplánovaná úloha startuje v 7:45 českého času).
 Web běží na Váš Hosting (onajman.cz). Po každém nahrání do větve `main` ho GitHub
 Actions (`.github/workflows/nasazeni.yml`) vygeneruje a nahraje přes FTP do složky
 `www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `archiv/`, `sekce/`),
@@ -116,6 +117,20 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
       "odkaz": {"url": "https://…", "text": "ÚPV, 26. 11. 2026: online seminář"},
       "text": "Jedna věta, proč je položka zajímavá.",
       "poznamka": "Nepovinné: co se nepodařilo ověřit."
+    },
+    {
+      "sekce": ["ochranne-znamky"],
+      "klic": "nepovinné",
+      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["Německo"]},
+      "odkaz": {"url": "https://…", "text": "Nadpis zprávy"},
+      "text": "Jedna věta shrnující podstatu zprávy.",
+      "detail": {
+        "fakta": ["Instituce", "spisová značka", "datum"],
+        "zdroj": {"url": "https://…", "nazev": "IPKat"},
+        "odstavce": ["Celé shrnutí jako u hlavní zprávy."],
+        "dopad": {"oznaceni": "Praktický dopad:", "text": "…"},
+        "podklad": "Z čeho shrnutí vychází."
+      }
     }
   ],
   "paticka": {
@@ -132,12 +147,18 @@ Pravidla, která `build.py` kontroluje:
   (podle důležitosti; na ně odkazují `hlavni_temata`).
 - Každá zpráva má sekci, štítek oblasti a jurisdikce, nadpis, fakta, odstavce,
   praktický dopad, podklad a odkaz na zdroj.
-- Nejvýš 5 hlavních témat a 3 položky „Na radar“.
+- **Hlavní zprávy (`zpravy`) se musí týkat ČR nebo celé EU**: jurisdikce „ČR“ nebo
+  začínající „EU“ (např. „EU“, „EU (UPC)“). Rozhodnutí jiných států (i členských států EU,
+  Spojeného království, USA…) patří do „Na radar“. Výjimku lze udělat jen u mimořádně
+  významné věci s přímým dopadem na ČR/EU; zpráva pak musí mít pole `vyjimka` s důvodem.
+- Nejvýš 5 hlavních témat a 10 položek „Na radar“. Položka „Na radar“ je buď
+  jednořádková (odkaz, věta, poznámka), nebo plně zpracovaná zpráva mimo ČR/EU
+  s polem `detail`, které se na webu zobrazí jako rozbalitelné „Celé shrnutí“.
 - Štítek souběhu se uvádí jen tam, kde souběh existuje (nikdy „NE“ ani „bez souběhu“).
 - Oblast „Ochranné známky“ se zobrazí modře, ostatní oblasti fialově.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
 
-`klic` je nepovinný. Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
+`klic` je nepovinný (u hlavních zpráv i u položek Na radar). Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
 stejný klíč (např. `aviator-v-spribe`). Na stránce sekce se pak zobrazí jen
 nejnovější verze s poznámkou, ve kterých vydáních byla dřív.
 
