@@ -49,6 +49,9 @@ jobs:
           set cmd:fail-exit yes
           set ftp:ssl-force true
           set ftp:ssl-protect-data true
+          # Certifikát hostingu je vystavený na jméno jeho serveru, ne na adresu ve FTP_SERVER
+          # (IP nebo ftp.domena). Platnost certifikátu se kontroluje, shoda jména ne.
+          set ssl:check-hostname no
           set net:timeout 30
           set net:max-retries 3
           set net:reconnect-interval-base 5
