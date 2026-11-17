@@ -587,7 +587,7 @@ def issue_page(v, vydani, root, nav_current):
         cards = "\n\n".join(card(z, v, root, "vydani") for z in zz)
         parts.append(f"""  <section class="sec s-{slug}" id="sekce-{slug}" aria-labelledby="h-{slug}">
     <h2 class="sec-h" id="h-{slug}">{nazev}<span class="n">{len(zz)}</span>
-      <a class="all" href="{root}sekce/{slug}.html">Vše v sekci →</a></h2>
+      <a class="all" href="{root}sekce/{slug}.html">Celá sekce →</a></h2>
     <div class="cards">
 {cards}
     </div>
