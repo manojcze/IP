@@ -7,9 +7,9 @@ Actions (`.github/workflows/nasazeni.yml`) vygeneruje a nahraje přes FTP do slo
 ne data ani skripty.
 
 Přístup k FTP se nastavuje v GitHubu (Settings → Secrets and variables → Actions):
-tajné údaje `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`; nepovinně proměnné
-`FTP_DIR` (výchozí `www/`) a `FTP_PROTOCOL` (výchozí `ftps`, pokud hosting šifrované
-FTP nepodporuje, nastavte `ftp`).
+tajné údaje `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`; nepovinně proměnná
+`FTP_DIR` (složka webu na FTP, výchozí `www`). Nahrává se šifrovaně (FTPS) programem
+`lftp`; soubory se jen nahrávají a přepisují, nic se na serveru nemaže.
 
 ## Jak web vzniká
 

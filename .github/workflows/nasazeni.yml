@@ -1,7 +1,7 @@
 # Po každém nahrání do větve main vygeneruje web a nahraje ho přes FTP na Váš Hosting.
 # Přístupové údaje jsou v GitHubu: Settings → Secrets and variables → Actions
 #   tajné (Secrets):    FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
-#   nepovinné (Variables): FTP_DIR (výchozí www/), FTP_PROTOCOL (výchozí ftps, jinak ftp)
+#   nepovinné (Variables): FTP_DIR (složka webu na FTP, výchozí www)
 name: Nasazení na hosting
 
 on:
@@ -35,11 +35,24 @@ jobs:
 
       - name: Nahrát přes FTP
         if: env.MA_FTP == 'true'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
-          local-dir: ./_site/
-          server-dir: ${{ vars.FTP_DIR || 'www/' }}
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR: ${{ vars.FTP_DIR || 'www' }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp > /dev/null
+          # Šifrované FTP (FTPS) pro přihlášení i přenos souborů. Na serveru se jen
+          # nahrávají a přepisují soubory webu, nic se nemaže.
+          lftp --env-password -u "$FTP_USERNAME" "$FTP_SERVER" <<EOF
+          set cmd:fail-exit yes
+          set ftp:ssl-force true
+          set ftp:ssl-protect-data true
+          set net:timeout 30
+          set net:max-retries 3
+          set net:reconnect-interval-base 5
+          cd "$FTP_DIR"
+          mirror --reverse --no-perms --verbose _site .
+          bye
+          EOF
