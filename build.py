@@ -68,6 +68,8 @@ MIN_HLAVNICH = 3
 VYLOUCENO = re.compile(r"malých a středních podnik|\bMSP\b|SME Fund", re.IGNORECASE)
 
 # Nenápadné upozornění nahoře na každé stránce.
+# Označení praktického dopadu je u všech zpráv stejné (bez dovětku „podle komentáře“).
+DOPAD = "Praktický dopad:"
 AI_UPOZORNENI = ("AI automatizovaný výstup pro osobní potřebu. "
                  "Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓")
 
@@ -296,7 +298,6 @@ def card(z, v, root, kontext, also_in=None):
     fakta = "".join(f"<span>{f}</span>" for f in z["fakta"])
     odst = "\n      ".join(f"<p>{p}</p>" for p in z["odstavce"])
     dopad = z["dopad"]
-    oznaceni = dopad.get("oznaceni") or "Praktický dopad:"
     zdroj = f'<a class="src" href="{url_attr(z["zdroj"]["url"])}">Originální zdroj: {z["zdroj"]["nazev"]} →</a>'
     paticka = []
     if kontext == "vydani" and len(z["sekce"]) > 1:
@@ -317,7 +318,7 @@ def card(z, v, root, kontext, also_in=None):
       <p class="facts">{fakta}</p>
       <p class="src-line">{zdroj}</p>
       {odst}
-      <p class="why"><b>{oznaceni}</b> {dopad["text"]}</p>
+      <p class="why"><b>{DOPAD}</b> {dopad["text"]}</p>
       <p class="basis">{z["podklad"]}</p>{vyjimka}{foot}
     </article>"""
 
@@ -335,7 +336,7 @@ def radar_item(r, root, rid, v=None, also_in=None):
                if zdroj.get("url") and zdroj.get("nazev") else "")
         odst = "".join(f"<p>{p}</p>" for p in det["odstavce"])
         dopad = det.get("dopad") or {}
-        why = (f'<p class="why"><b>{dopad.get("oznaceni") or "Praktický dopad:"}</b> {dopad["text"]}</p>'
+        why = (f'<p class="why"><b>{DOPAD}</b> {dopad["text"]}</p>'
                if dopad.get("text") else "")
         basis = f'<p class="basis">{det["podklad"]}</p>' if det.get("podklad") else ""
         detail = (f'\n        <details class="more"><summary>Celé shrnutí</summary>'

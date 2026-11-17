@@ -1,0 +1,254 @@
+{
+  "datum": "2026-10-24",
+  "zkusebni": false,
+  "hlavni_temata": [
+    {
+      "zprava": 1,
+      "text": "Tribunál: rozhoduje seznam zboží v přihlášce, nikoli skutečné užívání; MATRIX-A a další známky Novavax neprošly kvůli starší MATRIX OCULAR."
+    },
+    {
+      "zprava": 2,
+      "text": "Tribunál: tištěné a elektronické publikace mohou být doplňkové k věrnostním kartám a věrnostním poukázkám (VOLARE)."
+    },
+    {
+      "zprava": 3,
+      "text": "Místní oddělení UPC v Paříži zakázalo Angelalign prodej rovnátek v 17 státech, nárok za Spojené království ale zamítlo."
+    }
+  ],
+  "zpravy": [
+    {
+      "id": 1,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Rozhodnutí"
+      },
+      "nadpis": "MATRIX-A, -C, -M a -V: rozhoduje seznam zboží v přihlášce, ne to, jak je značka skutečně užívána",
+      "fakta": [
+        "Tribunál EU, devátý senát",
+        "věci T-126/25 až T-129/25, Novavax v EUIPO – Brill International (MATRIX-A, MATRIX-C, MATRIX-M, MATRIX-V)",
+        "rozsudky z 21. 10. 2026"
+      ],
+      "odstavce": [
+        "Švédská společnost Novavax přihlásila slovní známky EU MATRIX-A, MATRIX-C, MATRIX-M a MATRIX-V pro „adjuvans“ ve třídě 5. Proti přihláškám podala námitky společnost Brill International na základě starší obrazové známky EU MATRIX OCULAR zapsané pro oftalmologické přípravky. Námitkové oddělení i odvolací senát dospěly k pravděpodobnosti záměny; odvolací senát přitom odmítl Novavaxem navržené omezení seznamu zboží na adjuvans k vakcínám určená výhradně odborníkům.",
+        "Tribunál všechny čtyři žaloby zamítl (vychází z rozsudku ve věci T-126/25, ECLI:EU:T:2026:690; souběžné věci mají ECLI 691 až 693). Novavax argumentoval tím, že své značky skutečně užívá jen pro vysoce specializované složky vakcín. Rozhodující je však zboží, pro které je zápis požadován, tedy adjuvans obecně, včetně látek zesilujících účinek jiných léčiv. Relevantní veřejnost proto tvoří lékaři, lékárníci i pacienti.",
+        "Zboží je podobné v nízké míře: jde o farmaceutické výrobky stejné povahy, s obecně shodným účelem (léčba zdravotních potíží), mohou je vyrábět tytéž farmaceutické podniky a mohou se prodávat v lékárnách, i když se liší terapeutické indikace. Ve starší známce je slovo „ocular“ popisné a dominantním prvkem je „matrix“, který tvoří začátek přihlašovaných označení. Nízkou podobnost zboží tak vyvažuje vysoká podobnost označení."
+      ],
+      "dopad": {
+        "text": "seznam zboží je vhodné formulovat úzce už při podání přihlášky; pozdější omezení v odvolacím řízení nemusí být připuštěno. U farmaceutických výrobků Tribunál opakovaně dovozuje alespoň nízkou podobnost i při rozdílných indikacích."
+      },
+      "podklad": "Vychází z plného textu rozsudku ve věci T-126/25 (anglické znění na EUR-Lex). Důvod, proč odvolací senát omezení seznamu zboží odmítl, rozsudek v úvodu blíže nepopisuje.",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0126",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 2,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Rozhodnutí"
+      },
+      "nadpis": "VOLARE: publikace nejsou vždy jen reklamním doplňkem, s věrnostními kartami mohou být doplňkové",
+      "fakta": [
+        "Tribunál EU, devátý senát",
+        "věc T-513/25, Volotea v EUIPO – ITA Airways (VOLARE), ECLI:EU:T:2026:694",
+        "rozsudek z 21. 10. 2026"
+      ],
+      "odstavce": [
+        "Italská letecká společnost ITA Airways přihlásila obrazovou známku EU VOLARE, mimo jiné pro kódované věrnostní karty, software a aplikace pro věrnostní programy (třída 9) a vydávání poukázek pro věrnostní programy (třída 36). Španělský dopravce Volotea podal námitky na základě starších obrazových známek EU VOLARE a VOLARE MAGAZINE zapsaných mimo jiné pro tištěné a elektronické publikace. Námitkové oddělení i odvolací senát dospěly k tomu, že zboží a služby jsou odlišné, protože publikace jsou jen doplňkovým propagačním materiálem.",
+        "Tribunál rozhodnutí částečně zrušil. Uznal, že zboží a služby určené na podporu nebo propagaci jiného zboží s ním zpravidla nejsou doplňkové. To však neznamená, že publikace jsou pomocné ke všemu, o čem píší. Věrnostní karta i publikace (zpravodaj, magazín) slouží k udržení zákazníků a publikace informují členy programu, jak výhody využít. Jsou tedy doplňkové a mají stejnou veřejnost, účel, původ i distribuční cesty.",
+        "Totéž platí pro vydávání poukázek pro věrnostní programy, které je určeno i spotřebitelům, nejen podnikům. Pro software a aplikace ke správě věrnostních programů a pro organizaci propagačních programů Tribunál odlišnost potvrdil. Odvolací senát nyní musí u karet a poukázek posoudit pravděpodobnost záměny."
+      ],
+      "dopad": {
+        "text": "majitel známky pro publikace se může bránit i proti známkám pro věrnostní programy, pokud publikace slouží k jejich provozu. Argument „jen propagační materiál“ nemusí obstát, pokud zboží sdílí účel udržení zákazníků."
+      },
+      "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0513",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EU (UPC)"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "nadpis": "UPC Paříž: Align uspěl proti Angelalign v 17 státech, nárok za Spojené království neunesl",
+      "fakta": [
+        "Jednotný patentový soud, místní oddělení Paříž",
+        "UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)",
+        "zpráva JUVE Patent z 19. 10. 2026; datum rozhodnutí článek neuvádí"
+      ],
+      "odstavce": [
+        "Americká společnost Align Technology (výrobce systému Invisalign) žalovala v srpnu 2025 čínského výrobce Angelalign a čtyři jeho evropské dceřiné společnosti pro porušení patentu EP 2 237 738 na ortodontické aparáty s výstupkem pro řízený pohyb kořene zubu. Angelalign podal protižalobu na zrušení patentu (nepřípustné rozšíření, nedostatečné zveřejnění, nedostatek vynálezecké činnosti).",
+        "Místní oddělení v Paříži všechny námitky neplatnosti zamítlo a shledalo doslovné porušení. Rozhodující byl výklad pojmu „bukální strana“: soud ho vyložil šířeji jako vnější stranu u předních i zadních zubů, a výrobky Angelalign s prvkem Torque Ridge na předních zubech tak do patentu spadají. Nařídil zákaz v 17 státech UPC, stažení a zničení výrobků, penále až 10 000 EUR za výrobek nebo 20 000 EUR za den a náhradu škody od udělení patentu 12. 7. 2023.",
+        "Nárok za porušení ve Spojeném království (tedy mimo území UPC) soud zamítl, protože Align v žalobě dostatečně nevylíčil rozhodné britské právo a pozdější podání byla opožděná. Zamítl i žalobu proti nizozemské holdingové společnosti, která byla jen akcionářem bez aktivní účasti na porušování."
+      ],
+      "dopad": {
+        "text": "kdo u UPC uplatňuje nároky i za státy mimo systém UPC, musí v žalobě od začátku tvrdit a doložit obsah cizího práva. Holdingovou mateřskou společnost nelze žalovat jen kvůli majetkové účasti."
+      },
+      "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 19. 10. 2026). Samotné rozhodnutí jsem nečetl; web UPC nebyl dostupný.",
+      "zdroj": {
+        "url": "https://www.juve-patent.com/cases/paris-local-division-upholds-align-patent-in-dispute-with-angelalign/",
+        "nazev": "JUVE Patent"
+      }
+    }
+  ],
+  "na_radar": [
+    {
+      "sekce": [
+        "ochranne-znamky",
+        "nekala-soutez"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "Německo"
+        ],
+        "soubeh": [
+          "Souběh s nekalou soutěží"
+        ],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
+        "text": "Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky"
+      },
+      "text": "Vrchní zemský soud v Hamburku označil platformu Wish za přímého porušovatele ochranné známky EU „GHD“ podle testu SDEU z věci Louboutin.",
+      "detail": {
+        "fakta": [
+          "Vrchní zemský soud v Hamburku (OLG)",
+          "sp. zn. 5 U 58/25, Jemella v ContextLogic",
+          "komentář z 21. 10. 2026"
+        ],
+        "zdroj": {
+          "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
+          "nazev": "IPKat"
+        },
+        "odstavce": [
+          "Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.",
+          "Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.",
+          "Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci."
+        ],
+        "dopad": {
+          "text": "rozšíření Louboutinova testu. Čím více služeb platforma spojuje, tím snáze jde o její vlastní užívání označení. Protipadělkové nástroje je nutné používat důsledně, jinak slouží jako důkaz vědomosti."
+        },
+        "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU."
+      }
+    },
+    {
+      "sekce": [
+        "ochranne-znamky",
+        "nekala-soutez"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "Francie"
+        ],
+        "soubeh": [
+          "Souběh s nekalou soutěží"
+        ],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/guest-post-french-court-sides-with.html",
+        "text": "IPKat, 20. 10. 2026: pařížský soud dal za pravdu Louis Vuitton ve sporu o „upcycling“"
+      },
+      "text": "Značka Kamad Reworked vyráběla oblečení a doplňky z částí výrobků Louis Vuitton; žaloba se opírala o porušení ochranné známky, nekalou soutěž a parazitování (rozsudek ze 17. 9. 2026)."
+    },
+    {
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EPO"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html",
+        "text": "IPKat, 19. 10. 2026: pozdější klinická data patent nezachrání (T 0251/25, empagliflozin)"
+      },
+      "text": "Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným."
+    },
+    {
+      "sekce": [
+        "prumyslove-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Průmyslové vzory",
+          "Umělá inteligence"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/guest-post-from-photos-to-3d-replicas.html",
+        "text": "IPKat, 18. 10. 2026: mohou 3D kopie vytvořené umělou inteligencí porušovat průmyslový vzor EU?"
+      },
+      "text": "Hostující příspěvek rozebírá, zda digitální 3D model vytvořený AI z fotografie výrobku zasahuje do práv z průmyslového vzoru EU."
+    }
+  ],
+  "paticka": {
+    "zkontrolovane": [
+      "IPKat: příspěvky z 18. až 24. 10. 2026 (seznam z kanálu blogu, u relevantních plný text).",
+      "Soudní dvůr EU, tiskové zprávy (curia.europa.eu): načteno; v období žádná tisková zpráva k duševnímu vlastnictví.",
+      "EUR-Lex: rozsudky a usnesení Tribunálu ve věcech ochranných známek a odrůd rostlin z daného týdne (plné texty).",
+      "JUVE Patent: zprávy o řízeních před UPC a EPO.",
+      "Kluwer IP blogy (ochranné známky, patenty, autorské právo): přehled příspěvků.",
+      "ÚPV, aktuality: 21. 10. 2026 jen oznámení o novém chatbotu na webu úřadu (nezařazeno)."
+    ],
+    "nedostupne": [
+      "EUIPO (euipo.europa.eu): web odpověděl chybou 403; novinky a rozhodnutí odvolacích senátů nebyly načteny.",
+      "Web UPC (unified-patent-court.org): spojení bylo odmítnuto; zprávy o UPC vycházejí z JUVE Patent a IPKat.",
+      "World Trademark Review, Managing IP: za paywallem."
+    ],
+    "vyklad": [
+      "Vydání vzniklo dodatečně 17. 11. 2026 jako zpětné týdenní vydání za období od 18. do 24. 10. 2026. Tyto zprávy dříve zčásti pokrývalo souhrnné vydání ze 7. 11. 2026, které zahrnovalo období od 13. 10.; zprávy jsou nyní rozděleny do týdnů podle data zdroje, ze kterého shrnutí vychází.",
+      "Shrnutí rozsudků a usnesení Tribunálu vychází z jejich plných textů na EUR-Lex, ostatní zprávy z článků uvedených u každé zprávy. Štítek souběhu je uveden jen tam, kde souběh existuje.",
+      "Rozsudek Tribunálu ve věci Waterdrop (T-541/25) je z 21. 10. 2026, zpracován je ale ve vydání 7. 11. 2026, protože shrnutí vychází z komentáře IPKat z 5. 11. 2026. Věc Wish (Německo) je mezi položkami Ve zkratce s celým shrnutím, protože se netýká ČR ani celé EU."
+    ]
+  }
+}

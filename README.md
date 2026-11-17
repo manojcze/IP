@@ -109,7 +109,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
       "nadpis": "Nadpis zprávy",
       "fakta": ["Instituce", "spisová značka", "datum rozhodnutí / zveřejnění"],
       "odstavce": ["První odstavec textu.", "Druhý odstavec textu."],
-      "dopad": {"oznaceni": "Praktický dopad (podle komentáře):", "text": "Význam pro praxi v ČR/EU."},
+      "dopad": {"text": "Význam pro praxi v ČR/EU."},
       "podklad": "Z čeho shrnutí vychází (např. komentář IPKat, autor, datum).",
       "zdroj": {"url": "https://…", "nazev": "IPKat"}
     }
@@ -132,7 +132,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
         "fakta": ["Instituce", "spisová značka", "datum"],
         "zdroj": {"url": "https://…", "nazev": "IPKat"},
         "odstavce": ["Celé shrnutí jako u hlavní zprávy."],
-        "dopad": {"oznaceni": "Praktický dopad:", "text": "…"},
+        "dopad": {"text": "…"},
         "podklad": "Z čeho shrnutí vychází."
       }
     }
@@ -169,6 +169,8 @@ Pravidla, která `build.py` kontroluje:
 - Všechny štítky oblasti se zobrazují stejně (šedě), všechny typy zdroje také stejně (obrysově).
   Barevně (oranžově) je odlišený jen štítek souběhu.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
+- Praktický dopad se na webu vždy uvádí jako „Praktický dopad:“ (bez dovětku „podle komentáře“); text dopadu
+  takový dovětek také neobsahuje. Z čeho shrnutí vychází, patří do pole `podklad`.
 
 `klic` je nepovinný (u hlavních zpráv i u položek Ve zkratce). Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
 stejný klíč (např. `aviator-v-spribe`). Na stránce sekce se pak zobrazí jen

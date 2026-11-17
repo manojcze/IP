@@ -1,0 +1,206 @@
+{
+  "datum": "2026-10-17",
+  "zkusebni": false,
+  "hlavni_temata": [
+    {
+      "zprava": 1,
+      "text": "Tribunál: nový majitel známky nemůže využít prodloužení lhůty pro ukrajinské účastníky, pokud byl převod zapsán až po uplynutí lhůty k odůvodnění odvolání (FIND MY CAR)."
+    },
+    {
+      "zprava": 2,
+      "text": "Tribunál potvrdil zamítnutí přihlášky MAGORA pro pravděpodobnost záměny se starší známkou GRUPO AGORA."
+    },
+    {
+      "zprava": 3,
+      "text": "Odrůdy rostlin: pouhá zmínka o novém znaku v přihlášce nestačí, bez technických údajů ho CPVO zkoumat nemusí (jablko Roat)."
+    }
+  ],
+  "zpravy": [
+    {
+      "id": 1,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Rozhodnutí"
+      },
+      "nadpis": "FIND MY CAR: převod známky během řízení neotevírá lhůty, které už uplynuly",
+      "fakta": [
+        "Tribunál EU, sedmý senát",
+        "věc T-451/25, Mega Pop v EUIPO – Apple (FIND MY CAR), ECLI:EU:T:2026:669",
+        "rozsudek z 14. 10. 2026"
+      ],
+      "odstavce": [
+        "Slovinská společnost Mega Pop vlastnila mezinárodní zápis slovní známky FIND MY CAR s vyznačením EU. Na návrh společnosti Apple zrušovací oddělení EUIPO známku v roce 2024 zrušilo pro neužívání, protože rozsah užívání nebyl prokázán; dodatečné důkazy úřad odmítl kvůli jejich formě a opožděnosti. Mega Pop podala odvolání, ale ve čtyřměsíční lhůtě podle čl. 68 odst. 1 nařízení (EU) 2017/1001 ho neodůvodnila. Po uplynutí lhůty oznámila, že známku převedla na ukrajinskou společnost SOLAR MARKET, a dovolávala se rozhodnutí výkonného ředitele EUIPO EX-24-5, které účastníkům se sídlem na Ukrajině prodloužilo lhůty do 16. 9. 2024. Podpůrně žádala o navrácení do původního stavu. Odvolací senát odvolání odmítl jako nepřípustné.",
+        "Tribunál žalobu zamítl. Podle čl. 20 nařízení může nový majitel uplatňovat práva ze známky až od zápisu převodu do rejstříku a zápis nemá zpětné účinky. SOLAR MARKET se tak stala účastníkem řízení až v okamžiku, kdy lhůta k odůvodnění odvolání již uplynula, a do řízení vstoupila ve stavu, v jakém bylo. Prodloužení podle EX-24-5 je výjimkou z obecných lhůt, kterou je nutné vykládat restriktivně; změna majitele nemůže znovu otevřít uplynulé lhůty.",
+        "Žádost o navrácení do původního stavu se podle čl. 104 odst. 3 nařízení považuje za podanou až zaplacením poplatku (200 EUR). EUIPO na tuto povinnost žalobkyni dopisem upozornil, formální výzvu k zaplacení nařízení nevyžaduje. Nezohlednění dodatečných důkazů o užívání už nehrálo roli, protože odvolání bylo nepřípustné."
+      ],
+      "dopad": {
+        "text": "lhůtu k odůvodnění odvolání (čtyři měsíce od oznámení rozhodnutí) je nutné hlídat bez ohledu na plánované převody. Prodloužení lhůt pro určité skupiny účastníků využije jen ten, kdo je účastníkem řízení v době, kdy lhůta běží; převod zapsaný později nepomůže. U navrácení do původního stavu je nutné zaplatit poplatek, jinak se žádost považuje za nepodanou."
+      },
+      "podklad": "Vychází z plného textu rozsudku (české znění na EUR-Lex).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0451",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 2,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Rozhodnutí"
+      },
+      "nadpis": "MAGORA a GRUPO AGORA: vysoká pozornost veřejnosti pravděpodobnost záměny předem nevylučuje",
+      "fakta": [
+        "Tribunál EU, šestý senát",
+        "věc T-814/25, Holding Tourisme v EUIPO – Agora (MAGORA), ECLI:EU:T:2026:668",
+        "rozsudek z 14. 10. 2026"
+      ],
+      "odstavce": [
+        "Francouzská společnost Holding Tourisme přihlásila slovní známku EU MAGORA pro realitní a finanční služby (třída 36) a ubytovací a restaurační služby (třída 43). Španělská společnost Agora podala námitky na základě starší obrazové známky EU GRUPO AGORA. Námitkové oddělení jim z velké části vyhovělo a odvolací senát dospěl k pravděpodobnosti záměny podle čl. 8 odst. 1 písm. b) nařízení (EU) 2017/1001.",
+        "Tribunál žalobu zamítl. Přílohy předložené poprvé až u Tribunálu (výpisy z webů a seznamy známek a firem se slovem „agora“) odmítl jako nepřípustné. Zdůraznil, že ani vyšší úroveň pozornosti odborné veřejnosti nevylučuje pravděpodobnost záměny předem, vždy jde o celkové posouzení. Potvrdil, že alespoň nezanedbatelná část španělské veřejnosti vnímá slovo „agora“ jako výraz bez významu, a tedy jako rozlišující a dominantní prvek starší známky, zatímco slovo „grupo“ je menší, druhotné a nerozlišující a při vyslovení se spíše vypustí. Označení jsou tak vizuálně podobná nadprůměrně a foneticky vysoce.",
+        "Pojmový rozdíl plynoucí jen z nerozlišujícího slova „grupo“ podobnost nevyváží. Argument, že slovo „agora“ obsahuje mnoho jiných zapsaných známek, Tribunál odmítl: pro oslabení rozlišovací způsobilosti je rozhodující skutečné užívání takových označení na trhu, nikoli jejich zápis v rejstříku."
+      ],
+      "dopad": {
+        "text": "důkazy k oslabené rozlišovací způsobilosti starší známky je nutné předložit už v řízení před EUIPO a musí ukazovat užívání na trhu, ne jen počet zapsaných známek. Přidání jedné či dvou hlásek k dominantnímu slovu starší známky (MAGORA × AGORA) riziko záměny zpravidla neodstraní."
+      },
+      "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0814",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Odrůdy rostlin"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Rozhodnutí"
+      },
+      "nadpis": "Odrůda jablka Roat: nový rozlišovací znak je nutné podložit technickými údaji",
+      "fakta": [
+        "Tribunál EU, osmý senát",
+        "věc T-770/25, Adema v CPVO (Roat)",
+        "rozsudek z 14. 10. 2026"
+      ],
+      "odstavce": [
+        "Italská společnost Adema požádala v roce 2011 Odrůdový úřad Společenství (CPVO) o odrůdové právo pro odrůdu jablka Roat. Už v technickém dotazníku žádala, aby se zkoumal nový znak „časný vývoj krycí barvy“ plodů. Technické zkoušky provedl francouzský zkušební úřad GEVES: první skončila v roce 2016 zamítnutím pro nedostatek odlišnosti od odrůdy Jeromine, druhá (po zrušení prvního rozhodnutí kvůli odlišným podnožím) skončila v roce 2023 stejně. Odvolací senát CPVO odvolání zamítl.",
+        "Tribunál žalobu zamítl. Podle nařízení (ES) č. 2100/94 se odlišnost, jednotnost a stálost zkoumají v technické zkoušce podle zkušebních pokynů (zde protokol CPVO TP/14/2 pro jabloně). Žádost v přihlášce, aby se zkoumal určitý znak, CPVO nezavazuje k jeho zařazení do zkoušky ani nepředurčuje výsledek. Zkouška porovnala odrůdy i podle znaku 23 protokolu (rozsah antokyanové krycí barvy mladého plodu) a rozdíl nezjistila.",
+        "Protokol připouští zvláštní zkoušku nového znaku, jen pokud je tvrzení podloženo spolehlivými technickými údaji. Adema žádné nepředložila, přestože dostávala průběžné zprávy ze zkoušek a zkušební pozemek navštívila. Zásada, že CPVO zjišťuje skutečnosti z úřední povinnosti (čl. 76 nařízení), tak porušena nebyla."
+      ],
+      "dopad": {
+        "text": "šlechtitel, který chce prokázat odlišnost znakem mimo zkušební pokyny, musí aktivně předložit technické údaje a žádost opakovat během zkoušek. Otázka se stane důležitější u rostlin vyšlechtěných novými genomickými technikami, jejichž nové vlastnosti standardní protokoly nemusí zachytit."
+      },
+      "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex). Poznámka o nových genomických technikách vychází z komentáře IPKat (Jocelyn Bosse, 28. 10. 2026).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0770",
+        "nazev": "EUR-Lex"
+      }
+    }
+  ],
+  "na_radar": [
+    {
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "Německo"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html",
+        "text": "Červený kruh jako známka: BGH k grafickému znázornění a roli rejstříku"
+      },
+      "text": "BGH: u červeného kruhu jako barevné známky rozhoduje zobrazení v rejstříku, ne v přihlášce.",
+      "detail": {
+        "fakta": [
+          "Spolkový soudní dvůr (BGH), Německo",
+          "sp. zn. I ZB 104/25 „Roter Kreis“",
+          "komentář z 13. 10. 2026"
+        ],
+        "zdroj": {
+          "url": "https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html",
+          "nazev": "IPKat"
+        },
+        "odstavce": [
+          "Spor se týkal obrazové známky tvořené červeným kruhem, zapsané v Německu v roce 1996 na základě získané rozlišovací způsobilosti pro vakuové termosky, džbány a nádoby na potraviny. Přihláška byla podána v papírové podobě. Třetí osoba požadovala prohlášení neplatnosti, protože podle ní označení nebylo dostatečně graficky znázorněno. Německý úřad i Spolkový patentový soud návrh zamítly a BGH nyní zamítl i opravný prostředek, takže zápis zůstává v platnosti.",
+          "Otázkou bylo, zda pro barevný obrazec platí stejné nároky na znázornění jako pro abstraktní barvu bez obrysů. BGH použil německý zákon z roku 1996 provádějící první směrnici o ochranných známkách a test z věci Sieckmann: znázornění musí být jasné, přesné, samostatné, srozumitelné, objektivní a trvanlivé. Za rozhodující označil zobrazení v rejstříku, nikoli v přihlášce, protože se třetí osoby musí o předmětu ochrany dozvědět z rejstříku. Že majitel kdysi předložil několik odstínů červené, proto nevadí.",
+          "Trvanlivost soud shledal splněnou, protože barva uložená v elektronickém rejstříku nevybledne, na rozdíl od fyzického vzorku z věci Libertel. Kód barvy (RAL, Pantone) nevyžadoval, protože kruh určitého odstínu červené dává spolehlivý základ pro posouzení užívání a kolizí. Komentátor kritizuje, že BGH nepoložil předběžnou otázku SDEU, zpochybňuje přednost rejstříku před přihláškou i to, že kód barvy není potřeba, a ptá se, proč by pro barevný obrazec a abstraktní barvu měla platit odlišná měřítka."
+        ],
+        "dopad": {
+          "text": "význam má hlavně u starších barevných známek podaných před elektronickými rejstříky, kde se rozchází to, co bylo podáno, s tím, co je zapsáno."
+        },
+        "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 13. 10. 2026). Datum rozhodnutí BGH komentář neuvádí; samotné rozhodnutí jsem nečetl."
+      }
+    },
+    {
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EPO"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/reformatio-in-peius-survives-procedural.html",
+        "text": "IPKat, 16. 10. 2026: reformatio in peius po porušení práva být slyšen (T 1168/24)"
+      },
+      "text": "Odvolací senát EPO zrušil patent Arbutus na lipidové nanočástice (spor s Modernou) pro nepřípustné rozšíření; zákaz změny k horšímu vázal majitele, i když vzal své odvolání zpět."
+    }
+  ],
+  "paticka": {
+    "zkontrolovane": [
+      "IPKat: příspěvky z 11. až 17. 10. 2026 (seznam z kanálu blogu, u relevantních plný text).",
+      "Soudní dvůr EU, tiskové zprávy (curia.europa.eu): načteno; v období žádná tisková zpráva k duševnímu vlastnictví.",
+      "EUR-Lex: rozsudky a usnesení Tribunálu ve věcech ochranných známek a odrůd rostlin z daného týdne (plné texty).",
+      "JUVE Patent: zprávy o řízeních před UPC a EPO.",
+      "Kluwer IP blogy (ochranné známky, patenty, autorské právo): přehled příspěvků.",
+      "ÚPV, aktuality: v tomto týdnu žádná novinka."
+    ],
+    "nedostupne": [
+      "EUIPO (euipo.europa.eu): web odpověděl chybou 403; novinky a rozhodnutí odvolacích senátů nebyly načteny.",
+      "Web UPC (unified-patent-court.org): spojení bylo odmítnuto; zprávy o UPC vycházejí z JUVE Patent a IPKat.",
+      "World Trademark Review, Managing IP: za paywallem."
+    ],
+    "vyklad": [
+      "Vydání vzniklo dodatečně 17. 11. 2026 jako zpětné týdenní vydání za období od 11. do 17. 10. 2026. Tyto zprávy dříve zčásti pokrývalo souhrnné vydání ze 7. 11. 2026, které zahrnovalo období od 13. 10.; zprávy jsou nyní rozděleny do týdnů podle data zdroje, ze kterého shrnutí vychází.",
+      "Shrnutí rozsudků a usnesení Tribunálu vychází z jejich plných textů na EUR-Lex, ostatní zprávy z článků uvedených u každé zprávy. Štítek souběhu je uveden jen tam, kde souběh existuje."
+    ]
+  }
+}

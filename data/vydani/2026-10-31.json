@@ -1,0 +1,189 @@
+{
+  "datum": "2026-10-31",
+  "zkusebni": false,
+  "hlavni_temata": [
+    {
+      "zprava": 1,
+      "text": "Tribunál: přihláška známky podaná jen proto, aby jiný nezískal podobné označení v EU, je ve zlé víře (Vacu Activ)."
+    },
+    {
+      "zprava": 2,
+      "text": "Odvolací soud UPC zrušil většinu patentu Agfa: Gucci ho anticipovala vlastními dřívějšími výrobky."
+    },
+    {
+      "zprava": 3,
+      "text": "Ústřední oddělení UPC v Miláně si přisvojilo pravomoc zabránit Novo Nordisk uniknout rozhodnutí o platnosti stažením patentu."
+    }
+  ],
+  "zpravy": [
+    {
+      "id": 1,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "nadpis": "„Oko za oko“ je zlá víra: známka podaná jen k zablokování cizí přihlášky je neplatná",
+      "fakta": [
+        "Tribunál EU, pátý senát",
+        "věc T-650/25, Vacu Activ Marcin Leśniak v EUIPO – Lakhomoff a AR Group (VACUACTIVUS), ECLI:EU:T:2026:636",
+        "usnesení z 6. 10. 2026, komentář IPKat z 29. 10. 2026"
+      ],
+      "odstavce": [
+        "Polská společnost Vacu Activ vlastní národní i unijní známky „Vacu Activ“ pro fitness stroje. V roce 2013 jmenovala společnost pana Lakhomoffa výhradním distributorem v USA, Kanadě a Mexiku. Lakhomoff si v roce 2019 zapsal v USA obrazovou známku VACUACTIVUS a rozšířil ji přes madridský systém na EU. Vacu Activ poté v roce 2022 sama přihlásila obrazovou známku EU VACUACTIVUS. Lakhomoff navrhl její prohlášení za neplatnou pro zlou víru (čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001); EUIPO i odvolací senát mu vyhověly.",
+        "Tribunál žalobu odmítl usnesením jako zjevně neopodstatněnou. Vacu Activ před EUIPO sama uvedla, že známku přihlásila, aby zabránila porušování svých starších známek, věděla o Lakhomoffově užívání a jeho úmyslu získat ochranu v EU. Přihláška tak měla jediný cíl, poškodit jeho zájmy, bez obchodní logiky a bez úmyslu známku užívat. Nerozhodovalo, kdo označení vymyslel, ani případné porušení distribuční smlouvy, která se týkala vývozu strojů, nikoli označení VACUACTIVUS.",
+        "Námitku, že Lakhomoff je „nevěrný zástupce“ podle čl. 6septies Pařížské úmluvy, mohla Vacu Activ uplatnit v příslušných řízeních (u USPTO nebo proti mezinárodnímu zápisu u EUIPO); neospravedlňuje však vlastní přihlášku podanou jen k blokaci. Hodnocení věrohodnosti protichůdných tvrzení stran odvolacím senátem není porušením zásady řádné správy."
+      ],
+      "dopad": {
+        "text": "proti nekalé přihlášce bývalého obchodního partnera je nutné bránit se nástroji známkového práva (námitky, návrh na neplatnost, nárok podle čl. 6septies), ne „obrannou“ přihláškou. Klienti by v řízení o zlé víře neměli sami připouštět, že známku podali k jiným účelům než k užívání."
+      },
+      "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 29. 10. 2026); datum usnesení a ECLI doplněny z EUR-Lex. Samotné usnesení jsem nečetl celé.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/10/an-eye-for-eye-constitutes-bad-faith.html",
+        "nazev": "IPKat"
+      }
+    },
+    {
+      "id": 2,
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EU (UPC)"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "nadpis": "Agfa proti Gucci: dřívější veřejné užití výrobku zveřejňuje i způsob jeho výroby",
+      "fakta": [
+        "Jednotný patentový soud, odvolací soud",
+        "UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)",
+        "zpráva JUVE Patent z 27. 10. 2026; datum rozhodnutí článek neuvádí"
+      ],
+      "odstavce": [
+        "Agfa žalovala Gucci pro porušení patentu EP 3 388 490 na způsob zdobení kůže potiskem UV vytvrzovanými inkousty. Místní oddělení v Hamburku v dubnu 2025 zamítlo žalobu i protižalobu Gucci na zrušení patentu; odvolaly se obě strany.",
+        "Odvolací soud pod vedením předsedy UPC Klause Grabinského zrušil velkou část patentu pro Belgii, Francii, Německo, Itálii a Švédsko pro nedostatek novosti. Novost vylučovala vlastní kolekce Gucci „Flora“ (mimo jiné peněženka vyrobená a prodávaná před podáním přihlášky v dubnu 2017). Soud vyjasnil, že způsob výroby veřejně užitého výrobku je zpřístupněn veřejnosti (čl. 54 odst. 2 EPC), pokud ho odborník může bez nepřiměřené zátěže zjistit rozborem výrobku; zvláštní důvod k rozboru se nevyžaduje. Gucci to doložila analýzami (mikroskopie, spektroskopie, chromatografie).",
+        "Pojem „achromatická barva“ soud na rozdíl od prvního stupně nevyložil úzce: u luxusního koženého zboží zahrnuje i teplejší odstíny bílé. Porušení zbývajících nároků však Agfa neprokázala a soud odmítl i přenesení důkazního břemene podle čl. 55 Dohody o UPC. Agfa nese veškeré náklady obou stupňů."
+      ],
+      "dopad": {
+        "text": "vlastní dřívější výrobky žalovaného mohou být silnou obranou; laboratorní rozbor výrobku stačí k prokázání, že způsob výroby byl zpřístupněn veřejnosti. Pro majitele patentů na výrobní postupy to zvyšuje riziko zrušení."
+      },
+      "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 27. 10. 2026). Samotné rozhodnutí jsem nečetl; web UPC nebyl dostupný.",
+      "zdroj": {
+        "url": "https://www.juve-patent.com/cases/agfa-loses-most-of-leather-decoration-patent-on-appeal-against-gucci/",
+        "nazev": "JUVE Patent"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EU (UPC)"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "nadpis": "Semaglutid: UPC si přisvojilo pravomoc bránit „hře s dělenými přihláškami“",
+      "fakta": [
+        "Jednotný patentový soud, ústřední oddělení Milán",
+        "UPC_CFI_2221/2026, Sandoz v Novo Nordisk",
+        "zpráva JUVE Patent z 26. 10. 2026; datum usnesení článek neuvádí"
+      ],
+      "odstavce": [
+        "Sandoz podal žalobu na zrušení patentu Novo Nordisk týkajícího se semaglutidu (účinná látka léků Ozempic a Wegovy) a přidal tři neobvyklé návrhy proti tzv. hře s dělenými přihláškami: majitel stáhne souhlas se zněním patentu těsně před nepříznivým rozhodnutím a stejný předmět ochrany udržuje v dělené přihlášce (zde EP 4 406 593). Novo Nordisk vznesl předběžnou námitku nedostatku pravomoci.",
+        "Ústřední oddělení námitku z velké části zamítlo. Dovodilo, že UPC má podle čl. 32 Dohody o UPC i „vlastní“ pravomoc nezbytnou k účinnému výkonu svěřených pravomocí, a opřelo se o čl. 47 Listiny základních práv EU a čl. 42 odst. 2 Dohody (řízení nesmí narušovat hospodářskou soutěž). Strategické podávání dělených přihlášek k udržení nejistoty a oddálení vstupu generik může být zneužitím práva.",
+        "První návrh (abstraktní prohlášení, že semaglutid byl k datu priority zřejmý) soud odmítl jako zjevně nepřípustný. U druhého (prohlášení obdobné anglickému „Arrow declaration“ o neplatnosti budoucích nároků stejného rozsahu) a třetího (zákaz stáhnout souhlas se zněním patentu u EPO do konečného rozhodnutí) pravomoc potvrdil; o splnění podmínek předběžného opatření zatím nerozhodl. Odvolání je přípustné."
+      ],
+      "dopad": {
+        "text": "výrobci generik získávají u UPC nástroj proti taktickému stahování patentů a dělených přihlášek; majitelé farmaceutických patentů musí počítat s tím, že stažení patentu nemusí zastavit rozhodnutí o platnosti."
+      },
+      "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 26. 10. 2026). Samotné usnesení jsem nečetl; číslo napadeného patentu článek uvádí jen zkráceně (EP …365).",
+      "zdroj": {
+        "url": "https://www.juve-patent.com/cases/upc-claims-power-to-stop-patentees-escaping-validity-decisions-via-withdrawal/",
+        "nazev": "JUVE Patent"
+      }
+    }
+  ],
+  "na_radar": [
+    {
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel",
+        "text": "WTR, 29. 10. 2026: neplatnost známky TESLA před EUIPO"
+      },
+      "text": "rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.",
+      "poznamka": "Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny."
+    },
+    {
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Autorské právo",
+          "Umělá inteligence"
+        ],
+        "jurisdikce": [
+          "USA"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/10/claude-cant-help-falling-in-love-with.html",
+        "text": "IPKat, 30. 10. 2026: nositelé práv k písním Elvise Presleyho žalují Anthropic"
+      },
+      "text": "Žaloba tvrdí, že texty písní byly bez svolení použity k tréninku modelů Claude a že modely generují porušující výstupy."
+    }
+  ],
+  "paticka": {
+    "zkontrolovane": [
+      "IPKat: příspěvky z 25. až 31. 10. 2026 (seznam z kanálu blogu, u relevantních plný text).",
+      "Soudní dvůr EU, tiskové zprávy (curia.europa.eu): načteno; v období žádná tisková zpráva k duševnímu vlastnictví.",
+      "EUR-Lex: rozsudky a usnesení Tribunálu ve věcech ochranných známek a odrůd rostlin z daného týdne (plné texty).",
+      "JUVE Patent: zprávy o řízeních před UPC a EPO.",
+      "Kluwer IP blogy (ochranné známky, patenty, autorské právo): přehled příspěvků.",
+      "ÚPV, aktuality: v tomto týdnu žádná novinka."
+    ],
+    "nedostupne": [
+      "EUIPO (euipo.europa.eu): web odpověděl chybou 403; novinky a rozhodnutí odvolacích senátů nebyly načteny.",
+      "Web UPC (unified-patent-court.org): spojení bylo odmítnuto; zprávy o UPC vycházejí z JUVE Patent a IPKat.",
+      "World Trademark Review, Managing IP: za paywallem."
+    ],
+    "vyklad": [
+      "Vydání vzniklo dodatečně 17. 11. 2026 jako zpětné týdenní vydání za období od 25. do 31. 10. 2026. Tyto zprávy dříve zčásti pokrývalo souhrnné vydání ze 7. 11. 2026, které zahrnovalo období od 13. 10.; zprávy jsou nyní rozděleny do týdnů podle data zdroje, ze kterého shrnutí vychází.",
+      "Shrnutí rozsudků a usnesení Tribunálu vychází z jejich plných textů na EUR-Lex, ostatní zprávy z článků uvedených u každé zprávy. Štítek souběhu je uveden jen tam, kde souběh existuje.",
+      "Usnesení Tribunálu ve věci Vacu Activ je z 6. 10. 2026; zařazeno je do tohoto týdne, protože k němu komentář IPKat vyšel 29. 10. 2026. Rozsudek Tribunálu ve věci odrůdy jablka Roat (T-770/25) z 14. 10. 2026, k němuž IPKat publikoval komentář 28. 10. 2026, je ve vydání 17. 10. 2026."
+    ]
+  }
+}

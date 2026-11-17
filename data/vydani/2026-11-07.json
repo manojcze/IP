@@ -1,100 +1,23 @@
 {
   "datum": "2026-11-07",
-  "zkusebni": true,
-  "uvod": "Protože je sobota a v posledních dnech nevyšlo v prověřených zdrojích mnoho významného, pokrývá výběr delší období (od 13. 10. do 7. 11. 2026). Běžná vydání vycházejí každou sobotu a pokrývají uplynulý týden.",
+  "zkusebni": false,
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "Tribunál: znovupodání téměř totožné známky krátce po lhůtě pro prokázání užívání může být zlou vírou (Waterdrop)."
+      "text": "Generální advokát Szpunar navrhuje u AI chatbotu řešit jen zobrazování odpovědí, otázky k tréninku modelu považuje za hypotetické."
     },
     {
       "zprava": 2,
-      "text": "Hamburský vrchní zemský soud označil platformu Wish za přímého porušovatele ochranné známky."
+      "text": "Tribunál potvrdil, že přihláška BMV pro monitory baterií by těžila z dobrého jména známky BMW."
     },
     {
       "zprava": 3,
-      "text": "Generální advokát Szpunar navrhuje u AI chatbotu řešit jen zobrazování odpovědí, otázky k tréninku modelu považuje za hypotetické."
+      "text": "Tribunál: znovupodání téměř totožné známky krátce po lhůtě pro prokázání užívání může být zlou vírou (Waterdrop)."
     }
   ],
   "zpravy": [
     {
       "id": 1,
-      "sekce": [
-        "ochranne-znamky"
-      ],
-      "stitky": {
-        "oblasti": [
-          "Ochranné známky"
-        ],
-        "jurisdikce": [
-          "EU"
-        ],
-        "soubeh": [],
-        "zdroj": "Článek"
-      },
-      "nadpis": "Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru",
-      "fakta": [
-        "Tribunál EU",
-        "věc T-541/25, Qingdao Ecopure Filter v EUIPO (Waterdrop)",
-        "zveřejněno 5. 11. 2026"
-      ],
-      "odstavce": [
-        "Společnost Qingdao Ecopure Filter (QEF) si v roce 2021 zapsala jako ochrannou známku EU slovní označení „Waterdrop“ pro širokou škálu zboží třídy 11, včetně zařízení na filtraci vody. Konkurent Waterdrop Microdrink (WMG) v roce 2023 navrhl prohlášení této známky za neplatnou pro zlou víru. Zrušovací oddělení EUIPO návrh zamítlo, Odvolací senát však rozhodnutí částečně změnil a známku zneplatnil pro vodní filtry, protože šlo o nové přihlášení téhož označení, jímž se majitel vyhnul povinnosti prokazovat skutečné užívání starší známky.",
-        "Tribunál žalobu QEF zamítl. Vyšel z ustáleného testu, podle něhož je zlou vírou podání přihlášky s cílem poškodit třetí osobu nebo získat výlučné právo k jiným účelům, než ke kterým ochranná známka slouží. Rozhodla kombinace okolností: přihláška byla podána asi čtyři měsíce po skončení pětileté lhůty, po níž lze po majiteli starší známky požadovat důkaz užívání; QEF a její předchůdce podali během tří let několik obdobných přihlášek; zboží bylo totožné se širším seznamem zboží starší známky; a QEF nedoložila žádný obchodní důvod, ani tvrzené zjednodušení správy portfolia.",
-        "Samotné opakované podání zlou víru nezakládá, Tribunál odlišil věc MONOPOLY. Rozhodný je úmysl obejít požadavek skutečného užívání, který se projevil i tím, že se QEF ve čtyřech z pěti námitkových řízení proti WMG o starší právo neopřela. Argument, že slovní známka je flexibilnější, Tribunál odmítl jako nepřípustný i jako nepodložený."
-      ],
-      "dopad": {
-        "oznaceni": "Praktický dopad (podle komentáře):",
-        "text": "strategie opakovaného podání bude těžší obhájit. U téměř totožné pozdější známky pro totéž zboží lze bez konkrétního obchodního důvodu očekávat spíše domněnku zlé víry, zejména pokud k podání dojde krátce po skončení lhůty pro užívání. Pro klienty to znamená dokumentovat důvod každého nového podání."
-      },
-      "podklad": "Vychází z komentáře IPKat (Marcel Pemsel). Samotný rozsudek jsem nečetl; datum rozsudku komentář neuvádí. Použité ustanovení nařízení (EU) 2017/1001 komentář neuvádí, jde o zlou víru jako důvod neplatnosti.",
-      "zdroj": {
-        "url": "https://ipkitten.blogspot.com/2026/11/general-court-confirms-strict-rules-on.html",
-        "nazev": "IPKat"
-      }
-    },
-    {
-      "id": 2,
-      "sekce": [
-        "ochranne-znamky",
-        "nekala-soutez"
-      ],
-      "vyjimka": "Porušení ochranné známky EU a výklad testu SDEU Louboutin pro odpovědnost online platforem s dopadem na praxi v celé EU.",
-      "stitky": {
-        "oblasti": [
-          "Ochranné známky"
-        ],
-        "jurisdikce": [
-          "Německo"
-        ],
-        "soubeh": [
-          "Souběh s nekalou soutěží"
-        ],
-        "zdroj": "Článek"
-      },
-      "nadpis": "Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky",
-      "fakta": [
-        "Vrchní zemský soud v Hamburku (OLG)",
-        "sp. zn. 5 U 58/25, Jemella v ContextLogic",
-        "komentář z 21. 10. 2026"
-      ],
-      "odstavce": [
-        "Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.",
-        "Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.",
-        "Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci."
-      ],
-      "dopad": {
-        "oznaceni": "Praktický dopad (podle komentáře):",
-        "text": "rozšíření Louboutinova testu. Čím více služeb platforma spojuje, tím snáze jde o její vlastní užívání označení. Protipadělkové nástroje je nutné používat důsledně, jinak slouží jako důkaz vědomosti."
-      },
-      "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU.",
-      "zdroj": {
-        "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
-        "nazev": "IPKat"
-      }
-    },
-    {
-      "id": 3,
       "sekce": [
         "ostatni"
       ],
@@ -121,7 +44,6 @@
         "Odpovědi chatbota jsou online užitím ve smyslu čl. 15 DSM. Vyloučení pouhých skutečností a velmi krátkých úryvků se nemusí uplatnit, nakladatel samotným zveřejněním online implicitně nesouhlasí a čl. 4 TDM zobrazení odpovědí nekryje. Zobrazení může být rozmnožováním i zpřístupněním veřejnosti, pokud je forma vyjádření „systematicky rozpoznatelná“, což komentátor zpochybňuje."
       ],
       "dopad": {
-        "oznaceni": "Praktický dopad:",
         "text": "stanovisko není závazné a rozsudek se teprve očekává. Komentář upozorňuje, že další dvě AI předložení k autorskému právu (C-806/26 a C-829/26) jsou u Soudního dvora rozpracována."
       },
       "podklad": "Vychází z komentáře IPKat (Eleonora Rosati, 3. 11. 2026). Samotné stanovisko jsem nečetl; komentář neuvádí předkládající soud.",
@@ -129,105 +51,136 @@
         "url": "https://ipkitten.blogspot.com/2026/11/ag-szpunars-opinion-in-like-company-is.html",
         "nazev": "IPKat"
       }
+    },
+    {
+      "id": 2,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Rozhodnutí"
+      },
+      "nadpis": "BMV proti BMW: známka s dobrým jménem pro auta brání zápisu i pro monitory baterií",
+      "fakta": [
+        "Tribunál EU, druhý senát",
+        "věc T-468/25, Victron Energy v EUIPO – BMW (BMV), ECLI:EU:T:2026:714",
+        "rozsudek ze 4. 11. 2026"
+      ],
+      "odstavce": [
+        "Nizozemská společnost Victron Energy přihlásila slovní známku EU BMV pro monitory baterií (třída 9); pod označeními BMV-700 či BMV-712 tyto výrobky prodává. BMW podalo námitky na základě starší slovní známky EU BMW. Námitkové oddělení i odvolací senát jim vyhověly podle čl. 8 odst. 5 nařízení (EU) 2017/1001 (ochrana známky s dobrým jménem).",
+        "Tribunál žalobu zamítl. Monitory baterií nejsou určeny jen technicky zdatným odborníkům, kupují je i majitelé lodí či obytných vozů. BMW má značné dobré jméno pro automobily přinejmenším v Německu. Victron neprokázal, že veřejnost chápe „BM“ jako běžnou zkratku pro „battery monitor“: v předložených dokladech se objevovala jen jako součást typových označení výrobků Victronu. BMV ani BMW proto nemají pro veřejnost samostatný význam a jsou si podobné v průměrné míře.",
+        "Spojitost mezi známkami Tribunál dovodil z blízkosti zboží: monitory baterií jsou příslušenstvím běžných aut a pro elektromobily a hybridy jsou důležitou, ne-li nezbytnou součástí systému řízení baterie. Rozhodující je zboží v přihlášce, nikoli to, jak přihlašovatel známku skutečně užívá. Majitel starší známky nemusí prokazovat skutečnou škodu, stačí nikoli hypotetické riziko, že přihlašovatel bude těžit z pověsti (spolehlivost, kvalita) BMW. Řádný důvod k užívání Victron neprokázal; tento pojem je nutné vykládat restriktivně."
+      ],
+      "dopad": {
+        "text": "známky s dobrým jménem chrání i proti označením lišícím se jedním písmenem pro zboží, které je s jejich hlavním zbožím jen „blízce spojeno“ (příslušenství, součásti). Obrana popisností zkratky vyžaduje doklady o jejím samostatném běžném užívání na trhu, ne jen v typových označeních vlastních výrobků."
+      },
+      "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0468",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": [],
+        "zdroj": "Článek"
+      },
+      "nadpis": "Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru",
+      "fakta": [
+        "Tribunál EU, pátý senát",
+        "věc T-541/25, Qingdao Ecopure Filter v EUIPO – Waterdrop Microdrink (Waterdrop), ECLI:EU:T:2026:687",
+        "rozsudek z 21. 10. 2026, komentář IPKat z 5. 11. 2026"
+      ],
+      "odstavce": [
+        "Společnost Qingdao Ecopure Filter (QEF) si v roce 2021 zapsala jako ochrannou známku EU slovní označení „Waterdrop“ pro širokou škálu zboží třídy 11, včetně zařízení na filtraci vody. Konkurent Waterdrop Microdrink (WMG) v roce 2023 navrhl prohlášení této známky za neplatnou pro zlou víru. Zrušovací oddělení EUIPO návrh zamítlo, Odvolací senát však rozhodnutí částečně změnil a známku zneplatnil pro vodní filtry, protože šlo o nové přihlášení téhož označení, jímž se majitel vyhnul povinnosti prokazovat skutečné užívání starší známky.",
+        "Tribunál žalobu QEF zamítl. Vyšel z ustáleného testu, podle něhož je zlou vírou podání přihlášky s cílem poškodit třetí osobu nebo získat výlučné právo k jiným účelům, než ke kterým ochranná známka slouží. Rozhodla kombinace okolností: přihláška byla podána asi čtyři měsíce po skončení pětileté lhůty, po níž lze po majiteli starší známky požadovat důkaz užívání; QEF a její předchůdce podali během tří let několik obdobných přihlášek; zboží bylo totožné se širším seznamem zboží starší známky; a QEF nedoložila žádný obchodní důvod, ani tvrzené zjednodušení správy portfolia.",
+        "Samotné opakované podání zlou víru nezakládá, Tribunál odlišil věc MONOPOLY. Rozhodný je úmysl obejít požadavek skutečného užívání, který se projevil i tím, že se QEF ve čtyřech z pěti námitkových řízení proti WMG o starší právo neopřela. Argument, že slovní známka je flexibilnější, Tribunál odmítl jako nepřípustný i jako nepodložený."
+      ],
+      "dopad": {
+        "text": "strategie opakovaného podání bude těžší obhájit. U téměř totožné pozdější známky pro totéž zboží lze bez konkrétního obchodního důvodu očekávat spíše domněnku zlé víry, zejména pokud k podání dojde krátce po skončení lhůty pro užívání. Pro klienty to znamená dokumentovat důvod každého nového podání."
+      },
+      "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 5. 11. 2026). Datum rozsudku, ECLI a použité ustanovení (čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001, zlá víra) doplněny z EUR-Lex. Samotný rozsudek jsem nečetl celý.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/11/general-court-confirms-strict-rules-on.html",
+        "nazev": "IPKat"
+      }
     }
   ],
   "na_radar": [
     {
       "sekce": [
-        "ochranne-znamky"
+        "patenty-a-uzitne-vzory"
       ],
       "stitky": {
         "oblasti": [
-          "Ochranné známky"
+          "Patenty"
         ],
         "jurisdikce": [
-          "Německo"
+          "EU (UPC)"
         ],
         "soubeh": [],
         "zdroj": "Článek"
       },
       "odkaz": {
-        "url": "https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html",
-        "text": "Červený kruh jako známka: BGH k grafickému znázornění a roli rejstříku"
+        "url": "https://ipkitten.blogspot.com/2026/11/upckat-proportionality-defence-against.html",
+        "text": "IPKat, 1. 11. 2026: námitka nepřiměřenosti zákazu u UPC v oblasti léčiv"
       },
-      "text": "BGH: u červeného kruhu jako barevné známky rozhoduje zobrazení v rejstříku, ne v přihlášce.",
-      "detail": {
-        "fakta": [
-          "Spolkový soudní dvůr (BGH), Německo",
-          "sp. zn. I ZB 104/25 „Roter Kreis“",
-          "komentář z 13. 10. 2026"
-        ],
-        "zdroj": {
-          "url": "https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html",
-          "nazev": "IPKat"
-        },
-        "odstavce": [
-          "Spor se týkal obrazové známky tvořené červeným kruhem, zapsané v Německu v roce 1996 na základě získané rozlišovací způsobilosti pro vakuové termosky, džbány a nádoby na potraviny. Přihláška byla podána v papírové podobě. Třetí osoba požadovala prohlášení neplatnosti, protože podle ní označení nebylo dostatečně graficky znázorněno. Německý úřad i Spolkový patentový soud návrh zamítly a BGH nyní zamítl i opravný prostředek, takže zápis zůstává v platnosti.",
-          "Otázkou bylo, zda pro barevný obrazec platí stejné nároky na znázornění jako pro abstraktní barvu bez obrysů. BGH použil německý zákon z roku 1996 provádějící první směrnici o ochranných známkách a test z věci Sieckmann: znázornění musí být jasné, přesné, samostatné, srozumitelné, objektivní a trvanlivé. Za rozhodující označil zobrazení v rejstříku, nikoli v přihlášce, protože se třetí osoby musí o předmětu ochrany dozvědět z rejstříku. Že majitel kdysi předložil několik odstínů červené, proto nevadí.",
-          "Trvanlivost soud shledal splněnou, protože barva uložená v elektronickém rejstříku nevybledne, na rozdíl od fyzického vzorku z věci Libertel. Kód barvy (RAL, Pantone) nevyžadoval, protože kruh určitého odstínu červené dává spolehlivý základ pro posouzení užívání a kolizí. Komentátor kritizuje, že BGH nepoložil předběžnou otázku SDEU, zpochybňuje přednost rejstříku před přihláškou i to, že kód barvy není potřeba, a ptá se, proč by pro barevný obrazec a abstraktní barvu měla platit odlišná měřítka."
-        ],
-        "dopad": {
-          "oznaceni": "Praktický dopad (podle komentáře):",
-          "text": "význam má hlavně u starších barevných známek podaných před elektronickými rejstříky, kde se rozchází to, co bylo podáno, s tím, co je zapsáno."
-        },
-        "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 13. 10. 2026). Datum rozhodnutí BGH komentář neuvádí; samotné rozhodnutí jsem nečetl."
-      }
+      "text": "Rozbor ukazuje, že UPC zákaz při porušení zpravidla vydá; výjimkou mohou být zájmy pacientů, pokud je výrobek jedinou dostupnou léčbou nebo výrazně zlepšuje péči (Meril v Edwards, Hologic v Siemens)."
     },
     {
       "sekce": [
-        "ochranne-znamky"
+        "patenty-a-uzitne-vzory"
       ],
       "stitky": {
         "oblasti": [
-          "Ochranné známky"
+          "Patenty"
         ],
         "jurisdikce": [
-          "EU"
+          "Kanada"
         ],
         "soubeh": [],
         "zdroj": "Článek"
       },
       "odkaz": {
-        "url": "https://ipkitten.blogspot.com/2026/10/an-eye-for-eye-constitutes-bad-faith.html",
-        "text": "Tribunál, T-650/25 Vacu Activ v EUIPO (říjen 2026)"
+        "url": "https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html",
+        "text": "IPKat, 5. 11. 2026: Nejvyšší soud Kanady k patentům na dávkovací režimy"
       },
-      "text": "potvrzeno zrušení známky „VACUACTIVUS“ pro zlou víru, přihlašovatel nechtěl označení užívat a šlo mu o to, aby bývalý distributor nevstoupil na trh EU.",
-      "poznamka": "Údaje z přehledu IPKat; celý příspěvek se nepodařilo načíst."
-    },
-    {
-      "sekce": [
-        "ochranne-znamky"
-      ],
-      "stitky": {
-        "oblasti": [
-          "Ochranné známky"
-        ],
-        "jurisdikce": [
-          "EU"
-        ],
-        "soubeh": [],
-        "zdroj": "Článek"
-      },
-      "odkaz": {
-        "url": "https://www.worldtrademarkreview.com/article/tesla-invalidation-offers-playbook-challenging-bad-faith-filings-says-local-counsel",
-        "text": "WTR, 29. 10. 2026: neplatnost známky TESLA před EUIPO"
-      },
-      "text": "rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.",
-      "poznamka": "Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny."
+      "text": "Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv."
     }
   ],
   "paticka": {
     "zkontrolovane": [
-      "IPKat: načteno, zpracovány příspěvky z 13. 10. až 5. 11. 2026.",
-      "Soudní dvůr EU, tiskové zprávy: načteno (poslední č. 153/2026 z 22. 10.); v období žádná zpráva k ochranným známkám ani jinému IP.",
-      "ÚPV, aktuality: načteno; v období pouze administrativní oznámení a semináře.",
-      "EUIPO, Observatoř: stránka s publikacemi se nenačetla s obsahem; doplněno vyhledáváním (WTR, Managing IP).",
-      "Další: WebSearch (UPC, Evropská komise, české soudy). Nová rozhodnutí českých soudů ani ÚOHS k ochranným známkám v tomto období nalezena nebyla."
+      "IPKat: příspěvky z 1. až 5. 11. 2026 (seznam z kanálu blogu, u relevantních plný text).",
+      "Soudní dvůr EU, tiskové zprávy: stanovisko GA ve věci C-250/25 Like Company (3. 11.); ostatní tiskové zprávy se duševního vlastnictví netýkají.",
+      "EUR-Lex: rozsudky Tribunálu ve věcech ochranných známek ze 4. 11. 2026 (plné texty).",
+      "JUVE Patent a Kluwer IP blogy: přehled zpráv.",
+      "ÚPV, aktuality: 6. 11. 2026 jen oznámení o programu SME Fund (nezařazuje se)."
     ],
-    "nedostupne": [],
+    "nedostupne": [
+      "EUIPO (euipo.europa.eu): web odpověděl chybou 403; novinky a rozhodnutí odvolacích senátů nebyly načteny.",
+      "Web UPC (unified-patent-court.org): spojení bylo odmítnuto; zprávy o UPC vycházejí z JUVE Patent a IPKat.",
+      "World Trademark Review, Managing IP: za paywallem."
+    ],
     "vyklad": [
-      "Štítek souběhu se zobrazuje jen tam, kde souběh existuje: „Souběh se soutěžním právem“ (články 101 a 102 SFEU, ÚOHS, FRAND) nebo „Souběh s nekalou soutěží“. Zaměření je primárně na ČR a EU; jiné jurisdikce jsou zařazeny jen podpůrně u velmi významných věcí (ve zkoušce německá rozhodnutí Wish a Roter Kreis). Na zkušební vydání jsem období rozšířil na 13. 10. až 7. 11. 2026, protože v sobotu nic nového nevyšlo. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí.",
-      "Dodatečně upraveno 17. 11. 2026: zprávy, které se netýkají ČR ani celé EU, jsou mezi zprávami Ve zkratce (celé shrnutí je u nich k rozbalení). Výjimkou je věc Wish, která se týká ochranné známky EU a výkladu testu SDEU Louboutin; je mezi hlavními zprávami, aby vydání mělo alespoň tři. Vypuštěna byla položka o programu SME Fund."
+      "Štítek souběhu se zobrazuje jen tam, kde souběh existuje: „Souběh se soutěžním právem“ (články 101 a 102 SFEU, ÚOHS, FRAND) nebo „Souběh s nekalou soutěží“. Zaměření je primárně na ČR a EU; jiné jurisdikce jsou zařazeny jen podpůrně u velmi významných věcí. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí.",
+      "Dodatečně upraveno 17. 11. 2026: vydání původně souhrnně pokrývalo období od 13. 10. do 7. 11. 2026. Nyní pokrývá 1. až 7. 11. 2026; starší zprávy (Wish, Vacu Activ, Roter Kreis, TESLA) jsou ve zpětných vydáních 17., 24. a 31. 10. 2026 podle data svého zdroje. Doplněna byla zpráva o věci BMV v BMW a položky Ve zkratce z tohoto týdne. Vypuštěna byla položka o programu SME Fund."
     ]
   }
 }
