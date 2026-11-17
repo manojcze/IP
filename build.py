@@ -506,7 +506,7 @@ def page(*, title, root, nav_current, content, nadpis=None, nadpis_cls="", meta=
     if HESLO_HASH:
         desc += '\n<meta name="robots" content="noindex, nofollow">'
         head_gate = "\n" + GATE_HEAD.replace("@HASH@", HESLO_HASH)
-        body_gate = GATE_BODY.replace("@HASH@", HESLO_HASH).replace("@KONTAKT@", KONTAKT) + "\n"
+        body_gate = GATE_BODY.replace("@HASH@", HESLO_HASH) + "\n"
         css = CSS + "\n" + GATE_CSS
     return f"""<!DOCTYPE html>
 <html lang="cs" data-theme="light">
@@ -1309,7 +1309,6 @@ GATE_BODY = """<div class="gate">
     <p class="gate-err" id="gate-err" role="alert" hidden>Nesprávné heslo, zkuste to znovu.</p>
     <noscript><p class="gate-err">Pro zobrazení stránky je potřeba povolit JavaScript.</p></noscript>
   </form>
-  <p class="gate-contact">@KONTAKT@</p>
 </div>
 <script>
 (function () {
@@ -1337,7 +1336,6 @@ html.ok .gate { display: none; }
 .gate { min-height: 100vh; display: grid; grid-template-rows: 1fr auto 1fr; justify-items: center; padding: 24px 16px; }
 .gate-box { grid-row: 2; width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--line); border-top: 3px solid var(--navy); border-radius: 4px; padding: 24px 24px 22px; }
 .gate .gate-msg { margin: 0 0 14px; font-size: 18px; font-weight: 600; color: var(--ink); }
-.gate-contact { grid-row: 3; align-self: end; margin: 24px 0 0; font-size: 14px; color: var(--muted); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .gate-row { display: flex; gap: 8px; }
 .gate input { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--ink); background: var(--surface); border: 1px solid var(--muted); border-radius: 3px; padding: 10px 12px; }
