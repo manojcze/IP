@@ -1,4 +1,4 @@
-# Týden v IP a nekalé soutěži
+# Týden v IP
 
 Přehled novinek z práva duševního vlastnictví, vychází jednou týdně v sobotu ráno a pokrývá
 uplynulý týden (naplánovaná úloha startuje v sobotu v 0:01 českého času).

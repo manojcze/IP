@@ -52,7 +52,7 @@ HESLO_HASH = "9f3fbf13"
 KONTAKT = "legal(zavináč)onajman.cz"
 
 # Název webu v hlavičce a v titulcích stránek, podtitul nad názvem na stránkách vydání.
-NAZEV = "Týden v IP a nekalé soutěži"
+NAZEV = "Týden v IP"
 PODTITUL = "Nové vydání vždy v sobotu ráno"
 
 # Typ zdroje, ze kterého zpráva vychází (štítek stitky.zdroj):
