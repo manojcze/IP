@@ -596,7 +596,7 @@ def section_page(slug, nazev, vydani):
     else:
         content = ('  <p class="empty">V této sekci zatím není žádná zpráva. '
                    'Jakmile se v některém vydání objeví, najdete ji tady.</p>')
-    content = (f'  <p class="lead">Zprávy ze všech vydání zařazené do sekce {nazev}, od nejnovějších.</p>\n\n'
+    content = (f'  <p class="lead">Zprávy ze všech vydání, seřazené od nejnovější po nejstarší.</p>\n\n'
                + content + f'\n\n  <footer class="foot">\n    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>\n  </footer>')
     if n_z or n_r:
         meta = f"<span>{pocet_zprav(n_z)}</span>"
