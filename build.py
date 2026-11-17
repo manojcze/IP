@@ -69,7 +69,7 @@ MIN_HLAVNICH = 3
 VYLOUCENO = re.compile(r"malých a středních podnik|\bMSP\b|SME Fund", re.IGNORECASE)
 
 # Nenápadné upozornění nahoře na každé stránce.
-AI_UPOZORNENI = ("AI generovaný výstup pro vlastní osobní potřebu. "
+AI_UPOZORNENI = ("AI generovaný výstup pro osobní potřebu. "
                  "Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓")
 
 
@@ -396,7 +396,12 @@ def sidebar(vydani, root, aktualni=None):
 </aside>"""
 
 
-def page(*, title, root, brand, h1, meta, nav_current, content, side=None, description=""):
+def page(*, title, root, nav_current, content, nadpis=None, meta="", side=None, description=""):
+    """Celá stránka. Hlavička je na všech stránkách stejná; nadpis a meta (název sekce,
+    Všechna vydání, Hledání) se zobrazí na začátku obsahu."""
+    if nadpis:
+        content = (f'  <div class="issue-head">\n    <h2 class="issue-date">{nadpis}</h2>'
+                   + (f'\n    <p class="issue-meta">{meta}</p>' if meta else "") + "\n  </div>\n\n" + content)
     nav = [("index", f"{root}./" if root else "./", "Aktuální vydání", "")]
     nav += [(slug, f"{root}sekce/{slug}.html", nazev, f" s-{slug}") for slug, nazev in SEKCE]
     nav.append(("archiv", f"{root}archiv/", "Všechna vydání", " nl-arch"))
@@ -438,8 +443,8 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
 <header class="top">
   <div class="inner">
     <div class="head-main">
-      <div class="brand"><a href="{root}./">{brand}</a></div>
-      <h1>{h1}</h1>{f'{chr(10)}      <div class="meta-row">{meta}</div>' if meta else ""}
+      <div class="brand">{PODTITUL}</div>
+      <h1><a href="{root}./">{NAZEV}</a></h1>
     </div>
     <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false">
       <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
@@ -535,8 +540,7 @@ def issue_page(v, vydani, root, nav_current):
     parts.append('  <footer class="foot">\n' + "\n".join(foot) + "\n  </footer>")
     hlavni = "; ".join(strip_tags(t["text"]) for t in v["hlavni_temata"][:2])
     return page(title=f"{NAZEV} {d_short(d)}", root=root,
-                brand=PODTITUL, h1=NAZEV,
-                meta="", nav_current=nav_current, content="\n\n".join(parts),
+                nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
 
 
@@ -595,13 +599,13 @@ def section_page(slug, nazev, vydani):
     content = (f'  <p class="lead">Zprávy ze všech vydání zařazené do sekce {nazev}, od nejnovějších.</p>\n\n'
                + content + f'\n\n  <footer class="foot">\n    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>\n  </footer>')
     if n_z or n_r:
-        meta = f"<span><strong>{pocet_zprav(n_z)}</strong></span>"
+        meta = f"<span>{pocet_zprav(n_z)}</span>"
         if n_r:
             meta += f"<span>{n_r} ve zkratce</span>"
         meta += f"<span>z {n_v} {plural(n_v, 'vydání', 'vydání', 'vydání')}</span>"
     else:
         meta = "<span>Zatím bez zpráv</span>"
-    return page(title=f"{nazev} – {NAZEV}", root=root, brand=f"{NAZEV} · sekce", h1=nazev,
+    return page(title=f"{nazev} – {NAZEV}", root=root, nadpis=nazev,
                 meta=meta, nav_current=slug, content=content, side=sidebar(vydani, root),
                 description=f"Přehled novinek z oblasti {nazev.lower()} ze všech vydání.")
 
@@ -641,7 +645,7 @@ def search_page(vydani):
   <p class="search-info" id="hledat-info" aria-live="polite">Načítám…</p>
   <ol class="hits" id="vysledky"></ol>
 {SEARCH_JS}"""
-    return page(title=f"Hledání – {NAZEV}", root="", brand=NAZEV, h1="Hledání ve zprávách",
+    return page(title=f"Hledání – {NAZEV}", root="", nadpis="Hledání ve zprávách",
                 meta="<span>Hlavní zprávy i zprávy ve zkratce ze všech vydání</span>", nav_current="hledani",
                 content=content, side=sidebar(vydani, ""), description="Fulltextové hledání ve všech vydáních.")
 
@@ -660,8 +664,8 @@ def archive_page(vydani):
     content = ('  <ol class="arch">\n' + "\n".join(items) + "\n  </ol>\n\n"
                f'  <footer class="foot">\n    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>\n  </footer>')
     n = len(vydani)
-    return page(title=f"Všechna vydání – {NAZEV}", root=root, brand=NAZEV,
-                h1="Všechna vydání", meta=f"<span>{n} {plural(n, 'vydání', 'vydání', 'vydání')}</span>",
+    return page(title=f"Všechna vydání – {NAZEV}", root=root,
+                nadpis="Všechna vydání", meta=f"<span>{n} {plural(n, 'vydání', 'vydání', 'vydání')}</span>",
                 nav_current="archiv", content=content, description="Archiv všech vydání.")
 
 
@@ -775,8 +779,8 @@ header.top .inner { display: flex; justify-content: space-between; align-items: 
 .theme-toggle[aria-checked="true"] .tt-thumb { transform: translateX(16px); }
 @media (max-width: 480px) { .tt-label { display: none; } }
 .brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #9fb4da; font-weight: 600; }
-.brand a { color: inherit; text-decoration: none; }
-.brand a:hover { color: #fff; }
+header.top h1 a { color: inherit; text-decoration: none; }
+header.top h1 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
 header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 6vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
 .meta-row strong { color: #fff; font-weight: 600; }

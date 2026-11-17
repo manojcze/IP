@@ -81,8 +81,8 @@ header.top .inner { display: flex; justify-content: space-between; align-items: 
 .theme-toggle[aria-checked="true"] .tt-thumb { transform: translateX(16px); }
 @media (max-width: 480px) { .tt-label { display: none; } }
 .brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #9fb4da; font-weight: 600; }
-.brand a { color: inherit; text-decoration: none; }
-.brand a:hover { color: #fff; }
+header.top h1 a { color: inherit; text-decoration: none; }
+header.top h1 a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
 header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 6vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
 .meta-row strong { color: #fff; font-weight: 600; }
@@ -312,15 +312,14 @@ html.ok .gate { display: none; }
 </script>
 
 <div class="ai-note" role="note">
-  <div class="inner">AI generovaný výstup pro vlastní osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓</div>
+  <div class="inner">AI generovaný výstup pro osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓</div>
 </div>
 
 <header class="top">
   <div class="inner">
     <div class="head-main">
-      <div class="brand"><a href=".././">Týden v IP · sekce</a></div>
-      <h1>Ostatní</h1>
-      <div class="meta-row"><span><strong>2 hlavní zprávy</strong></span><span>1 ve zkratce</span><span>z 2 vydání</span></div>
+      <div class="brand">Nové vydání vždy v sobotu ráno</div>
+      <h1><a href=".././">Týden v IP</a></h1>
     </div>
     <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false">
       <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
@@ -350,6 +349,11 @@ html.ok .gate { display: none; }
 
 <div class="layout has-side">
 <main class="content">
+  <div class="issue-head">
+    <h2 class="issue-date">Ostatní</h2>
+    <p class="issue-meta"><span>2 hlavní zprávy</span><span>1 ve zkratce</span><span>z 2 vydání</span></p>
+  </div>
+
   <p class="lead">Zprávy ze všech vydání zařazené do sekce Ostatní, od nejnovějších.</p>
 
   <section class="grp" aria-labelledby="g-2026-11-14">
