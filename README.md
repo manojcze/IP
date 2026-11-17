@@ -1,7 +1,7 @@
 # Monitoring IP zpráv
 
-Přehled novinek z práva duševního vlastnictví, vychází dvakrát týdně (úterý a pátek ráno,
-naplánovaná úloha startuje v 7:45 českého času).
+Přehled novinek z práva duševního vlastnictví, vychází jednou týdně v sobotu ráno a pokrývá
+uplynulý týden (naplánovaná úloha startuje v sobotu v 0:01 českého času).
 Web běží na Váš Hosting (onajman.cz). Po každém nahrání do větve `main` ho GitHub
 Actions (`.github/workflows/nasazeni.yml`) vygeneruje a nahraje přes FTP do složky
 `www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `archiv/`, `sekce/`),
@@ -10,7 +10,8 @@ ne data ani skripty.
 Přístup k FTP se nastavuje v GitHubu (Settings → Secrets and variables → Actions):
 tajné údaje `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`; nepovinně proměnná
 `FTP_DIR` (složka webu na FTP, výchozí `www`). Nahrává se šifrovaně (FTPS) programem
-`lftp`; soubory se jen nahrávají a přepisují, nic se na serveru nemaže.
+`lftp`. Ve složkách `archiv/` a `sekce/` se na serveru smažou i stránky, které už
+neexistují; nic jiného ve složce webu se nemaže.
 
 ## Jak web vzniká
 
@@ -73,7 +74,10 @@ sekcí se zpráva zobrazí ve všech svých sekcích.
 | `ochranne-znamky` | Ochranné známky | ochranné známky, obchodní firmy, označení původu a zeměpisná označení |
 | `prumyslove-vzory` | Průmyslové vzory | průmyslové vzory (zapsané i nezapsané) |
 | `patenty-a-uzitne-vzory` | Patenty a užitné vzory | patenty, užitné vzory, SPC, UPC, SEP/FRAND |
-| `ostatni` | Ostatní | autorské právo, AI, know-how, odpovědnost platforem, čistě soutěžní právo, podpora MSP a vše ostatní |
+| `ostatni` | Ostatní | autorské právo, AI, know-how, odpovědnost platforem, čistě soutěžní právo a vše ostatní |
+
+Zprávy o podpoře malých a středních podniků (SME Fund, vouchery, dotační programy pro MSP)
+se do přehledu nezařazují; `build.py` je odmítne.
 
 Příklady: spor o známku, kde soud řeší i nekalou soutěž, má `["ochranne-znamky", "nekala-soutez"]`.
 Spor vedený hlavně z nekalé soutěže s návazností na označení má `["nekala-soutez", "ochranne-znamky"]`.
@@ -150,7 +154,10 @@ Pravidla, která `build.py` kontroluje:
 - **Hlavní zprávy (`zpravy`) se musí týkat ČR nebo celé EU**: jurisdikce „ČR“ nebo
   začínající „EU“ (např. „EU“, „EU (UPC)“). Rozhodnutí jiných států (i členských států EU,
   Spojeného království, USA…) patří do „Na radar“. Výjimku lze udělat jen u mimořádně
-  významné věci s přímým dopadem na ČR/EU; zpráva pak musí mít pole `vyjimka` s důvodem.
+  významné věci s přímým dopadem na ČR/EU; zpráva pak musí mít pole `vyjimka` s důvodem
+  (na webu se u ní zobrazí).
+- **Každé vydání má alespoň 3 hlavní zprávy.** Pokud se nenajdou 3 významné zprávy z ČR/EU,
+  doplní se nejvýznamnějšími zprávami mimo ČR/EU jako výjimky (pole `vyjimka`).
 - Nejvýš 5 hlavních témat a 10 položek „Na radar“. Položka „Na radar“ je buď
   jednořádková (odkaz, věta, poznámka), nebo plně zpracovaná zpráva mimo ČR/EU
   s polem `detail`, které se na webu zobrazí jako rozbalitelné „Celé shrnutí“.
@@ -162,5 +169,4 @@ Pravidla, která `build.py` kontroluje:
 stejný klíč (např. `aviator-v-spribe`). Na stránce sekce se pak zobrazí jen
 nejnovější verze s poznámkou, ve kterých vydáních byla dřív.
 
-Pokud v období nevyšlo nic významného, nechte `zpravy` prázdné (`[]`) a do patičky
-uveďte zkontrolované zdroje. Stránka vydání pak zobrazí krátkou informaci.
+Zkontrolované a nedostupné zdroje a zvolený výklad zadání patří do patičky (`paticka`).

@@ -1,7 +1,7 @@
 {
   "datum": "2026-11-07",
   "zkusebni": true,
-  "uvod": "<strong>Zkušební vydání.</strong> Protože je sobota a v posledních dnech nevyšlo v prověřených zdrojích mnoho významného, pokrývá výběr delší období (od 13. 10. do 7. 11. 2026). Zprávy starší než týden jsou označeny. Běžná vydání vycházejí v úterý a v pátek ráno a pokrývají vždy období od předchozího vydání (první vydání v úterý 10. 11. 2026).",
+  "uvod": "Protože je sobota a v posledních dnech nevyšlo v prověřených zdrojích mnoho významného, pokrývá výběr delší období (od 13. 10. do 7. 11. 2026). Zprávy starší než týden jsou označeny. Běžná vydání vycházejí každou sobotu a pokrývají uplynulý týden.",
   "hlavni_temata": [
     {
       "zprava": 1,
@@ -9,6 +9,10 @@
     },
     {
       "zprava": 2,
+      "text": "Hamburský vrchní zemský soud označil platformu Wish za přímého porušovatele ochranné známky."
+    },
+    {
+      "zprava": 3,
       "text": "Generální advokát Szpunar navrhuje u AI chatbotu řešit jen zobrazování odpovědí, otázky k tréninku modelu považuje za hypotetické."
     }
   ],
@@ -52,6 +56,46 @@
     {
       "id": 2,
       "sekce": [
+        "ochranne-znamky",
+        "nekala-soutez"
+      ],
+      "vyjimka": "Porušení ochranné známky EU a výklad testu SDEU Louboutin pro odpovědnost online platforem s dopadem na praxi v celé EU.",
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "Německo"
+        ],
+        "soubeh": [
+          "Souběh s nekalou soutěží"
+        ],
+        "starsi": true
+      },
+      "nadpis": "Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky",
+      "fakta": [
+        "Vrchní zemský soud v Hamburku (OLG)",
+        "sp. zn. 5 U 58/25, Jemella v ContextLogic",
+        "komentář z 21. 10. 2026"
+      ],
+      "odstavce": [
+        "Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.",
+        "Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.",
+        "Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci."
+      ],
+      "dopad": {
+        "oznaceni": "Praktický dopad (podle komentáře):",
+        "text": "rozšíření Louboutinova testu. Čím více služeb platforma spojuje, tím snáze jde o její vlastní užívání označení. Protipadělkové nástroje je nutné používat důsledně, jinak slouží jako důkaz vědomosti."
+      },
+      "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
+        "nazev": "IPKat"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
         "ostatni"
       ],
       "stitky": {
@@ -88,50 +132,6 @@
     }
   ],
   "na_radar": [
-    {
-      "sekce": [
-        "ochranne-znamky",
-        "nekala-soutez"
-      ],
-      "stitky": {
-        "oblasti": [
-          "Ochranné známky"
-        ],
-        "jurisdikce": [
-          "Německo"
-        ],
-        "soubeh": [
-          "Souběh s nekalou soutěží"
-        ],
-        "starsi": true
-      },
-      "odkaz": {
-        "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
-        "text": "Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky"
-      },
-      "text": "Hamburský vrchní zemský soud označil platformu Wish za přímého porušovatele ochranné známky.",
-      "detail": {
-        "fakta": [
-          "Vrchní zemský soud v Hamburku (OLG)",
-          "sp. zn. 5 U 58/25, Jemella v ContextLogic",
-          "komentář z 21. 10. 2026"
-        ],
-        "zdroj": {
-          "url": "https://ipkitten.blogspot.com/2026/10/be-careful-what-you-wish-for-hamburg.html",
-          "nazev": "IPKat"
-        },
-        "odstavce": [
-          "Společnost Jemella, prodávající stylingové přístroje pod značkou ghd a majitelka ochranné známky EU „GHD“, objevila od roku 2019 na marketplace Wish velké množství padělaných žehliček na vlasy. V letech 2019 až 2021 podala 142 oznámení přes interní systém Wish, provedla šest zkušebních nákupů, rozeslala výzvy a poté žalovala americkou společnost ContextLogic i její nizozemskou dceru. Zemský soud v Hamburku je shledal odpovědnými jen jako zprostředkovatele (Störerhaftung), tedy sekundárně. Vrchní zemský soud nyní odvolání vyhověl a Wish označil za subjekt, který označení užívá sám.",
-          "Použil test z rozsudku SDEU Louboutin: zda dobře informovaný a přiměřeně pozorný uživatel spojuje služby platformy s označením. Vyložil jej šířeji, neboť nevyžaduje, aby uživatel věřil, že platforma zboží prodává sama. Rozhodly jednotná prezentace nabídek bez možnosti kontaktovat prodejce, potvrzení objednávek a platby přicházející od Wish a nizozemské dcery, logistické služby včetně skladu v Amsterdamu, vliv na ceny a vyhledávání značkového zboží, které vracelo padělky.",
-          "Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci."
-        ],
-        "dopad": {
-          "oznaceni": "Praktický dopad (podle komentáře):",
-          "text": "rozšíření Louboutinova testu. Čím více služeb platforma spojuje, tím snáze jde o její vlastní užívání označení. Protipadělkové nástroje je nutné používat důsledně, jinak slouží jako důkaz vědomosti."
-        },
-        "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU."
-      }
-    },
     {
       "sekce": [
         "ochranne-znamky"
@@ -214,27 +214,6 @@
       },
       "text": "rozbor kombinace nepřímých důkazů, které vedly ke zneplatnění pro zlou víru.",
       "poznamka": "Článek je za paywallem, strana, spis. značka ani datum rozhodnutí nejsou ověřeny."
-    },
-    {
-      "sekce": [
-        "ostatni"
-      ],
-      "stitky": {
-        "oblasti": [
-          "Podpora malých a středních podniků"
-        ],
-        "jurisdikce": [
-          "ČR"
-        ],
-        "soubeh": [],
-        "starsi": false
-      },
-      "odkaz": {
-        "url": "https://upv.gov.cz/aktuality/informace/oznameni-o-otevreni-sme-fund-pro-vouchery-1-a-2",
-        "text": "ÚPV, 6. 11. 2026: otevření SME Fund pro vouchery 1 a 2"
-      },
-      "text": "administrativní oznámení, prakticky užitečné pro malé a střední podniky.",
-      "poznamka": "Podrobnosti programu stránka v náhledu neuvádí."
     }
   ],
   "paticka": {
@@ -248,7 +227,7 @@
     "nedostupne": [],
     "vyklad": [
       "Štítek souběhu se zobrazuje jen tam, kde souběh existuje: „Souběh se soutěžním právem“ (články 101 a 102 SFEU, ÚOHS, FRAND) nebo „Souběh s nekalou soutěží“. Zaměření je primárně na ČR a EU; jiné jurisdikce jsou zařazeny jen podpůrně u velmi významných věcí (ve zkoušce německá rozhodnutí Wish a Roter Kreis). Na zkušební vydání jsem období rozšířil na 13. 10. až 7. 11. 2026, protože v sobotu nic nového nevyšlo. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí.",
-      "Dodatečně upraveno 17. 11. 2026: zprávy, které se netýkají ČR ani celé EU, byly přesunuty z hlavních zpráv mezi položky Na radar; jejich celé shrnutí je u nich k rozbalení."
+      "Dodatečně upraveno 17. 11. 2026: zprávy, které se netýkají ČR ani celé EU, jsou mezi položkami Na radar (celé shrnutí je u nich k rozbalení). Výjimkou je věc Wish, která se týká ochranné známky EU a výkladu testu SDEU Louboutin; je mezi hlavními zprávami, aby vydání mělo alespoň tři. Vypuštěna byla položka o programu SME Fund."
     ]
   }
 }

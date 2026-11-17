@@ -51,12 +51,19 @@ HESLO_HASH = "9f3fbf13"
 # Kontaktní adresa v patičce každé stránky a na přihlašovací stránce.
 KONTAKT = "legal(zavináč)onajman.cz"
 
-# Název webu v hlavičce a v titulcích stránek.
+# Název webu v hlavičce a v titulcích stránek, podtitul nad názvem na stránkách vydání.
 NAZEV = "Monitoring IP zpráv"
+PODTITUL = "Přehled novinek v IP. Každý týden vždy v sobotu ráno."
+
+# Každé vydání má alespoň tolik hlavních zpráv.
+MIN_HLAVNICH = 3
+
+# Témata, která se do přehledu nezařazují (podpora malých a středních podniků).
+VYLOUCENO = re.compile(r"malých a středních podnik|\bMSP\b|SME Fund", re.IGNORECASE)
 
 # Nenápadné upozornění nahoře na každé stránce.
 AI_UPOZORNENI = ("AI generovaný výstup pro vlastní osobní potřebu. "
-                 "Zákaz šíření a užívání pro jiné než edukativní účely.")
+                 "Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓")
 
 
 def heslo_hash(heslo):
@@ -124,6 +131,8 @@ def check_stitky(st, kde, chyby):
     for t in st.get("oblasti", []) + st.get("jurisdikce", []) + st.get("soubeh", []):
         if t.strip().upper() == "NE" or "bez souběhu" in t.lower():
             chyby.append(f"{kde}: nepřípustný štítek „{t}“")
+        if VYLOUCENO.search(t):
+            chyby.append(f"{kde}: zprávy o podpoře malých a středních podniků se nezařazují (štítek „{t}“)")
 
 
 def check_sekce(sekce, kde, chyby):
@@ -176,6 +185,11 @@ def load_issue(path):
         if isinstance(z.get("stitky"), dict) and not je_cr_eu(z["stitky"]) and not z.get("vyjimka"):
             chyby.append(f"{kde}: netýká se ČR ani celé EU, patří do Na radar "
                          "(nebo uveďte důvod výjimky v poli vyjimka)")
+        if VYLOUCENO.search(z.get("nadpis", "")):
+            chyby.append(f"{kde}: zprávy o podpoře malých a středních podniků se nezařazují")
+    if len(zpravy) < MIN_HLAVNICH:
+        chyby.append(f"{name}: hlavní zprávy musí být alespoň {MIN_HLAVNICH} (je jich {len(zpravy)}); chybějící "
+                     "doplňte nejvýznamnějšími zprávami mimo ČR/EU s polem vyjimka")
     ht = v.get("hlavni_temata", [])
     if len(ht) > 5:
         chyby.append(f"{name}: hlavních témat může být nejvýš 5")
@@ -192,6 +206,8 @@ def load_issue(path):
         odkaz = r.get("odkaz") or {}
         if not str(odkaz.get("url", "")).startswith("http") or not odkaz.get("text"):
             chyby.append(f"{kde}: chybí odkaz (url a text)")
+        if VYLOUCENO.search(odkaz.get("text", "")) or "sme-fund" in str(odkaz.get("url", "")).lower():
+            chyby.append(f"{kde}: zprávy o podpoře malých a středních podniků se nezařazují")
         det = r.get("detail")
         if det is not None and (not isinstance(det, dict) or not det.get("odstavce") or not det.get("fakta")):
             chyby.append(f"{kde}: detail musí obsahovat fakta a odstavce")
@@ -282,6 +298,8 @@ def card(z, v, root, kontext, also_in=None):
         paticka.append('<span class="also">Zpráva byla také ve vydání '
                        + ", ".join(d_short(x["_d"]) for x in also_in) + "</span>")
     foot = f'\n      <div class="card-foot">{"".join(paticka)}</div>' if paticka else ""
+    vyjimka = (f'\n      <p class="basis exc">Zpráva mimo ČR a EU, mezi hlavní zařazena výjimečně: {z["vyjimka"]}</p>'
+               if z.get("vyjimka") else "")
     return f"""    <article class="card s-{hlavni}" id="{cid}">
       <div class="tags">{pills(z["stitky"])}</div>
       <h3>{z["nadpis"]}</h3>
@@ -289,7 +307,7 @@ def card(z, v, root, kontext, also_in=None):
       <p class="src-line">{zdroj}</p>
       {odst}
       <p class="why"><b>{oznaceni}</b> {dopad["text"]}</p>
-      <p class="basis">{z["podklad"]}</p>{foot}
+      <p class="basis">{z["podklad"]}</p>{vyjimka}{foot}
     </article>"""
 
 
@@ -497,7 +515,7 @@ def issue_page(v, vydani, root, nav_current):
     parts.append('  <footer class="foot">\n' + "\n".join(foot) + "\n  </footer>")
     hlavni = "; ".join(strip_tags(t["text"]) for t in v["hlavni_temata"][:2])
     return page(title=f"{NAZEV} {d_short(d)}", root=root,
-                brand="Nový přehled vždy v úterý a pátek ráno", h1=NAZEV,
+                brand=PODTITUL, h1=NAZEV,
                 meta="", nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
 
