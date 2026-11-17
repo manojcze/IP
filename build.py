@@ -501,12 +501,13 @@ def page(*, title, root, nav_current, content, nadpis=None, nadpis_cls="", meta=
         for key, href, label, cls in nav)
     layout_cls = "layout has-side" if side else "layout"
     desc = f'\n<meta name="description" content="{esc(description)}">' if description else ""
-    head_gate = body_gate = ""
+    head_gate = body_gate = odhlasit = ""
     css = CSS
     if HESLO_HASH:
         desc += '\n<meta name="robots" content="noindex, nofollow">'
         head_gate = "\n" + GATE_HEAD.replace("@HASH@", HESLO_HASH)
         body_gate = GATE_BODY.replace("@HASH@", HESLO_HASH) + "\n"
+        odhlasit = f'<a class="logout" id="odhlasit" href="{root}./">Odhlásit</a>'
         css = CSS + "\n" + GATE_CSS
     return f"""<!DOCTYPE html>
 <html lang="cs" data-theme="light">
@@ -524,8 +525,8 @@ def page(*, title, root, nav_current, content, nadpis=None, nadpis_cls="", meta=
 </head>
 <body>
 {body_gate}
-<div class="ai-note" role="note">
-  <div class="inner">{AI_UPOZORNENI}</div>
+<div class="ai-note">
+  <div class="inner ai-row"><span role="note">{AI_UPOZORNENI}</span>{odhlasit}</div>
 </div>
 
 <header class="top">
@@ -925,6 +926,9 @@ header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: c
 .meta-row strong { color: #fff; font-weight: 600; }
 .ai-note { background: var(--navy); color: #aebcd4; font-size: 12px; line-height: 1.4; border-bottom: 1px solid rgba(255, 255, 255, .08); }
 .ai-note .inner { padding-top: 6px; padding-bottom: 6px; }
+.ai-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 16px; }
+.ai-note .logout { margin-left: auto; color: inherit; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.ai-note .logout:hover, .ai-note .logout:focus-visible { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
 
 .issue-head { margin: 0 0 16px; }
 .issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
@@ -1319,6 +1323,15 @@ GATE_BODY = """<div class="gate">
     return ("0000000" + x.toString(16)).slice(-8);
   }
   var f = document.getElementById("gate-form"), pw = document.getElementById("gate-pw"), err = document.getElementById("gate-err");
+  // Odhlásit: smaže uložený přístup a vrátí na úvodní stránku s přihlášením.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest ? e.target.closest("#odhlasit") : null;
+    if (!a) return;
+    e.preventDefault();
+    try { localStorage.removeItem(k); } catch (e1) {}
+    try { sessionStorage.removeItem(k); } catch (e2) {}
+    location.replace(a.href);
+  });
   f.addEventListener("submit", function (e) {
     e.preventDefault();
     if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
