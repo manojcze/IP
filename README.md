@@ -28,7 +28,7 @@ Skript potřebuje jen Python 3 (žádné další balíčky). Vytvoří:
 |---|---|
 | `index.html` | aktuální (nejnovější) vydání |
 | `archiv/RRRR-MM-DD.html` | stránka každého vydání |
-| `archiv/index.html` | seznam všech vydání s nadpisy zpráv |
+| `archiv/index.html` | předchozí vydání (seznam všech vydání s nadpisy zpráv) |
 | `sekce/<sekce>.html` | zprávy ze všech vydání v dané sekci |
 | `stitky/<stitek>.html` | zprávy ze všech vydání s daným štítkem |
 
@@ -94,7 +94,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
   "zkusebni": false,
   "uvod": "Nepovinné. Krátká poznámka nad hlavními tématy (např. u zkušebního vydání).",
   "hlavni_temata": [
-    {"zprava": 1, "text": "Jedna věta shrnující zprávu 1."}
+    {"zprava": 1}
   ],
   "zpravy": [
     {
@@ -138,6 +138,12 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
       }
     }
   ],
+  "klicova_rozhodnuti": [
+    {"vydani": "2026-11-07", "zprava": 2, "organ": "Tribunál", "nazev": "BMV v BMW (T-468/25)",
+     "popis": "dobré jméno známky chrání i u monitorů baterií"},
+    {"vydani": "2026-10-24", "ve_zkratce": 1, "organ": "OLG Hamburg", "nazev": "Jemella v Wish",
+     "popis": "platforma jako přímý porušovatel ochranné známky"}
+  ],
   "paticka": {
     "zkontrolovane": ["Zdroj: co bylo načteno a zpracováno."],
     "nedostupne": ["Zdroj: proč se nenačetl."],
@@ -171,7 +177,13 @@ Pravidla, která `build.py` kontroluje:
   Štítky jsou odkazy: štítek shodný se sekcí (např. „Ochranné známky“, „Patenty“) vede na stránku sekce,
   ostatní na stránku `stitky/<stitek>.html` se všemi zprávami s tímto štítkem.
   Barevně (oranžově) je odlišený jen štítek souběhu.
-- `zprava` v hlavních tématech musí odkazovat na existující `id`.
+- `zprava` v hlavních tématech musí odkazovat na existující `id`. Rámeček „Hlavní zprávy“ nahoře zobrazuje
+  nadpisy těchto zpráv (v daném pořadí); pole `text` už se nezobrazuje a není povinné.
+- `klicova_rozhodnuti` (nepovinné, vyplňuje se v každém novém vydání): nejvýš 10 nejdůležitějších rozhodnutí
+  (soudních i správních, z ČR a EU, výjimečně i cizích) z vydání za posledních 31 dní, seřazených podle
+  důležitosti. Každá položka odkazuje na hlavní zprávu (`zprava` = id) nebo položku Ve zkratce (`ve_zkratce` =
+  pořadí od 1) ve vydání `vydani`; `organ`, `nazev` a `popis` se zobrazí jako „Orgán: Název (popis)“. V pravém
+  sloupci všech stránek se zobrazuje seznam z nejnovějšího vydání, které ho obsahuje.
 - Praktický dopad se na webu vždy uvádí jako „Praktický dopad:“ (bez dovětku „podle komentáře“); text dopadu
   takový dovětek také neobsahuje. Z čeho shrnutí vychází, patří do pole `podklad`.
 

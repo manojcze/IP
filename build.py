@@ -68,6 +68,9 @@ TYPY_ZDROJE = ["Rozhodnutí", "Článek", "Tisková zpráva"]
 
 # Každé vydání má alespoň tolik hlavních zpráv.
 MIN_HLAVNICH = 3
+# Klíčová rozhodnutí v pravém sloupci: nejvýš tolik položek, jen z vydání za poslední měsíc.
+MAX_KLICOVYCH = 10
+KLICOVA_DNU = 31
 
 # Témata, která se do přehledu nezařazují (podpora malých a středních podniků).
 VYLOUCENO = re.compile(r"malých a středních podnik|\bMSP\b|SME Fund", re.IGNORECASE)
@@ -246,7 +249,49 @@ def load_all():
         raise Chyba("\n".join(chyby))
     if not vydani:
         raise Chyba("v data/vydani/ není žádné vydání")
+    check_klicova(vydani)
     return vydani
+
+
+def najdi_polozku(k, podle_data):
+    """K položce klíčových rozhodnutí vrátí (vydání, kotva) nebo vyhodí Chyba."""
+    v = podle_data.get(k.get("vydani"))
+    if v is None:
+        raise Chyba(f"odkazuje na neexistující vydání {k.get('vydani')}")
+    if "zprava" in k:
+        if k["zprava"] not in {z["id"] for z in v["zpravy"]}:
+            raise Chyba(f"vydání {v['datum']} nemá hlavní zprávu {k['zprava']}")
+        return v, f"zprava-{k['zprava']}"
+    n = k.get("ve_zkratce")
+    if not isinstance(n, int) or not 1 <= n <= len(v["na_radar"]):
+        raise Chyba(f"vydání {v['datum']} nemá položku Ve zkratce {n}")
+    return v, f"radar-{n}"
+
+
+def check_klicova(vydani):
+    """Pole klicova_rozhodnuti: nejvýš 10 položek s odkazem na existující zprávu z posledního měsíce."""
+    podle_data = {v["datum"]: v for v in vydani}
+    chyby = []
+    for v in vydani:
+        kr = v.get("klicova_rozhodnuti")
+        if kr is None:
+            continue
+        if len(kr) > MAX_KLICOVYCH:
+            chyby.append(f"{v['datum']}: klíčových rozhodnutí může být nejvýš {MAX_KLICOVYCH}")
+        for i, k in enumerate(kr, 1):
+            kde = f"{v['datum']}, klíčové rozhodnutí {i}"
+            for pole in ("organ", "nazev", "popis"):
+                if not k.get(pole):
+                    chyby.append(f"{kde}: chybí {pole}")
+            try:
+                cil, _ = najdi_polozku(k, podle_data)
+            except Chyba as e:
+                chyby.append(f"{kde}: {e}")
+                continue
+            if cil["_d"] > v["_d"] or (v["_d"] - cil["_d"]).days > KLICOVA_DNU:
+                chyby.append(f"{kde}: vydání {cil['datum']} není z posledního měsíce před {v['datum']}")
+    if chyby:
+        raise Chyba("\n".join(chyby))
 
 
 # ---------------------------------------------------------------- dílčí části stránky
@@ -323,7 +368,7 @@ def card(z, v, root, kontext, also_in=None):
     fakta = "".join(f"<span>{f}</span>" for f in z["fakta"])
     odst = "\n      ".join(f"<p>{p}</p>" for p in z["odstavce"])
     dopad = z["dopad"]
-    zdroj = f'<a class="src" href="{url_attr(z["zdroj"]["url"])}">Originální zdroj: {z["zdroj"]["nazev"]} →</a>'
+    zdroj = f'<a class="src" href="{url_attr(z["zdroj"]["url"])}">Zdroj: {z["zdroj"]["nazev"]} →</a>'
     paticka = []
     if kontext == "vydani" and len(z["sekce"]) > 1:
         dalsi = ", ".join(f'<a href="{root}sekce/{s}.html">{SEKCE_NAZEV[s]}</a>' for s in z["sekce"][1:])
@@ -357,7 +402,7 @@ def radar_item(r, root, rid, v=None, also_in=None):
     if det:
         fakta = "".join(f"<span>{f}</span>" for f in det["fakta"])
         zdroj = det.get("zdroj") or {}
-        src = (f'<p class="src-line"><a class="src" href="{url_attr(zdroj["url"])}">Originální zdroj: {zdroj["nazev"]} →</a></p>'
+        src = (f'<p class="src-line"><a class="src" href="{url_attr(zdroj["url"])}">Zdroj: {zdroj["nazev"]} →</a></p>'
                if zdroj.get("url") and zdroj.get("nazev") else "")
         odst = "".join(f"<p>{p}</p>" for p in det["odstavce"])
         dopad = det.get("dopad") or {}
@@ -382,21 +427,27 @@ def radar_item(r, root, rid, v=None, also_in=None):
       </li>"""
 
 
+def klicova_panel(vydani, root):
+    """Klíčová rozhodnutí za poslední měsíc podle nejnovějšího vydání, které je uvádí."""
+    zdroj = next((v for v in vydani if v.get("klicova_rozhodnuti")), None)
+    if zdroj is None:
+        return ""
+    podle_data = {v["datum"]: v for v in vydani}
+    rows = []
+    for k in zdroj["klicova_rozhodnuti"]:
+        cil, kotva = najdi_polozku(k, podle_data)
+        rows.append(f'<li><a href="{root}archiv/{cil["datum"]}.html#{kotva}"><span class="kr-o">{k["organ"]}:</span> '
+                    f'<span class="kr-n">{k["nazev"]}</span> <span class="kr-p">({k["popis"]})</span></a></li>')
+    return f"""    <section class="panel klicova">
+      <h2>Klíčová rozhodnutí za poslední měsíc</h2>
+      <ol class="kr">
+        {chr(10).join("        " + r for r in rows).lstrip()}
+      </ol>
+    </section>
+"""
+
+
 def sidebar(vydani, root, aktualni=None):
-    rows, mesic = [], None
-    for v in vydani:
-        d = v["_d"]
-        if (d.year, d.month) != mesic:
-            if mesic is not None:
-                rows.append("</ol>")
-            mesic = (d.year, d.month)
-            rows.append(f'<h3 class="month">{MESICE_1P[d.month - 1].capitalize()} {d.year}</h3>\n<ol>')
-        cur = ' aria-current="page"' if aktualni is v else ""
-        tag = " · zkušební" if v.get("zkusebni") else ""
-        rows.append(f'<li><a href="{root}archiv/{v["datum"]}.html"{cur}>'
-                    f'<span class="d">{DNY[d.weekday()].capitalize()} {d.day}. {d.month}.</span>'
-                    f'<span class="m">{issue_meta(v)}{tag}</span></a></li>')
-    rows.append("</ol>")
     legenda = []
     for skupina, polozky in pouzite_stitky(vydani):
         if polozky is None:
@@ -405,14 +456,9 @@ def sidebar(vydani, root, aktualni=None):
             legenda.append(f'      <h3 class="lg-h">{skupina}</h3>\n      <ul class="lg-list">'
                            + "".join(f'<li>{pill(t, cls, root)}</li>' for t, cls in polozky)
                            + "</ul>")
-    return f"""<aside class="side" aria-label="Seznam vydání">
+    return f"""<aside class="side" aria-label="Klíčová rozhodnutí a štítky">
   <div class="side-inner">
-    <section class="panel issues">
-      <h2>Všechna vydání</h2>
-      {chr(10).join(rows)}
-      <p class="arch-link"><a href="{root}archiv/">Přehled vydání s obsahem →</a></p>
-    </section>
-    <section class="panel legend">
+{klicova_panel(vydani, root)}    <section class="panel legend">
       <h2>Používané štítky</h2>
 {chr(10).join(legenda)}
     </section>
@@ -422,13 +468,13 @@ def sidebar(vydani, root, aktualni=None):
 
 def page(*, title, root, nav_current, content, nadpis=None, nadpis_cls="", meta="", side=None, description=""):
     """Celá stránka. Hlavička je na všech stránkách stejná; nadpis a meta (název sekce,
-    Všechna vydání, Hledání) se zobrazí na začátku obsahu."""
+    Předchozí vydání, Hledání) se zobrazí na začátku obsahu."""
     if nadpis:
         content = (f'  <div class="issue-head">\n    <h2 class="issue-date{" " + nadpis_cls if nadpis_cls else ""}">{nadpis}</h2>'
                    + (f'\n    <p class="issue-meta">{meta}</p>' if meta else "") + "\n  </div>\n\n" + content)
     nav = [("index", f"{root}./" if root else "./", "Aktuální vydání", "")]
     nav += [(slug, f"{root}sekce/{slug}.html", nazev, f" s-{slug}") for slug, nazev in SEKCE]
-    nav.append(("archiv", f"{root}archiv/", "Všechna vydání", " nl-arch"))
+    nav.append(("archiv", f"{root}archiv/", "Předchozí vydání", " nl-arch"))
     cur = ' aria-current="page"'
     li_arch = ' class="li-arch"'
     nav_html = "\n".join(
@@ -521,7 +567,10 @@ def issue_page(v, vydani, root, nav_current):
         lead = "<strong>Zkušební vydání.</strong> " if v.get("zkusebni") else ""
         parts.append(f'  <p class="trial">{lead}{v["uvod"]}</p>')
     if v["hlavni_temata"]:
-        items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{t["text"]}</a></li>' for t in v["hlavni_temata"])
+        # V rámečku Hlavní zprávy se zobrazují nadpisy zpráv (stejně jako u článků); hlavni_temata určují výběr a pořadí.
+        nadpisy = {z["id"]: z["nadpis"] for z in v["zpravy"]}
+        items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{nadpisy[t["zprava"]]}</a></li>'
+                          for t in v["hlavni_temata"])
         parts.append(f"""  <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
@@ -560,9 +609,10 @@ def issue_page(v, vydani, root, nav_current):
     if pat.get("vyklad"):
         foot.append("    <h2>Zvolený výklad zadání</h2>\n" + "\n".join(f"    <p>{x}</p>" for x in pat["vyklad"]))
     foot.append(f"    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>")
-    foot.append(f'    <p><a href="{root}archiv/">Všechna vydání</a></p>')
+    foot.append(f'    <p><a href="{root}archiv/">Předchozí vydání</a></p>')
     parts.append('  <footer class="foot">\n' + "\n".join(foot) + "\n  </footer>")
-    hlavni = "; ".join(strip_tags(t["text"]) for t in v["hlavni_temata"][:2])
+    nadpisy = {z["id"]: z["nadpis"] for z in v["zpravy"]}
+    hlavni = "; ".join(strip_tags(nadpisy[t["zprava"]]) for t in v["hlavni_temata"][:2])
     return page(title=f"{NAZEV} {d_short(d)}", root=root,
                 nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
@@ -721,9 +771,9 @@ def archive_page(vydani):
     content = ('  <ol class="arch">\n' + "\n".join(items) + "\n  </ol>\n\n"
                f'  <footer class="foot">\n    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>\n  </footer>')
     n = len(vydani)
-    return page(title=f"Všechna vydání – {NAZEV}", root=root,
-                nadpis="Všechna vydání", meta=f"<span>{n} {plural(n, 'vydání', 'vydání', 'vydání')}</span>",
-                nav_current="archiv", content=content, description="Archiv všech vydání.")
+    return page(title=f"Předchozí vydání – {NAZEV}", root=root,
+                nadpis="Předchozí vydání", meta=f"<span>{n} {plural(n, 'vydání', 'vydání', 'vydání')}</span>",
+                nav_current="archiv", content=content, description="Archiv všech předchozích vydání.")
 
 
 # ---------------------------------------------------------------- zápis
@@ -911,6 +961,15 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px 18px 14px; }
 .panel + .panel { margin-top: 16px; }
 .panel h2 { font-family: var(--font-body); font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.kr { list-style: none; margin: 6px 0 0; padding: 0; counter-reset: kr; }
+.kr li { counter-increment: kr; display: grid; grid-template-columns: 20px minmax(0, 1fr); padding: 8px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.4; }
+.kr li:first-child { border-top: 0; padding-top: 2px; }
+.kr li::before { content: counter(kr) "."; color: var(--muted); font-size: 13px; font-weight: 600; padding-top: 1px; font-variant-numeric: tabular-nums; }
+.kr a { color: var(--ink); text-decoration: none; }
+.kr .kr-o { font-weight: 600; }
+.kr .kr-n { font-weight: 600; color: var(--title); }
+.kr .kr-p { color: var(--muted); }
+.kr a:hover .kr-n, .kr a:focus-visible .kr-n { text-decoration: underline; text-underline-offset: 2px; }
 .issues .month { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
 .issues h2 + .month { margin-top: 4px; }
 .issues ol { list-style: none; margin: 0; padding: 0; }
@@ -933,10 +992,12 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 
 .summary { margin: 0; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; }
 .summary h2, .section-title { font-family: var(--font-display); font-size: 19px; margin: 0 0 8px; font-weight: 600; }
-.summary ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
-.summary li::marker { color: var(--tm); }
-.summary a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-.summary a:hover, .summary a:focus-visible { color: var(--tm); border-bottom-color: var(--tm); }
+.summary ul { margin: 0; padding: 0; list-style: none; }
+.summary li { padding: 9px 0; border-top: 1px solid var(--line); }
+.summary li:first-child { border-top: 0; padding-top: 2px; }
+.summary li:last-child { padding-bottom: 0; }
+.summary a { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; color: var(--title); text-decoration: none; text-wrap: balance; }
+.summary a:hover, .summary a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
 .pill { display: inline-block; font-size: 12px; font-weight: 600; line-height: 1; padding: 5px 8px; letter-spacing: .01em; border-radius: 2px; white-space: nowrap; }
 .pill.tm { background: var(--tm-soft); color: var(--tm); }

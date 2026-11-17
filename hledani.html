@@ -148,6 +148,15 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px 18px 14px; }
 .panel + .panel { margin-top: 16px; }
 .panel h2 { font-family: var(--font-body); font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.kr { list-style: none; margin: 6px 0 0; padding: 0; counter-reset: kr; }
+.kr li { counter-increment: kr; display: grid; grid-template-columns: 20px minmax(0, 1fr); padding: 8px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.4; }
+.kr li:first-child { border-top: 0; padding-top: 2px; }
+.kr li::before { content: counter(kr) "."; color: var(--muted); font-size: 13px; font-weight: 600; padding-top: 1px; font-variant-numeric: tabular-nums; }
+.kr a { color: var(--ink); text-decoration: none; }
+.kr .kr-o { font-weight: 600; }
+.kr .kr-n { font-weight: 600; color: var(--title); }
+.kr .kr-p { color: var(--muted); }
+.kr a:hover .kr-n, .kr a:focus-visible .kr-n { text-decoration: underline; text-underline-offset: 2px; }
 .issues .month { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
 .issues h2 + .month { margin-top: 4px; }
 .issues ol { list-style: none; margin: 0; padding: 0; }
@@ -170,10 +179,12 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 
 .summary { margin: 0; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; }
 .summary h2, .section-title { font-family: var(--font-display); font-size: 19px; margin: 0 0 8px; font-weight: 600; }
-.summary ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
-.summary li::marker { color: var(--tm); }
-.summary a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-.summary a:hover, .summary a:focus-visible { color: var(--tm); border-bottom-color: var(--tm); }
+.summary ul { margin: 0; padding: 0; list-style: none; }
+.summary li { padding: 9px 0; border-top: 1px solid var(--line); }
+.summary li:first-child { border-top: 0; padding-top: 2px; }
+.summary li:last-child { padding-bottom: 0; }
+.summary a { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; color: var(--title); text-decoration: none; text-wrap: balance; }
+.summary a:hover, .summary a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
 .pill { display: inline-block; font-size: 12px; font-weight: 600; line-height: 1; padding: 5px 8px; letter-spacing: .01em; border-radius: 2px; white-space: nowrap; }
 .pill.tm { background: var(--tm-soft); color: var(--tm); }
@@ -340,7 +351,7 @@ html.ok .gate { display: none; }
       <li><a class="nl s-prumyslove-vzory" href="sekce/prumyslove-vzory.html">Průmyslové vzory</a></li>
       <li><a class="nl s-patenty-a-uzitne-vzory" href="sekce/patenty-a-uzitne-vzory.html">Patenty a užitné vzory</a></li>
       <li><a class="nl s-ostatni" href="sekce/ostatni.html">Ostatní</a></li>
-      <li class="li-arch"><a class="nl nl-arch" href="archiv/">Všechna vydání</a></li>
+      <li class="li-arch"><a class="nl nl-arch" href="archiv/">Předchozí vydání</a></li>
     </ul>
     <form class="search" role="search" action="hledani.html" method="get">
       <label class="sr" for="q-nav">Hledat ve zprávách</label>
@@ -460,22 +471,22 @@ html.ok .gate { display: none; }
 })();
 </script>
 </main>
-<aside class="side" aria-label="Seznam vydání">
+<aside class="side" aria-label="Klíčová rozhodnutí a štítky">
   <div class="side-inner">
-    <section class="panel issues">
-      <h2>Všechna vydání</h2>
-      <h3 class="month">Listopad 2026</h3>
-<ol>
-<li><a href="archiv/2026-11-14.html"><span class="d">Sobota 14. 11.</span><span class="m">3 hlavní zprávy · 5 ve zkratce</span></a></li>
-<li><a href="archiv/2026-11-07.html"><span class="d">Sobota 7. 11.</span><span class="m">3 hlavní zprávy · 2 ve zkratce</span></a></li>
-</ol>
-<h3 class="month">Říjen 2026</h3>
-<ol>
-<li><a href="archiv/2026-10-31.html"><span class="d">Sobota 31. 10.</span><span class="m">3 hlavní zprávy · 2 ve zkratce</span></a></li>
-<li><a href="archiv/2026-10-24.html"><span class="d">Sobota 24. 10.</span><span class="m">3 hlavní zprávy · 4 ve zkratce</span></a></li>
-<li><a href="archiv/2026-10-17.html"><span class="d">Sobota 17. 10.</span><span class="m">3 hlavní zprávy · 2 ve zkratce</span></a></li>
-</ol>
-      <p class="arch-link"><a href="archiv/">Přehled vydání s obsahem →</a></p>
+    <section class="panel klicova">
+      <h2>Klíčová rozhodnutí za poslední měsíc</h2>
+      <ol class="kr">
+        <li><a href="archiv/2026-11-07.html#zprava-1"><span class="kr-o">GA SDEU:</span> <span class="kr-n">Like Company (C-250/25)</span> <span class="kr-p">(AI chatboty a práva vydavatelů tisku)</span></a></li>
+        <li><a href="archiv/2026-10-31.html#zprava-3"><span class="kr-o">UPC Milán:</span> <span class="kr-n">Sandoz v Novo Nordisk</span> <span class="kr-p">(pravomoc zabránit úniku před rozhodnutím o platnosti patentu)</span></a></li>
+        <li><a href="archiv/2026-11-07.html#zprava-2"><span class="kr-o">Tribunál:</span> <span class="kr-n">BMV v BMW (T-468/25)</span> <span class="kr-p">(dobré jméno známky chrání i u monitorů baterií)</span></a></li>
+        <li><a href="archiv/2026-11-14.html#zprava-1"><span class="kr-o">EUIPO:</span> <span class="kr-n">Truth Social (R 2260/2025-4)</span> <span class="kr-p">(zlá víra při zápisu označení před spuštěním služby)</span></a></li>
+        <li><a href="archiv/2026-11-07.html#zprava-3"><span class="kr-o">Tribunál:</span> <span class="kr-n">Waterdrop (T-541/25)</span> <span class="kr-p">(opakované přihlášení známky jako zlá víra)</span></a></li>
+        <li><a href="archiv/2026-11-14.html#zprava-2"><span class="kr-o">Pařížský odvolací soud:</span> <span class="kr-n">Meta v APIG a DVP</span> <span class="kr-p">(povinnost jednat s vydavateli tisku o odměně)</span></a></li>
+        <li><a href="archiv/2026-10-31.html#zprava-2"><span class="kr-o">UPC, odvolací soud:</span> <span class="kr-n">Agfa v Gucci</span> <span class="kr-p">(veřejné užití výrobku zveřejňuje i způsob výroby)</span></a></li>
+        <li><a href="archiv/2026-10-31.html#zprava-1"><span class="kr-o">Tribunál:</span> <span class="kr-n">Vacu Activ (T-650/25)</span> <span class="kr-p">(blokační přihláška známky je zlá víra)</span></a></li>
+        <li><a href="archiv/2026-10-24.html#radar-1"><span class="kr-o">OLG Hamburg:</span> <span class="kr-n">Jemella v Wish</span> <span class="kr-p">(platforma jako přímý porušovatel ochranné známky)</span></a></li>
+        <li><a href="archiv/2026-10-24.html#zprava-2"><span class="kr-o">Tribunál:</span> <span class="kr-n">VOLARE (T-513/25)</span> <span class="kr-p">(publikace a věrnostní programy jako doplňkové zboží)</span></a></li>
+      </ol>
     </section>
     <section class="panel legend">
       <h2>Používané štítky</h2>

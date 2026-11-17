@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Týden v IP</title>
-<meta name="description" content="Archiv všech vydání.">
+<meta name="description" content="Archiv všech předchozích vydání.">
 <meta name="robots" content="noindex, nofollow">
 <script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
@@ -148,6 +148,15 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px 18px 14px; }
 .panel + .panel { margin-top: 16px; }
 .panel h2 { font-family: var(--font-body); font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.kr { list-style: none; margin: 6px 0 0; padding: 0; counter-reset: kr; }
+.kr li { counter-increment: kr; display: grid; grid-template-columns: 20px minmax(0, 1fr); padding: 8px 0; border-top: 1px solid var(--line); font-size: 14.5px; line-height: 1.4; }
+.kr li:first-child { border-top: 0; padding-top: 2px; }
+.kr li::before { content: counter(kr) "."; color: var(--muted); font-size: 13px; font-weight: 600; padding-top: 1px; font-variant-numeric: tabular-nums; }
+.kr a { color: var(--ink); text-decoration: none; }
+.kr .kr-o { font-weight: 600; }
+.kr .kr-n { font-weight: 600; color: var(--title); }
+.kr .kr-p { color: var(--muted); }
+.kr a:hover .kr-n, .kr a:focus-visible .kr-n { text-decoration: underline; text-underline-offset: 2px; }
 .issues .month { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
 .issues h2 + .month { margin-top: 4px; }
 .issues ol { list-style: none; margin: 0; padding: 0; }
@@ -170,10 +179,12 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 
 .summary { margin: 0; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; }
 .summary h2, .section-title { font-family: var(--font-display); font-size: 19px; margin: 0 0 8px; font-weight: 600; }
-.summary ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
-.summary li::marker { color: var(--tm); }
-.summary a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
-.summary a:hover, .summary a:focus-visible { color: var(--tm); border-bottom-color: var(--tm); }
+.summary ul { margin: 0; padding: 0; list-style: none; }
+.summary li { padding: 9px 0; border-top: 1px solid var(--line); }
+.summary li:first-child { border-top: 0; padding-top: 2px; }
+.summary li:last-child { padding-bottom: 0; }
+.summary a { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; color: var(--title); text-decoration: none; text-wrap: balance; }
+.summary a:hover, .summary a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
 
 .pill { display: inline-block; font-size: 12px; font-weight: 600; line-height: 1; padding: 5px 8px; letter-spacing: .01em; border-radius: 2px; white-space: nowrap; }
 .pill.tm { background: var(--tm-soft); color: var(--tm); }
@@ -340,7 +351,7 @@ html.ok .gate { display: none; }
       <li><a class="nl s-prumyslove-vzory" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li>
       <li><a class="nl s-patenty-a-uzitne-vzory" href="../sekce/patenty-a-uzitne-vzory.html">Patenty a užitné vzory</a></li>
       <li><a class="nl s-ostatni" href="../sekce/ostatni.html">Ostatní</a></li>
-      <li class="li-arch"><a class="nl nl-arch" href="../archiv/" aria-current="page">Všechna vydání</a></li>
+      <li class="li-arch"><a class="nl nl-arch" href="../archiv/" aria-current="page">Předchozí vydání</a></li>
     </ul>
     <form class="search" role="search" action="../hledani.html" method="get">
       <label class="sr" for="q-nav">Hledat ve zprávách</label>
@@ -353,7 +364,7 @@ html.ok .gate { display: none; }
 <div class="layout">
 <main class="content">
   <div class="issue-head">
-    <h2 class="issue-date">Všechna vydání</h2>
+    <h2 class="issue-date">Předchozí vydání</h2>
     <p class="issue-meta"><span>5 vydání</span></p>
   </div>
 

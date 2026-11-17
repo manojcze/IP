@@ -283,5 +283,77 @@
       "Týdenní vydání za období od 8. do 14. 11. 2026 vzniklo dodatečně 17. 11. 2026 sloučením podkladů, které byly připraveny 10. a 13. 11. 2026 (tehdy ještě jako úterní a páteční vydání). Podklady sahají do rána 13. 11. 2026; pozdější novinky zpracuje vydání 21. 11. 2026. Zprávy, které se v obou podkladech opakovaly (Aviator v Spribe, seminář ÚPV k ochranným známkám), jsou uvedeny jen jednou.",
       "Zprávy, které se netýkají ČR ani celé EU, jsou mezi zprávami Ve zkratce (celé shrnutí je u nich k rozbalení). Výjimkou je věc Meta a francouzských vydavatelů tisku, která se týká uplatňování čl. 15 směrnice DSM a čl. 102 SFEU; je mezi hlavními zprávami, aby vydání mělo alespoň tři. Vypuštěna byla položka o semináři SME Fund. Štítek souběhu je uveden jen tam, kde souběh existuje. Shrnutí vychází z komentářů a zdrojů uvedených u každé zprávy, nikoli z plných textů rozhodnutí."
     ]
-  }
+  },
+  "klicova_rozhodnuti": [
+    {
+      "vydani": "2026-11-07",
+      "zprava": 1,
+      "organ": "GA SDEU",
+      "nazev": "Like Company (C-250/25)",
+      "popis": "AI chatboty a práva vydavatelů tisku"
+    },
+    {
+      "vydani": "2026-10-31",
+      "zprava": 3,
+      "organ": "UPC Milán",
+      "nazev": "Sandoz v Novo Nordisk",
+      "popis": "pravomoc zabránit úniku před rozhodnutím o platnosti patentu"
+    },
+    {
+      "vydani": "2026-11-07",
+      "zprava": 2,
+      "organ": "Tribunál",
+      "nazev": "BMV v BMW (T-468/25)",
+      "popis": "dobré jméno známky chrání i u monitorů baterií"
+    },
+    {
+      "vydani": "2026-11-14",
+      "zprava": 1,
+      "organ": "EUIPO",
+      "nazev": "Truth Social (R 2260/2025-4)",
+      "popis": "zlá víra při zápisu označení před spuštěním služby"
+    },
+    {
+      "vydani": "2026-11-07",
+      "zprava": 3,
+      "organ": "Tribunál",
+      "nazev": "Waterdrop (T-541/25)",
+      "popis": "opakované přihlášení známky jako zlá víra"
+    },
+    {
+      "vydani": "2026-11-14",
+      "zprava": 2,
+      "organ": "Pařížský odvolací soud",
+      "nazev": "Meta v APIG a DVP",
+      "popis": "povinnost jednat s vydavateli tisku o odměně"
+    },
+    {
+      "vydani": "2026-10-31",
+      "zprava": 2,
+      "organ": "UPC, odvolací soud",
+      "nazev": "Agfa v Gucci",
+      "popis": "veřejné užití výrobku zveřejňuje i způsob výroby"
+    },
+    {
+      "vydani": "2026-10-31",
+      "zprava": 1,
+      "organ": "Tribunál",
+      "nazev": "Vacu Activ (T-650/25)",
+      "popis": "blokační přihláška známky je zlá víra"
+    },
+    {
+      "vydani": "2026-10-24",
+      "ve_zkratce": 1,
+      "organ": "OLG Hamburg",
+      "nazev": "Jemella v Wish",
+      "popis": "platforma jako přímý porušovatel ochranné známky"
+    },
+    {
+      "vydani": "2026-10-24",
+      "zprava": 2,
+      "organ": "Tribunál",
+      "nazev": "VOLARE (T-513/25)",
+      "popis": "publikace a věrnostní programy jako doplňkové zboží"
+    }
+  ]
 }
