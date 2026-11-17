@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hledání – Monitoring IP zpráv</title>
+<title>Hledání – IP Radar</title>
 <meta name="description" content="Fulltextové hledání ve všech vydáních.">
 <meta name="robots" content="noindex, nofollow">
 <script>
@@ -318,9 +318,9 @@ html.ok .gate { display: none; }
 <header class="top">
   <div class="inner">
     <div class="head-main">
-      <div class="brand"><a href="./">Monitoring IP zpráv</a></div>
+      <div class="brand"><a href="./">IP Radar</a></div>
       <h1>Hledání ve zprávách</h1>
-      <div class="meta-row"><span>Hlavní zprávy i položky Na radar ze všech vydání</span></div>
+      <div class="meta-row"><span>Hlavní zprávy i zprávy ve zkratce ze všech vydání</span></div>
     </div>
     <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false">
       <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
@@ -421,7 +421,7 @@ html.ok .gate { display: none; }
     var re = norm(q).split(/\s+/).filter(function (t) { return t.length >= 2; }).map(function (t) { return rx(kmen(t)); });
     if (!re.length) {
       out.innerHTML = "";
-      info.textContent = "Zadejte alespoň dvě písmena. Hledá se v hlavních zprávách i v položkách Na radar ze všech vydání (" + pocet(data.length) + ").";
+      info.textContent = "Zadejte alespoň dvě písmena. Hledá se v hlavních zprávách i ve zprávách ve zkratce ze všech vydání (" + pocet(data.length) + ").";
       return;
     }
     var res = [];
@@ -459,8 +459,8 @@ html.ok .gate { display: none; }
       <h2>Všechna vydání</h2>
       <h3 class="month">Listopad 2026</h3>
 <ol>
-<li><a href="archiv/2026-11-14.html"><span class="d">Sobota 14. 11.</span><span class="m">3 hlavní zprávy · 5 na radar</span></a></li>
-<li><a href="archiv/2026-11-07.html"><span class="d">Sobota 7. 11.</span><span class="m">3 hlavní zprávy · 3 na radar · zkušební</span></a></li>
+<li><a href="archiv/2026-11-14.html"><span class="d">Sobota 14. 11.</span><span class="m">3 hlavní zprávy · 5 ve zkratce</span></a></li>
+<li><a href="archiv/2026-11-07.html"><span class="d">Sobota 7. 11.</span><span class="m">3 hlavní zprávy · 3 ve zkratce · zkušební</span></a></li>
 </ol>
       <p class="arch-link"><a href="archiv/">Přehled vydání s obsahem →</a></p>
     </section>

@@ -1,4 +1,4 @@
-# Monitoring IP zpráv
+# IP Radar
 
 Přehled novinek z práva duševního vlastnictví, vychází jednou týdně v sobotu ráno a pokrývá
 uplynulý týden (naplánovaná úloha startuje v sobotu v 0:01 českého času).
@@ -64,7 +64,7 @@ ve zdrojovém kódu stránek a v tomto (veřejném) repozitáři.
 
 ## Sekce
 
-Každá zpráva i položka „Na radar“ má v poli `sekce` jednu nebo více sekcí.
+Každá zpráva i položka „Ve zkratce“ má v poli `sekce` jednu nebo více sekcí.
 První sekce je hlavní: podle ní se zpráva zařadí na stránce vydání. Na stránkách
 sekcí se zpráva zobrazí ve všech svých sekcích.
 
@@ -154,23 +154,23 @@ Pravidla, která `build.py` kontroluje:
   praktický dopad, podklad a odkaz na zdroj.
 - **Hlavní zprávy (`zpravy`) se musí týkat ČR nebo celé EU**: jurisdikce „ČR“ nebo
   začínající „EU“ (např. „EU“, „EU (UPC)“). Rozhodnutí jiných států (i členských států EU,
-  Spojeného království, USA…) patří do „Na radar“. Výjimku lze udělat jen u mimořádně
+  Spojeného království, USA…) patří do „Ve zkratce“. Výjimku lze udělat jen u mimořádně
   významné věci s přímým dopadem na ČR/EU; zpráva pak musí mít pole `vyjimka` s důvodem
   (na webu se u ní zobrazí).
 - **Každé vydání má alespoň 3 hlavní zprávy.** Pokud se nenajdou 3 významné zprávy z ČR/EU,
   doplní se nejvýznamnějšími zprávami mimo ČR/EU jako výjimky (pole `vyjimka`).
-- Nejvýš 5 hlavních témat a 10 položek „Na radar“. Položka „Na radar“ je buď
+- Nejvýš 5 hlavních témat a 10 položek „Ve zkratce“. Položka „Ve zkratce“ je buď
   jednořádková (odkaz, věta, poznámka), nebo plně zpracovaná zpráva mimo ČR/EU
   s polem `detail`, které se na webu zobrazí jako rozbalitelné „Celé shrnutí“.
 - Štítek souběhu se uvádí jen tam, kde souběh existuje (nikdy „NE“ ani „bez souběhu“).
-- Každá zpráva i položka „Na radar“ má typ zdroje `stitky.zdroj`, ze kterého shrnutí vychází:
+- Každá zpráva i položka „Ve zkratce“ má typ zdroje `stitky.zdroj`, ze kterého shrnutí vychází:
   „Rozhodnutí“ (plný text rozhodnutí nebo stanoviska soudu či úřadu), „Tisková zpráva“
   (tisková zpráva soudu, úřadu nebo instituce), „Článek“ (komentář, blog, odborný nebo
   zpravodajský článek) nebo „Oznámení“ (oznámení úřadu, akce, seminář).
 - Oblast „Ochranné známky“ se zobrazí modře, ostatní oblasti fialově.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
 
-`klic` je nepovinný (u hlavních zpráv i u položek Na radar). Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
+`klic` je nepovinný (u hlavních zpráv i u položek Ve zkratce). Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
 stejný klíč (např. `aviator-v-spribe`). Na stránce sekce se pak zobrazí jen
 nejnovější verze s poznámkou, ve kterých vydáních byla dřív.
 

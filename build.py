@@ -52,8 +52,8 @@ HESLO_HASH = "9f3fbf13"
 KONTAKT = "legal(zavináč)onajman.cz"
 
 # Název webu v hlavičce a v titulcích stránek, podtitul nad názvem na stránkách vydání.
-NAZEV = "Monitoring IP zpráv"
-PODTITUL = "Přehled novinek v IP. Každý týden vždy v sobotu ráno."
+NAZEV = "IP Radar"
+PODTITUL = "Nové vydání vždy v sobotu ráno"
 
 # Typ zdroje, ze kterého zpráva vychází (štítek stitky.zdroj):
 #   Rozhodnutí: plný text rozhodnutí nebo stanoviska soudu či úřadu
@@ -192,7 +192,7 @@ def load_issue(path):
         if not str(zdroj.get("url", "")).startswith("http") or not zdroj.get("nazev"):
             chyby.append(f"{kde}: chybí odkaz na originální zdroj (url a nazev)")
         if isinstance(z.get("stitky"), dict) and not je_cr_eu(z["stitky"]) and not z.get("vyjimka"):
-            chyby.append(f"{kde}: netýká se ČR ani celé EU, patří do Na radar "
+            chyby.append(f"{kde}: netýká se ČR ani celé EU, patří do Ve zkratce (na_radar) "
                          "(nebo uveďte důvod výjimky v poli vyjimka)")
         if VYLOUCENO.search(z.get("nadpis", "")):
             chyby.append(f"{kde}: zprávy o podpoře malých a středních podniků se nezařazují")
@@ -207,9 +207,9 @@ def load_issue(path):
             chyby.append(f"{name}: hlavní téma odkazuje na neexistující zprávu {t.get('zprava')}")
     radar = v.get("na_radar", [])
     if len(radar) > 10:
-        chyby.append(f"{name}: položek Na radar může být nejvýš 10")
+        chyby.append(f"{name}: položek Ve zkratce (na_radar) může být nejvýš 10")
     for i, r in enumerate(radar):
-        kde = f"{name}, Na radar {i + 1}"
+        kde = f"{name}, Ve zkratce {i + 1}"
         check_sekce(r.get("sekce"), kde, chyby)
         check_stitky(r.get("stitky"), kde, chyby)
         odkaz = r.get("odkaz") or {}
@@ -266,7 +266,7 @@ def pills(st):
 
 
 def issue_meta(v):
-    return f'{pocet_zprav(len(v["zpravy"]))} · {len(v["na_radar"])} na radar'
+    return f'{pocet_zprav(len(v["zpravy"]))} · {len(v["na_radar"])} ve zkratce'
 
 
 def pouzite_stitky(vydani):
@@ -326,7 +326,7 @@ def card(z, v, root, kontext, also_in=None):
 
 
 def radar_item(r, root, rid, v=None, also_in=None):
-    """Položka Na radar. rid = pořadí ve vydání (od 1); v = vydání, pokud jde o stránku sekce."""
+    """Položka Ve zkratce (data: na_radar). rid = pořadí ve vydání (od 1); v = vydání, pokud jde o stránku sekce."""
     poznamka = f'<div class="note">{r["poznamka"]}</div>' if r.get("poznamka") else ""
     text = f': {r["text"]}' if r.get("text") else ""
     detail = ""
@@ -517,7 +517,7 @@ def issue_page(v, vydani, root, nav_current):
     if v["na_radar"]:
         items = "\n".join(radar_item(r, root, i + 1) for i, r in enumerate(v["na_radar"]))
         parts.append(f"""  <section class="radar" id="na-radar" aria-labelledby="radar-h">
-    <h2 class="section-title" id="radar-h">Na radar</h2>
+    <h2 class="section-title" id="radar-h">Ve zkratce</h2>
     <ul>
 {items}
     </ul>
@@ -583,7 +583,7 @@ def section_page(slug, nazev, vydani):
         if zz:
             blok.append('    <div class="cards">\n' + "\n\n".join(zz) + "\n    </div>")
         if rr:
-            blok.append('    <div class="radar compact"><h3 class="section-title">Na radar</h3><ul>\n'
+            blok.append('    <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>\n'
                         + "\n".join(rr) + "\n    </ul></div>")
         blok.append("  </section>")
         groups.append("\n".join(blok))
@@ -597,7 +597,7 @@ def section_page(slug, nazev, vydani):
     if n_z or n_r:
         meta = f"<span><strong>{pocet_zprav(n_z)}</strong></span>"
         if n_r:
-            meta += f"<span>{n_r} na radar</span>"
+            meta += f"<span>{n_r} ve zkratce</span>"
         meta += f"<span>z {n_v} {plural(n_v, 'vydání', 'vydání', 'vydání')}</span>"
     else:
         meta = "<span>Zatím bez zpráv</span>"
@@ -607,7 +607,7 @@ def section_page(slug, nazev, vydani):
 
 
 def search_index(vydani):
-    """Data pro vyhledávání: jedna položka za každou hlavní zprávu a položku Na radar."""
+    """Data pro vyhledávání: jedna položka za každou hlavní zprávu a položku Ve zkratce."""
     def txt(s):
         return re.sub(r"\s+", " ", html.unescape(strip_tags(s))).strip()
 
@@ -626,7 +626,7 @@ def search_index(vydani):
             det = r.get("detail")
             if det:
                 casti += det["fakta"] + det["odstavce"] + [(det.get("dopad") or {}).get("text", ""), det.get("podklad", "")]
-            polozky.append({"d": v["datum"], "dl": d_long(v["_d"]), "druh": "Na radar",
+            polozky.append({"d": v["datum"], "dl": d_long(v["_d"]), "druh": "Ve zkratce",
                             "u": f'archiv/{v["datum"]}.html#radar-{i}', "t": txt(r["odkaz"]["text"]),
                             "s": [SEKCE_NAZEV[s] for s in r["sekce"]], "g": stitky(r["stitky"]),
                             "x": txt(" ".join(c for c in casti if c))})
@@ -642,7 +642,7 @@ def search_page(vydani):
   <ol class="hits" id="vysledky"></ol>
 {SEARCH_JS}"""
     return page(title=f"Hledání – {NAZEV}", root="", brand=NAZEV, h1="Hledání ve zprávách",
-                meta="<span>Hlavní zprávy i položky Na radar ze všech vydání</span>", nav_current="hledani",
+                meta="<span>Hlavní zprávy i zprávy ve zkratce ze všech vydání</span>", nav_current="hledani",
                 content=content, side=sidebar(vydani, ""), description="Fulltextové hledání ve všech vydáních.")
 
 
@@ -1027,7 +1027,7 @@ SEARCH_JS = r"""<script>
     var re = norm(q).split(/\s+/).filter(function (t) { return t.length >= 2; }).map(function (t) { return rx(kmen(t)); });
     if (!re.length) {
       out.innerHTML = "";
-      info.textContent = "Zadejte alespoň dvě písmena. Hledá se v hlavních zprávách i v položkách Na radar ze všech vydání (" + pocet(data.length) + ").";
+      info.textContent = "Zadejte alespoň dvě písmena. Hledá se v hlavních zprávách i ve zprávách ve zkratce ze všech vydání (" + pocet(data.length) + ").";
       return;
     }
     var res = [];
