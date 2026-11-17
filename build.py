@@ -70,6 +70,8 @@ TYPY_ZDROJE = ["Rozhodnutí", "Článek", "Tisková zpráva"]
 MIN_HLAVNICH = 3
 # Klíčová rozhodnutí v pravém sloupci: nejvýš tolik položek, jen z vydání za poslední měsíc.
 MAX_KLICOVYCH = 10
+# Zkrácený titulek v rámečku Hlavní zprávy: nejvýš tolik znaků, aby se na počítači vešel na jeden řádek.
+MAX_TITULEK = 66
 KLICOVA_DNU = 31
 
 # Témata, která se do přehledu nezařazují (podpora malých a středních podniků).
@@ -214,6 +216,12 @@ def load_issue(path):
     for t in ht:
         if t.get("zprava") not in ids:
             chyby.append(f"{name}: hlavní téma odkazuje na neexistující zprávu {t.get('zprava')}")
+        titulek = strip_tags(t.get("nadpis") or "")
+        if not titulek:
+            chyby.append(f"{name}: hlavní téma {t.get('zprava')} nemá zkrácený titulek (pole nadpis)")
+        elif len(titulek) > MAX_TITULEK:
+            chyby.append(f"{name}: zkrácený titulek hlavního tématu {t.get('zprava')} má {len(titulek)} znaků, "
+                         f"nejvýš {MAX_TITULEK} (musí se vejít na jeden řádek)")
     radar = v.get("na_radar", [])
     if len(radar) > 10:
         chyby.append(f"{name}: položek Ve zkratce (na_radar) může být nejvýš 10")
@@ -439,7 +447,7 @@ def klicova_panel(vydani, root):
         rows.append(f'<li><a href="{root}archiv/{cil["datum"]}.html#{kotva}"><span class="kr-o">{k["organ"]}:</span> '
                     f'<span class="kr-n">{k["nazev"]}</span> <span class="kr-p">({k["popis"]})</span></a></li>')
     return f"""    <section class="panel klicova">
-      <h2>Klíčová rozhodnutí za poslední měsíc</h2>
+      <h2>Top rozhodnutí v uplynulém měsíci</h2>
       <ol class="kr">
         {chr(10).join("        " + r for r in rows).lstrip()}
       </ol>
@@ -456,7 +464,7 @@ def sidebar(vydani, root, aktualni=None):
             legenda.append(f'      <h3 class="lg-h">{skupina}</h3>\n      <ul class="lg-list">'
                            + "".join(f'<li>{pill(t, cls, root)}</li>' for t, cls in polozky)
                            + "</ul>")
-    return f"""<aside class="side" aria-label="Klíčová rozhodnutí a štítky">
+    return f"""<aside class="side" aria-label="Top rozhodnutí a štítky">
   <div class="side-inner">
 {klicova_panel(vydani, root)}    <section class="panel legend">
       <h2>Používané štítky</h2>
@@ -567,9 +575,8 @@ def issue_page(v, vydani, root, nav_current):
         lead = "<strong>Zkušební vydání.</strong> " if v.get("zkusebni") else ""
         parts.append(f'  <p class="trial">{lead}{v["uvod"]}</p>')
     if v["hlavni_temata"]:
-        # V rámečku Hlavní zprávy se zobrazují nadpisy zpráv (stejně jako u článků); hlavni_temata určují výběr a pořadí.
-        nadpisy = {z["id"]: z["nadpis"] for z in v["zpravy"]}
-        items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{nadpisy[t["zprava"]]}</a></li>'
+        # V rámečku Hlavní zprávy se zobrazují zkrácené titulky zpráv (styl jako nadpisy článků, na počítači na jeden řádek).
+        items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{t["nadpis"]}</a></li>'
                           for t in v["hlavni_temata"])
         parts.append(f"""  <section class="summary" aria-labelledby="sum-h">
     <h2 id="sum-h">Hlavní zprávy</h2>
@@ -611,8 +618,7 @@ def issue_page(v, vydani, root, nav_current):
     foot.append(f"    <h2>Upozornění</h2>\n    <p>{UPOZORNENI}</p>")
     foot.append(f'    <p><a href="{root}archiv/">Předchozí vydání</a></p>')
     parts.append('  <footer class="foot">\n' + "\n".join(foot) + "\n  </footer>")
-    nadpisy = {z["id"]: z["nadpis"] for z in v["zpravy"]}
-    hlavni = "; ".join(strip_tags(nadpisy[t["zprava"]]) for t in v["hlavni_temata"][:2])
+    hlavni = "; ".join(strip_tags(t["nadpis"]) for t in v["hlavni_temata"][:2])
     return page(title=f"{NAZEV} {d_short(d)}", root=root,
                 nav_current=nav_current, content="\n\n".join(parts),
                 side=sidebar(vydani, root, v), description=hlavni)
@@ -955,7 +961,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .content { min-width: 0; max-width: 760px; }
 @media (min-width: 980px) {
   .layout.has-side { grid-template-columns: minmax(0, 1fr) 290px; gap: 40px; }
-  .side-inner { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+  /* Pravý sloupec se posouvá spolu se stránkou (bez vlastního posuvníku). */
 }
 
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px 18px 14px; }
@@ -998,6 +1004,9 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .summary li:last-child { padding-bottom: 0; }
 .summary a { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; color: var(--title); text-decoration: none; text-wrap: balance; }
 .summary a:hover, .summary a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 980px) {
+  .summary a { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-wrap: nowrap; }
+}
 
 .pill { display: inline-block; font-size: 12px; font-weight: 600; line-height: 1; padding: 5px 8px; letter-spacing: .01em; border-radius: 2px; white-space: nowrap; }
 .pill.tm { background: var(--tm-soft); color: var(--tm); }

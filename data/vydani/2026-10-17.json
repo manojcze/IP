@@ -4,15 +4,15 @@
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "Tribunál: nový majitel známky nemůže využít prodloužení lhůty pro ukrajinské účastníky, pokud byl převod zapsán až po uplynutí lhůty k odůvodnění odvolání (FIND MY CAR)."
+      "nadpis": "FIND MY CAR: převod známky neotevírá lhůty, které už uplynuly"
     },
     {
       "zprava": 2,
-      "text": "Tribunál potvrdil zamítnutí přihlášky MAGORA pro pravděpodobnost záměny se starší známkou GRUPO AGORA."
+      "nadpis": "MAGORA a GRUPO AGORA: vysoká pozornost záměnu nevylučuje"
     },
     {
       "zprava": 3,
-      "text": "Odrůdy rostlin: pouhá zmínka o novém znaku v přihlášce nestačí, bez technických údajů ho CPVO zkoumat nemusí (jablko Roat)."
+      "nadpis": "Jablko Roat: nový znak odrůdy je nutné doložit technickými údaji"
     }
   ],
   "zpravy": [

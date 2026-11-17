@@ -142,7 +142,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .content { min-width: 0; max-width: 760px; }
 @media (min-width: 980px) {
   .layout.has-side { grid-template-columns: minmax(0, 1fr) 290px; gap: 40px; }
-  .side-inner { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+  /* Pravý sloupec se posouvá spolu se stránkou (bez vlastního posuvníku). */
 }
 
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 16px 18px 14px; }
@@ -185,6 +185,9 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .summary li:last-child { padding-bottom: 0; }
 .summary a { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; color: var(--title); text-decoration: none; text-wrap: balance; }
 .summary a:hover, .summary a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+@media (min-width: 980px) {
+  .summary a { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-wrap: nowrap; }
+}
 
 .pill { display: inline-block; font-size: 12px; font-weight: 600; line-height: 1; padding: 5px 8px; letter-spacing: .01em; border-radius: 2px; white-space: nowrap; }
 .pill.tm { background: var(--tm-soft); color: var(--tm); }

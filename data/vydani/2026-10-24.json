@@ -4,15 +4,15 @@
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "Tribunál: rozhoduje seznam zboží v přihlášce, nikoli skutečné užívání; MATRIX-A a další známky Novavax neprošly kvůli starší MATRIX OCULAR."
+      "nadpis": "MATRIX: rozhoduje seznam zboží v přihlášce, ne skutečné užívání"
     },
     {
       "zprava": 2,
-      "text": "Tribunál: tištěné a elektronické publikace mohou být doplňkové k věrnostním kartám a věrnostním poukázkám (VOLARE)."
+      "nadpis": "VOLARE: publikace mohou být doplňkové k věrnostním programům"
     },
     {
       "zprava": 3,
-      "text": "Místní oddělení UPC v Paříži zakázalo Angelalign prodej rovnátek v 17 státech, nárok za Spojené království ale zamítlo."
+      "nadpis": "UPC Paříž: zákaz pro Angelalign v 17 státech, nárok za UK neprošel"
     }
   ],
   "zpravy": [

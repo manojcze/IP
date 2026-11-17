@@ -4,15 +4,15 @@
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "EUIPO: odvolací senát potvrdil zneplatnění EU známky „Truth Social“ pro zlou víru, kdy někdo zapsal označení těsně před oficiálním spuštěním služby."
+      "nadpis": "Truth Social: zlá víra u známky přihlášené den po oznámení služby"
     },
     {
       "zprava": 2,
-      "text": "Pařížský odvolací soud potvrdil předběžná opatření, jimiž má Meta jednat s francouzskými vydavateli tisku o odměně a poskytnout jim potřebná data."
+      "nadpis": "Meta musí jednat s francouzskými vydavateli tisku o odměně"
     },
     {
       "zprava": 3,
-      "text": "ZTE a Samsung stáhly vzájemné žaloby pro porušení SEP u UPC v Mannheimu, patrně po urovnání dlouhého sporu o FRAND."
+      "nadpis": "ZTE a Samsung stáhly žaloby u UPC, spor o FRAND patrně skončil"
     }
   ],
   "zpravy": [
@@ -287,20 +287,6 @@
   "klicova_rozhodnuti": [
     {
       "vydani": "2026-11-07",
-      "zprava": 1,
-      "organ": "GA SDEU",
-      "nazev": "Like Company (C-250/25)",
-      "popis": "AI chatboty a práva vydavatelů tisku"
-    },
-    {
-      "vydani": "2026-10-31",
-      "zprava": 3,
-      "organ": "UPC Milán",
-      "nazev": "Sandoz v Novo Nordisk",
-      "popis": "pravomoc zabránit úniku před rozhodnutím o platnosti patentu"
-    },
-    {
-      "vydani": "2026-11-07",
       "zprava": 2,
       "organ": "Tribunál",
       "nazev": "BMV v BMW (T-468/25)",
@@ -314,25 +300,25 @@
       "popis": "zlá víra při zápisu označení před spuštěním služby"
     },
     {
-      "vydani": "2026-11-07",
-      "zprava": 3,
-      "organ": "Tribunál",
-      "nazev": "Waterdrop (T-541/25)",
-      "popis": "opakované přihlášení známky jako zlá víra"
+      "vydani": "2026-10-24",
+      "ve_zkratce": 1,
+      "organ": "OLG Hamburg",
+      "nazev": "Jemella v Wish",
+      "popis": "platforma přímým porušovatelem známky, i nekalá soutěž"
     },
     {
       "vydani": "2026-11-14",
       "zprava": 2,
       "organ": "Pařížský odvolací soud",
       "nazev": "Meta v APIG a DVP",
-      "popis": "povinnost jednat s vydavateli tisku o odměně"
+      "popis": "práva vydavatelů tisku a zneužití dominance"
     },
     {
-      "vydani": "2026-10-31",
-      "zprava": 2,
-      "organ": "UPC, odvolací soud",
-      "nazev": "Agfa v Gucci",
-      "popis": "veřejné užití výrobku zveřejňuje i způsob výroby"
+      "vydani": "2026-11-07",
+      "zprava": 3,
+      "organ": "Tribunál",
+      "nazev": "Waterdrop (T-541/25)",
+      "popis": "opakované přihlášení známky jako zlá víra"
     },
     {
       "vydani": "2026-10-31",
@@ -343,17 +329,31 @@
     },
     {
       "vydani": "2026-10-24",
-      "ve_zkratce": 1,
-      "organ": "OLG Hamburg",
-      "nazev": "Jemella v Wish",
-      "popis": "platforma jako přímý porušovatel ochranné známky"
-    },
-    {
-      "vydani": "2026-10-24",
       "zprava": 2,
       "organ": "Tribunál",
       "nazev": "VOLARE (T-513/25)",
       "popis": "publikace a věrnostní programy jako doplňkové zboží"
+    },
+    {
+      "vydani": "2026-10-24",
+      "zprava": 1,
+      "organ": "Tribunál",
+      "nazev": "MATRIX (T-126/25 a násl.)",
+      "popis": "rozhoduje seznam zboží v přihlášce, ne skutečné užívání"
+    },
+    {
+      "vydani": "2026-10-17",
+      "zprava": 1,
+      "organ": "Tribunál",
+      "nazev": "FIND MY CAR (T-451/25)",
+      "popis": "převod známky neotevírá uplynulé lhůty"
+    },
+    {
+      "vydani": "2026-11-07",
+      "zprava": 1,
+      "organ": "GA SDEU",
+      "nazev": "Like Company (C-250/25)",
+      "popis": "AI chatboty a práva vydavatelů tisku"
     }
   ]
 }

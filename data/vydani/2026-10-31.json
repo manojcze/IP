@@ -4,15 +4,15 @@
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "Tribunál: přihláška známky podaná jen proto, aby jiný nezískal podobné označení v EU, je ve zlé víře (Vacu Activ)."
+      "nadpis": "Vacu Activ: přihláška podaná jen k zablokování jiného je zlá víra"
     },
     {
       "zprava": 2,
-      "text": "Odvolací soud UPC zrušil většinu patentu Agfa: Gucci ho anticipovala vlastními dřívějšími výrobky."
+      "nadpis": "Agfa proti Gucci: dřívější užití výrobku zničilo většinu patentu"
     },
     {
       "zprava": 3,
-      "text": "Ústřední oddělení UPC v Miláně si přisvojilo pravomoc zabránit Novo Nordisk uniknout rozhodnutí o platnosti stažením patentu."
+      "nadpis": "Semaglutid: UPC může bránit úniku před rozhodnutím o platnosti"
     }
   ],
   "zpravy": [

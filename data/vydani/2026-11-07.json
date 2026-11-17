@@ -4,15 +4,15 @@
   "hlavni_temata": [
     {
       "zprava": 1,
-      "text": "Generální advokát Szpunar navrhuje u AI chatbotu řešit jen zobrazování odpovědí, otázky k tréninku modelu považuje za hypotetické."
+      "nadpis": "Like Company: GA Szpunar k AI chatbotům a právům vydavatelů tisku"
     },
     {
       "zprava": 2,
-      "text": "Tribunál potvrdil, že přihláška BMV pro monitory baterií by těžila z dobrého jména známky BMW."
+      "nadpis": "BMV proti BMW: dobré jméno chrání známku i u monitorů baterií"
     },
     {
       "zprava": 3,
-      "text": "Tribunál: znovupodání téměř totožné známky krátce po lhůtě pro prokázání užívání může být zlou vírou (Waterdrop)."
+      "nadpis": "Waterdrop: znovupodání známky po lhůtě k užívání je zlá víra"
     }
   ],
   "zpravy": [

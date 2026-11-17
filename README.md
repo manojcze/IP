@@ -94,7 +94,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
   "zkusebni": false,
   "uvod": "Nepovinné. Krátká poznámka nad hlavními tématy (např. u zkušebního vydání).",
   "hlavni_temata": [
-    {"zprava": 1}
+    {"zprava": 1, "nadpis": "Zkrácený titulek zprávy 1 (nejvýš 66 znaků)"}
   ],
   "zpravy": [
     {
@@ -178,10 +178,12 @@ Pravidla, která `build.py` kontroluje:
   ostatní na stránku `stitky/<stitek>.html` se všemi zprávami s tímto štítkem.
   Barevně (oranžově) je odlišený jen štítek souběhu.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`. Rámeček „Hlavní zprávy“ nahoře zobrazuje
-  nadpisy těchto zpráv (v daném pořadí); pole `text` už se nezobrazuje a není povinné.
+  zkrácené titulky z pole `nadpis` (v daném pořadí). Titulek je povinný, ve stylu nadpisů článků a nejvýš
+  66 znaků, aby se na počítači vešel na jeden řádek (na šířce 1024 px a víc).
 - `klicova_rozhodnuti` (nepovinné, vyplňuje se v každém novém vydání): nejvýš 10 nejdůležitějších rozhodnutí
   (soudních i správních, z ČR a EU, výjimečně i cizích) z vydání za posledních 31 dní, seřazených podle
-  důležitosti. Každá položka odkazuje na hlavní zprávu (`zprava` = id) nebo položku Ve zkratce (`ve_zkratce` =
+  důležitosti. Přednost mají ochranné známky a další označení, nekalá soutěž a souběh se soutěžním právem;
+  ostatní oblasti až za nimi a jen u zvlášť významných věcí. Každá položka odkazuje na hlavní zprávu (`zprava` = id) nebo položku Ve zkratce (`ve_zkratce` =
   pořadí od 1) ve vydání `vydani`; `organ`, `nazev` a `popis` se zobrazí jako „Orgán: Název (popis)“. V pravém
   sloupci všech stránek se zobrazuje seznam z nejnovějšího vydání, které ho obsahuje.
 - Praktický dopad se na webu vždy uvádí jako „Praktický dopad:“ (bez dovětku „podle komentáře“); text dopadu
