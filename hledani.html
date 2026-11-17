@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hledání – Monitoring IP zpráv</title>
+<meta name="description" content="Fulltextové hledání ve všech vydáních.">
+<meta name="robots" content="noindex, nofollow">
+<script>
+try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+<script>
+(function () {
+  var k = "ipnovinky-pristup", t = "9f3fbf13";
+  try { if (localStorage.getItem(k) === t || sessionStorage.getItem(k) === t) document.documentElement.classList.add("ok"); } catch (e) {}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: hlavička a navigace sekcí, vlevo obsah (karty seskupené podle sekcí), vpravo seznam všech vydání */
+:root {
+  --bg: #f4f6fa;
+  --surface: #ffffff;
+  --ink: #16233b;
+  --muted: #5a6780;
+  --line: #dde3ee;
+  --navy: #14284b;
+  --tm: #1f5fbf;
+  --tm-soft: #e3edfb;
+  --ip: #6a4fa3;
+  --ip-soft: #ece7f6;
+  --comp: #b8500a;
+  --comp-soft: #fde9d9;
+  --pv: #0d7a70;
+  --pv-soft: #dcf2ef;
+  --pat: #2e7d32;
+  --pat-soft: #e1f1e2;
+  --old-soft: #eceff4;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1626; --surface: #16213a; --ink: #e6ebf5; --muted: #9aa8c2; --line: #28365a; --navy: #0a1220;
+    --tm: #6fa3f2; --tm-soft: #1b2e52; --ip: #b39ae6; --ip-soft: #2c2447; --comp: #f19a5b; --comp-soft: #4a2a12;
+    --pv: #5cc8bc; --pv-soft: #143a37; --pat: #82c886; --pat-soft: #1c3a1f; --old-soft: #222d47;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1626; --surface: #16213a; --ink: #e6ebf5; --muted: #9aa8c2; --line: #28365a; --navy: #0a1220;
+  --tm: #6fa3f2; --tm-soft: #1b2e52; --ip: #b39ae6; --ip-soft: #2c2447; --comp: #f19a5b; --comp-soft: #4a2a12;
+  --pv: #5cc8bc; --pv-soft: #143a37; --pat: #82c886; --pat-soft: #1c3a1f; --old-soft: #222d47;
+  color-scheme: dark;
+}
+.s-nekala-soutez { --sc: var(--comp); --sc-soft: var(--comp-soft); }
+.s-ochranne-znamky { --sc: var(--tm); --sc-soft: var(--tm-soft); }
+.s-prumyslove-vzory { --sc: var(--pv); --sc-soft: var(--pv-soft); }
+.s-patenty-a-uzitne-vzory { --sc: var(--pat); --sc-soft: var(--pat-soft); }
+.s-ostatni { --sc: var(--ip); --sc-soft: var(--ip-soft); }
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+a:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; border-radius: 2px; }
+.inner { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+
+header.top { background: var(--navy); color: #f2f5fb; padding: 26px 0 22px; }
+header.top .inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px 20px; }
+.head-main { min-width: 0; }
+.theme-toggle { flex: none; display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; padding: 6px 4px; background: none; border: 0; color: #c3d0ea; font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.theme-toggle:hover { color: #fff; }
+.theme-toggle:focus-visible { outline: 2px solid #9fb4da; outline-offset: 2px; border-radius: 4px; }
+.tt-track { position: relative; width: 36px; height: 20px; border-radius: 999px; background: rgba(255, 255, 255, .18); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35); transition: background .15s ease; }
+.tt-thumb { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .15s ease; }
+.theme-toggle[aria-checked="true"] .tt-track { background: #6fa3f2; }
+.theme-toggle[aria-checked="true"] .tt-thumb { transform: translateX(16px); }
+@media (max-width: 480px) { .tt-label { display: none; } }
+.brand { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #9fb4da; font-weight: 600; }
+.brand a { color: inherit; text-decoration: none; }
+.brand a:hover { color: #fff; }
+header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 6vw, 38px); line-height: 1.15; margin: 6px 0 10px; text-wrap: balance; }
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: #c3d0ea; }
+.meta-row strong { color: #fff; font-weight: 600; }
+.ai-note { background: var(--navy); color: #8fa3c7; font-size: 12px; line-height: 1.4; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+.ai-note .inner { padding-top: 6px; padding-bottom: 6px; }
+
+.issue-head { margin: 0 0 16px; }
+.issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
+.issue-meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.issue-meta span + span::before { content: "·"; margin: 0 8px; }
+
+nav.sections { background: var(--surface); border-bottom: 1px solid var(--line); }
+nav.sections .inner { display: flex; align-items: center; gap: 4px 16px; }
+nav.sections ul { flex: 1 1 auto; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.search { position: relative; flex: 0 0 auto; display: flex; align-items: center; }
+.search input { width: 200px; font: inherit; font-size: 14.5px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 7px 36px 7px 14px; }
+.search input::placeholder { color: var(--muted); }
+.search input:focus { outline: 2px solid var(--tm); outline-offset: 1px; }
+.search button { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border: 0; border-radius: 50%; background: none; color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+.search button:hover { color: var(--ink); }
+.search button:focus-visible { outline: 2px solid var(--tm); }
+@media (max-width: 1239px) {
+  nav.sections .inner { flex-wrap: wrap; }
+  nav.sections ul { flex-basis: 100%; }
+  .search { flex: 1 1 100%; padding-bottom: 10px; }
+  .search input { width: 100%; }
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.search-big input { width: 100%; font: inherit; font-size: 18px; color: var(--ink); background: var(--surface); border: 1px solid var(--muted); border-radius: 10px; padding: 12px 16px; }
+.search-big input:focus { outline: 2px solid var(--tm); outline-offset: 1px; }
+.search-info { margin: 10px 0 16px; font-size: 14px; color: var(--muted); }
+.hits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.hit { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.hit-meta { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.hit-meta a { color: inherit; }
+.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ink); text-decoration: none; }
+.hit-t:hover { color: var(--tm); }
+.hit-x { margin: 6px 0 8px; font-size: 15px; max-width: 78ch; }
+.hit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hits mark { background: var(--comp-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
+nav.sections ul::-webkit-scrollbar { display: none; }
+nav.sections li:first-child a { padding-left: 0; }
+nav.sections a { display: block; padding: 13px 12px 10px; font-weight: 600; font-size: 15px; color: var(--muted); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
+nav.sections a:hover { color: var(--ink); }
+nav.sections a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--sc, var(--ink)); }
+nav.sections li.li-arch { margin-left: auto; padding-left: 8px; }
+nav.sections a.nl-arch { margin: 7px 0; padding: 6px 14px; border: 0; border-radius: 999px; background: var(--tm-soft); color: var(--tm); }
+nav.sections a.nl-arch:hover { color: var(--tm); box-shadow: inset 0 0 0 1.5px var(--tm); }
+nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(--surface); }
+
+.layout { max-width: 1180px; margin: 0 auto; padding: 22px 16px 56px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.content { min-width: 0; max-width: 760px; }
+@media (min-width: 980px) {
+  .layout.has-side { grid-template-columns: minmax(0, 1fr) 290px; gap: 40px; }
+  .side-inner { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+}
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px 14px; }
+.panel + .panel { margin-top: 16px; }
+.panel h2 { font-family: var(--font-body); font-size: 12.5px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.issues .month { font-size: 13px; font-weight: 600; color: var(--muted); margin: 14px 0 4px; }
+.issues h2 + .month { margin-top: 4px; }
+.issues ol { list-style: none; margin: 0; padding: 0; }
+.issues ol a { display: block; padding: 7px 10px; margin: 0 -10px; border-radius: 6px; text-decoration: none; color: var(--ink); }
+.issues ol a:hover { background: var(--bg); }
+.issues ol a[aria-current="page"] { background: var(--tm-soft); color: var(--tm); }
+.issues .d { display: block; font-weight: 600; font-variant-numeric: tabular-nums; }
+.issues .m { display: block; font-size: 13px; color: var(--muted); }
+.issues .arch-link { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line); font-size: 14px; }
+.issues .arch-link a { color: var(--tm); font-weight: 600; text-decoration: none; }
+.legend .lg-h { font-size: 13px; font-weight: 600; color: var(--muted); margin: 12px 0 6px; }
+.legend h2 + .lg-h { margin-top: 4px; }
+.legend .lg-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.legend .pill { white-space: normal; line-height: 1.3; padding: 4px 10px; }
+
+.trial { margin: 0 0 18px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 8px; background: var(--surface); font-size: 14px; color: var(--muted); }
+.trial strong { color: var(--ink); }
+.lead { margin: 0 0 8px; color: var(--muted); }
+.empty { padding: 22px 20px; background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); }
+
+.summary { margin: 0; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
+.summary h2, .section-title { font-family: var(--font-display); font-size: 19px; margin: 0 0 8px; font-weight: 600; }
+.summary ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.summary li::marker { color: var(--tm); }
+.summary a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.summary a:hover, .summary a:focus-visible { color: var(--tm); border-bottom-color: var(--tm); }
+
+.pill { display: inline-block; font-size: 12.5px; font-weight: 600; line-height: 1; padding: 6px 10px; border-radius: 999px; white-space: nowrap; }
+.pill.tm { background: var(--tm-soft); color: var(--tm); }
+.pill.ip { background: var(--ip-soft); color: var(--ip); }
+.pill.comp-yes { background: var(--comp-soft); color: var(--comp); box-shadow: inset 0 0 0 1.5px var(--comp); }
+.pill.juris { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--muted); font-weight: 500; }
+.pill.old { background: var(--old-soft); color: var(--muted); }
+.pill.typ { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
+.pill.typ::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 1px; background: currentColor; opacity: .55; vertical-align: 1px; }
+.pill.typ-rozhodnuti { background: var(--pat-soft); color: var(--pat); box-shadow: inset 0 0 0 1px var(--pat); font-weight: 600; }
+.pill.typ-rozhodnuti::before { opacity: 1; }
+.legend .lg-solo { margin-top: 12px; }
+
+.sec { margin-top: 30px; }
+.sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
+.sec-h .n { font-family: var(--font-body); font-size: 13px; font-weight: 600; line-height: 1; color: var(--sc); background: var(--sc-soft); border-radius: 999px; padding: 5px 9px; }
+.sec-h .all { margin-left: auto; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--sc); text-decoration: none; }
+.sec-h .all:hover { text-decoration: underline; }
+
+.cards { display: flex; flex-direction: column; gap: 18px; }
+.card { position: relative; scroll-margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-left: 6px solid var(--sc, var(--tm)); border-radius: 10px; padding: 20px 22px 18px; }
+.card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; }
+.card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
+.card .facts span + span::before { content: "·"; margin: 0 8px; }
+.card p { margin: 0 0 10px; max-width: 78ch; }
+.card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
+.card .why b { font-weight: 600; }
+.card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
+.card .src-line { margin: -4px 0 14px; }
+.card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
+.card .src, .more .src { font-weight: 600; font-size: 14.5px; color: var(--sc, var(--tm)); text-decoration: none; border-bottom: 1.5px solid currentColor; padding-bottom: 1px; }
+.card .src:hover, .card .src:focus-visible, .more .src:hover, .more .src:focus-visible { background: var(--sc-soft, var(--tm-soft)); }
+.card .also { font-size: 13.5px; color: var(--muted); }
+.card a.also, .card .also a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.card a.also:hover, .card .also a:hover { color: var(--ink); }
+
+.radar { margin-top: 32px; scroll-margin-top: 16px; }
+.radar ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.radar li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 15px; }
+.radar li .l1 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
+.radar li > a.rl { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.radar li .note { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
+.radar li .note a { color: inherit; }
+.radar.compact { margin-top: 18px; }
+.more { margin-top: 8px; }
+.more summary { cursor: pointer; font-size: 14px; font-weight: 600; color: var(--muted); width: fit-content; }
+.more summary:hover { color: var(--ink); }
+.more summary:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; border-radius: 2px; }
+.more-body { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.more-body p { margin: 0 0 10px; max-width: 78ch; }
+.more-body .facts { font-size: 13.5px; color: var(--muted); }
+.more-body .facts span + span::before { content: "·"; margin: 0 8px; }
+.more-body .src-line { margin: -4px 0 12px; }
+.more-body .why { padding: 10px 12px; background: var(--bg); border-radius: 6px; font-size: 14.5px; }
+.more-body .why b { font-weight: 600; }
+.more-body .basis { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+.radar.compact .section-title { font-size: 17px; }
+
+.grp + .grp { margin-top: 34px; }
+.grp-h { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin: 22px 0 12px; }
+.grp-h a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.grp-h a:hover { border-bottom-color: currentColor; }
+
+.arch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.arch > li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+.arch h2 { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-family: var(--font-display); font-size: 21px; font-weight: 600; margin: 0; }
+.arch h2 a { color: var(--ink); text-decoration: none; }
+.arch h2 a:hover { color: var(--tm); }
+.arch .m { margin: 2px 0 8px; font-size: 14px; color: var(--muted); }
+.arch ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; }
+.arch ul a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.arch ul a:hover { color: var(--tm); border-bottom-color: var(--tm); }
+
+footer.foot { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+footer.foot h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 6px; color: var(--ink); font-family: var(--font-body); font-weight: 600; }
+footer.foot ul { margin: 0 0 12px; padding-left: 18px; }
+footer.foot p { margin: 0 0 8px; }
+footer.foot a { color: var(--ink); }
+.site-foot { border-top: 1px solid var(--line); background: var(--surface); font-size: 14px; color: var(--muted); }
+.site-foot .inner { padding-top: 18px; padding-bottom: 22px; }
+
+@media (max-width: 480px) {
+  .card { padding: 16px 16px 14px; }
+  .card h3 { font-size: 19px; }
+  .sec-h { font-size: 21px; }
+  .sec-h .all { margin-left: 0; width: 100%; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card .src { transition: background .15s ease; }
+}
+html:not(.ok) body > :not(.gate) { display: none !important; }
+html.ok .gate { display: none; }
+.gate { min-height: 100vh; display: grid; grid-template-rows: 1fr auto 1fr; justify-items: center; padding: 24px 16px; }
+.gate-box { grid-row: 2; width: 100%; max-width: 380px; background: var(--surface); border: 1px solid var(--line); border-top: 6px solid var(--navy); border-radius: 12px; padding: 24px 24px 22px; }
+.gate .gate-msg { margin: 0 0 14px; font-size: 18px; font-weight: 600; color: var(--ink); }
+.gate-contact { grid-row: 3; align-self: end; margin: 24px 0 0; font-size: 14px; color: var(--muted); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.gate-row { display: flex; gap: 8px; }
+.gate input { flex: 1; min-width: 0; font: inherit; font-size: 16px; color: var(--ink); background: var(--surface); border: 1px solid var(--muted); border-radius: 8px; padding: 10px 12px; }
+.gate input:focus-visible, .gate button:focus-visible { outline: 2px solid var(--tm); outline-offset: 2px; }
+.gate button { font: inherit; font-weight: 600; font-size: 16px; color: #fff; background: var(--navy); border: 0; border-radius: 8px; padding: 10px 18px; cursor: pointer; }
+.gate button:hover { background: var(--tm); }
+.gate .gate-err { margin: 12px 0 0; color: var(--comp); font-weight: 600; font-size: 14px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .gate button { background: var(--tm); color: var(--bg); } }
+:root[data-theme="dark"] .gate button { background: var(--tm); color: var(--bg); }
+</style>
+</head>
+<body>
+<div class="gate">
+  <form class="gate-box" id="gate-form" autocomplete="off">
+    <p class="gate-msg">Obsah je přístupný jen s heslem.</p>
+    <label class="sr" for="gate-pw">Heslo</label>
+    <div class="gate-row">
+      <input id="gate-pw" name="heslo" type="password" required autofocus>
+      <button type="submit">Vstoupit</button>
+    </div>
+    <p class="gate-err" id="gate-err" role="alert" hidden>Nesprávné heslo, zkuste to znovu.</p>
+    <noscript><p class="gate-err">Pro zobrazení stránky je potřeba povolit JavaScript.</p></noscript>
+  </form>
+  <p class="gate-contact">legal(zavináč)onajman.cz</p>
+</div>
+<script>
+(function () {
+  var k = "ipnovinky-pristup", t = "9f3fbf13";
+  function h(s) {
+    var x = 0x811c9dc5, b = new TextEncoder().encode("ipnovinky:" + s);
+    for (var i = 0; i < b.length; i++) { x ^= b[i]; x = Math.imul(x, 0x01000193) >>> 0; }
+    return ("0000000" + x.toString(16)).slice(-8);
+  }
+  var f = document.getElementById("gate-form"), pw = document.getElementById("gate-pw"), err = document.getElementById("gate-err");
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (h(pw.value) !== t) { err.hidden = false; pw.select(); return; }
+    try { localStorage.setItem(k, t); } catch (e1) { try { sessionStorage.setItem(k, t); } catch (e2) {} }
+    document.documentElement.classList.add("ok");
+    var a = location.hash && document.getElementById(location.hash.slice(1));
+    if (a) a.scrollIntoView({ behavior: "instant", block: "start" }); else window.scrollTo({ top: 0, behavior: "instant" });
+  });
+})();
+</script>
+
+<div class="ai-note" role="note">
+  <div class="inner">AI generovaný výstup pro vlastní osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓</div>
+</div>
+
+<header class="top">
+  <div class="inner">
+    <div class="head-main">
+      <div class="brand"><a href="./">Monitoring IP zpráv</a></div>
+      <h1>Hledání ve zprávách</h1>
+      <div class="meta-row"><span>Hlavní zprávy i položky Na radar ze všech vydání</span></div>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" type="button" role="switch" aria-checked="false">
+      <span class="tt-track" aria-hidden="true"><span class="tt-thumb"></span></span>
+      <span class="tt-label">Tmavý režim</span>
+    </button>
+  </div>
+</header>
+
+<nav class="sections" aria-label="Sekce">
+  <div class="inner">
+    <ul>
+      <li><a class="nl" href="./">Aktuální vydání</a></li>
+      <li><a class="nl s-nekala-soutez" href="sekce/nekala-soutez.html">Nekalá soutěž</a></li>
+      <li><a class="nl s-ochranne-znamky" href="sekce/ochranne-znamky.html">Ochranné známky</a></li>
+      <li><a class="nl s-prumyslove-vzory" href="sekce/prumyslove-vzory.html">Průmyslové vzory</a></li>
+      <li><a class="nl s-patenty-a-uzitne-vzory" href="sekce/patenty-a-uzitne-vzory.html">Patenty a užitné vzory</a></li>
+      <li><a class="nl s-ostatni" href="sekce/ostatni.html">Ostatní</a></li>
+      <li class="li-arch"><a class="nl nl-arch" href="archiv/">Všechna vydání</a></li>
+    </ul>
+    <form class="search" role="search" action="hledani.html" method="get">
+      <label class="sr" for="q-nav">Hledat ve zprávách</label>
+      <input id="q-nav" name="q" type="search" placeholder="Hledat ve zprávách…" autocomplete="off">
+      <button type="submit" aria-label="Hledat"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.7 12.7 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </form>
+  </div>
+</nav>
+
+<div class="layout has-side">
+<main class="content">
+  <form class="search-big" role="search" onsubmit="return false">
+    <label class="sr" for="hledat">Hledaný text</label>
+    <input id="hledat" type="search" placeholder="Např. zlá víra, Tribunál, T-541/25…" autocomplete="off" autofocus>
+  </form>
+  <p class="search-info" id="hledat-info" aria-live="polite">Načítám…</p>
+  <ol class="hits" id="vysledky"></ol>
+<script>
+(function () {
+  var input = document.getElementById("hledat"), out = document.getElementById("vysledky"),
+      info = document.getElementById("hledat-info"), data = null, timer;
+  // Text bez diakritiky a malými písmeny; každý znak zůstává na svém místě kvůli zvýraznění.
+  function norm(s) {
+    var r = "";
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      r += c.length === 1 ? c : (c.charAt(0) || " ");
+    }
+    return r;
+  }
+  // Kmen slova kvůli skloňování (zlá víra → zl, vír: najde i „zlou víru“). Čísla a značky se nezkracují.
+  function kmen(t) {
+    if (/\d/.test(t) || t.length <= 2) return t;
+    return t.length <= 5 ? t.slice(0, t.length - 1) : t.slice(0, t.length - 2);
+  }
+  function rx(k) {
+    var e = k.replace(/[^a-z0-9]/g, function (c) { return "\\u" + ("000" + c.charCodeAt(0).toString(16)).slice(-4); });
+    return new RegExp("(^|[^a-z0-9])" + e, "g");
+  }
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+  }
+  // Úseky textu, kde začíná některé hledané slovo; zvýrazní se celé slovo.
+  function useky(n, re) {
+    var res = [];
+    re.forEach(function (r) {
+      r.lastIndex = 0; var m;
+      while ((m = r.exec(n)) !== null) {
+        var a = m.index + m[1].length, b = a;
+        while (b < n.length && /[a-z0-9]/.test(n[b])) b++;
+        if (b === a) b = a + m[0].length - m[1].length;
+        res.push([a, b]);
+        r.lastIndex = Math.max(b, r.lastIndex);
+      }
+    });
+    return res.sort(function (x, y) { return x[0] - y[0]; });
+  }
+  function mark(text, re) {
+    var res = "", pos = 0;
+    useky(norm(text), re).forEach(function (u) {
+      if (u[0] < pos) return;
+      res += esc(text.slice(pos, u[0])) + "<mark>" + esc(text.slice(u[0], u[1])) + "</mark>";
+      pos = u[1];
+    });
+    return res + esc(text.slice(pos));
+  }
+  function snippet(text, re) {
+    var u = useky(norm(text), re), i = u.length ? u[0][0] : -1;
+    var start = 0, end = Math.min(text.length, 240);
+    if (i > 90) { start = text.indexOf(" ", i - 90) + 1; end = Math.min(text.length, start + 240); }
+    if (end < text.length) { var sp = text.lastIndexOf(" ", end); if (sp > start) end = sp; }
+    return (start > 0 ? "… " : "") + mark(text.slice(start, end), re) + (end < text.length ? " …" : "");
+  }
+  function pocet(n) { return n + " " + (n === 1 ? "zpráva" : (n >= 2 && n <= 4 ? "zprávy" : "zpráv")); }
+  function run() {
+    var q = input.value.trim(), url = new URL(location.href);
+    if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
+    history.replaceState(null, "", url);
+    if (!data) return;
+    var re = norm(q).split(/\s+/).filter(function (t) { return t.length >= 2; }).map(function (t) { return rx(kmen(t)); });
+    if (!re.length) {
+      out.innerHTML = "";
+      info.textContent = "Zadejte alespoň dvě písmena. Hledá se v hlavních zprávách i v položkách Na radar ze všech vydání (" + pocet(data.length) + ").";
+      return;
+    }
+    var res = [];
+    data.forEach(function (it) {
+      var ht = norm(it.t), hx = norm(it.x + " " + it.s.join(" ") + " " + it.g.map(function (g) { return g[0]; }).join(" "));
+      var score = 0;
+      for (var i = 0; i < re.length; i++) {
+        re[i].lastIndex = 0; var inT = re[i].test(ht);
+        re[i].lastIndex = 0; if (!inT && !re[i].test(hx)) return;
+        score += inT ? 3 : 1;
+      }
+      res.push({ it: it, score: score });
+    });
+    res.sort(function (a, b) { return b.score - a.score || (a.it.d < b.it.d ? 1 : a.it.d > b.it.d ? -1 : 0); });
+    info.textContent = res.length ? "Nalezeno: " + pocet(res.length) : "Nic nenalezeno. Zkuste jiné nebo méně slov.";
+    out.innerHTML = res.map(function (r) {
+      var it = r.it;
+      return '<li class="hit"><div class="hit-meta"><a href="archiv/' + it.d + '.html">' + esc(it.dl) + "</a> · " +
+        esc(it.druh) + " · " + esc(it.s.join(", ")) + '</div><a class="hit-t" href="' + esc(it.u) + '">' + mark(it.t, re) +
+        '</a><p class="hit-x">' + snippet(it.x, re) + '</p><div class="hit-tags">' +
+        it.g.map(function (g) { return '<span class="pill ' + g[1] + '">' + esc(g[0]) + "</span>"; }).join("") + "</div></li>";
+    }).join("");
+  }
+  var q0 = new URL(location.href).searchParams.get("q");
+  if (q0) { input.value = q0; var nav = document.getElementById("q-nav"); if (nav) nav.value = q0; }
+  input.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(run, 120); });
+  fetch("hledani.json").then(function (r) { return r.json(); }).then(function (d) { data = d; run(); })
+    .catch(function () { info.textContent = "Vyhledávání se nepodařilo načíst."; });
+})();
+</script>
+</main>
+<aside class="side" aria-label="Seznam vydání">
+  <div class="side-inner">
+    <section class="panel issues">
+      <h2>Všechna vydání</h2>
+      <h3 class="month">Listopad 2026</h3>
+<ol>
+<li><a href="archiv/2026-11-14.html"><span class="d">Sobota 14. 11.</span><span class="m">3 hlavní zprávy · 5 na radar</span></a></li>
+<li><a href="archiv/2026-11-07.html"><span class="d">Sobota 7. 11.</span><span class="m">3 hlavní zprávy · 3 na radar · zkušební</span></a></li>
+</ol>
+      <p class="arch-link"><a href="archiv/">Přehled vydání s obsahem →</a></p>
+    </section>
+    <section class="panel legend">
+      <h2>Štítky</h2>
+      <h3 class="lg-h">Oblast</h3>
+      <ul class="lg-list"><li><span class="pill tm">Ochranné známky</span></li><li><span class="pill ip">Autorské právo</span></li><li><span class="pill ip">Patenty</span></li><li><span class="pill ip">Umělá inteligence</span></li><li><span class="pill ip">Geografická označení</span></li></ul>
+      <ul class="lg-list lg-solo"><li><span class="pill juris">Jurisdikce</span></li></ul>
+      <h3 class="lg-h">Souběh</h3>
+      <ul class="lg-list"><li><span class="pill comp-yes">Souběh s nekalou soutěží</span></li><li><span class="pill comp-yes">Souběh se soutěžním právem</span></li></ul>
+      <h3 class="lg-h">Zdroj</h3>
+      <ul class="lg-list"><li><span class="pill typ typ-rozhodnuti">Rozhodnutí</span></li><li><span class="pill typ">Tisková zpráva</span></li><li><span class="pill typ">Článek</span></li><li><span class="pill typ">Oznámení</span></li></ul>
+    </section>
+  </div>
+</aside>
+</div>
+
+<footer class="site-foot">
+  <div class="inner">legal(zavináč)onajman.cz</div>
+</footer>
+<script>
+(function () {
+  var b = document.getElementById("theme-toggle");
+  if (!b) return;
+  var root = document.documentElement, mq = window.matchMedia("(prefers-color-scheme: dark)");
+  function rezim() { return root.getAttribute("data-theme") || (mq.matches ? "dark" : "light"); }
+  function sync() { b.setAttribute("aria-checked", rezim() === "dark" ? "true" : "false"); }
+  b.addEventListener("click", function () {
+    var n = rezim() === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", n);
+    try { localStorage.setItem("ipnovinky-rezim", n); } catch (e) {}
+    sync();
+  });
+  if (mq.addEventListener) mq.addEventListener("change", sync);
+  sync();
+})();
+</script>
+</body>
+</html>

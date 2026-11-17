@@ -4,7 +4,7 @@ Přehled novinek z práva duševního vlastnictví, vychází jednou týdně v s
 uplynulý týden (naplánovaná úloha startuje v sobotu v 0:01 českého času).
 Web běží na Váš Hosting (onajman.cz). Po každém nahrání do větve `main` ho GitHub
 Actions (`.github/workflows/nasazeni.yml`) vygeneruje a nahraje přes FTP do složky
-`www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `archiv/`, `sekce/`),
+`www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `hledani.html` s daty `hledani.json`, `archiv/`, `sekce/`),
 ne data ani skripty.
 
 Přístup k FTP se nastavuje v GitHubu (Settings → Secrets and variables → Actions):
@@ -104,7 +104,8 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
         "oblasti": ["Ochranné známky"],
         "jurisdikce": ["EU"],
         "soubeh": ["Souběh s nekalou soutěží"],
-        "starsi": false
+        "starsi": false,
+        "zdroj": "Rozhodnutí"
       },
       "nadpis": "Nadpis zprávy",
       "fakta": ["Instituce", "spisová značka", "datum rozhodnutí / zveřejnění"],
@@ -117,7 +118,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
   "na_radar": [
     {
       "sekce": ["ochranne-znamky"],
-      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["ČR"]},
+      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["ČR"], "zdroj": "Oznámení"},
       "odkaz": {"url": "https://…", "text": "ÚPV, 26. 11. 2026: online seminář"},
       "text": "Jedna věta, proč je položka zajímavá.",
       "poznamka": "Nepovinné: co se nepodařilo ověřit."
@@ -125,7 +126,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
     {
       "sekce": ["ochranne-znamky"],
       "klic": "nepovinné",
-      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["Německo"]},
+      "stitky": {"oblasti": ["Ochranné známky"], "jurisdikce": ["Německo"], "zdroj": "Článek"},
       "odkaz": {"url": "https://…", "text": "Nadpis zprávy"},
       "text": "Jedna věta shrnující podstatu zprávy.",
       "detail": {
@@ -162,6 +163,10 @@ Pravidla, která `build.py` kontroluje:
   jednořádková (odkaz, věta, poznámka), nebo plně zpracovaná zpráva mimo ČR/EU
   s polem `detail`, které se na webu zobrazí jako rozbalitelné „Celé shrnutí“.
 - Štítek souběhu se uvádí jen tam, kde souběh existuje (nikdy „NE“ ani „bez souběhu“).
+- Každá zpráva i položka „Na radar“ má typ zdroje `stitky.zdroj`, ze kterého shrnutí vychází:
+  „Rozhodnutí“ (plný text rozhodnutí nebo stanoviska soudu či úřadu), „Tisková zpráva“
+  (tisková zpráva soudu, úřadu nebo instituce), „Článek“ (komentář, blog, odborný nebo
+  zpravodajský článek) nebo „Oznámení“ (oznámení úřadu, akce, seminář).
 - Oblast „Ochranné známky“ se zobrazí modře, ostatní oblasti fialově.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
 

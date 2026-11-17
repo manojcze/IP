@@ -55,6 +55,13 @@ KONTAKT = "legal(zavináč)onajman.cz"
 NAZEV = "Monitoring IP zpráv"
 PODTITUL = "Přehled novinek v IP. Každý týden vždy v sobotu ráno."
 
+# Typ zdroje, ze kterého zpráva vychází (štítek stitky.zdroj):
+#   Rozhodnutí: plný text rozhodnutí nebo stanoviska soudu či úřadu
+#   Tisková zpráva: tisková zpráva soudu, úřadu nebo instituce
+#   Článek: komentář, blog, odborný nebo zpravodajský článek
+#   Oznámení: oznámení úřadu, akce, seminář
+TYPY_ZDROJE = ["Rozhodnutí", "Tisková zpráva", "Článek", "Oznámení"]
+
 # Každé vydání má alespoň tolik hlavních zpráv.
 MIN_HLAVNICH = 3
 
@@ -128,6 +135,8 @@ def check_stitky(st, kde, chyby):
         chyby.append(f"{kde}: chybí štítek oblasti")
     if not st.get("jurisdikce"):
         chyby.append(f"{kde}: chybí štítek jurisdikce")
+    if st.get("zdroj") not in TYPY_ZDROJE:
+        chyby.append(f"{kde}: chybí nebo je neplatný typ zdroje stitky.zdroj (povolené: {', '.join(TYPY_ZDROJE)})")
     for t in st.get("oblasti", []) + st.get("jurisdikce", []) + st.get("soubeh", []):
         if t.strip().upper() == "NE" or "bez souběhu" in t.lower():
             chyby.append(f"{kde}: nepřípustný štítek „{t}“")
@@ -236,16 +245,24 @@ def load_all():
 
 # ---------------------------------------------------------------- dílčí části stránky
 
-def pills(st):
-    out = []
-    for o in st.get("oblasti", []):
-        cls = "tm" if o == "Ochranné známky" else "ip"
-        out.append(f'<span class="pill {cls}">{o}</span>')
-    out += [f'<span class="pill juris">{j}</span>' for j in st.get("jurisdikce", [])]
-    out += [f'<span class="pill comp-yes">{s}</span>' for s in st.get("soubeh", [])]
+def typ_cls(typ):
+    return "typ typ-rozhodnuti" if typ == "Rozhodnutí" else "typ"
+
+
+def stitky_seznam(st):
+    """Štítky zprávy jako dvojice (text, třída) v pořadí, v jakém se zobrazují."""
+    out = [(o, "tm" if o == "Ochranné známky" else "ip") for o in st.get("oblasti", [])]
+    out += [(j, "juris") for j in st.get("jurisdikce", [])]
+    out += [(s, "comp-yes") for s in st.get("soubeh", [])]
     if st.get("starsi"):
-        out.append('<span class="pill old">Starší zpráva</span>')
-    return "".join(out)
+        out.append(("Starší zpráva", "old"))
+    if st.get("zdroj"):
+        out.append((st["zdroj"], typ_cls(st["zdroj"])))
+    return out
+
+
+def pills(st):
+    return "".join(f'<span class="pill {cls}">{t}</span>' for t, cls in stitky_seznam(st))
 
 
 def issue_meta(v):
@@ -253,26 +270,23 @@ def issue_meta(v):
 
 
 def pouzite_stitky(vydani):
-    """Všechny štítky použité ve vydáních, seřazené podle četnosti."""
+    """Přehled štítků v pravém sloupci: (nadpis skupiny nebo None, [(text, třída)])."""
     from collections import Counter
-    obl, jur, sou, starsi = Counter(), Counter(), Counter(), False
+    obl, sou = Counter(), Counter()
     for v in vydani:
         for x in v["zpravy"] + v["na_radar"]:
-            st = x["stitky"]
-            obl.update(st.get("oblasti", []))
-            jur.update(st.get("jurisdikce", []))
-            sou.update(st.get("soubeh", []))
-            starsi = starsi or bool(st.get("starsi"))
+            obl.update(x["stitky"].get("oblasti", []))
+            sou.update(x["stitky"].get("soubeh", []))
 
     def poradi(c, prvni=()):
-        return sorted(c, key=lambda k: (k not in prvni, prvni.index(k) if k in prvni else 0, -c[k], k))
+        return sorted(c, key=lambda k: (k not in prvni, -c[k], k))
 
-    return {
-        "Oblast": [(o, "tm" if o == "Ochranné známky" else "ip") for o in poradi(obl, ("Ochranné známky",))],
-        "Jurisdikce": [(j, "juris") for j in poradi(jur, ("ČR", "EU"))],
-        "Souběh": [(s, "comp-yes") for s in poradi(sou)],
-        "Další": [("Starší zpráva", "old")] if starsi else [],
-    }
+    return [
+        ("Oblast", [(o, "tm" if o == "Ochranné známky" else "ip") for o in poradi(obl, ("Ochranné známky",))]),
+        (None, [("Jurisdikce", "juris")]),
+        ("Souběh", [(s, "comp-yes") for s in poradi(sou)]),
+        ("Zdroj", [(t, typ_cls(t)) for t in TYPY_ZDROJE]),
+    ]
 
 
 def card(z, v, root, kontext, also_in=None):
@@ -361,9 +375,10 @@ def sidebar(vydani, root, aktualni=None):
                     f'<span class="m">{issue_meta(v)}{tag}</span></a></li>')
     rows.append("</ol>")
     legenda = []
-    for skupina, polozky in pouzite_stitky(vydani).items():
+    for skupina, polozky in pouzite_stitky(vydani):
         if polozky:
-            legenda.append(f'      <h3 class="lg-h">{skupina}</h3>\n      <ul class="lg-list">'
+            nadpis = f'<h3 class="lg-h">{skupina}</h3>\n      ' if skupina else ""
+            legenda.append(f'      {nadpis}<ul class="lg-list{"" if skupina else " lg-solo"}">'
                            + "".join(f'<li><span class="pill {cls}">{t}</span></li>' for t, cls in polozky)
                            + "</ul>")
     return f"""<aside class="side" aria-label="Seznam vydání">
@@ -438,6 +453,11 @@ def page(*, title, root, brand, h1, meta, nav_current, content, side=None, descr
     <ul>
 {nav_html}
     </ul>
+    <form class="search" role="search" action="{root}hledani.html" method="get">
+      <label class="sr" for="q-nav">Hledat ve zprávách</label>
+      <input id="q-nav" name="q" type="search" placeholder="Hledat ve zprávách…" autocomplete="off">
+      <button type="submit" aria-label="Hledat">{IKONA_LUPA}</button>
+    </form>
   </div>
 </nav>
 
@@ -586,6 +606,46 @@ def section_page(slug, nazev, vydani):
                 description=f"Přehled novinek z oblasti {nazev.lower()} ze všech vydání.")
 
 
+def search_index(vydani):
+    """Data pro vyhledávání: jedna položka za každou hlavní zprávu a položku Na radar."""
+    def txt(s):
+        return re.sub(r"\s+", " ", html.unescape(strip_tags(s))).strip()
+
+    stitky = stitky_seznam
+
+    polozky = []
+    for v in vydani:
+        for z in v["zpravy"]:
+            casti = z["fakta"] + z["odstavce"] + [z["dopad"]["text"], z["podklad"]]
+            polozky.append({"d": v["datum"], "dl": d_long(v["_d"]), "druh": "Hlavní zpráva",
+                            "u": f'archiv/{v["datum"]}.html#zprava-{z["id"]}', "t": txt(z["nadpis"]),
+                            "s": [SEKCE_NAZEV[s] for s in z["sekce"]], "g": stitky(z["stitky"]),
+                            "x": txt(" ".join(casti))})
+        for i, r in enumerate(v["na_radar"], 1):
+            casti = [r.get("text", ""), r.get("poznamka", "")]
+            det = r.get("detail")
+            if det:
+                casti += det["fakta"] + det["odstavce"] + [(det.get("dopad") or {}).get("text", ""), det.get("podklad", "")]
+            polozky.append({"d": v["datum"], "dl": d_long(v["_d"]), "druh": "Na radar",
+                            "u": f'archiv/{v["datum"]}.html#radar-{i}', "t": txt(r["odkaz"]["text"]),
+                            "s": [SEKCE_NAZEV[s] for s in r["sekce"]], "g": stitky(r["stitky"]),
+                            "x": txt(" ".join(c for c in casti if c))})
+    return json.dumps(polozky, ensure_ascii=False, separators=(",", ":"))
+
+
+def search_page(vydani):
+    content = f"""  <form class="search-big" role="search" onsubmit="return false">
+    <label class="sr" for="hledat">Hledaný text</label>
+    <input id="hledat" type="search" placeholder="Např. zlá víra, Tribunál, T-541/25…" autocomplete="off" autofocus>
+  </form>
+  <p class="search-info" id="hledat-info" aria-live="polite">Načítám…</p>
+  <ol class="hits" id="vysledky"></ol>
+{SEARCH_JS}"""
+    return page(title=f"Hledání – {NAZEV}", root="", brand=NAZEV, h1="Hledání ve zprávách",
+                meta="<span>Hlavní zprávy i položky Na radar ze všech vydání</span>", nav_current="hledani",
+                content=content, side=sidebar(vydani, ""), description="Fulltextové hledání ve všech vydáních.")
+
+
 def archive_page(vydani):
     root = "../"
     items = []
@@ -638,6 +698,8 @@ def main():
     for v in vydani:
         write(f"archiv/{v['datum']}.html", issue_page(v, vydani, "../", None), written)
     write("archiv/index.html", archive_page(vydani), written)
+    write("hledani.html", search_page(vydani), written)
+    write("hledani.json", search_index(vydani) + "\n", written)
     write("robots.txt", "User-agent: *\nDisallow: /\n" if HESLO_HASH else "User-agent: *\nAllow: /\n", written)
     for slug, nazev in SEKCE:
         write(f"sekce/{slug}.html", section_page(slug, nazev, vydani), written)
@@ -727,7 +789,34 @@ header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: c
 .issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
 nav.sections { background: var(--surface); border-bottom: 1px solid var(--line); }
-nav.sections ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+nav.sections .inner { display: flex; align-items: center; gap: 4px 16px; }
+nav.sections ul { flex: 1 1 auto; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.search { position: relative; flex: 0 0 auto; display: flex; align-items: center; }
+.search input { width: 200px; font: inherit; font-size: 14.5px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 7px 36px 7px 14px; }
+.search input::placeholder { color: var(--muted); }
+.search input:focus { outline: 2px solid var(--tm); outline-offset: 1px; }
+.search button { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border: 0; border-radius: 50%; background: none; color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+.search button:hover { color: var(--ink); }
+.search button:focus-visible { outline: 2px solid var(--tm); }
+@media (max-width: 1239px) {
+  nav.sections .inner { flex-wrap: wrap; }
+  nav.sections ul { flex-basis: 100%; }
+  .search { flex: 1 1 100%; padding-bottom: 10px; }
+  .search input { width: 100%; }
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.search-big input { width: 100%; font: inherit; font-size: 18px; color: var(--ink); background: var(--surface); border: 1px solid var(--muted); border-radius: 10px; padding: 12px 16px; }
+.search-big input:focus { outline: 2px solid var(--tm); outline-offset: 1px; }
+.search-info { margin: 10px 0 16px; font-size: 14px; color: var(--muted); }
+.hits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.hit { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.hit-meta { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.hit-meta a { color: inherit; }
+.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ink); text-decoration: none; }
+.hit-t:hover { color: var(--tm); }
+.hit-x { margin: 6px 0 8px; font-size: 15px; max-width: 78ch; }
+.hit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hits mark { background: var(--comp-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
 nav.sections ul::-webkit-scrollbar { display: none; }
 nav.sections li:first-child a { padding-left: 0; }
 nav.sections a { display: block; padding: 13px 12px 10px; font-weight: 600; font-size: 15px; color: var(--muted); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
@@ -781,6 +870,11 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .pill.comp-yes { background: var(--comp-soft); color: var(--comp); box-shadow: inset 0 0 0 1.5px var(--comp); }
 .pill.juris { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--muted); font-weight: 500; }
 .pill.old { background: var(--old-soft); color: var(--muted); }
+.pill.typ { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
+.pill.typ::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 1px; background: currentColor; opacity: .55; vertical-align: 1px; }
+.pill.typ-rozhodnuti { background: var(--pat-soft); color: var(--pat); box-shadow: inset 0 0 0 1px var(--pat); font-weight: 600; }
+.pill.typ-rozhodnuti::before { opacity: 1; }
+.legend .lg-solo { margin-top: 12px; }
 
 .sec { margin-top: 30px; }
 .sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
@@ -861,6 +955,109 @@ footer.foot a { color: var(--ink); }
   .card .src { transition: background .15s ease; }
 }"""
 
+
+IKONA_LUPA = ('<svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" '
+              'fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.7 12.7 17 17" stroke="currentColor" '
+              'stroke-width="1.8" stroke-linecap="round"/></svg>')
+
+# Fulltextové hledání na stránce hledani.html. Data načítá z hledani.json (vytváří build.py),
+# hledá bez ohledu na velikost písmen a diakritiku, všechna zadaná slova musí ve zprávě být.
+SEARCH_JS = r"""<script>
+(function () {
+  var input = document.getElementById("hledat"), out = document.getElementById("vysledky"),
+      info = document.getElementById("hledat-info"), data = null, timer;
+  // Text bez diakritiky a malými písmeny; každý znak zůstává na svém místě kvůli zvýraznění.
+  function norm(s) {
+    var r = "";
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i].normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      r += c.length === 1 ? c : (c.charAt(0) || " ");
+    }
+    return r;
+  }
+  // Kmen slova kvůli skloňování (zlá víra → zl, vír: najde i „zlou víru“). Čísla a značky se nezkracují.
+  function kmen(t) {
+    if (/\d/.test(t) || t.length <= 2) return t;
+    return t.length <= 5 ? t.slice(0, t.length - 1) : t.slice(0, t.length - 2);
+  }
+  function rx(k) {
+    var e = k.replace(/[^a-z0-9]/g, function (c) { return "\\u" + ("000" + c.charCodeAt(0).toString(16)).slice(-4); });
+    return new RegExp("(^|[^a-z0-9])" + e, "g");
+  }
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; });
+  }
+  // Úseky textu, kde začíná některé hledané slovo; zvýrazní se celé slovo.
+  function useky(n, re) {
+    var res = [];
+    re.forEach(function (r) {
+      r.lastIndex = 0; var m;
+      while ((m = r.exec(n)) !== null) {
+        var a = m.index + m[1].length, b = a;
+        while (b < n.length && /[a-z0-9]/.test(n[b])) b++;
+        if (b === a) b = a + m[0].length - m[1].length;
+        res.push([a, b]);
+        r.lastIndex = Math.max(b, r.lastIndex);
+      }
+    });
+    return res.sort(function (x, y) { return x[0] - y[0]; });
+  }
+  function mark(text, re) {
+    var res = "", pos = 0;
+    useky(norm(text), re).forEach(function (u) {
+      if (u[0] < pos) return;
+      res += esc(text.slice(pos, u[0])) + "<mark>" + esc(text.slice(u[0], u[1])) + "</mark>";
+      pos = u[1];
+    });
+    return res + esc(text.slice(pos));
+  }
+  function snippet(text, re) {
+    var u = useky(norm(text), re), i = u.length ? u[0][0] : -1;
+    var start = 0, end = Math.min(text.length, 240);
+    if (i > 90) { start = text.indexOf(" ", i - 90) + 1; end = Math.min(text.length, start + 240); }
+    if (end < text.length) { var sp = text.lastIndexOf(" ", end); if (sp > start) end = sp; }
+    return (start > 0 ? "… " : "") + mark(text.slice(start, end), re) + (end < text.length ? " …" : "");
+  }
+  function pocet(n) { return n + " " + (n === 1 ? "zpráva" : (n >= 2 && n <= 4 ? "zprávy" : "zpráv")); }
+  function run() {
+    var q = input.value.trim(), url = new URL(location.href);
+    if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
+    history.replaceState(null, "", url);
+    if (!data) return;
+    var re = norm(q).split(/\s+/).filter(function (t) { return t.length >= 2; }).map(function (t) { return rx(kmen(t)); });
+    if (!re.length) {
+      out.innerHTML = "";
+      info.textContent = "Zadejte alespoň dvě písmena. Hledá se v hlavních zprávách i v položkách Na radar ze všech vydání (" + pocet(data.length) + ").";
+      return;
+    }
+    var res = [];
+    data.forEach(function (it) {
+      var ht = norm(it.t), hx = norm(it.x + " " + it.s.join(" ") + " " + it.g.map(function (g) { return g[0]; }).join(" "));
+      var score = 0;
+      for (var i = 0; i < re.length; i++) {
+        re[i].lastIndex = 0; var inT = re[i].test(ht);
+        re[i].lastIndex = 0; if (!inT && !re[i].test(hx)) return;
+        score += inT ? 3 : 1;
+      }
+      res.push({ it: it, score: score });
+    });
+    res.sort(function (a, b) { return b.score - a.score || (a.it.d < b.it.d ? 1 : a.it.d > b.it.d ? -1 : 0); });
+    info.textContent = res.length ? "Nalezeno: " + pocet(res.length) : "Nic nenalezeno. Zkuste jiné nebo méně slov.";
+    out.innerHTML = res.map(function (r) {
+      var it = r.it;
+      return '<li class="hit"><div class="hit-meta"><a href="archiv/' + it.d + '.html">' + esc(it.dl) + "</a> · " +
+        esc(it.druh) + " · " + esc(it.s.join(", ")) + '</div><a class="hit-t" href="' + esc(it.u) + '">' + mark(it.t, re) +
+        '</a><p class="hit-x">' + snippet(it.x, re) + '</p><div class="hit-tags">' +
+        it.g.map(function (g) { return '<span class="pill ' + g[1] + '">' + esc(g[0]) + "</span>"; }).join("") + "</div></li>";
+    }).join("");
+  }
+  var q0 = new URL(location.href).searchParams.get("q");
+  if (q0) { input.value = q0; var nav = document.getElementById("q-nav"); if (nav) nav.value = q0; }
+  input.addEventListener("input", function () { clearTimeout(timer); timer = setTimeout(run, 120); });
+  fetch("hledani.json").then(function (r) { return r.json(); }).then(function (d) { data = d; run(); })
+    .catch(function () { info.textContent = "Vyhledávání se nepodařilo načíst."; });
+})();
+</script>"""
 
 # Přepínač světlého a tmavého režimu. Bez volby se řídí nastavením systému,
 # zvolený režim si prohlížeč zapamatuje.

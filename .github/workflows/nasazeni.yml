@@ -27,7 +27,7 @@ jobs:
       - name: Připravit soubory k nahrání
         run: |
           mkdir _site
-          cp -r index.html robots.txt archiv sekce _site/
+          cp -r index.html robots.txt hledani.html hledani.json archiv sekce _site/
 
       - name: Chybí přístup k FTP
         if: env.MA_FTP != 'true'
@@ -57,7 +57,7 @@ jobs:
           set net:max-retries 3
           set net:reconnect-interval-base 5
           cd "$FTP_DIR"
-          mput _site/index.html _site/robots.txt
+          mput _site/index.html _site/robots.txt _site/hledani.html _site/hledani.json
           mirror --reverse --no-perms --delete --verbose _site/archiv archiv
           mirror --reverse --no-perms --delete --verbose _site/sekce sekce
           bye

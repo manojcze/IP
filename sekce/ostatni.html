@@ -95,7 +95,34 @@ header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: c
 .issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
 nav.sections { background: var(--surface); border-bottom: 1px solid var(--line); }
-nav.sections ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+nav.sections .inner { display: flex; align-items: center; gap: 4px 16px; }
+nav.sections ul { flex: 1 1 auto; min-width: 0; list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.search { position: relative; flex: 0 0 auto; display: flex; align-items: center; }
+.search input { width: 200px; font: inherit; font-size: 14.5px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 7px 36px 7px 14px; }
+.search input::placeholder { color: var(--muted); }
+.search input:focus { outline: 2px solid var(--tm); outline-offset: 1px; }
+.search button { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; border: 0; border-radius: 50%; background: none; color: var(--muted); cursor: pointer; display: grid; place-items: center; }
+.search button:hover { color: var(--ink); }
+.search button:focus-visible { outline: 2px solid var(--tm); }
+@media (max-width: 1239px) {
+  nav.sections .inner { flex-wrap: wrap; }
+  nav.sections ul { flex-basis: 100%; }
+  .search { flex: 1 1 100%; padding-bottom: 10px; }
+  .search input { width: 100%; }
+}
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.search-big input { width: 100%; font: inherit; font-size: 18px; color: var(--ink); background: var(--surface); border: 1px solid var(--muted); border-radius: 10px; padding: 12px 16px; }
+.search-big input:focus { outline: 2px solid var(--tm); outline-offset: 1px; }
+.search-info { margin: 10px 0 16px; font-size: 14px; color: var(--muted); }
+.hits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.hit { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.hit-meta { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.hit-meta a { color: inherit; }
+.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ink); text-decoration: none; }
+.hit-t:hover { color: var(--tm); }
+.hit-x { margin: 6px 0 8px; font-size: 15px; max-width: 78ch; }
+.hit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hits mark { background: var(--comp-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
 nav.sections ul::-webkit-scrollbar { display: none; }
 nav.sections li:first-child a { padding-left: 0; }
 nav.sections a { display: block; padding: 13px 12px 10px; font-weight: 600; font-size: 15px; color: var(--muted); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; }
@@ -149,6 +176,11 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .pill.comp-yes { background: var(--comp-soft); color: var(--comp); box-shadow: inset 0 0 0 1.5px var(--comp); }
 .pill.juris { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--muted); font-weight: 500; }
 .pill.old { background: var(--old-soft); color: var(--muted); }
+.pill.typ { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
+.pill.typ::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 1px; background: currentColor; opacity: .55; vertical-align: 1px; }
+.pill.typ-rozhodnuti { background: var(--pat-soft); color: var(--pat); box-shadow: inset 0 0 0 1px var(--pat); font-weight: 600; }
+.pill.typ-rozhodnuti::before { opacity: 1; }
+.legend .lg-solo { margin-top: 12px; }
 
 .sec { margin-top: 30px; }
 .sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
@@ -308,6 +340,11 @@ html.ok .gate { display: none; }
       <li><a class="nl s-ostatni" href="../sekce/ostatni.html" aria-current="page">Ostatní</a></li>
       <li class="li-arch"><a class="nl nl-arch" href="../archiv/">Všechna vydání</a></li>
     </ul>
+    <form class="search" role="search" action="../hledani.html" method="get">
+      <label class="sr" for="q-nav">Hledat ve zprávách</label>
+      <input id="q-nav" name="q" type="search" placeholder="Hledat ve zprávách…" autocomplete="off">
+      <button type="submit" aria-label="Hledat"><svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.7 12.7 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+    </form>
   </div>
 </nav>
 
@@ -319,7 +356,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-14"><a href="../archiv/2026-11-14.html">Sobota 14. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="v2026-11-14-zprava-2">
-      <div class="tags"><span class="pill ip">Autorské právo</span><span class="pill juris">Francie</span><span class="pill comp-yes">Souběh se soutěžním právem</span><span class="pill old">Starší zpráva</span></div>
+      <div class="tags"><span class="pill ip">Autorské právo</span><span class="pill juris">Francie</span><span class="pill comp-yes">Souběh se soutěžním právem</span><span class="pill old">Starší zpráva</span><span class="pill typ">Článek</span></div>
       <h3>Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření</h3>
       <p class="facts"><span>Pařížský odvolací soud (Cour d’appel de Paris)</span><span>RG 26/12580 (APIG) a RG 26/12581 (DVP)</span><span>rozhodnuto 29. 10. 2026; komentář IPKat z 11. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html">Originální zdroj: IPKat →</a></p>
@@ -334,7 +371,7 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Na radar</h3><ul>
       <li id="v2026-11-14-radar-2">
-        <div class="l1"><span class="pill tm">Ochranné známky</span><span class="pill ip">Autorské právo</span><span class="pill ip">Umělá inteligence</span><span class="pill juris">USA</span><span class="pill comp-yes">Souběh s nekalou soutěží</span></div>
+        <div class="l1"><span class="pill tm">Ochranné známky</span><span class="pill ip">Autorské právo</span><span class="pill ip">Umělá inteligence</span><span class="pill juris">USA</span><span class="pill comp-yes">Souběh s nekalou soutěží</span><span class="pill typ">Článek</span></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/the-law-or-lore-of-infamous-generative.html">IPKat, 8. 11. 2026: spor o AI postavy „Italian Brainrot“ u federálního soudu v Severní Kalifornii</a>: žalobci (Spyder Games, Simulator Games) žádají určení, že francouzská agentura Memetum Lab nemá k postavám v Robloxu platná práva; agentura se opírá o autorská práva, francouzskou známku a nekalou soutěž. Soud dosud nerozhodl, komentář popisuje pouze podání.
         <div class="note">Spisová značka v komentáři není, rozhodnutí neexistuje.</div><div class="note"><a href="../archiv/2026-11-14.html#radar-2">Z vydání 14. 11. 2026</a></div>
       </li>
@@ -345,7 +382,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-07"><a href="../archiv/2026-11-07.html">Sobota 7. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="v2026-11-07-zprava-3">
-      <div class="tags"><span class="pill ip">Autorské právo</span><span class="pill ip">Umělá inteligence</span><span class="pill juris">EU</span></div>
+      <div class="tags"><span class="pill ip">Autorské právo</span><span class="pill ip">Umělá inteligence</span><span class="pill juris">EU</span><span class="pill typ">Článek</span></div>
       <h3>Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company</h3>
       <p class="facts"><span>Soudní dvůr EU, stanovisko generálního advokáta</span><span>věc C-250/25, Like Company v Google</span><span>3. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/11/ag-szpunars-opinion-in-like-company-is.html">Originální zdroj: IPKat →</a></p>
@@ -379,12 +416,11 @@ html.ok .gate { display: none; }
       <h2>Štítky</h2>
       <h3 class="lg-h">Oblast</h3>
       <ul class="lg-list"><li><span class="pill tm">Ochranné známky</span></li><li><span class="pill ip">Autorské právo</span></li><li><span class="pill ip">Patenty</span></li><li><span class="pill ip">Umělá inteligence</span></li><li><span class="pill ip">Geografická označení</span></li></ul>
-      <h3 class="lg-h">Jurisdikce</h3>
-      <ul class="lg-list"><li><span class="pill juris">ČR</span></li><li><span class="pill juris">EU</span></li><li><span class="pill juris">EU (UPC)</span></li><li><span class="pill juris">Německo</span></li><li><span class="pill juris">Francie</span></li><li><span class="pill juris">Kazachstán</span></li><li><span class="pill juris">Spojené království</span></li><li><span class="pill juris">USA</span></li></ul>
+      <ul class="lg-list lg-solo"><li><span class="pill juris">Jurisdikce</span></li></ul>
       <h3 class="lg-h">Souběh</h3>
       <ul class="lg-list"><li><span class="pill comp-yes">Souběh s nekalou soutěží</span></li><li><span class="pill comp-yes">Souběh se soutěžním právem</span></li></ul>
-      <h3 class="lg-h">Další</h3>
-      <ul class="lg-list"><li><span class="pill old">Starší zpráva</span></li></ul>
+      <h3 class="lg-h">Zdroj</h3>
+      <ul class="lg-list"><li><span class="pill typ typ-rozhodnuti">Rozhodnutí</span></li><li><span class="pill typ">Tisková zpráva</span></li><li><span class="pill typ">Článek</span></li><li><span class="pill typ">Oznámení</span></li></ul>
     </section>
   </div>
 </aside>
