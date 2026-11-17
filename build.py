@@ -497,7 +497,7 @@ def issue_page(v, vydani, root, nav_current):
     if v["hlavni_temata"]:
         items = "\n".join(f'      <li><a href="#zprava-{t["zprava"]}">{t["text"]}</a></li>' for t in v["hlavni_temata"])
         parts.append(f"""  <section class="summary" aria-labelledby="sum-h">
-    <h2 id="sum-h">Hlavní témata</h2>
+    <h2 id="sum-h">Hlavní zprávy</h2>
     <ul>
 {items}
     </ul>
