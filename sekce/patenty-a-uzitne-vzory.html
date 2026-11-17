@@ -29,6 +29,7 @@ try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t ==
   --navy: #1b3a6b;
   --accent: #1d4f91;
   --accent-soft: #e7eef8;
+  --title: #1b3a6b;
   --tm: #161616;
   --tm-soft: #ececea;
   --ip: #6a4fa3;
@@ -47,7 +48,7 @@ try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t ==
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #121212; --surface: #1b1b1b; --ink: #ececec; --muted: #a2a2a2; --line: #333333; --navy: #15294a;
-    --accent: #8fb3ea; --accent-soft: #1d2b44;
+    --accent: #8fb3ea; --accent-soft: #1d2b44; --title: #9dbcf0;
     --tm: #ececec; --tm-soft: #2a2a2a; --ip: #b39ae6; --ip-soft: #2c2447; --comp: #f19a5b; --comp-soft: #4a2a12;
     --pv: #5cc8bc; --pv-soft: #143a37; --pat: #82c886; --pat-soft: #1c3a1f; --old-soft: #2a2a2a;
     color-scheme: dark;
@@ -55,16 +56,16 @@ try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t ==
 }
 :root[data-theme="dark"] {
   --bg: #121212; --surface: #1b1b1b; --ink: #ececec; --muted: #a2a2a2; --line: #333333; --navy: #15294a;
-  --accent: #8fb3ea; --accent-soft: #1d2b44;
+  --accent: #8fb3ea; --accent-soft: #1d2b44; --title: #9dbcf0;
   --tm: #ececec; --tm-soft: #2a2a2a; --ip: #b39ae6; --ip-soft: #2c2447; --comp: #f19a5b; --comp-soft: #4a2a12;
   --pv: #5cc8bc; --pv-soft: #143a37; --pat: #82c886; --pat-soft: #1c3a1f; --old-soft: #2a2a2a;
   color-scheme: dark;
 }
-.s-nekala-soutez { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-ochranne-znamky { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-prumyslove-vzory { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-patenty-a-uzitne-vzory { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-ostatni { --sc: var(--accent); --sc-soft: var(--accent-soft); }
+.s-nekala-soutez { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-ochranne-znamky { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-prumyslove-vzory { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-patenty-a-uzitne-vzory { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-ostatni { --sc: var(--ink); --sc-soft: var(--tm-soft); }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -95,7 +96,6 @@ header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: c
 
 .issue-head { margin: 0 0 16px; }
 .issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
-.issue-date.sec-title { color: var(--accent); }
 .issue-meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
 .issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
@@ -123,8 +123,8 @@ nav.sections ul { flex: 1 1 auto; min-width: 0; list-style: none; margin: 0; pad
 .hit { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 14px 18px; }
 .hit-meta { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
 .hit-meta a { color: inherit; }
-.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ink); text-decoration: none; }
-.hit-t:hover { color: var(--tm); }
+.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--title); text-decoration: none; }
+.hit-t:hover { text-decoration: underline; }
 .hit-x { margin: 6px 0 8px; font-size: 15px; max-width: 78ch; }
 .hit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .hits mark { background: var(--comp-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
@@ -182,9 +182,11 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .pill.juris { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--muted); font-weight: 500; }
 .pill.old { background: var(--old-soft); color: var(--muted); }
 .pill.typ { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
+a.pill { text-decoration: none; }
+a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
 
 .sec { margin-top: 30px; }
-.sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); color: var(--sc); }
+.sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
 .sec-h .n { font-family: var(--font-body); font-size: 13px; font-weight: 600; line-height: 1; color: var(--sc); background: var(--sc-soft); border-radius: 2px; padding: 5px 9px; }
 .sec-h .all { margin-left: auto; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--sc); text-decoration: none; }
 .sec-h .all:hover { text-decoration: underline; }
@@ -192,7 +194,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .cards { display: flex; flex-direction: column; gap: 18px; }
 .card { position: relative; scroll-margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 20px 22px 18px; }
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; }
+.card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
 .card .facts span + span::before { content: "·"; margin: 0 8px; }
 .card p { margin: 0 0 10px; max-width: 78ch; }
@@ -211,7 +213,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .radar ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .radar li { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 12px 14px; font-size: 15px; }
 .radar li .l1 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
-.radar li > a.rl { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.radar li > a.rl { color: var(--title); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
 .radar li .note { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
 .radar li .note a { color: inherit; }
 .radar.compact { margin-top: 18px; }
@@ -241,7 +243,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .arch h2 a:hover { color: var(--tm); }
 .arch .m { margin: 2px 0 8px; font-size: 14px; color: var(--muted); }
 .arch ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; }
-.arch ul a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.arch ul a { color: var(--title); text-decoration: none; border-bottom: 1px solid var(--line); }
 .arch ul a:hover { color: var(--tm); border-bottom-color: var(--tm); }
 
 footer.foot { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
@@ -361,7 +363,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-14"><a href="../archiv/2026-11-14.html">Sobota 14. listopadu 2026</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-11-14-zprava-3">
-      <div class="tags"><span class="pill tm">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill comp-yes">Souběh se soutěžním právem</span><span class="pill typ">Článek</span></div>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
       <h3>ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou</h3>
       <p class="facts"><span>Jednotný patentový soud, místní oddělení Mannheim</span><span>spisové značky zdroj neuvádí</span><span>zveřejněno 6. 11. 2026</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/zte-and-samsung-withdraw-upc-infringement-actions-in-apparent-settlement/">Originální zdroj: JUVE Patent →</a></p>
@@ -375,7 +377,7 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-11-14-radar-4">
-        <div class="l1"><span class="pill tm">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-are-german-upc-local.html">IPKat, 3. 11. 2026: hostující příspěvek Rafała Sikorského o německých místních divizích UPC</a>: autor tvrdí, že německé divize rozhodují přes 75 % sporů prvního stupně, a staví se proti zřizování dalších senátů nad rámec čl. 7 odst. 4 Dohody o UPC. Jde o názorový příspěvek, nikoli rozhodnutí.
         <div class="note">Zdroj čísel autor neuvádí; k prověření.</div><div class="note"><a href="../archiv/2026-11-14.html#radar-4">Z vydání 14. 11. 2026</a></div>
       </li>
@@ -386,12 +388,12 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-11-07"><a href="../archiv/2026-11-07.html">Sobota 7. listopadu 2026</a></h2>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-11-07-radar-1">
-        <div class="l1"><span class="pill tm">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/upckat-proportionality-defence-against.html">IPKat, 1. 11. 2026: námitka nepřiměřenosti zákazu u UPC v oblasti léčiv</a>: Rozbor ukazuje, že UPC zákaz při porušení zpravidla vydá; výjimkou mohou být zájmy pacientů, pokud je výrobek jedinou dostupnou léčbou nebo výrazně zlepšuje péči (Meril v Edwards, Hologic v Siemens).
         <div class="note"><a href="../archiv/2026-11-07.html#radar-1">Z vydání 7. 11. 2026</a></div>
       </li>
       <li id="v2026-11-07-radar-2">
-        <div class="l1"><span class="pill tm">Patenty</span><span class="pill juris">Kanada</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/kanada.html">Kanada</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/11/guest-post-dose-of-reality-supreme.html">IPKat, 5. 11. 2026: Nejvyšší soud Kanady k patentům na dávkovací režimy</a>: Soud se vyjádřil, jak se zákaz patentovat léčebné metody slučuje s patenty na dávkování léčiv.
         <div class="note"><a href="../archiv/2026-11-07.html#radar-2">Z vydání 7. 11. 2026</a></div>
       </li>
@@ -402,7 +404,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-31"><a href="../archiv/2026-10-31.html">Sobota 31. října 2026</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-10-31-zprava-2">
-      <div class="tags"><span class="pill tm">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill typ">Článek</span></div>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
       <h3>Agfa proti Gucci: dřívější veřejné užití výrobku zveřejňuje i způsob jeho výroby</h3>
       <p class="facts"><span>Jednotný patentový soud, odvolací soud</span><span>UPC_CoA_582/2025, Agfa v Gucci (EP 3 388 490)</span><span>zpráva JUVE Patent z 27. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/agfa-loses-most-of-leather-decoration-patent-on-appeal-against-gucci/">Originální zdroj: JUVE Patent →</a></p>
@@ -415,7 +417,7 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-10-31-zprava-3">
-      <div class="tags"><span class="pill tm">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill typ">Článek</span></div>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
       <h3>Semaglutid: UPC si přisvojilo pravomoc bránit „hře s dělenými přihláškami“</h3>
       <p class="facts"><span>Jednotný patentový soud, ústřední oddělení Milán</span><span>UPC_CFI_2221/2026, Sandoz v Novo Nordisk</span><span>zpráva JUVE Patent z 26. 10. 2026; datum usnesení článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/upc-claims-power-to-stop-patentees-escaping-validity-decisions-via-withdrawal/">Originální zdroj: JUVE Patent →</a></p>
@@ -433,7 +435,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-24"><a href="../archiv/2026-10-24.html">Sobota 24. října 2026</a></h2>
     <div class="cards">
     <article class="card s-patenty-a-uzitne-vzory" id="v2026-10-24-zprava-3">
-      <div class="tags"><span class="pill tm">Patenty</span><span class="pill juris">EU (UPC)</span><span class="pill typ">Článek</span></div>
+      <div class="tags"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/eu-upc.html">EU (UPC)</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
       <h3>UPC Paříž: Align uspěl proti Angelalign v 17 státech, nárok za Spojené království neunesl</h3>
       <p class="facts"><span>Jednotný patentový soud, místní oddělení Paříž</span><span>UPC_CFI_684/2025, Align Technology v Angelalign (EP 2 237 738)</span><span>zpráva JUVE Patent z 19. 10. 2026; datum rozhodnutí článek neuvádí</span></p>
       <p class="src-line"><a class="src" href="https://www.juve-patent.com/cases/paris-local-division-upholds-align-patent-in-dispute-with-angelalign/">Originální zdroj: JUVE Patent →</a></p>
@@ -447,7 +449,7 @@ html.ok .gate { display: none; }
     </div>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-24-radar-3">
-        <div class="l1"><span class="pill tm">Patenty</span><span class="pill juris">EPO</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/post-published-clinical-data-does-not.html">IPKat, 19. 10. 2026: pozdější klinická data patent nezachrání (T 0251/25, empagliflozin)</a>: Odvolací senát EPO shledal patent Boehringer Ingelheim na kardioprotektivní použití empagliflozinu nedostatečně zveřejněným, protože přihláška účinek nečinila věrohodným.
         <div class="note"><a href="../archiv/2026-10-24.html#radar-3">Z vydání 24. 10. 2026</a></div>
       </li>
@@ -458,7 +460,7 @@ html.ok .gate { display: none; }
     <h2 class="grp-h" id="g-2026-10-17"><a href="../archiv/2026-10-17.html">Sobota 17. října 2026</a></h2>
     <div class="radar compact"><h3 class="section-title">Ve zkratce</h3><ul>
       <li id="v2026-10-17-radar-2">
-        <div class="l1"><span class="pill tm">Patenty</span><span class="pill juris">EPO</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/reformatio-in-peius-survives-procedural.html">IPKat, 16. 10. 2026: reformatio in peius po porušení práva být slyšen (T 1168/24)</a>: Odvolací senát EPO zrušil patent Arbutus na lipidové nanočástice (spor s Modernou) pro nepřípustné rozšíření; zákaz změny k horšímu vázal majitele, i když vzal své odvolání zpět.
         <div class="note"><a href="../archiv/2026-10-17.html#radar-2">Z vydání 17. 10. 2026</a></div>
       </li>
@@ -488,14 +490,14 @@ html.ok .gate { display: none; }
       <p class="arch-link"><a href="../archiv/">Přehled vydání s obsahem →</a></p>
     </section>
     <section class="panel legend">
-      <h2>Štítky</h2>
+      <h2>Používané štítky</h2>
       <h3 class="lg-h">Oblast</h3>
-      <ul class="lg-list"><li><span class="pill tm">Ochranné známky</span></li><li><span class="pill tm">Patenty</span></li><li><span class="pill tm">Autorské právo</span></li><li><span class="pill tm">Umělá inteligence</span></li><li><span class="pill tm">Geografická označení</span></li><li><span class="pill tm">Odrůdy rostlin</span></li><li><span class="pill tm">Průmyslové vzory</span></li></ul>
-      <h3 class="lg-h">Jurisdikce</h3>
+      <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
-      <ul class="lg-list"><li><span class="pill comp-yes">Souběh s nekalou soutěží</span></li><li><span class="pill comp-yes">Souběh se soutěžním právem</span></li></ul>
+      <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
       <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><span class="pill typ">Rozhodnutí</span></li><li><span class="pill typ">Článek</span></li><li><span class="pill typ">Tisková zpráva</span></li></ul>
+      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
+      <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>
 </aside>

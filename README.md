@@ -4,13 +4,13 @@ Přehled novinek z práva duševního vlastnictví, vychází jednou týdně v s
 uplynulý týden (naplánovaná úloha startuje v sobotu v 0:01 českého času).
 Web běží na Váš Hosting (onajman.cz). Po každém nahrání do větve `main` ho GitHub
 Actions (`.github/workflows/nasazeni.yml`) vygeneruje a nahraje přes FTP do složky
-`www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `hledani.html` s daty `hledani.json`, `archiv/`, `sekce/`),
+`www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `hledani.html` s daty `hledani.json`, `archiv/`, `sekce/`, `stitky/`),
 ne data ani skripty.
 
 Přístup k FTP se nastavuje v GitHubu (Settings → Secrets and variables → Actions):
 tajné údaje `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`; nepovinně proměnná
 `FTP_DIR` (složka webu na FTP, výchozí `www`). Nahrává se šifrovaně (FTPS) programem
-`lftp`. Ve složkách `archiv/` a `sekce/` se na serveru smažou i stránky, které už
+`lftp`. Ve složkách `archiv/`, `sekce/` a `stitky/` se na serveru smažou i stránky, které už
 neexistují; nic jiného ve složce webu se nemaže.
 
 ## Jak web vzniká
@@ -30,6 +30,7 @@ Skript potřebuje jen Python 3 (žádné další balíčky). Vytvoří:
 | `archiv/RRRR-MM-DD.html` | stránka každého vydání |
 | `archiv/index.html` | seznam všech vydání s nadpisy zpráv |
 | `sekce/<sekce>.html` | zprávy ze všech vydání v dané sekci |
+| `stitky/<stitek>.html` | zprávy ze všech vydání s daným štítkem |
 
 Vygenerované HTML soubory ručně neupravujte, při dalším spuštění se přepíšou.
 Vzhled se mění v `build.py` (proměnná `CSS` a funkce pro jednotlivé stránky).
@@ -167,6 +168,8 @@ Pravidla, která `build.py` kontroluje:
   (tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce, např. aktuality ÚPV)
   nebo „Článek“ (komentář, blog, odborný nebo zpravodajský článek).
 - Všechny štítky oblasti se zobrazují stejně (šedě), všechny typy zdroje také stejně (obrysově).
+  Štítky jsou odkazy: štítek shodný se sekcí (např. „Ochranné známky“, „Patenty“) vede na stránku sekce,
+  ostatní na stránku `stitky/<stitek>.html` se všemi zprávami s tímto štítkem.
   Barevně (oranžově) je odlišený jen štítek souběhu.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
 - Praktický dopad se na webu vždy uvádí jako „Praktický dopad:“ (bez dovětku „podle komentáře“); text dopadu

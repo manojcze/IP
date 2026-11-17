@@ -29,6 +29,7 @@ try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t ==
   --navy: #1b3a6b;
   --accent: #1d4f91;
   --accent-soft: #e7eef8;
+  --title: #1b3a6b;
   --tm: #161616;
   --tm-soft: #ececea;
   --ip: #6a4fa3;
@@ -47,7 +48,7 @@ try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t ==
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #121212; --surface: #1b1b1b; --ink: #ececec; --muted: #a2a2a2; --line: #333333; --navy: #15294a;
-    --accent: #8fb3ea; --accent-soft: #1d2b44;
+    --accent: #8fb3ea; --accent-soft: #1d2b44; --title: #9dbcf0;
     --tm: #ececec; --tm-soft: #2a2a2a; --ip: #b39ae6; --ip-soft: #2c2447; --comp: #f19a5b; --comp-soft: #4a2a12;
     --pv: #5cc8bc; --pv-soft: #143a37; --pat: #82c886; --pat-soft: #1c3a1f; --old-soft: #2a2a2a;
     color-scheme: dark;
@@ -55,16 +56,16 @@ try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t ==
 }
 :root[data-theme="dark"] {
   --bg: #121212; --surface: #1b1b1b; --ink: #ececec; --muted: #a2a2a2; --line: #333333; --navy: #15294a;
-  --accent: #8fb3ea; --accent-soft: #1d2b44;
+  --accent: #8fb3ea; --accent-soft: #1d2b44; --title: #9dbcf0;
   --tm: #ececec; --tm-soft: #2a2a2a; --ip: #b39ae6; --ip-soft: #2c2447; --comp: #f19a5b; --comp-soft: #4a2a12;
   --pv: #5cc8bc; --pv-soft: #143a37; --pat: #82c886; --pat-soft: #1c3a1f; --old-soft: #2a2a2a;
   color-scheme: dark;
 }
-.s-nekala-soutez { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-ochranne-znamky { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-prumyslove-vzory { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-patenty-a-uzitne-vzory { --sc: var(--accent); --sc-soft: var(--accent-soft); }
-.s-ostatni { --sc: var(--accent); --sc-soft: var(--accent-soft); }
+.s-nekala-soutez { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-ochranne-znamky { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-prumyslove-vzory { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-patenty-a-uzitne-vzory { --sc: var(--ink); --sc-soft: var(--tm-soft); }
+.s-ostatni { --sc: var(--ink); --sc-soft: var(--tm-soft); }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -95,7 +96,6 @@ header.top h1 { font-family: var(--font-display); font-weight: 600; font-size: c
 
 .issue-head { margin: 0 0 16px; }
 .issue-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4.6vw, 30px); line-height: 1.2; margin: 0; text-wrap: balance; }
-.issue-date.sec-title { color: var(--accent); }
 .issue-meta { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
 .issue-meta span + span::before { content: "·"; margin: 0 8px; }
 
@@ -123,8 +123,8 @@ nav.sections ul { flex: 1 1 auto; min-width: 0; list-style: none; margin: 0; pad
 .hit { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 14px 18px; }
 .hit-meta { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
 .hit-meta a { color: inherit; }
-.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--ink); text-decoration: none; }
-.hit-t:hover { color: var(--tm); }
+.hit-t { display: inline; font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.3; color: var(--title); text-decoration: none; }
+.hit-t:hover { text-decoration: underline; }
 .hit-x { margin: 6px 0 8px; font-size: 15px; max-width: 78ch; }
 .hit-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .hits mark { background: var(--comp-soft); color: inherit; border-radius: 3px; padding: 0 2px; }
@@ -182,9 +182,11 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .pill.juris { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--muted); font-weight: 500; }
 .pill.old { background: var(--old-soft); color: var(--muted); }
 .pill.typ { background: transparent; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
+a.pill { text-decoration: none; }
+a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-offset: 2px; }
 
 .sec { margin-top: 30px; }
-.sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); color: var(--sc); }
+.sec-h { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; margin: 0 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--sc); }
 .sec-h .n { font-family: var(--font-body); font-size: 13px; font-weight: 600; line-height: 1; color: var(--sc); background: var(--sc-soft); border-radius: 2px; padding: 5px 9px; }
 .sec-h .all { margin-left: auto; font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--sc); text-decoration: none; }
 .sec-h .all:hover { text-decoration: underline; }
@@ -192,7 +194,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .cards { display: flex; flex-direction: column; gap: 18px; }
 .card { position: relative; scroll-margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 20px 22px 18px; }
 .card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
-.card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; }
+.card h3 { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.3; margin: 0 0 6px; text-wrap: balance; color: var(--title); }
 .card .facts { font-size: 13.5px; color: var(--muted); margin: 0 0 12px; }
 .card .facts span + span::before { content: "·"; margin: 0 8px; }
 .card p { margin: 0 0 10px; max-width: 78ch; }
@@ -211,7 +213,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .radar ul { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .radar li { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: 12px 14px; font-size: 15px; }
 .radar li .l1 { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 6px; }
-.radar li > a.rl { color: var(--tm); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.radar li > a.rl { color: var(--title); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
 .radar li .note { color: var(--muted); font-size: 13.5px; margin-top: 4px; }
 .radar li .note a { color: inherit; }
 .radar.compact { margin-top: 18px; }
@@ -241,7 +243,7 @@ nav.sections a.nl-arch[aria-current="page"] { background: var(--tm); color: var(
 .arch h2 a:hover { color: var(--tm); }
 .arch .m { margin: 2px 0 8px; font-size: 14px; color: var(--muted); }
 .arch ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 15px; }
-.arch ul a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+.arch ul a { color: var(--title); text-decoration: none; border-bottom: 1px solid var(--line); }
 .arch ul a:hover { color: var(--tm); border-bottom-color: var(--tm); }
 
 footer.foot { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
@@ -369,7 +371,7 @@ html.ok .gate { display: none; }
       <a class="all" href="../sekce/ochranne-znamky.html">Vše v sekci →</a></h2>
     <div class="cards">
     <article class="card s-ochranne-znamky" id="zprava-1">
-      <div class="tags"><span class="pill tm">Ochranné známky</span><span class="pill juris">EU</span><span class="pill typ">Rozhodnutí</span></div>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
       <h3>FIND MY CAR: převod známky během řízení neotevírá lhůty, které už uplynuly</h3>
       <p class="facts"><span>Tribunál EU, sedmý senát</span><span>věc T-451/25, Mega Pop v EUIPO – Apple (FIND MY CAR), ECLI:EU:T:2026:669</span><span>rozsudek z 14. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62025TJ0451">Originální zdroj: EUR-Lex →</a></p>
@@ -381,7 +383,7 @@ html.ok .gate { display: none; }
     </article>
 
     <article class="card s-ochranne-znamky" id="zprava-2">
-      <div class="tags"><span class="pill tm">Ochranné známky</span><span class="pill juris">EU</span><span class="pill typ">Rozhodnutí</span></div>
+      <div class="tags"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
       <h3>MAGORA a GRUPO AGORA: vysoká pozornost veřejnosti pravděpodobnost záměny předem nevylučuje</h3>
       <p class="facts"><span>Tribunál EU, šestý senát</span><span>věc T-814/25, Holding Tourisme v EUIPO – Agora (MAGORA), ECLI:EU:T:2026:668</span><span>rozsudek z 14. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0814">Originální zdroj: EUR-Lex →</a></p>
@@ -399,7 +401,7 @@ html.ok .gate { display: none; }
       <a class="all" href="../sekce/ostatni.html">Vše v sekci →</a></h2>
     <div class="cards">
     <article class="card s-ostatni" id="zprava-3">
-      <div class="tags"><span class="pill tm">Odrůdy rostlin</span><span class="pill juris">EU</span><span class="pill typ">Rozhodnutí</span></div>
+      <div class="tags"><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a><a class="pill juris" href="../stitky/eu.html">EU</a><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></div>
       <h3>Odrůda jablka Roat: nový rozlišovací znak je nutné podložit technickými údaji</h3>
       <p class="facts"><span>Tribunál EU, osmý senát</span><span>věc T-770/25, Adema v CPVO (Roat)</span><span>rozsudek z 14. 10. 2026</span></p>
       <p class="src-line"><a class="src" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0770">Originální zdroj: EUR-Lex →</a></p>
@@ -416,13 +418,13 @@ html.ok .gate { display: none; }
     <h2 class="section-title" id="radar-h">Ve zkratce</h2>
     <ul>
       <li id="radar-1">
-        <div class="l1"><span class="pill tm">Ochranné známky</span><span class="pill juris">Německo</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a><a class="pill juris" href="../stitky/nemecko.html">Německo</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html">Červený kruh jako známka: BGH k grafickému znázornění a roli rejstříku</a>: BGH: u červeného kruhu jako barevné známky rozhoduje zobrazení v rejstříku, ne v přihlášce.
         
         <details class="more"><summary>Celé shrnutí</summary><div class="more-body"><p class="facts"><span>Spolkový soudní dvůr (BGH), Německo</span><span>sp. zn. I ZB 104/25 „Roter Kreis“</span><span>komentář z 13. 10. 2026</span></p><p class="src-line"><a class="src" href="https://ipkitten.blogspot.com/2026/10/different-standards-for-coloured.html">Originální zdroj: IPKat →</a></p><p>Spor se týkal obrazové známky tvořené červeným kruhem, zapsané v Německu v roce 1996 na základě získané rozlišovací způsobilosti pro vakuové termosky, džbány a nádoby na potraviny. Přihláška byla podána v papírové podobě. Třetí osoba požadovala prohlášení neplatnosti, protože podle ní označení nebylo dostatečně graficky znázorněno. Německý úřad i Spolkový patentový soud návrh zamítly a BGH nyní zamítl i opravný prostředek, takže zápis zůstává v platnosti.</p><p>Otázkou bylo, zda pro barevný obrazec platí stejné nároky na znázornění jako pro abstraktní barvu bez obrysů. BGH použil německý zákon z roku 1996 provádějící první směrnici o ochranných známkách a test z věci Sieckmann: znázornění musí být jasné, přesné, samostatné, srozumitelné, objektivní a trvanlivé. Za rozhodující označil zobrazení v rejstříku, nikoli v přihlášce, protože se třetí osoby musí o předmětu ochrany dozvědět z rejstříku. Že majitel kdysi předložil několik odstínů červené, proto nevadí.</p><p>Trvanlivost soud shledal splněnou, protože barva uložená v elektronickém rejstříku nevybledne, na rozdíl od fyzického vzorku z věci Libertel. Kód barvy (RAL, Pantone) nevyžadoval, protože kruh určitého odstínu červené dává spolehlivý základ pro posouzení užívání a kolizí. Komentátor kritizuje, že BGH nepoložil předběžnou otázku SDEU, zpochybňuje přednost rejstříku před přihláškou i to, že kód barvy není potřeba, a ptá se, proč by pro barevný obrazec a abstraktní barvu měla platit odlišná měřítka.</p><p class="why"><b>Praktický dopad:</b> význam má hlavně u starších barevných známek podaných před elektronickými rejstříky, kde se rozchází to, co bylo podáno, s tím, co je zapsáno.</p><p class="basis">Vychází z komentáře IPKat (Marcel Pemsel, 13. 10. 2026). Datum rozhodnutí BGH komentář neuvádí; samotné rozhodnutí jsem nečetl.</p></div></details>
       </li>
       <li id="radar-2">
-        <div class="l1"><span class="pill tm">Patenty</span><span class="pill juris">EPO</span><span class="pill typ">Článek</span></div>
+        <div class="l1"><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a><a class="pill juris" href="../stitky/epo.html">EPO</a><a class="pill typ" href="../stitky/clanek.html">Článek</a></div>
         <a class="rl" href="https://ipkitten.blogspot.com/2026/10/reformatio-in-peius-survives-procedural.html">IPKat, 16. 10. 2026: reformatio in peius po porušení práva být slyšen (T 1168/24)</a>: Odvolací senát EPO zrušil patent Arbutus na lipidové nanočástice (spor s Modernou) pro nepřípustné rozšíření; zákaz změny k horšímu vázal majitele, i když vzal své odvolání zpět.
         
       </li>
@@ -471,14 +473,14 @@ html.ok .gate { display: none; }
       <p class="arch-link"><a href="../archiv/">Přehled vydání s obsahem →</a></p>
     </section>
     <section class="panel legend">
-      <h2>Štítky</h2>
+      <h2>Používané štítky</h2>
       <h3 class="lg-h">Oblast</h3>
-      <ul class="lg-list"><li><span class="pill tm">Ochranné známky</span></li><li><span class="pill tm">Patenty</span></li><li><span class="pill tm">Autorské právo</span></li><li><span class="pill tm">Umělá inteligence</span></li><li><span class="pill tm">Geografická označení</span></li><li><span class="pill tm">Odrůdy rostlin</span></li><li><span class="pill tm">Průmyslové vzory</span></li></ul>
-      <h3 class="lg-h">Jurisdikce</h3>
+      <ul class="lg-list"><li><a class="pill tm" href="../sekce/ochranne-znamky.html">Ochranné známky</a></li><li><a class="pill tm" href="../sekce/patenty-a-uzitne-vzory.html">Patenty</a></li><li><a class="pill tm" href="../stitky/autorske-pravo.html">Autorské právo</a></li><li><a class="pill tm" href="../stitky/umela-inteligence.html">Umělá inteligence</a></li><li><a class="pill tm" href="../stitky/geograficka-oznaceni.html">Geografická označení</a></li><li><a class="pill tm" href="../stitky/odrudy-rostlin.html">Odrůdy rostlin</a></li><li><a class="pill tm" href="../sekce/prumyslove-vzory.html">Průmyslové vzory</a></li></ul>
       <h3 class="lg-h">Souběh</h3>
-      <ul class="lg-list"><li><span class="pill comp-yes">Souběh s nekalou soutěží</span></li><li><span class="pill comp-yes">Souběh se soutěžním právem</span></li></ul>
+      <ul class="lg-list"><li><a class="pill comp-yes" href="../stitky/soubeh-s-nekalou-soutezi.html">Souběh s nekalou soutěží</a></li><li><a class="pill comp-yes" href="../stitky/soubeh-se-souteznim-pravem.html">Souběh se soutěžním právem</a></li></ul>
       <h3 class="lg-h">Zdroj</h3>
-      <ul class="lg-list"><li><span class="pill typ">Rozhodnutí</span></li><li><span class="pill typ">Článek</span></li><li><span class="pill typ">Tisková zpráva</span></li></ul>
+      <ul class="lg-list"><li><a class="pill typ" href="../stitky/rozhodnuti.html">Rozhodnutí</a></li><li><a class="pill typ" href="../stitky/clanek.html">Článek</a></li><li><a class="pill typ" href="../stitky/tiskova-zprava.html">Tisková zpráva</a></li></ul>
+      <h3 class="lg-h">Jurisdikce</h3>
     </section>
   </div>
 </aside>
