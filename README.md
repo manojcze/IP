@@ -57,6 +57,13 @@ Vypsanou hodnotu vložte do proměnné `HESLO_HASH` v `build.py` a spusťte
 Jde o jednoduchou závoru v prohlížeči, ne o skutečné zabezpečení: obsah je dál
 ve zdrojovém kódu stránek a v tomto (veřejném) repozitáři.
 
+## Automatické vydání
+
+Nové vydání připravuje každou sobotu ráno naplánovaná úloha v Claude Code. Spustí se v 0:01 českého času,
+vylosuje náhodný čas mezi 0:01 a 9:05 a v něm vydání připraví, zkontroluje a nahraje do větve `main`
+(odtud ho GitHub Actions nasadí na web). Postup a pravidla pro obsah jsou v souboru
+[`POKYNY-VYDANI.md`](POKYNY-VYDANI.md); jeho úprava se projeví od příštího vydání.
+
 ## Nové vydání
 
 1. Vytvořte `data/vydani/RRRR-MM-DD.json` podle formátu níže.
