@@ -94,7 +94,7 @@ def plural(n, one, few, many):
 
 
 def pocet_zprav(n):
-    return f"{n} {plural(n, 'Hlavní zpráva', 'Hlavní zprávy', 'Hlavních zpráv')}"
+    return f"{n} {plural(n, 'hlavní zpráva', 'hlavní zprávy', 'hlavních zpráv')}"
 
 
 def je_cr_eu(stitky):
