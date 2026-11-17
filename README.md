@@ -166,7 +166,8 @@ Pravidla, která `build.py` kontroluje:
   „Rozhodnutí“ (plný text rozhodnutí nebo stanoviska soudu či úřadu), „Tisková zpráva“
   (tisková zpráva nebo oficiální oznámení soudu, úřadu či instituce, např. aktuality ÚPV)
   nebo „Článek“ (komentář, blog, odborný nebo zpravodajský článek).
-- Všechny štítky oblasti se zobrazují stejně (modře), všechny typy zdroje také stejně (obrysově).
+- Všechny štítky oblasti se zobrazují stejně (šedě), všechny typy zdroje také stejně (obrysově).
+  Barevně (oranžově) je odlišený jen štítek souběhu.
 - `zprava` v hlavních tématech musí odkazovat na existující `id`.
 
 `klic` je nepovinný (u hlavních zpráv i u položek Ve zkratce). Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
