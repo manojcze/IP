@@ -43,7 +43,11 @@
         "Námitku, že Lakhomoff je „nevěrný zástupce“ podle čl. 6septies Pařížské úmluvy, mohla Vacu Activ uplatnit v příslušných řízeních (u USPTO nebo proti mezinárodnímu zápisu u EUIPO); neospravedlňuje však vlastní přihlášku podanou jen k blokaci. Hodnocení věrohodnosti protichůdných tvrzení stran odvolacím senátem není porušením zásady řádné správy."
       ],
       "dopad": {
-        "text": "proti nekalé přihlášce bývalého obchodního partnera je nutné bránit se nástroji známkového práva (námitky, návrh na neplatnost, nárok podle čl. 6septies), ne „obrannou“ přihláškou. Klienti by v řízení o zlé víře neměli sami připouštět, že známku podali k jiným účelům než k užívání."
+        "body": [
+          "proti nekalé přihlášce bývalého partnera se bránit nástroji známkového práva (námitky, návrh na neplatnost, čl. 6septies Pařížské úmluvy)",
+          "„obranná“ přihláška bez úmyslu užívání je riziková",
+          "v řízení o zlé víře nepřipouštět jiný účel přihlášky než užívání"
+        ]
       },
       "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 29. 10. 2026); datum usnesení a ECLI doplněny z EUR-Lex. Samotné usnesení jsem nečetl celé.",
       "zdroj": {
@@ -78,7 +82,11 @@
         "Pojem „achromatická barva“ soud na rozdíl od prvního stupně nevyložil úzce: u luxusního koženého zboží zahrnuje i teplejší odstíny bílé. Porušení zbývajících nároků však Agfa neprokázala a soud odmítl i přenesení důkazního břemene podle čl. 55 Dohody o UPC. Agfa nese veškeré náklady obou stupňů."
       ],
       "dopad": {
-        "text": "vlastní dřívější výrobky žalovaného mohou být silnou obranou; laboratorní rozbor výrobku stačí k prokázání, že způsob výroby byl zpřístupněn veřejnosti. Pro majitele patentů na výrobní postupy to zvyšuje riziko zrušení."
+        "body": [
+          "vlastní dřívější výrobky žalovaného jako silná obrana",
+          "laboratorní rozbor výrobku stačí k prokázání, že způsob výroby byl zpřístupněn veřejnosti",
+          "vyšší riziko zrušení u patentů na výrobní postupy"
+        ]
       },
       "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 27. 10. 2026). Samotné rozhodnutí jsem nečetl; web UPC nebyl dostupný.",
       "zdroj": {
@@ -113,7 +121,10 @@
         "První návrh (abstraktní prohlášení, že semaglutid byl k datu priority zřejmý) soud odmítl jako zjevně nepřípustný. U druhého (prohlášení obdobné anglickému „Arrow declaration“ o neplatnosti budoucích nároků stejného rozsahu) a třetího (zákaz stáhnout souhlas se zněním patentu u EPO do konečného rozhodnutí) pravomoc potvrdil; o splnění podmínek předběžného opatření zatím nerozhodl. Odvolání je přípustné."
       ],
       "dopad": {
-        "text": "výrobci generik získávají u UPC nástroj proti taktickému stahování patentů a dělených přihlášek; majitelé farmaceutických patentů musí počítat s tím, že stažení patentu nemusí zastavit rozhodnutí o platnosti."
+        "body": [
+          "výrobci generik: nástroj u UPC proti taktickému stahování patentů a dělených přihlášek",
+          "majitelé farmaceutických patentů: stažení patentu nemusí zastavit rozhodnutí o platnosti"
+        ]
       },
       "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 26. 10. 2026). Samotné usnesení jsem nečetl; číslo napadeného patentu článek uvádí jen zkráceně (EP …365).",
       "zdroj": {

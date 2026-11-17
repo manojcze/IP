@@ -214,6 +214,9 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
+.why ul { margin: 4px 0 0; padding-left: 18px; }
+.why li { margin: 2px 0; }
+.why li::marker { color: var(--muted); }
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
 .card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
@@ -329,7 +332,7 @@ html.ok .gate { display: none; }
 </script>
 
 <div class="ai-note" role="note">
-  <div class="inner">AI automatizovaný výstup pro osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓</div>
+  <div class="inner">AI automatizovaný výstup pro osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Nenahrazuje originální zdroje 🤓</div>
 </div>
 
 <header class="top">
@@ -384,7 +387,7 @@ html.ok .gate { display: none; }
       <p>Výrobci mobilních telefonů ZTE a Samsung spolu vedli rozsáhlý spor o patenty nezbytné pro standardy 4G a 5G (SEP). Jejich licence vypršela koncem roku 2024 a nebyla obnovena. Samsung podal v prosinci 2024 žalobu u High Court v Londýně a žádal stanovení sazby FRAND pro globální portfolio ZTE, a také žalobu o uzavření smlouvy ve Frankfurtu. ZTE žalovala v Číně, v Německu a u UPC; Samsung odpověděl na začátku roku 2025 dvěma žalobami u UPC v Mannheimu. Paralelně běžela řízení u zemského soudu v Mnichově, v Brazílii a v USA.</p>
       <p>Místní oddělení v Mannheimu nyní podle JUVE Patent povolilo vzájemné stažení obou žalob a řízení uzavřelo (soudce zpravodaj Tobias Sender). Rozhodnutí samo dohodu nepotvrzuje, ale stažení tohoto rozsahu bez návrhů na náhradu nákladů obvykle znamená urovnání. Podle výzkumu JUVE byly staženy i mnichovské věci, soud to však dosud nepotvrdil. Dílčí výsledky předtím: v dubnu 2026 Mannheim zrušil patent EP 3 905 730 pro rozšíření předmětu a žalobu ZTE zamítl; patent EP 4 096 288 zrušilo námitkové oddělení EPÚ, a řízení z něj bylo proto přerušeno; v dubnu 2026 získala ZTE v Mnichově zákaz na základě EP 2 654 356.</p>
       <p>Souběh se soutěžním právem spočívá v tom, že se spor vedl o podmínky licencování SEP za podmínek FRAND a součástí byla i antitrustová žaloba. Soud v Londýně (soudce Meade) stanovil paušální částku 392 mil. USD za užívání portfolia ZTE, mezi pozicemi stran, a kritizoval „dysfunkční systém“ způsobený tím, že pravidla ETSI neobsahují mechanismus rozhodování sporů. Čínský soud v Čchung-čchingu shledal nabídku ZTE v souladu s FRAND. Frankfurtský soud zamítl Samsungovu antitrustovou žalobu proti ZTE; Mannheim odmítl pravomoc k Samsungovu FRAND protinávrhu ve prospěch dříve zahájeného řízení ve Frankfurtu.</p>
-      <p class="why"><b>Praktický dopad:</b> nevznikl nový precedens, rozhodnutí jen ukončuje řízení. Případ však dobře ilustruje, jak se spory o SEP vedou souběžně u soudů několika zemí a že taktickou roli hraje volba fóra (UPC, německé soudy, Londýn, Čína). Zpráva nepotvrzuje, že Evropská komise byla v této věci zapojena.</p>
+      <div class="why"><b>Praktický dopad:</b><ul><li>nový precedens nevznikl, rozhodnutí jen ukončuje řízení</li><li>spory o SEP se vedou souběžně v několika zemích, taktickou roli hraje volba fóra (UPC, německé soudy, Londýn, Čína)</li><li>zapojení Evropské komise zpráva nepotvrzuje</li></ul></div>
       <p class="basis">Vychází z článku JUVE Patent (Christina Schulze, 6. 11. 2026); šlo o zpravodajský text, nikoli o rozhodnutí UPC. Datum stažení žalob a spisové značky článek neuvádí, a údaje o dřívějších rozhodnutích proto nelze ověřit z primárních zdrojů.</p>
       <div class="card-foot"><a class="also" href="../archiv/2026-11-14.html#zprava-3">Celé vydání 14. 11. 2026</a></div>
     </article>
@@ -420,7 +423,7 @@ html.ok .gate { display: none; }
       <p>Agfa žalovala Gucci pro porušení patentu EP 3 388 490 na způsob zdobení kůže potiskem UV vytvrzovanými inkousty. Místní oddělení v Hamburku v dubnu 2025 zamítlo žalobu i protižalobu Gucci na zrušení patentu; odvolaly se obě strany.</p>
       <p>Odvolací soud pod vedením předsedy UPC Klause Grabinského zrušil velkou část patentu pro Belgii, Francii, Německo, Itálii a Švédsko pro nedostatek novosti. Novost vylučovala vlastní kolekce Gucci „Flora“ (mimo jiné peněženka vyrobená a prodávaná před podáním přihlášky v dubnu 2017). Soud vyjasnil, že způsob výroby veřejně užitého výrobku je zpřístupněn veřejnosti (čl. 54 odst. 2 EPC), pokud ho odborník může bez nepřiměřené zátěže zjistit rozborem výrobku; zvláštní důvod k rozboru se nevyžaduje. Gucci to doložila analýzami (mikroskopie, spektroskopie, chromatografie).</p>
       <p>Pojem „achromatická barva“ soud na rozdíl od prvního stupně nevyložil úzce: u luxusního koženého zboží zahrnuje i teplejší odstíny bílé. Porušení zbývajících nároků však Agfa neprokázala a soud odmítl i přenesení důkazního břemene podle čl. 55 Dohody o UPC. Agfa nese veškeré náklady obou stupňů.</p>
-      <p class="why"><b>Praktický dopad:</b> vlastní dřívější výrobky žalovaného mohou být silnou obranou; laboratorní rozbor výrobku stačí k prokázání, že způsob výroby byl zpřístupněn veřejnosti. Pro majitele patentů na výrobní postupy to zvyšuje riziko zrušení.</p>
+      <div class="why"><b>Praktický dopad:</b><ul><li>vlastní dřívější výrobky žalovaného jako silná obrana</li><li>laboratorní rozbor výrobku stačí k prokázání, že způsob výroby byl zpřístupněn veřejnosti</li><li>vyšší riziko zrušení u patentů na výrobní postupy</li></ul></div>
       <p class="basis">Vychází ze zprávy JUVE Patent (Konstanze Richter, 27. 10. 2026). Samotné rozhodnutí jsem nečetl; web UPC nebyl dostupný.</p>
       <div class="card-foot"><a class="also" href="../archiv/2026-10-31.html#zprava-2">Celé vydání 31. 10. 2026</a></div>
     </article>
@@ -433,7 +436,7 @@ html.ok .gate { display: none; }
       <p>Sandoz podal žalobu na zrušení patentu Novo Nordisk týkajícího se semaglutidu (účinná látka léků Ozempic a Wegovy) a přidal tři neobvyklé návrhy proti tzv. hře s dělenými přihláškami: majitel stáhne souhlas se zněním patentu těsně před nepříznivým rozhodnutím a stejný předmět ochrany udržuje v dělené přihlášce (zde EP 4 406 593). Novo Nordisk vznesl předběžnou námitku nedostatku pravomoci.</p>
       <p>Ústřední oddělení námitku z velké části zamítlo. Dovodilo, že UPC má podle čl. 32 Dohody o UPC i „vlastní“ pravomoc nezbytnou k účinnému výkonu svěřených pravomocí, a opřelo se o čl. 47 Listiny základních práv EU a čl. 42 odst. 2 Dohody (řízení nesmí narušovat hospodářskou soutěž). Strategické podávání dělených přihlášek k udržení nejistoty a oddálení vstupu generik může být zneužitím práva.</p>
       <p>První návrh (abstraktní prohlášení, že semaglutid byl k datu priority zřejmý) soud odmítl jako zjevně nepřípustný. U druhého (prohlášení obdobné anglickému „Arrow declaration“ o neplatnosti budoucích nároků stejného rozsahu) a třetího (zákaz stáhnout souhlas se zněním patentu u EPO do konečného rozhodnutí) pravomoc potvrdil; o splnění podmínek předběžného opatření zatím nerozhodl. Odvolání je přípustné.</p>
-      <p class="why"><b>Praktický dopad:</b> výrobci generik získávají u UPC nástroj proti taktickému stahování patentů a dělených přihlášek; majitelé farmaceutických patentů musí počítat s tím, že stažení patentu nemusí zastavit rozhodnutí o platnosti.</p>
+      <div class="why"><b>Praktický dopad:</b><ul><li>výrobci generik: nástroj u UPC proti taktickému stahování patentů a dělených přihlášek</li><li>majitelé farmaceutických patentů: stažení patentu nemusí zastavit rozhodnutí o platnosti</li></ul></div>
       <p class="basis">Vychází ze zprávy JUVE Patent (Konstanze Richter, 26. 10. 2026). Samotné usnesení jsem nečetl; číslo napadeného patentu článek uvádí jen zkráceně (EP …365).</p>
       <div class="card-foot"><a class="also" href="../archiv/2026-10-31.html#zprava-3">Celé vydání 31. 10. 2026</a></div>
     </article>
@@ -451,7 +454,7 @@ html.ok .gate { display: none; }
       <p>Americká společnost Align Technology (výrobce systému Invisalign) žalovala v srpnu 2025 čínského výrobce Angelalign a čtyři jeho evropské dceřiné společnosti pro porušení patentu EP 2 237 738 na ortodontické aparáty s výstupkem pro řízený pohyb kořene zubu. Angelalign podal protižalobu na zrušení patentu (nepřípustné rozšíření, nedostatečné zveřejnění, nedostatek vynálezecké činnosti).</p>
       <p>Místní oddělení v Paříži všechny námitky neplatnosti zamítlo a shledalo doslovné porušení. Rozhodující byl výklad pojmu „bukální strana“: soud ho vyložil šířeji jako vnější stranu u předních i zadních zubů, a výrobky Angelalign s prvkem Torque Ridge na předních zubech tak do patentu spadají. Nařídil zákaz v 17 státech UPC, stažení a zničení výrobků, penále až 10 000 EUR za výrobek nebo 20 000 EUR za den a náhradu škody od udělení patentu 12. 7. 2023.</p>
       <p>Nárok za porušení ve Spojeném království (tedy mimo území UPC) soud zamítl, protože Align v žalobě dostatečně nevylíčil rozhodné britské právo a pozdější podání byla opožděná. Zamítl i žalobu proti nizozemské holdingové společnosti, která byla jen akcionářem bez aktivní účasti na porušování.</p>
-      <p class="why"><b>Praktický dopad:</b> kdo u UPC uplatňuje nároky i za státy mimo systém UPC, musí v žalobě od začátku tvrdit a doložit obsah cizího práva. Holdingovou mateřskou společnost nelze žalovat jen kvůli majetkové účasti.</p>
+      <div class="why"><b>Praktický dopad:</b><ul><li>nároky za státy mimo UPC: obsah cizího práva tvrdit a doložit už v žalobě</li><li>mateřskou holdingovou společnost nelze žalovat jen kvůli majetkové účasti</li></ul></div>
       <p class="basis">Vychází ze zprávy JUVE Patent (Konstanze Richter, 19. 10. 2026). Samotné rozhodnutí jsem nečetl; web UPC nebyl dostupný.</p>
       <div class="card-foot"><a class="also" href="../archiv/2026-10-24.html#zprava-3">Celé vydání 24. 10. 2026</a></div>
     </article>

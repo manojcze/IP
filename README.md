@@ -110,7 +110,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
       "nadpis": "Nadpis zprávy",
       "fakta": ["Instituce", "spisová značka", "datum rozhodnutí / zveřejnění"],
       "odstavce": ["První odstavec textu.", "Druhý odstavec textu."],
-      "dopad": {"text": "Význam pro praxi v ČR/EU."},
+      "dopad": {"body": ["Heslovitý bod o významu pro praxi v ČR/EU.", "Další bod."]},
       "podklad": "Z čeho shrnutí vychází (např. komentář IPKat, autor, datum).",
       "zdroj": {"url": "https://…", "nazev": "IPKat"}
     }
@@ -133,7 +133,7 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
         "fakta": ["Instituce", "spisová značka", "datum"],
         "zdroj": {"url": "https://…", "nazev": "IPKat"},
         "odstavce": ["Celé shrnutí jako u hlavní zprávy."],
-        "dopad": {"text": "…"},
+        "dopad": {"body": ["…"]},
         "podklad": "Z čeho shrnutí vychází."
       }
     }
@@ -186,8 +186,9 @@ Pravidla, která `build.py` kontroluje:
   ostatní oblasti až za nimi a jen u zvlášť významných věcí. Každá položka odkazuje na hlavní zprávu (`zprava` = id) nebo položku Ve zkratce (`ve_zkratce` =
   pořadí od 1) ve vydání `vydani`; `organ`, `nazev` a `popis` se zobrazí jako „Orgán: Název (popis)“. V pravém
   sloupci všech stránek se zobrazuje seznam z nejnovějšího vydání, které ho obsahuje.
-- Praktický dopad se na webu vždy uvádí jako „Praktický dopad:“ (bez dovětku „podle komentáře“); text dopadu
-  takový dovětek také neobsahuje. Z čeho shrnutí vychází, patří do pole `podklad`.
+- Praktický dopad se uvádí vždy heslovitě v odrážkách (`dopad.body`, 1 až 5 krátkých bodů) a na webu má označení
+  „Praktický dopad:“ bez dovětku „podle komentáře“; ani body takový dovětek neobsahují. Z čeho shrnutí vychází,
+  patří do pole `podklad`.
 
 `klic` je nepovinný (u hlavních zpráv i u položek Ve zkratce). Pokud se stejná věc objeví ve více vydáních, dejte jí ve všech
 stejný klíč (např. `aviator-v-spribe`). Na stránce sekce se pak zobrazí jen

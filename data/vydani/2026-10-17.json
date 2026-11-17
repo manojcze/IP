@@ -43,7 +43,12 @@
         "Žádost o navrácení do původního stavu se podle čl. 104 odst. 3 nařízení považuje za podanou až zaplacením poplatku (200 EUR). EUIPO na tuto povinnost žalobkyni dopisem upozornil, formální výzvu k zaplacení nařízení nevyžaduje. Nezohlednění dodatečných důkazů o užívání už nehrálo roli, protože odvolání bylo nepřípustné."
       ],
       "dopad": {
-        "text": "lhůtu k odůvodnění odvolání (čtyři měsíce od oznámení rozhodnutí) je nutné hlídat bez ohledu na plánované převody. Prodloužení lhůt pro určité skupiny účastníků využije jen ten, kdo je účastníkem řízení v době, kdy lhůta běží; převod zapsaný později nepomůže. U navrácení do původního stavu je nutné zaplatit poplatek, jinak se žádost považuje za nepodanou."
+        "body": [
+          "lhůtu 4 měsíců k odůvodnění odvolání hlídat bez ohledu na plánované převody",
+          "prodloužení lhůt pro určité skupiny účastníků využije jen ten, kdo je účastníkem řízení v době běhu lhůty",
+          "převod zapsaný až po uplynutí lhůty nepomůže",
+          "navrácení do původního stavu: bez zaplacení poplatku se žádost považuje za nepodanou"
+        ]
       },
       "podklad": "Vychází z plného textu rozsudku (české znění na EUR-Lex).",
       "zdroj": {
@@ -78,7 +83,11 @@
         "Pojmový rozdíl plynoucí jen z nerozlišujícího slova „grupo“ podobnost nevyváží. Argument, že slovo „agora“ obsahuje mnoho jiných zapsaných známek, Tribunál odmítl: pro oslabení rozlišovací způsobilosti je rozhodující skutečné užívání takových označení na trhu, nikoli jejich zápis v rejstříku."
       ],
       "dopad": {
-        "text": "důkazy k oslabené rozlišovací způsobilosti starší známky je nutné předložit už v řízení před EUIPO a musí ukazovat užívání na trhu, ne jen počet zapsaných známek. Přidání jedné či dvou hlásek k dominantnímu slovu starší známky (MAGORA × AGORA) riziko záměny zpravidla neodstraní."
+        "body": [
+          "důkazy o oslabené rozlišovací způsobilosti starší známky předložit už v řízení před EUIPO",
+          "rozhoduje užívání na trhu, ne počet zapsaných známek",
+          "přidání hlásky k dominantnímu slovu starší známky (MAGORA × AGORA) riziko záměny zpravidla neodstraní"
+        ]
       },
       "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
       "zdroj": {
@@ -113,7 +122,11 @@
         "Protokol připouští zvláštní zkoušku nového znaku, jen pokud je tvrzení podloženo spolehlivými technickými údaji. Adema žádné nepředložila, přestože dostávala průběžné zprávy ze zkoušek a zkušební pozemek navštívila. Zásada, že CPVO zjišťuje skutečnosti z úřední povinnosti (čl. 76 nařízení), tak porušena nebyla."
       ],
       "dopad": {
-        "text": "šlechtitel, který chce prokázat odlišnost znakem mimo zkušební pokyny, musí aktivně předložit technické údaje a žádost opakovat během zkoušek. Otázka se stane důležitější u rostlin vyšlechtěných novými genomickými technikami, jejichž nové vlastnosti standardní protokoly nemusí zachytit."
+        "body": [
+          "nový rozlišovací znak odrůdy doložit technickými údaji",
+          "žádost o jeho zkoumání opakovat během zkoušek",
+          "význam poroste u odrůd z nových genomických technik, jejichž vlastnosti standardní protokoly nemusí zachytit"
+        ]
       },
       "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex). Poznámka o nových genomických technikách vychází z komentáře IPKat (Jocelyn Bosse, 28. 10. 2026).",
       "zdroj": {
@@ -158,7 +171,10 @@
           "Trvanlivost soud shledal splněnou, protože barva uložená v elektronickém rejstříku nevybledne, na rozdíl od fyzického vzorku z věci Libertel. Kód barvy (RAL, Pantone) nevyžadoval, protože kruh určitého odstínu červené dává spolehlivý základ pro posouzení užívání a kolizí. Komentátor kritizuje, že BGH nepoložil předběžnou otázku SDEU, zpochybňuje přednost rejstříku před přihláškou i to, že kód barvy není potřeba, a ptá se, proč by pro barevný obrazec a abstraktní barvu měla platit odlišná měřítka."
         ],
         "dopad": {
-          "text": "význam má hlavně u starších barevných známek podaných před elektronickými rejstříky, kde se rozchází to, co bylo podáno, s tím, co je zapsáno."
+          "body": [
+            "význam hlavně u starších barevných známek z doby před elektronickými rejstříky",
+            "riziko rozporu mezi tím, co bylo podáno, a tím, co je zapsáno"
+          ]
         },
         "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 13. 10. 2026). Datum rozhodnutí BGH komentář neuvádí; samotné rozhodnutí jsem nečetl."
       }

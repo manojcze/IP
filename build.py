@@ -81,7 +81,7 @@ VYLOUCENO = re.compile(r"malých a středních podnik|\bMSP\b|SME Fund", re.IGNO
 # Označení praktického dopadu je u všech zpráv stejné (bez dovětku „podle komentáře“).
 DOPAD = "Praktický dopad:"
 AI_UPOZORNENI = ("AI automatizovaný výstup pro osobní potřebu. "
-                 "Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓")
+                 "Zákaz šíření a užívání pro jiné než edukativní účely. Nenahrazuje originální zdroje 🤓")
 
 
 def heslo_hash(heslo):
@@ -164,6 +164,24 @@ def check_sekce(sekce, kde, chyby):
             chyby.append(f"{kde}: neznámá sekce „{s}“ (povolené: {', '.join(SEKCE_NAZEV)})")
 
 
+def check_dopad(dopad, kde, chyby, povinny):
+    """Praktický dopad se uvádí heslovitě v odrážkách: {"body": ["…", "…"]}."""
+    if dopad is None and not povinny:
+        return
+    body = (dopad or {}).get("body")
+    if not isinstance(body, list) or not body or not all(isinstance(b, str) and b.strip() for b in body):
+        chyby.append(f"{kde}: praktický dopad musí být heslovitě v odrážkách (pole dopad.body se seznamem bodů)")
+    elif len(body) > 5:
+        chyby.append(f"{kde}: praktický dopad může mít nejvýš 5 odrážek")
+    if "text" in (dopad or {}):
+        chyby.append(f"{kde}: dopad.text se už nepoužívá, body patří do dopad.body")
+
+
+def dopad_html(dopad):
+    body = "".join(f"<li>{b}</li>" for b in dopad["body"])
+    return f'<div class="why"><b>{DOPAD}</b><ul>{body}</ul></div>'
+
+
 def load_issue(path):
     name = os.path.basename(path)
     with open(path, encoding="utf-8") as f:
@@ -197,8 +215,7 @@ def load_issue(path):
             chyby.append(f"{kde}: chybí fakta (instituce, spisová značka, datum)")
         if not z.get("odstavce"):
             chyby.append(f"{kde}: chybí odstavce textu")
-        if not (z.get("dopad") or {}).get("text"):
-            chyby.append(f"{kde}: chybí praktický dopad")
+        check_dopad(z.get("dopad"), kde, chyby, povinny=True)
         zdroj = z.get("zdroj") or {}
         if not str(zdroj.get("url", "")).startswith("http") or not zdroj.get("nazev"):
             chyby.append(f"{kde}: chybí odkaz na originální zdroj (url a nazev)")
@@ -237,6 +254,8 @@ def load_issue(path):
         det = r.get("detail")
         if det is not None and (not isinstance(det, dict) or not det.get("odstavce") or not det.get("fakta")):
             chyby.append(f"{kde}: detail musí obsahovat fakta a odstavce")
+        if isinstance(det, dict):
+            check_dopad(det.get("dopad"), kde, chyby, povinny=False)
     if chyby:
         raise Chyba("\n".join(chyby))
     v.setdefault("na_radar", [])
@@ -396,7 +415,7 @@ def card(z, v, root, kontext, also_in=None):
       <p class="facts">{fakta}</p>
       <p class="src-line">{zdroj}</p>
       {odst}
-      <p class="why"><b>{DOPAD}</b> {dopad["text"]}</p>
+      {dopad_html(dopad)}
       <p class="basis">{z["podklad"]}</p>{vyjimka}{foot}
     </article>"""
 
@@ -413,9 +432,7 @@ def radar_item(r, root, rid, v=None, also_in=None):
         src = (f'<p class="src-line"><a class="src" href="{url_attr(zdroj["url"])}">Zdroj: {zdroj["nazev"]} →</a></p>'
                if zdroj.get("url") and zdroj.get("nazev") else "")
         odst = "".join(f"<p>{p}</p>" for p in det["odstavce"])
-        dopad = det.get("dopad") or {}
-        why = (f'<p class="why"><b>{DOPAD}</b> {dopad["text"]}</p>'
-               if dopad.get("text") else "")
+        why = dopad_html(det["dopad"]) if det.get("dopad") else ""
         basis = f'<p class="basis">{det["podklad"]}</p>' if det.get("podklad") else ""
         detail = (f'\n        <details class="more"><summary>Celé shrnutí</summary>'
                   f'<div class="more-body"><p class="facts">{fakta}</p>{src}{odst}{why}{basis}</div></details>')
@@ -733,7 +750,7 @@ def search_index(vydani):
     polozky = []
     for v in vydani:
         for z in v["zpravy"]:
-            casti = z["fakta"] + z["odstavce"] + [z["dopad"]["text"], z["podklad"]]
+            casti = z["fakta"] + z["odstavce"] + z["dopad"]["body"] + [z["podklad"]]
             polozky.append({"d": v["datum"], "dl": d_long(v["_d"]), "druh": "Hlavní zpráva",
                             "u": f'archiv/{v["datum"]}.html#zprava-{z["id"]}', "t": txt(z["nadpis"]),
                             "s": [SEKCE_NAZEV[s] for s in z["sekce"]], "g": stitky(z["stitky"]),
@@ -742,7 +759,7 @@ def search_index(vydani):
             casti = [r.get("text", ""), r.get("poznamka", "")]
             det = r.get("detail")
             if det:
-                casti += det["fakta"] + det["odstavce"] + [(det.get("dopad") or {}).get("text", ""), det.get("podklad", "")]
+                casti += det["fakta"] + det["odstavce"] + (det.get("dopad") or {}).get("body", []) + [det.get("podklad", "")]
             polozky.append({"d": v["datum"], "dl": d_long(v["_d"]), "druh": "Ve zkratce",
                             "u": f'archiv/{v["datum"]}.html#radar-{i}', "t": txt(r["odkaz"]["text"]),
                             "s": [SEKCE_NAZEV[s] for s in r["sekce"]], "g": stitky(r["stitky"]),
@@ -1033,6 +1050,9 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
+.why ul { margin: 4px 0 0; padding-left: 18px; }
+.why li { margin: 2px 0; }
+.why li::marker { color: var(--muted); }
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
 .card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }

@@ -43,7 +43,11 @@
         "Zboží je podobné v nízké míře: jde o farmaceutické výrobky stejné povahy, s obecně shodným účelem (léčba zdravotních potíží), mohou je vyrábět tytéž farmaceutické podniky a mohou se prodávat v lékárnách, i když se liší terapeutické indikace. Ve starší známce je slovo „ocular“ popisné a dominantním prvkem je „matrix“, který tvoří začátek přihlašovaných označení. Nízkou podobnost zboží tak vyvažuje vysoká podobnost označení."
       ],
       "dopad": {
-        "text": "seznam zboží je vhodné formulovat úzce už při podání přihlášky; pozdější omezení v odvolacím řízení nemusí být připuštěno. U farmaceutických výrobků Tribunál opakovaně dovozuje alespoň nízkou podobnost i při rozdílných indikacích."
+        "body": [
+          "seznam zboží formulovat úzce už v přihlášce",
+          "pozdější omezení v odvolacím řízení nemusí být připuštěno",
+          "u léčiv Tribunál dovozuje alespoň nízkou podobnost i při rozdílných indikacích"
+        ]
       },
       "podklad": "Vychází z plného textu rozsudku ve věci T-126/25 (anglické znění na EUR-Lex). Důvod, proč odvolací senát omezení seznamu zboží odmítl, rozsudek v úvodu blíže nepopisuje.",
       "zdroj": {
@@ -78,7 +82,10 @@
         "Totéž platí pro vydávání poukázek pro věrnostní programy, které je určeno i spotřebitelům, nejen podnikům. Pro software a aplikace ke správě věrnostních programů a pro organizaci propagačních programů Tribunál odlišnost potvrdil. Odvolací senát nyní musí u karet a poukázek posoudit pravděpodobnost záměny."
       ],
       "dopad": {
-        "text": "majitel známky pro publikace se může bránit i proti známkám pro věrnostní programy, pokud publikace slouží k jejich provozu. Argument „jen propagační materiál“ nemusí obstát, pokud zboží sdílí účel udržení zákazníků."
+        "body": [
+          "známka pro publikace může bránit i proti známkám pro věrnostní programy, pokud publikace slouží k jejich provozu",
+          "argument „jen propagační materiál“ neobstojí, sdílí-li zboží účel udržení zákazníků"
+        ]
       },
       "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
       "zdroj": {
@@ -113,7 +120,10 @@
         "Nárok za porušení ve Spojeném království (tedy mimo území UPC) soud zamítl, protože Align v žalobě dostatečně nevylíčil rozhodné britské právo a pozdější podání byla opožděná. Zamítl i žalobu proti nizozemské holdingové společnosti, která byla jen akcionářem bez aktivní účasti na porušování."
       ],
       "dopad": {
-        "text": "kdo u UPC uplatňuje nároky i za státy mimo systém UPC, musí v žalobě od začátku tvrdit a doložit obsah cizího práva. Holdingovou mateřskou společnost nelze žalovat jen kvůli majetkové účasti."
+        "body": [
+          "nároky za státy mimo UPC: obsah cizího práva tvrdit a doložit už v žalobě",
+          "mateřskou holdingovou společnost nelze žalovat jen kvůli majetkové účasti"
+        ]
       },
       "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 19. 10. 2026). Samotné rozhodnutí jsem nečetl; web UPC nebyl dostupný.",
       "zdroj": {
@@ -161,7 +171,11 @@
           "Výjimku pro hosting (čl. 14 směrnice o elektronickém obchodu, dnes čl. 6 DSA) platforma nemohla využít, protože hrála aktivní roli. Vědomost soud dovodil z toho, že Wish provozoval program ověřování originálů, a z ceny: originální žehlička za 262 EUR se nabízela za 35 EUR. Soud současně shledal nekalou soutěž, protože platforma neuváděla zákonem požadované údaje o prodejcích. Neuložil sice ruční kontrolu každé nabídky, ale strukturální opatření, například povinná pole pro údaje o prodejci."
         ],
         "dopad": {
-          "text": "rozšíření Louboutinova testu. Čím více služeb platforma spojuje, tím snáze jde o její vlastní užívání označení. Protipadělkové nástroje je nutné používat důsledně, jinak slouží jako důkaz vědomosti."
+          "body": [
+            "rozšíření Louboutinova testu",
+            "čím více služeb platforma spojuje, tím spíše jde o její vlastní užívání označení",
+            "protipadělkové nástroje používat důsledně, jinak slouží jako důkaz vědomosti"
+          ]
         },
         "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 21. 10. 2026). Rozsudek nebyl v době komentáře zveřejněn a datum rozhodnutí komentář neuvádí. Souběh se soutěžním právem je zde ve smyslu nekalé soutěže, nikoli čl. 101/102 SFEU."
       }

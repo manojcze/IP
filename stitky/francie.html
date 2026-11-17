@@ -214,6 +214,9 @@ a.pill:hover, a.pill:focus-visible { text-decoration: underline; text-underline-
 .card p { margin: 0 0 10px; max-width: 78ch; }
 .card .why { margin: 12px 0 0; padding: 10px 12px; background: var(--bg); border-radius: 2px; font-size: 14.5px; }
 .card .why b { font-weight: 600; }
+.why ul { margin: 4px 0 0; padding-left: 18px; }
+.why li { margin: 2px 0; }
+.why li::marker { color: var(--muted); }
 .card .basis { font-size: 13px; color: var(--muted); margin-top: 10px; }
 .card .src-line { margin: -4px 0 14px; }
 .card-foot { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 18px; margin-top: 12px; }
@@ -329,7 +332,7 @@ html.ok .gate { display: none; }
 </script>
 
 <div class="ai-note" role="note">
-  <div class="inner">AI automatizovaný výstup pro osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Čtěte originální zdroje 🤓</div>
+  <div class="inner">AI automatizovaný výstup pro osobní potřebu. Zákaz šíření a užívání pro jiné než edukativní účely. Nenahrazuje originální zdroje 🤓</div>
 </div>
 
 <header class="top">
@@ -384,7 +387,7 @@ html.ok .gate { display: none; }
       <p>Spor se týká práva nakladatelů tisku podle čl. 15 odst. 1 směrnice o autorském právu na jednotném digitálním trhu (2019/790), které Francie provedla zákonem z 24. 7. 2019. Meta uzavřela v roce 2021 s federací vydavatelů APIG a kolektivním správcem DVP tříleté rámcové dohody o odměně. Po jejich vypršení nedospěla k nové dohodě a podle komentáře od počátku roku 2025 nic neplatí. DVP (v červenci 2025) a APIG (v září 2025) proto podaly stížnost k francouzskému soutěžnímu úřadu (Autorité de la concurrence), který rozhodnutími 26-MC-01 a 26-MC-02 z 8. 7. 2026 nařídil předběžná opatření.</p>
       <p>Souběh spočívá v tom, že se právo vydavatelů uplatňuje prostřednictvím zneužití dominantního postavení (čl. 102 SFEU), konkrétně čl. 102 písm. a) o nepřiměřených obchodních podmínkách. Odvolací soud odvolání Mety zamítl a rozhodnutí úřadu potvrdil v plném rozsahu. Uvedl, že soutěžní úřad může při posuzování chování dominantního podniku ověřovat dodržování jiných pravidel, a že formální soulad s nimi není obranou, pokud je podnik fakticky obchází. Odmítl argument Mety, že relevantním trhem je šíření informačního obsahu, a podle soudu mají Facebook a Instagram přes 60 % francouzského trhu a 65 až 75 % v EHP.</p>
       <p>Odměna je podle soudu spravedlivá, jen pokud odráží povahu a rozsah užití a ekonomickou hodnotu, a platforma to musí zdůvodnit. Neprůhledné podmínky a zvolený základ výpočtu mohou vést k odměně „výrazně odtržené“ od skutečného užití. Meta musí jednat v dobré víře podle průhledných, objektivních a nediskriminačních kritérií, do patnácti dnů poskytnout data potřebná k posouzení odměny a po dobu jednání nesnižovat zobrazení obsahu tisku. Opatření nezakládají přímý nárok na náhradu a nenutí Metu uzavřít licenci.</p>
-      <p class="why"><b>Praktický dopad:</b> rozhodnutí je zajímavé pro uplatňování čl. 15 směrnice DSM v praxi (informační asymetrie, kdy data o užití drží jen platforma; soud odkázal na věc C-797/23). Autor komentáře naznačuje, že stejná asymetrie může platit u poskytovatelů AI, to je však jeho názor, nikoli výrok soudu. Ve věci samé soutěžní úřad dosud nerozhodl.</p>
+      <div class="why"><b>Praktický dopad:</b><ul><li>význam pro uplatňování čl. 15 směrnice DSM v praxi</li><li>informační asymetrie: data o užití drží jen platforma (soud odkázal na věc C-797/23)</li><li>podle autora komentáře může stejná asymetrie platit u poskytovatelů AI (jeho názor, ne výrok soudu)</li><li>ve věci samé soutěžní úřad dosud nerozhodl</li></ul></div>
       <p class="basis">Vychází z komentáře IPKat (Margaux Chielle, 11. 11. 2026); samotné rozhodnutí jsem nečetl. Komentář neuvádí složení soudu, výši odměny ani to, zda je možný další opravný prostředek.</p>
       <p class="basis exc">Zpráva mimo ČR a EU, mezi hlavní zařazena výjimečně: Uplatňování práva vydavatelů tisku podle čl. 15 směrnice (EU) 2019/790 prostřednictvím čl. 102 SFEU; význam pro výklad unijního práva v celé EU.</p>
       <div class="card-foot"><a class="also" href="../archiv/2026-11-14.html#zprava-2">Celé vydání 14. 11. 2026</a></div>

@@ -44,7 +44,10 @@
         "Odpovědi chatbota jsou online užitím ve smyslu čl. 15 DSM. Vyloučení pouhých skutečností a velmi krátkých úryvků se nemusí uplatnit, nakladatel samotným zveřejněním online implicitně nesouhlasí a čl. 4 TDM zobrazení odpovědí nekryje. Zobrazení může být rozmnožováním i zpřístupněním veřejnosti, pokud je forma vyjádření „systematicky rozpoznatelná“, což komentátor zpochybňuje."
       ],
       "dopad": {
-        "text": "stanovisko není závazné a rozsudek se teprve očekává. Komentář upozorňuje, že další dvě AI předložení k autorskému právu (C-806/26 a C-829/26) jsou u Soudního dvora rozpracována."
+        "body": [
+          "stanovisko není závazné, rozsudek se teprve očekává",
+          "u Soudního dvora jsou rozpracována další dvě AI předložení k autorskému právu (C-806/26, C-829/26)"
+        ]
       },
       "podklad": "Vychází z komentáře IPKat (Eleonora Rosati, 3. 11. 2026). Samotné stanovisko jsem nečetl; komentář neuvádí předkládající soud.",
       "zdroj": {
@@ -79,7 +82,11 @@
         "Spojitost mezi známkami Tribunál dovodil z blízkosti zboží: monitory baterií jsou příslušenstvím běžných aut a pro elektromobily a hybridy jsou důležitou, ne-li nezbytnou součástí systému řízení baterie. Rozhodující je zboží v přihlášce, nikoli to, jak přihlašovatel známku skutečně užívá. Majitel starší známky nemusí prokazovat skutečnou škodu, stačí nikoli hypotetické riziko, že přihlašovatel bude těžit z pověsti (spolehlivost, kvalita) BMW. Řádný důvod k užívání Victron neprokázal; tento pojem je nutné vykládat restriktivně."
       ],
       "dopad": {
-        "text": "známky s dobrým jménem chrání i proti označením lišícím se jedním písmenem pro zboží, které je s jejich hlavním zbožím jen „blízce spojeno“ (příslušenství, součásti). Obrana popisností zkratky vyžaduje doklady o jejím samostatném běžném užívání na trhu, ne jen v typových označeních vlastních výrobků."
+        "body": [
+          "známka s dobrým jménem chrání i proti označení lišícímu se jedním písmenem",
+          "stačí „blízce spojené“ zboží (příslušenství, součásti)",
+          "obrana popisností zkratky: doložit její samostatné běžné užívání na trhu, ne jen v typových označeních vlastních výrobků"
+        ]
       },
       "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
       "zdroj": {
@@ -114,7 +121,11 @@
         "Samotné opakované podání zlou víru nezakládá, Tribunál odlišil věc MONOPOLY. Rozhodný je úmysl obejít požadavek skutečného užívání, který se projevil i tím, že se QEF ve čtyřech z pěti námitkových řízení proti WMG o starší právo neopřela. Argument, že slovní známka je flexibilnější, Tribunál odmítl jako nepřípustný i jako nepodložený."
       ],
       "dopad": {
-        "text": "strategie opakovaného podání bude těžší obhájit. U téměř totožné pozdější známky pro totéž zboží lze bez konkrétního obchodního důvodu očekávat spíše domněnku zlé víry, zejména pokud k podání dojde krátce po skončení lhůty pro užívání. Pro klienty to znamená dokumentovat důvod každého nového podání."
+        "body": [
+          "strategie opakovaného podání se hůře obhajuje",
+          "téměř totožná známka pro totéž zboží bez obchodního důvodu: spíše domněnka zlé víry, zvlášť krátce po skončení lhůty pro užívání",
+          "důvod každého nového podání dokumentovat"
+        ]
       },
       "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 5. 11. 2026). Datum rozsudku, ECLI a použité ustanovení (čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001, zlá víra) doplněny z EUR-Lex. Samotný rozsudek jsem nečetl celý.",
       "zdroj": {
