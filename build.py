@@ -419,7 +419,7 @@ def page(*, title, root, nav_current, content, nadpis=None, meta="", side=None, 
         body_gate = GATE_BODY.replace("@HASH@", HESLO_HASH).replace("@KONTAKT@", KONTAKT) + "\n"
         css = CSS + "\n" + GATE_CSS
     return f"""<!DOCTYPE html>
-<html lang="cs">
+<html lang="cs" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1060,8 +1060,8 @@ SEARCH_JS = r"""<script>
 })();
 </script>"""
 
-# Přepínač světlého a tmavého režimu. Bez volby se řídí nastavením systému,
-# zvolený režim si prohlížeč zapamatuje.
+# Přepínač světlého a tmavého režimu. Výchozí je světlý režim (data-theme="light" v <html>),
+# tmavý se zapne přepínačem a prohlížeč si volbu zapamatuje.
 THEME_HEAD = """<script>
 try { var t = localStorage.getItem("ipnovinky-rezim"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
 </script>"""
