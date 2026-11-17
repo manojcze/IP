@@ -1,7 +1,15 @@
 # IP novinky
 
 Přehled novinek z práva duševního vlastnictví, vychází dvakrát týdně (úterý a pátek).
-Web běží přes GitHub Pages z větve `main`.
+Web běží na Váš Hosting (onajman.cz). Po každém nahrání do větve `main` ho GitHub
+Actions (`.github/workflows/nasazeni.yml`) vygeneruje a nahraje přes FTP do složky
+`www/`. Nahrávají se jen hotové stránky (`index.html`, `robots.txt`, `archiv/`, `sekce/`),
+ne data ani skripty.
+
+Přístup k FTP se nastavuje v GitHubu (Settings → Secrets and variables → Actions):
+tajné údaje `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`; nepovinně proměnné
+`FTP_DIR` (výchozí `www/`) a `FTP_PROTOCOL` (výchozí `ftps`, pokud hosting šifrované
+FTP nepodporuje, nastavte `ftp`).
 
 ## Jak web vzniká
 
@@ -23,7 +31,6 @@ Skript potřebuje jen Python 3 (žádné další balíčky). Vytvoří:
 
 Vygenerované HTML soubory ručně neupravujte, při dalším spuštění se přepíšou.
 Vzhled se mění v `build.py` (proměnná `CSS` a funkce pro jednotlivé stránky).
-Soubory `CNAME` a `.nojekyll` nechte beze změny.
 
 Před zápisem `build.py` data zkontroluje (povinná pole, sekce, štítky, odkazy
 z hlavních témat). Pokud najde chybu, nic nezapíše, vypíše, co je špatně,
@@ -51,7 +58,7 @@ ve zdrojovém kódu stránek a v tomto (veřejném) repozitáři.
 
 1. Vytvořte `data/vydani/RRRR-MM-DD.json` podle formátu níže.
 2. Spusťte `python3 build.py` a opravte případné chyby.
-3. Commitněte a pushněte vše (`git add -A`).
+3. Commitněte a pushněte vše (`git add -A`). Na hosting se web nahraje sám.
 
 ## Sekce
 

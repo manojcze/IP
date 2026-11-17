@@ -1,0 +1,45 @@
+# Po každém nahrání do větve main vygeneruje web a nahraje ho přes FTP na Váš Hosting.
+# Přístupové údaje jsou v GitHubu: Settings → Secrets and variables → Actions
+#   tajné (Secrets):    FTP_SERVER, FTP_USERNAME, FTP_PASSWORD
+#   nepovinné (Variables): FTP_DIR (výchozí www/), FTP_PROTOCOL (výchozí ftps, jinak ftp)
+name: Nasazení na hosting
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: nasazeni
+  cancel-in-progress: false
+
+jobs:
+  nasazeni:
+    runs-on: ubuntu-latest
+    env:
+      MA_FTP: ${{ secrets.FTP_SERVER != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vygenerovat web
+        run: python3 build.py
+
+      - name: Připravit soubory k nahrání
+        run: |
+          mkdir _site
+          cp -r index.html robots.txt archiv sekce _site/
+
+      - name: Chybí přístup k FTP
+        if: env.MA_FTP != 'true'
+        run: echo "::notice::Web nebyl nahrán, v GitHubu chybí tajné údaje FTP_SERVER, FTP_USERNAME a FTP_PASSWORD."
+
+      - name: Nahrát přes FTP
+        if: env.MA_FTP == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          local-dir: ./_site/
+          server-dir: ${{ vars.FTP_DIR || 'www/' }}
