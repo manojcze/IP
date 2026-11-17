@@ -104,7 +104,6 @@ znak `&` pište jako `&amp;`. Nepište do nich nadpisy ani odstavce `<p>`.
         "oblasti": ["Ochranné známky"],
         "jurisdikce": ["EU"],
         "soubeh": ["Souběh s nekalou soutěží"],
-        "starsi": false,
         "zdroj": "Rozhodnutí"
       },
       "nadpis": "Nadpis zprávy",

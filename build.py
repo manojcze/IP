@@ -254,8 +254,6 @@ def stitky_seznam(st):
     out = [(o, "tm" if o == "Ochranné známky" else "ip") for o in st.get("oblasti", [])]
     out += [(j, "juris") for j in st.get("jurisdikce", [])]
     out += [(s, "comp-yes") for s in st.get("soubeh", [])]
-    if st.get("starsi"):
-        out.append(("Starší zpráva", "old"))
     if st.get("zdroj"):
         out.append((st["zdroj"], typ_cls(st["zdroj"])))
     return out

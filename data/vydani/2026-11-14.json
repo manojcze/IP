@@ -29,7 +29,6 @@
           "EU"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "nadpis": "„Truth Social“: odvolací senát EUIPO potvrdil zlou víru u EU známky zapsané den po oznámení spuštění služby",
@@ -69,7 +68,6 @@
         "soubeh": [
           "Souběh se soutěžním právem"
         ],
-        "starsi": true,
         "zdroj": "Článek"
       },
       "nadpis": "Meta musí jednat s francouzskými vydavateli tisku o odměně: pařížský odvolací soud potvrdil předběžná opatření",
@@ -87,7 +85,7 @@
         "oznaceni": "Praktický dopad:",
         "text": "rozhodnutí je zajímavé pro uplatňování čl. 15 směrnice DSM v praxi (informační asymetrie, kdy data o užití drží jen platforma; soud odkázal na věc C-797/23). Autor komentáře naznačuje, že stejná asymetrie může platit u poskytovatelů AI, to je však jeho názor, nikoli výrok soudu. Ve věci samé soutěžní úřad dosud nerozhodl."
       },
-      "podklad": "Vychází z komentáře IPKat (Margaux Chielle, 11. 11. 2026); samotné rozhodnutí jsem nečetl. Komentář neuvádí složení soudu, výši odměny ani to, zda je možný další opravný prostředek. Zpráva je označena jako starší, protože rozhodnutí je z 29. 10. 2026 a komentář vyšel až nyní.",
+      "podklad": "Vychází z komentáře IPKat (Margaux Chielle, 11. 11. 2026); samotné rozhodnutí jsem nečetl. Komentář neuvádí složení soudu, výši odměny ani to, zda je možný další opravný prostředek.",
       "zdroj": {
         "url": "https://ipkitten.blogspot.com/2026/11/who-holds-data-holds-power-paris-court.html",
         "nazev": "IPKat"
@@ -108,7 +106,6 @@
         "soubeh": [
           "Souběh se soutěžním právem"
         ],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "nadpis": "ZTE a Samsung stáhly žaloby u UPC v Mannheimu, spor o FRAND patrně skončil dohodou",
@@ -149,7 +146,6 @@
         "soubeh": [
           "Souběh s nekalou soutěží"
         ],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "odkaz": {
@@ -196,7 +192,6 @@
         "soubeh": [
           "Souběh s nekalou soutěží"
         ],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "odkaz": {
@@ -219,7 +214,6 @@
           "Kazachstán"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "odkaz": {
@@ -241,7 +235,6 @@
           "EU (UPC)"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "odkaz": {
@@ -263,7 +256,6 @@
           "ČR"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Oznámení"
       },
       "odkaz": {

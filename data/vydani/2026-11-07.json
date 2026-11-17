@@ -1,7 +1,7 @@
 {
   "datum": "2026-11-07",
   "zkusebni": true,
-  "uvod": "Protože je sobota a v posledních dnech nevyšlo v prověřených zdrojích mnoho významného, pokrývá výběr delší období (od 13. 10. do 7. 11. 2026). Zprávy starší než týden jsou označeny. Běžná vydání vycházejí každou sobotu a pokrývají uplynulý týden.",
+  "uvod": "Protože je sobota a v posledních dnech nevyšlo v prověřených zdrojích mnoho významného, pokrývá výběr delší období (od 13. 10. do 7. 11. 2026). Běžná vydání vycházejí každou sobotu a pokrývají uplynulý týden.",
   "hlavni_temata": [
     {
       "zprava": 1,
@@ -30,7 +30,6 @@
           "EU"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "nadpis": "Znovupodání známky po lhůtě pro prokázání užívání: Tribunál potvrdil zlou víru",
@@ -71,7 +70,6 @@
         "soubeh": [
           "Souběh s nekalou soutěží"
         ],
-        "starsi": true,
         "zdroj": "Článek"
       },
       "nadpis": "Marketplace Wish odpovídá za padělky jako přímý porušovatel ochranné známky",
@@ -109,7 +107,6 @@
           "EU"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "nadpis": "Trénink AI a práva nakladatelů tisku: stanovisko GA Szpunara ve věci Like Company",
@@ -147,7 +144,6 @@
           "Německo"
         ],
         "soubeh": [],
-        "starsi": true,
         "zdroj": "Článek"
       },
       "odkaz": {
@@ -189,7 +185,6 @@
           "EU"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "odkaz": {
@@ -211,7 +206,6 @@
           "EU"
         ],
         "soubeh": [],
-        "starsi": false,
         "zdroj": "Článek"
       },
       "odkaz": {
