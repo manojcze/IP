@@ -1,0 +1,532 @@
+{
+  "datum": "2026-11-21",
+  "zkusebni": false,
+  "hlavni_temata": [
+    {
+      "zprava": 1
+    },
+    {
+      "zprava": 2
+    },
+    {
+      "zprava": 3
+    },
+    {
+      "zprava": 4
+    },
+    {
+      "zprava": 5
+    }
+  ],
+  "zpravy": [
+    {
+      "id": 1,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "Tribunál: Krátké užívání označení konkurentem zlou víru přihlašovatele nevylučuje (SOLID 225 a 226)",
+      "fakta": [
+        "Tribunál EU, pátý senát",
+        "spojené věci T-499/25 a T-508/25, Maurten v EUIPO – 226ers Sports Things (SOLID 225, SOLID 226), ECLI:EU:T:2026:766",
+        "rozsudek z 18. 11. 2026"
+      ],
+      "odstavce": [
+        "Švédský výrobce sportovní výživy Maurten uvedl 27. 5. 2022 na trh energetické tyčinky SOLID 225 a SOLID C 225 po rozsáhlé kampani na sociálních sítích s účastí známých vytrvalostních sportovců. O deset dní později, 6. 6. 2022, přihlásil španělský konkurent 226ers Sports Things slovní známky EU SOLID 225 a SOLID 226 pro doplňky stravy ve třídě 5. Zrušovací oddělení EUIPO je na návrh Maurtenu prohlásilo za neplatné pro zlou víru (čl. 59 odst. 1 písm. b) nařízení (EU) 2017/1001); odvolací senát rozhodnutí zrušil, protože desetidenní užívání podle něj nestačilo k prokázání, že přihlašovatel o označení věděl.",
+        "Tribunál obě rozhodnutí odvolacího senátu zrušil. Na úzce specializovaném trhu výživy pro vytrvalostní sporty konkurenti navzájem pečlivě sledují uvádění nových výrobků; vzhledem k celosvětovému dosahu kampaně měl přihlašovatel o chystaném uvedení vědět ještě před oficiálním spuštěním. Závěr, že kvůli krátké době užívání nemohl o označení vědět, je proto stižen vadou posouzení.",
+        "Vysvětlení přihlašovatele, proč zvolil spojení „solid“ s čísly 225 a 226 (čísla měla vyjadřovat počet kalorií), Tribunál označil za nevěrohodné. Vzhledem k totožnosti či téměř totožnosti se zcela novým označením konkurenta na stejném trhu nelze volbu považovat za náhodu, i když jsou jednotlivé prvky slabě rozlišující. Odvolací senát tak neposoudil všechny okolnosti a zlou víru vyloučil nesprávně; ve věci musí rozhodnout znovu."
+      ],
+      "dopad": {
+        "body": [
+          "zlá víra nevyžaduje dlouhé předchozí užívání označení, rozhodují všechny okolnosti",
+          "na specializovaném trhu lze vědomost o novém výrobku konkurenta dovodit i z intenzivní kampaně před uvedením",
+          "doklady o kampani (faktury za reklamu, smlouvy s ambasadory) je vhodné předložit hned v řízení o neplatnosti",
+          "přihlašovatel musí věrohodně vysvětlit obchodní logiku volby označení"
+        ]
+      },
+      "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0499",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 2,
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EU (UPC)"
+        ],
+        "soubeh": [
+          "Souběh se soutěžním právem"
+        ]
+      },
+      "nadpis": "UPC Milán: Ericsson nezískal zákaz proti AsusTek, námitka FRAND podle čl. 102 SFEU uspěla",
+      "fakta": [
+        "Jednotný patentový soud, místní oddělení Milán",
+        "UPC_CFI_318/2024, UPC_CFI_319/2024, UPC_CFI_728/2024 a UPC_CFI_730/2024, Ericsson v AsusTek",
+        "zpráva JUVE Patent z 13. 11. 2026; data rozhodnutí článek neuvádí"
+      ],
+      "odstavce": [
+        "Ericsson žaloval tchajwanského výrobce počítačů AsusTek (a jako zprostředkovatele logistickou společnost Arvato) pro porušení patentů, které podle něj chrání standard dekódování videa HEVC/H.265 používaný v noteboocích a počítačích s procesory Intel a AMD. Místní oddělení v Miláně vydalo dvě souběžná rozhodnutí: patent EP 3 076 673 zrušilo pro nepřípustné rozšíření a nedostatek novosti, u patentu EP 2 727 342 shledalo nepřímé porušení.",
+        "Zákaz, stažení ani zničení výrobků však soud nenařídil, protože uznal námitku FRAND, kterou AsusTek opřel o čl. 102 SFEU a rozsudek SDEU Huawei v ZTE (C-170/13). Soud dovodil, že Ericsson má dominantní postavení na trhu licencí k technologii nezbytné pro standard HEVC, protože zařízení bez jeho podpory nejsou konkurenceschopná. Souběh se soutěžním právem spočívá v tom, že majitel standardního patentu v dominantním postavení musí před žalobou na zákaz splnit postup podle Huawei v ZTE, jinak zákaz zneužívá.",
+        "Ericsson nesplnil hned první krok: před zahájením řízení neoznámil, který patent a jak je porušován; učinil tak až v den podání žaloby 14. 6. 2024. Podmíněný návrh na zákaz vázaný na přijetí licenční nabídky podle soudu toto oznámení nenahrazuje. Soud zamítl i návrh na deklaraci nezbytnosti patentu pro standard s účinky vůči všem; porušení však deklaroval, uznal odpovědnost za škodu a nařídil poskytnutí informací. Rozhodnutí nejsou pravomocná."
+      ],
+      "dopad": {
+        "body": [
+          "majitel SEP musí oznámit porušení před podáním žaloby, ne současně s ní",
+          "podmíněný návrh na zákaz nenahrazuje oznámení podle Huawei v ZTE",
+          "i při prokázaném porušení může držitel SEP zůstat jen u náhrady škody",
+          "UPC nevydává deklarace nezbytnosti patentu pro standard s účinky vůči všem"
+        ]
+      },
+      "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 13. 11. 2026). Samotná rozhodnutí jsem nečetl; web UPC nebyl dostupný.",
+      "zdroj": {
+        "url": "https://www.juve-patent.com/cases/wildanger-and-asustek-successful-with-frand-defence-in-upc-dispute-against-ericsson/",
+        "nazev": "JUVE Patent"
+      }
+    },
+    {
+      "id": 3,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "ČR",
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "ÚPV: Úřady EU sjednotily posuzování popisnosti známek se zeměpisným výrazem (společná praxe CP18)",
+      "fakta": [
+        "Úřad průmyslového vlastnictví a úřady sítě EUIPN",
+        "společná praxe CP18 „Popisný charakter označení obsahujících zeměpisný výraz“",
+        "aktualita ÚPV z 16. 11. 2026"
+      ],
+      "odstavce": [
+        "Úřady duševního vlastnictví EU se v konvergenčním programu dohodly na společné praxi pro posuzování, zda slovní označení tvořené zeměpisným výrazem (nebo jej obsahující) bez dalšího rozlišovacího prvku může sloužit k označení zeměpisného původu, a je tedy popisné podle čl. 4 odst. 1 písm. c) směrnice (EU) 2015/2436 a čl. 7 odst. 1 písm. c) nařízení (EU) 2017/1001. ÚPV dokument zveřejnil v češtině. Projekt začal v říjnu 2025.",
+        "Společná praxe stanoví tři kumulativní kritéria: označení obsahuje zeměpisný výraz (název země, regionu, města, řeky, hory, ale i přídavná jména, zkratky, historické názvy, kódy zemí či přezdívky jako „Big Apple“); výraz je relevantní veřejnosti znám jako označení místa; a veřejnost s ním dotčené výrobky či služby spojuje nyní, nebo lze rozumně předpokládat, že je spojovat bude. Obecné výrazy jako „vesnice“ nebo „les“ zeměpisným výrazem nejsou. Nerozhoduje, zda výrobky z daného místa skutečně pocházejí.",
+        "Dokument vychází z judikatury SDEU a Tribunálu (Chiemsee, OLDENBURGER, Cloppenburg aj.) a obsahuje ilustrativní příklady. Netýká se jiných důvodů zamítnutí (např. chráněných označení původu), obrazových známek, rozlišovací způsobilosti nabyté užíváním ani kolektivních a certifikačních známek. Účinnosti nabývá ke dni, který určí každý úřad."
+      ],
+      "dopad": {
+        "body": [
+          "předvídatelnější posuzování známek se zeměpisným výrazem u ÚPV, EUIPO i ostatních úřadů",
+          "popisnost se posuzuje podle vnímání veřejnosti, nikoli podle skutečného původu zboží",
+          "u známky EU stačí popisnost v části Unie",
+          "před podáním přihlášky ověřit všechna tři kritéria a připravit argumentaci"
+        ]
+      },
+      "podklad": "Vychází z aktuality ÚPV ze 16. 11. 2026 a z textu dokumentu CP18 v češtině. Datum, od kterého praxi uplatňuje ÚPV, v textu dokumentu ani aktuality uvedeno není (tabulka implementace v PDF nebyla čitelná).",
+      "zdroj": {
+        "url": "https://upv.gov.cz/aktuality/informace/spolecna-praxe-popisny-charakter-oznaceni-obsahujicich-zemepisny-vyraz",
+        "nazev": "ÚPV"
+      }
+    },
+    {
+      "id": 4,
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Autorské právo"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "SDEU: Licence platformy podle čl. 17 směrnice DSM pokrývá i rozmnožování při ukládání obsahu",
+      "fakta": [
+        "Soudní dvůr EU, druhý senát",
+        "věc C-579/24, Austro-Mechana a AKM proti Aufsichtsbehörde für Verwertungsgesellschaften",
+        "rozsudek z 12. 11. 2026"
+      ],
+      "odstavce": [
+        "Rakouský Spolkový správní soud se ptal, zda poskytovatel služeb pro sdílení obsahu on-line (např. platforma s videi nahrávanými uživateli) potřebuje kromě svolení ke sdělování veřejnosti podle čl. 17 odst. 1 směrnice (EU) 2019/790 ještě samostatné svolení k rozmnožování, když obsah nahraný uživateli ukládá na svých serverech, a zda takové svolení potřebují i uživatelé, kteří obsah nahrávají. Spor vedly kolektivní správci Austro-Mechana a AKM.",
+        "Soudní dvůr ve shodě se stanoviskem generálního advokáta Emilioua uvedl, že uložení obsahu na serveru platformy je rozmnožováním podle čl. 2 směrnice 2001/29/ES, a výjimka pro dočasné rozmnoženiny se nepoužije. Samostatné svolení k němu však platforma nepotřebuje: svolení, které musí získat podle čl. 17 odst. 1, se vztahuje i na rozmnožování technicky nezbytné pro sdělení či zpřístupnění veřejnosti.",
+        "Totéž platí pro uživatele: rozmnožování při nahrávání je kryto svolením platformy podle čl. 17 odst. 2, pokud uživatelé nejednají v rámci podnikání a jejich činnost nevytváří významné příjmy. Opačný výklad by podle soudu vedl k právní nejistotě, protože by platformy musely souběžně dodržovat dva odlišné režimy."
+      ],
+      "dopad": {
+        "body": [
+          "licence pro platformy podle čl. 17 zahrnují i rozmnožování nezbytné pro provoz služby",
+          "kolektivní správci nemohou za ukládání obsahu požadovat samostatnou licenci",
+          "uživatelé jednající nekomerčně jsou kryti licencí platformy i pro nahrávání",
+          "rozsah licence nad toto minimum zůstává věcí smluvního ujednání"
+        ]
+      },
+      "podklad": "Vychází z plného textu rozsudku (české znění na EUR-Lex) a komentáře IPKat (Eleonora Rosati, 14. 11. 2026).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:62024CJ0579",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 5,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "Tribunál: Faktury doložené až u odvolacího senátu mohou doplnit čestné prohlášení o obratu (MONSTER)",
+      "fakta": [
+        "Tribunál EU, šestý senát",
+        "věc T-341/25, Monster Computer Technology v EUIPO – Monster (MONSTER), ECLI:EU:T:2026:773",
+        "rozsudek z 18. 11. 2026"
+      ],
+      "odstavce": [
+        "Německá společnost Monster Computer Technology navrhla zrušení slovní známky EU MONSTER zapsané pro sluchátka (třída 9) pro neužívání (čl. 58 odst. 1 písm. a) nařízení (EU) 2017/1001). Majitel, americká společnost Monster, předložil zrušovacímu oddělení 12 příloh o více než 350 stranách, mimo jiné výpisy z e-shopů a čestné prohlášení s celkovými obraty, ale žádnou fakturu. Zrušovací oddělení známku zrušilo; odvolací senát připustil 23 nových příloh včetně faktur a rozhodnutí zrušil.",
+        "Tribunál žalobu zamítl. Podle čl. 95 odst. 2 nařízení a čl. 27 odst. 4 nařízení v přenesené pravomoci (EU) 2018/625 má odvolací senát širokou volnost připustit opožděné důkazy, pokud doplňují důkazy předložené včas a reagují na závěry prvního stupně. Faktury dokládající prodeje zboží MONSTER doplňují a potvrzují obraty z čestného prohlášení, jde tedy o důkazy stejné povahy, nikoli o zcela nové důkazy. Chybějící zdůvodnění opožděného předložení není samo o sobě rozhodující.",
+        "Tribunál potvrdil i závěr odvolacího senátu o skutečném užívání známky pro sluchátka. Souběžně rozhodl věc T-340/25 týkající se známky MONSTER GAME, v níž šlo o stejné otázky připuštění důkazů."
+      ],
+      "dopad": {
+        "body": [
+          "důkazy o užívání lze u odvolacího senátu doplnit, pokud navazují na včas předložené důkazy",
+          "čestné prohlášení o obratu je vhodné doložit fakturami už v prvním stupni",
+          "zcela nové typy důkazů bez vazby na dřívější riziko nepřipuštění"
+        ]
+      },
+      "podklad": "Vychází z plného textu rozsudku ve věci T-341/25 (anglické znění na EUR-Lex). Rozsudek ve věci T-340/25 jsem nečetl.",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62025TJ0341",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 6,
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "Tribunál: XOXO není zaměnitelná s OXXO, rozdíl tvoří obrazový prvek i jiné pořadí písmen",
+      "fakta": [
+        "Tribunál EU, šestý senát",
+        "věc T-69/26, Oxxo Tekstil v EUIPO – Ferrarelli (XOXO), ECLI:EU:T:2026:774",
+        "rozsudek z 18. 11. 2026"
+      ],
+      "odstavce": [
+        "Přihlašovatelka (fyzická osoba) podala přihlášku obrazové známky EU s výrazem XOXO a výrazným obrazovým prvkem pro zboží ve třídách 18 a 25. Turecká textilní společnost Oxxo Tekstil podala námitky na základě starších slovních a obrazových známek OXXO (čl. 8 odst. 1 písm. b) nařízení (EU) 2017/1001). Námitkové oddělení i odvolací senát je zamítly.",
+        "Tribunál žalobu zamítl. Starší slovní známka OXXO nemá v žádném z jazyků význam a je průměrně rozlišující. Výraz XOXO chápe alespoň část veřejnosti jako „objetí a polibky“ a vnímá ho jako nerozlišující propagační sdělení. Obrazový prvek přihlášky je díky velikosti a umístění dominantní a určuje celkový vizuální dojem.",
+        "To, že obě označení mají stejnou délku, shodné poslední dvě písmena a stejná písmena na začátku jen v opačném pořadí, k průměrné vizuální podobnosti nestačí. Pravděpodobnost záměny proto nevzniká."
+      ],
+      "dopad": {
+        "body": [
+          "přehození písmen nemusí stačit k zaměnitelnosti, pokud přihláška obsahuje dominantní obrazový prvek",
+          "význam výrazu pro část veřejnosti (XOXO = objetí a polibky) oslabuje jeho rozlišovací způsobilost",
+          "u krátkých označení rozhoduje celkový dojem, ne počet shodných písmen"
+        ]
+      },
+      "podklad": "Vychází z plného textu rozsudku (anglické znění na EUR-Lex).",
+      "zdroj": {
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62026TJ0069",
+        "nazev": "EUR-Lex"
+      }
+    },
+    {
+      "id": 7,
+      "sekce": [
+        "patenty-a-uzitne-vzory"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "EU (UPC)"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "UPC Paříž: Patent KeeeX na ověřování obsahu je neplatný, žaloba proti Adobe a OpenAI neuspěla",
+      "fakta": [
+        "Jednotný patentový soud, místní oddělení Paříž",
+        "UPC_CFI_530/2025 a související věci, KeeeX v Adobe, OpenAI a další",
+        "rozhodnutí ze 17. 11. 2026 (zpráva JUVE Patent)"
+      ],
+      "odstavce": [
+        "Francouzská technologická společnost KeeeX z Marseille žalovala v červnu 2025 Adobe, OpenAI, Truepic, Joint Development Foundation a koalici C2PA (Coalition for Content Provenance and Authenticity) pro porušení evropského patentu („EP 070“) na funkce digitálních nástrojů pro ověřování a zpracování obsahu. Původně požadovala náhradu škody v miliardách eur, později jako prozatímní náhradu 100 a 20 milionů eur. Žalovaní podali protižaloby na zrušení.",
+        "Místní oddělení v Paříži shledalo všechny napadené nároky neplatnými pro nepřípustné rozšíření nebo nedostatek novosti a žalobu na porušení zamítlo. O náhradě škody již nerozhodovalo. Odvolací soud UPC už dříve (březen 2026) rozhodl, že pařížské oddělení nemá pravomoc pro švýcarskou, španělskou, britskou, irskou, norskou a polskou část patentu.",
+        "KeeeX nese náklady řízení; soud přiznal prozatímní náhradu nákladů 300 000 eur rozdělenou mezi čtyři skupiny žalovaných, přičemž zohlednil, že KeeeX je malý podnik. Proti rozhodnutí je přípustné odvolání; u německého Spolkového patentového soudu běží souběžně žaloba Adobe na zrušení německé části patentu."
+      ],
+      "dopad": {
+        "body": [
+          "žalobce u UPC musí počítat s protižalobou na zrušení a se ztrátou celého patentu",
+          "pravomoc UPC pro státy mimo systém (Švýcarsko, Spojené království, Španělsko, Polsko aj.) je omezená",
+          "postavení malého podniku může snížit náhradu nákladů řízení"
+        ]
+      },
+      "podklad": "Vychází ze zprávy JUVE Patent (Konstanze Richter, 17. 11. 2026). Samotné rozhodnutí jsem nečetl; číslo patentu článek uvádí jen zkráceně (EP 070).",
+      "zdroj": {
+        "url": "https://www.juve-patent.com/cases/c2pa-developers-around-adobe-and-openai-defeat-keeex-patent-at-upc/",
+        "nazev": "JUVE Patent"
+      }
+    },
+    {
+      "id": 8,
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Autorské právo"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "nadpis": "SDEU: Příspěvek na Facebooku může být dílem, stát smí omezit zpravodajskou výjimku na krátké úryvky",
+      "fakta": [
+        "Soudní dvůr EU",
+        "věc C-598/24, Gândul Media Network",
+        "rozsudek ze 3. 9. 2026, komentář IPKat z 15. 11. 2026"
+      ],
+      "odstavce": [
+        "Rumunská učitelka zveřejnila v září 2021 na Facebooku 22řádkový „Krátký průvodce pro rodiče na začátek školního roku“, v němž zdvořile odmítla dárky od rodičů. Zpravodajský web Gândul příspěvek o šest dní později převzal celý bez jejího souhlasu. Rumunské soudy její žalobu zamítly a Nejvyšší kasační soud se obrátil na SDEU.",
+        "Soudní dvůr potvrdil, že i příspěvek na sociální síti může být dílem podle směrnice 2001/29/ES, pokud je původním duševním výtvorem odrážejícím svobodná tvůrčí rozhodnutí autora; délka, místo zveřejnění ani žánr nerozhodují. Převzetí textu zveřejněného na začátku školního roku může být zpravodajstvím o aktuální události.",
+        "Členský stát smí výjimku pro zpravodajství (čl. 5 odst. 3 písm. c) směrnice) omezit na krátké úryvky; plné převzetí totiž může nahradit původní dílo. Velmi krátké dílo, které nelze smysluplně citovat po částech, však lze převzít celé. Rumunská podmínka, že uživatel nesmí mít z užití žádný ani nepřímý ekonomický prospěch, ale neobstála: zpravodajská média mají nepřímý prospěch ze všeho, co publikují, a výjimka by tak pro tisk ztratila smysl."
+      ],
+      "dopad": {
+        "body": [
+          "i krátké texty na sociálních sítích mohou být chráněny autorským právem",
+          "převzetí celého příspěvku do zpravodajství nemusí být kryto výjimkou",
+          "národní omezení výjimek musí zachovat jejich účinnost (zákaz jakéhokoli prospěchu neobstál)"
+        ]
+      },
+      "podklad": "Vychází z komentáře IPKat (Maria Cristina Michelini, 15. 11. 2026). Samotný rozsudek jsem nečetl.",
+      "zdroj": {
+        "url": "https://ipkitten.blogspot.com/2026/11/a-short-guide-for-eu-member-states-cjeu.html",
+        "nazev": "IPKat"
+      }
+    }
+  ],
+  "na_radar": [
+    {
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Autorské právo",
+          "Umělá inteligence"
+        ],
+        "jurisdikce": [
+          "Německo"
+        ],
+        "soubeh": []
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/11/human-or-ai-creation-how-to-prove.html",
+        "text": "OLG Frankfurt: Kdo tvrdí lidské autorství textu, musí ho po zpochybnění podrobně doložit"
+      },
+      "text": "Vrchní zemský soud ve Frankfurtu potvrdil předběžné opatření autorce textu písně, kterou žalovaný označoval za výtvor AI.",
+      "detail": {
+        "fakta": [
+          "Vrchní zemský soud ve Frankfurtu nad Mohanem (OLG)",
+          "sp. zn. 11 U 2/26",
+          "komentář IPKat z 18. 11. 2026; datum rozhodnutí komentář neuvádí"
+        ],
+        "zdroj": {
+          "url": "https://ipkitten.blogspot.com/2026/11/human-or-ai-creation-how-to-prove.html",
+          "nazev": "IPKat"
+        },
+        "odstavce": [
+          "Producent žalobkyně zveřejnil v červenci 2025 píseň, při jejíž tvorbě použil nástroj Suno AI přinejmenším pro hudbu; žalobkyně tvrdila, že text napsala sama. Hudební expert najatý vydavatelstvím jiné interpretky dospěl k závěru, že text vznikl pomocí AI, a žalovaný distributor pak vydal skladbu interpretky s týmž textem. Zemský soud vydal předběžné opatření, vrchní soud ho v podstatě potvrdil.",
+          "Soud uvedl, že lidské autorství musí v zásadě prokázat žalobce; pokud dílo může vytvořit AI, nelze lidské autorství obecně předpokládat. Nechal otevřené, zda musí žalovaný nejdřív předložit konkrétní indicie AI. Ty zde předložil znalecký posudek, a žalobkyně proto musela tvorbu podrobně vysvětlit. To se jí podařilo: předložila dvě verze konceptu a popsala jejich vznik.",
+          "Indicie znalce soud nepřesvědčily: neobvyklá struktura či chybějící básnické prostředky podle soudu spíše svědčí o lidské tvorbě, protože AI využívá známé vzorce. Výsledek nástroje GPTZero (77 % textu z AI) nebyl podložen. Text je dílem podle § 2 odst. 1 bodu 1 německého autorského zákona a skladba interpretky ho porušuje."
+        ],
+        "dopad": {
+          "body": [
+            "„námitka AI“ se stane běžnou obranou ve sporech o texty a hudbu",
+            "autorům doporučit uchovávat a datovat koncepty a jednotlivé verze",
+            "výstupy detektorů AI samy o sobě neprokazují strojový původ"
+          ]
+        },
+        "podklad": "Vychází z komentáře IPKat (Marcel Pemsel, 18. 11. 2026). Samotné rozhodnutí jsem nečetl."
+      }
+    },
+    {
+      "sekce": [
+        "ostatni"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Autorské právo"
+        ],
+        "jurisdikce": [
+          "EU"
+        ],
+        "soubeh": []
+      },
+      "odkaz": {
+        "url": "https://curia.europa.eu/jcms/jcms/Jo2_7052/en/",
+        "text": "GA SDEU: Szpunar k belgické úpravě odměn vydavatelů tisku, autorů a výkonných umělců za online užití (curia, 19. 11. 2026)"
+      },
+      "text": "Stanovisko generálního advokáta ve věci C-663/24 Streamz a další posuzuje soulad belgických pravidel s právem EU.",
+      "poznamka": "Text tiskové zprávy se nepodařilo načíst, závěry stanoviska proto nejsou ověřeny."
+    },
+    {
+      "sekce": [
+        "ochranne-znamky"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Ochranné známky"
+        ],
+        "jurisdikce": [
+          "Spojené království"
+        ],
+        "soubeh": []
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/11/victorias-secret-triumphs-over-thomas.html",
+        "text": "High Court: Victoria's Secret uspěla ve sporu s Thomas Pink o výklad dohody o koexistenci značek PINK (IPKat, 18. 11. 2026)"
+      },
+      "text": "Soud vykládal dohodu o narovnání z roku 2015 poté, co Thomas Pink začal v USA prodávat oblečení s nápisem PINK ([2026] EWHC 2817 (BP))."
+    },
+    {
+      "sekce": [
+        "patenty-a-uzitne-vzory",
+        "nekala-soutez"
+      ],
+      "stitky": {
+        "oblasti": [
+          "Patenty"
+        ],
+        "jurisdikce": [
+          "Itálie"
+        ],
+        "soubeh": [
+          "Souběh s nekalou soutěží"
+        ]
+      },
+      "odkaz": {
+        "url": "https://ipkitten.blogspot.com/2026/11/fuzzy-logic-clear-outcome-machine.html",
+        "text": "Soud v Miláně: Čip se strojovým učením neporušuje patent na asistenční systém, patent je navíc neplatný (IPKat, 19. 11. 2026)"
+      },
+      "text": "Žaloba proti čipu EyeQ v asistenčních systémech vozidel se opírala o patent IT 1397341 i o nekalou soutěž (rozhodnutí č. 7233/2026)."
+    }
+  ],
+  "klicova_rozhodnuti": [
+    {
+      "vydani": "2026-11-07",
+      "zprava": 2,
+      "organ": "Tribunál",
+      "nazev": "BMV v BMW (T-468/25)",
+      "popis": "dobré jméno známky chrání i u monitorů baterií"
+    },
+    {
+      "vydani": "2026-11-21",
+      "zprava": 1,
+      "organ": "Tribunál",
+      "nazev": "SOLID 225 a 226 (T-499/25)",
+      "popis": "zlá víra i po pár dnech užívání označení konkurentem"
+    },
+    {
+      "vydani": "2026-11-21",
+      "zprava": 2,
+      "organ": "UPC Milán",
+      "nazev": "Ericsson v AsusTek",
+      "popis": "námitka FRAND podle čl. 102 SFEU vyloučila zákaz"
+    },
+    {
+      "vydani": "2026-11-14",
+      "zprava": 1,
+      "organ": "EUIPO",
+      "nazev": "Truth Social (R 2260/2025-4)",
+      "popis": "zlá víra při zápisu označení před spuštěním služby"
+    },
+    {
+      "vydani": "2026-11-14",
+      "zprava": 2,
+      "organ": "Pařížský odvolací soud",
+      "nazev": "Meta v APIG a DVP",
+      "popis": "práva vydavatelů tisku a zneužití dominance"
+    },
+    {
+      "vydani": "2026-11-07",
+      "zprava": 3,
+      "organ": "Tribunál",
+      "nazev": "Waterdrop (T-541/25)",
+      "popis": "opakované přihlášení známky jako zlá víra"
+    },
+    {
+      "vydani": "2026-10-24",
+      "ve_zkratce": 1,
+      "organ": "OLG Hamburg",
+      "nazev": "Jemella v Wish",
+      "popis": "platforma přímým porušovatelem známky, i nekalá soutěž"
+    },
+    {
+      "vydani": "2026-10-31",
+      "zprava": 1,
+      "organ": "Tribunál",
+      "nazev": "Vacu Activ (T-650/25)",
+      "popis": "blokační přihláška známky je zlá víra"
+    },
+    {
+      "vydani": "2026-11-21",
+      "zprava": 5,
+      "organ": "Tribunál",
+      "nazev": "MONSTER (T-341/25)",
+      "popis": "doplnění důkazů o užívání u odvolacího senátu"
+    },
+    {
+      "vydani": "2026-11-21",
+      "zprava": 4,
+      "organ": "SDEU",
+      "nazev": "Austro-Mechana (C-579/24)",
+      "popis": "licence platformy podle čl. 17 DSM kryje i rozmnožování"
+    }
+  ],
+  "paticka": {
+    "zkontrolovane": [
+      "IPKat: příspěvky z 13. až 21. 11. 2026 (seznam z kanálu blogu, u relevantních plný text).",
+      "EUR-Lex: judikatura Tribunálu a SDEU (ochranné známky, autorské právo) včetně plných textů rozsudků z 12. a 18. 11. 2026; vyhledávání bylo dostupné až přes prohlížeč kvůli ochraně proti robotům.",
+      "Soudní dvůr EU, tiskové zprávy č. 162–170/2026: k duševnímu vlastnictví jen stanovisko GA ve věci C-663/24 Streamz.",
+      "ÚPV, aktuality: společná praxe CP18 (16. 11. 2026) včetně plného textu dokumentu; ostatní položky administrativní nebo o programu SME Fund (nezařazeno).",
+      "JUVE Patent: zprávy o řízeních před UPC a německými soudy z 12. až 20. 11. 2026.",
+      "Kluwer IP blogy (ochranné známky, patenty, autorské právo): přehled příspěvků."
+    ],
+    "nedostupne": [
+      "Soudní dvůr EU: PDF tiskové zprávy č. 168/2026 (Streamz) vrátilo chybu 403.",
+      "EUIPO (euipo.europa.eu) a web UPC: nedostupné; zprávy o UPC vycházejí z JUVE Patent.",
+      "World Trademark Review, Managing IP: za paywallem."
+    ],
+    "vyklad": [
+      "Vydání pokrývá období od 13. do 21. 11. 2026 (předchozí vydání mělo podklady do rána 13. 11.). Rozsudek SDEU Austro-Mechana z 12. 11. 2026 je zařazen sem, protože v předchozím vydání chyběl a komentář IPKat vyšel 14. 11.; rozsudek SDEU Gândul ze 3. 9. 2026 je zařazen kvůli komentáři IPKat z 15. 11. 2026.",
+      "Hlavní zprávy jsou seřazeny podle priority (ochranné známky, souběh se soutěžním právem, ostatní IP). Zprávy z UPC vycházejí z článků JUVE Patent, ostatní ze zdrojů uvedených u každé zprávy. Štítek souběhu je uveden jen tam, kde souběh existuje."
+    ]
+  }
+}
